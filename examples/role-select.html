@@ -124,6 +124,11 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         const portal = params.get('portal') || 'restaurant';
+
+        if (portal === 'client') {
+            window.location.href = 'client-hub.html';
+        }
+
         const title = portal.charAt(0).toUpperCase() + portal.slice(1);
         document.getElementById('portal-title').innerHTML = `<span>${title}</span> Portal`;
 

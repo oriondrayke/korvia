@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Hub | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .hub-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .hub-header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .hub-header p { opacity: 0.8; }
+        .hub-search {
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .hub-search input {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            border: none;
+            border-radius: 999px;
+            font-size: 1rem;
+        }
+        .hub-search button {
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .hub-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+        .filter-btn.active { background: #f97316; border-color: #f97316; }
+        .hub-main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+        .section-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; }
+        .venue-card {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .venue-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 0.75rem;
+            flex-shrink: 0;
+            background-size: cover;
+        }
+        .venue-info { flex: 1; }
+        .venue-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+        .venue-info p { font-size: 0.85rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; }
+        .venue-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .venue-tag {
+            font-size: 0.75rem;
+            background: var(--kv-gray-100);
+            color: var(--kv-gray-600);
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+        }
+        .venue-status {
+            font-size: 0.75rem;
+            color: #16a34a;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .venue-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #16a34a;
+            border-radius: 50%;
+        }
+        .map-placeholder {
+            background: #e2e8f0;
+            border-radius: 1rem;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--kv-gray-500);
+            margin-bottom: 2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--kv-gray-600);
+            text-decoration: none;
+        }
+        .back-link:hover { color: #f97316; }
+    </style>
+</head>
+<body>
+    <header class="hub-header">
+        <h1>Client Hub</h1>
+        <p>Discover restaurants, hotels, and events powered by Korvia.</p>
+        <div class="hub-search">
+            <input type="text" placeholder="Search venue, city, or cuisine...">
+            <button>Search</button>
+        </div>
+        <div class="hub-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Restaurants</button>
+            <button class="filter-btn">Hotels</button>
+            <button class="filter-btn">Events</button>
+            <button class="filter-btn">Near me</button>
+        </div>
+    </header>
+
+    <main class="hub-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="map-placeholder">🗺️ Live map of Korvia venues — integration coming</div>
+
+        <h2 class="section-title">Featured venues</h2>
+
+        <article class="venue-card">
+            <div class="venue-img" style="background: linear-gradient(135deg, #ff6b6b, #feca57);"></div>
+            <div class="venue-info">
+                <div class="venue-status">Open now</div>
+                <h3>Sunset Bistro</h3>
+                <p>Seafood & grills • Oyster Bay, Dar es Salaam</p>
+                <div class="venue-tags">
+                    <span class="venue-tag">Restaurant</span>
+                    <span class="venue-tag">QR menu</span>
+                    <span class="venue-tag">Table payment</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="venue-card">
+            <div class="venue-img" style="background: linear-gradient(135deg, #5f27cd, #ff9ff3);"></div>
+            <div class="venue-info">
+                <div class="venue-status">Open now</div>
+                <h3>Seacliff Hotel</h3>
+                <p>Luxury stay & dining • Masaki, Dar es Salaam</p>
+                <div class="venue-tags">
+                    <span class="venue-tag">Hotel</span>
+                    <span class="venue-tag">Room service</span>
+                    <span class="venue-tag">Guest requests</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="venue-card">
+            <div class="venue-img" style="background: linear-gradient(135deg, #1dd1a1, #48dbfb);"></div>
+            <div class="venue-info">
+                <div class="venue-status">Event today</div>
+                <h3>Mwenge Wedding Expo</h3>
+                <p>Catering & vendor stalls • Mwenge, Dar es Salaam</p>
+                <div class="venue-tags">
+                    <span class="venue-tag">Event</span>
+                    <span class="venue-tag">Multi-vendor</span>
+                    <span class="venue-tag">Fast checkout</span>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
