@@ -3,158 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korvia — QR Ordering Ecosystem</title>
+    <title>Korvia — Karibu Tukuhudumie</title>
     <link rel="stylesheet" href="korvia.css">
     <style>
-        .portal-hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--kv-font-sans);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-
-        .portal-nav {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-        }
-
-        .portal-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #f97316;
-        }
-
-        .portal-main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
             padding: 2rem;
+        }
+        .brand {
             text-align: center;
-        }
-
-        .portal-main h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            max-width: 700px;
-        }
-
-        .portal-main p {
-            font-size: 1.15rem;
-            opacity: 0.85;
             margin-bottom: 3rem;
-            max-width: 520px;
         }
-
-        .portal-grid {
+        .brand-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 1.25rem;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.3);
+        }
+        .brand h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .brand .tagline {
+            font-size: 1.25rem;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+        .brand .subtagline {
+            font-size: 0.95rem;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+        .portals {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
+            gap: 1.25rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
         }
-
         .portal-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 1.25rem;
             padding: 2rem 1.5rem;
             text-align: center;
-            transition: all 0.25s ease;
-            cursor: pointer;
             text-decoration: none;
             color: white;
+            transition: all 0.25s ease;
         }
-
         .portal-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
             border-color: #f97316;
         }
-
         .portal-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-
         .portal-card h2 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
         }
-
         .portal-card p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin: 0;
+            font-size: 0.875rem;
+            opacity: 0.65;
         }
-
-        .qr-hint {
-            margin-top: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(249, 115, 22, 0.15);
-            border: 1px solid rgba(249, 115, 22, 0.3);
-            border-radius: 999px;
-            font-size: 0.9rem;
-        }
-
         footer {
-            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
             text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
         }
     </style>
 </head>
 <body>
-    <div class="portal-hero">
-        <nav class="portal-nav">
-            <div class="portal-logo">korvia.</div>
-            <a href="#" class="kv-button kv-button-ghost kv-button-sm">Get the system</a>
-        </nav>
-
-        <main class="portal-main">
-            <h1>The QR ordering ecosystem for restaurants, hotels & events</h1>
-            <p>One platform connecting customers, waitstaff, managers, and owners.</p>
-
-            <div class="portal-grid">
-                <a href="examples/qr-menu.html" class="portal-card">
-                    <div class="portal-icon">🍽️</div>
-                    <h2>Customer</h2>
-                    <p>Scan QR code, browse menu, order and pay from your table.</p>
-                </a>
-
-                <a href="examples/staff-portal.html" class="portal-card">
-                    <div class="portal-icon">🍳</div>
-                    <h2>Staff</h2>
-                    <p>Waiters, cooks, and reception see live orders and updates.</p>
-                </a>
-
-                <a href="examples/manager-portal.html" class="portal-card">
-                    <div class="portal-icon">📊</div>
-                    <h2>Manager</h2>
-                    <p>Monitor operations, menu, staff, and daily performance.</p>
-                </a>
-
-                <a href="examples/owner-portal.html" class="portal-card">
-                    <div class="portal-icon">💼</div>
-                    <h2>Owner</h2>
-                    <p>Sales reports, earnings projections, and business analytics.</p>
-                </a>
-            </div>
-
-            <div class="qr-hint">
-                Customers scanning a table QR code skip this page and go straight to the restaurant menu.
-            </div>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Korvia. Built for hospitality businesses.</p>
-        </footer>
+    <div class="brand">
+        <div class="brand-logo">K</div>
+        <h1>Korvia</h1>
+        <p class="tagline">Karibu, tukuhudumie</p>
+        <p class="subtagline">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
     </div>
+
+    <div class="portals">
+        <a href="examples/role-select.html?portal=client" class="portal-card">
+            <div class="portal-icon">👤</div>
+            <h2>Client</h2>
+            <p>For business owners using Korvia at their venue.</p>
+        </a>
+        <a href="examples/role-select.html?portal=restaurant" class="portal-card">
+            <div class="portal-icon">🍽️</div>
+            <h2>Restaurant</h2>
+            <p>QR menus, table ordering, and live kitchen display.</p>
+        </a>
+        <a href="examples/role-select.html?portal=hotel" class="portal-card">
+            <div class="portal-icon">🏨</div>
+            <h2>Hotel</h2>
+            <p>Room service, amenities, and guest requests.</p>
+        </a>
+        <a href="examples/role-select.html?portal=events" class="portal-card">
+            <div class="portal-icon">🎉</div>
+            <h2>Events</h2>
+            <p>Weddings, parties, and conference ordering.</p>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Korvia. QR-powered hospitality ecosystem.</p>
+    </footer>
 </body>
 </html>

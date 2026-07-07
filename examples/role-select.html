@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korvia — Log in as who?</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--kv-font-sans);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .top {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .top .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 1rem;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        .top h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        .top h1 span {
+            color: #f97316;
+        }
+        .top p {
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+        .roles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 700px;
+        }
+        .role-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 1rem;
+            padding: 1.75rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .role-card:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-4px);
+            border-color: #f97316;
+        }
+        .role-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .role-card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        .role-card p {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+        .back {
+            margin-top: 2rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back:hover { color: #f97316; }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="logo">K</div>
+        <h1 id="portal-title"><span>Restaurant</span> Portal</h1>
+        <p>Log in as who?</p>
+    </div>
+
+    <div class="roles">
+        <a href="#" class="role-card" onclick="enter('Staff')">
+            <div class="role-icon">👨‍🍳</div>
+            <h2>Staff</h2>
+            <p>Kitchen & general</p>
+        </a>
+        <a href="#" class="role-card" onclick="enter('Waitress')">
+            <div class="role-icon">🍽️</div>
+            <h2>Waitress / Waiter</h2>
+            <p>Table service</p>
+        </a>
+        <a href="#" class="role-card" onclick="enter('Manager')">
+            <div class="role-icon">📋</div>
+            <h2>Manager</h2>
+            <p>Operations & team</p>
+        </a>
+        <a href="#" class="role-card" onclick="enter('Owner')">
+            <div class="role-icon">💼</div>
+            <h2>Owner</h2>
+            <p>Sales & projections</p>
+        </a>
+    </div>
+
+    <a href="../index.html" class="back">← Back to portals</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const portal = params.get('portal') || 'restaurant';
+        const title = portal.charAt(0).toUpperCase() + portal.slice(1);
+        document.getElementById('portal-title').innerHTML = `<span>${title}</span> Portal`;
+
+        function enter(role) {
+            alert(`${role} login for ${title} coming next.`);
+        }
+    </script>
+</body>
+</html>
