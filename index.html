@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korvia — Live Design System</title>
+    <link rel="stylesheet" href="korvia.css">
+</head>
+<body>
+    <header class="kv-header kv-surface-dark">
+        <nav class="kv-container kv-flex kv-flex-between kv-flex-center">
+            <div class="kv-logo">korvia.</div>
+            <ul class="kv-nav kv-flex">
+                <li><a href="#tokens">Tokens</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="https://github.com/oriondrayke/korvia" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="kv-hero kv-surface-dark">
+            <div class="kv-container kv-text-center">
+                <h1 class="kv-display">Korvia Design System</h1>
+                <p class="kv-lead">A living, versioned design system for web projects. Built to be copied, extended, and deployed.</p>
+                <div class="kv-flex kv-justify-center kv-gap-md kv-mt-lg">
+                    <a href="components/buttons.html" class="kv-button kv-button-primary">View Components</a>
+                    <a href="https://github.com/oriondrayke/korvia" class="kv-button kv-button-ghost">Use on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tokens" class="kv-section">
+            <div class="kv-container">
+                <h2 class="kv-section-title">Design Tokens</h2>
+                <div class="kv-grid kv-grid-3">
+                    <div class="kv-card">
+                        <h3>Colors</h3>
+                        <div class="kv-color-grid">
+                            <div class="kv-swatch" style="--swatch: var(--kv-primary)" title="Primary"></div>
+                            <div class="kv-swatch" style="--swatch: var(--kv-secondary)" title="Secondary"></div>
+                            <div class="kv-swatch" style="--swatch: var(--kv-accent)" title="Accent"></div>
+                            <div class="kv-swatch" style="--swatch: var(--kv-success)" title="Success"></div>
+                            <div class="kv-swatch" style="--swatch: var(--kv-warning)" title="Warning"></div>
+                            <div class="kv-swatch" style="--swatch: var(--kv-danger)" title="Danger"></div>
+                        </div>
+                    </div>
+                    <div class="kv-card">
+                        <h3>Typography</h3>
+                        <p class="kv-text-sm">Small text</p>
+                        <p class="kv-text-base">Base text</p>
+                        <p class="kv-text-lg">Large text</p>
+                        <p class="kv-text-xl">Extra large</p>
+                    </div>
+                    <div class="kv-card">
+                        <h3>Spacing</h3>
+                        <div class="kv-stack">
+                            <div class="kv-space-bar" style="width: var(--kv-space-xs)"></div>
+                            <div class="kv-space-bar" style="width: var(--kv-space-sm)"></div>
+                            <div class="kv-space-bar" style="width: var(--kv-space-md)"></div>
+                            <div class="kv-space-bar" style="width: var(--kv-space-lg)"></div>
+                            <div class="kv-space-bar" style="width: var(--kv-space-xl)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="components" class="kv-section kv-surface-light">
+            <div class="kv-container">
+                <h2 class="kv-section-title">Components</h2>
+                <div class="kv-grid kv-grid-3">
+                    <a href="components/buttons.html" class="kv-card kv-card-link">
+                        <h3>Buttons</h3>
+                        <p>Primary, secondary, ghost, sizes, and states.</p>
+                    </a>
+                    <a href="components/cards.html" class="kv-card kv-card-link">
+                        <h3>Cards</h3>
+                        <p>Content containers with elevation and hover states.</p>
+                    </a>
+                    <a href="components/forms.html" class="kv-card kv-card-link">
+                        <h3>Forms</h3>
+                        <p>Inputs, selects, checkboxes, and validation styles.</p>
+                    </a>
+                    <a href="components/navigation.html" class="kv-card kv-card-link">
+                        <h3>Navigation</h3>
+                        <p>Headers, navbars, and footer patterns.</p>
+                    </a>
+                    <a href="components/alerts.html" class="kv-card kv-card-link">
+                        <h3>Alerts</h3>
+                        <p>Status messages and notification banners.</p>
+                    </a>
+                    <a href="components/layout.html" class="kv-card kv-card-link">
+                        <h3>Layout</h3>
+                        <p>Grid, containers, and responsive helpers.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples" class="kv-section">
+            <div class="kv-container">
+                <h2 class="kv-section-title">Example Pages</h2>
+                <div class="kv-grid kv-grid-2">
+                    <a href="examples/landing.html" class="kv-card kv-card-link">
+                        <h3>Landing Page</h3>
+                        <p>A full marketing page built with Korvia components.</p>
+                    </a>
+                    <a href="examples/dashboard.html" class="kv-card kv-card-link">
+                        <h3>Dashboard</h3>
+                        <p>A dashboard layout using the grid and card system.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="kv-footer kv-surface-dark">
+        <div class="kv-container kv-text-center">
+            <p>&copy; 2026 Korvia Design System. Open for use.</p>
+        </div>
+    </footer>
+
+    <script src="korvia.js"></script>
+</body>
+</html>
