@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard | Korvia QR</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+        .sidebar {
+            background: var(--kv-secondary);
+            color: var(--kv-white);
+            padding: var(--kv-space-lg);
+        }
+        .sidebar-logo {
+            font-size: var(--kv-text-xl);
+            font-weight: var(--kv-font-bold);
+            color: var(--kv-accent);
+            margin-bottom: var(--kv-space-xl);
+        }
+        .sidebar-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--kv-space-md);
+        }
+        .sidebar-nav a {
+            opacity: 0.8;
+        }
+        .sidebar-nav a:hover {
+            opacity: 1;
+            color: var(--kv-accent);
+        }
+        .main-content {
+            padding: var(--kv-space-xl);
+            background: var(--kv-gray-50);
+        }
+        .page-title {
+            font-size: var(--kv-text-2xl);
+            font-weight: var(--kv-font-bold);
+            margin-bottom: var(--kv-space-xl);
+        }
+        .order-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: var(--kv-space-md);
+            align-items: center;
+            padding: var(--kv-space-md);
+            border-bottom: 1px solid var(--kv-gray-200);
+        }
+        .status {
+            padding: var(--kv-space-xs) var(--kv-space-sm);
+            border-radius: var(--kv-radius-full);
+            font-size: var(--kv-text-xs);
+            font-weight: var(--kv-font-semibold);
+        }
+        .status-new { background: #dbeafe; color: #1e40af; }
+        .status-preparing { background: #fef3c7; color: #92400e; }
+        .status-ready { background: #dcfce7; color: #166534; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">korvia QR.</div>
+            <ul class="sidebar-nav">
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">Live Orders</a></li>
+                <li><a href="#">Menu Manager</a></li>
+                <li><a href="#">Sales Reports</a></li>
+                <li><a href="#">Earnings Projection</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title">Manager Dashboard — Sunset Bistro</h1>
+
+            <div class="kv-grid kv-grid-4 kv-mb-xl">
+                <div class="kv-card">
+                    <p class="kv-text-muted kv-text-sm">Today's Sales</p>
+                    <p class="kv-text-2xl kv-font-bold">$2,840</p>
+                </div>
+                <div class="kv-card">
+                    <p class="kv-text-muted kv-text-sm">Orders</p>
+                    <p class="kv-text-2xl kv-font-bold">47</p>
+                </div>
+                <div class="kv-card">
+                    <p class="kv-text-muted kv-text-sm">Avg. Order</p>
+                    <p class="kv-text-2xl kv-font-bold">$60.40</p>
+                </div>
+                <div class="kv-card">
+                    <p class="kv-text-muted kv-text-sm">Projected Month</p>
+                    <p class="kv-text-2xl kv-font-bold">$84,500</p>
+                </div>
+            </div>
+
+            <div class="kv-card">
+                <h2 class="kv-mb-lg">Live Orders</h2>
+                <div class="order-row">
+                    <div>
+                        <strong>Table 5</strong>
+                        <p class="kv-text-sm kv-text-muted">2x Grilled Salmon, 1x Fresh Lemonade</p>
+                    </div>
+                    <span>$54</span>
+                    <span class="status status-new">New</span>
+                </div>
+                <div class="order-row">
+                    <div>
+                        <strong>Table 12</strong>
+                        <p class="kv-text-sm kv-text-muted">1x Ribeye Steak, 1x House Red Wine</p>
+                    </div>
+                    <span>$43</span>
+                    <span class="status status-preparing">Preparing</span>
+                </div>
+                <div class="order-row">
+                    <div>
+                        <strong>Table 8</strong>
+                        <p class="kv-text-sm kv-text-muted">1x Truffle Pasta, 1x Crispy Calamari</p>
+                    </div>
+                    <span>$34</span>
+                    <span class="status status-ready">Ready</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../korvia.js"></script>
+</body>
+</html>

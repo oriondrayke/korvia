@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu — Table 12 | Korvia QR</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        .menu-header {
+            background: var(--kv-secondary);
+            color: var(--kv-white);
+            padding: var(--kv-space-xl);
+            text-align: center;
+        }
+        .menu-category {
+            margin: var(--kv-space-xl) 0;
+        }
+        .menu-category h2 {
+            margin-bottom: var(--kv-space-md);
+            color: var(--kv-secondary);
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--kv-space-md);
+            border-bottom: 1px solid var(--kv-gray-200);
+        }
+        .menu-item-info h3 {
+            font-size: var(--kv-text-lg);
+            margin-bottom: var(--kv-space-xs);
+        }
+        .menu-item-info p {
+            font-size: var(--kv-text-sm);
+            color: var(--kv-gray-500);
+        }
+        .menu-item-price {
+            font-weight: var(--kv-font-bold);
+            color: var(--kv-primary);
+        }
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--kv-white);
+            border-top: 1px solid var(--kv-gray-200);
+            padding: var(--kv-space-md) var(--kv-space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-header">
+        <p class="kv-text-sm">Table 12 • Sunset Bistro</p>
+        <h1 class="kv-display" style="font-size: var(--kv-text-3xl);">Our Menu</h1>
+        <p>Scan, tap, order. We'll bring it to your table.</p>
+    </div>
+
+    <main class="kv-container" style="padding-bottom: 100px;">
+        <section class="menu-category">
+            <h2>Starters</h2>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>Crispy Calamari</h3>
+                    <p>Lemon aioli, fresh herbs</p>
+                </div>
+                <span class="menu-item-price">$12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>Bruschetta Trio</h3>
+                    <p>Tomato, mushroom, olive tapenade</p>
+                </div>
+                <span class="menu-item-price">$10</span>
+            </div>
+        </section>
+
+        <section class="menu-category">
+            <h2>Mains</h2>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>Grilled Salmon</h3>
+                    <p>Quinoa, roasted vegetables, dill sauce</p>
+                </div>
+                <span class="menu-item-price">$24</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>Ribeye Steak</h3>
+                    <p>Garlic butter, mashed potato, asparagus</p>
+                </div>
+                <span class="menu-item-price">$34</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>Truffle Pasta</h3>
+                    <p>Creamy parmesan, wild mushrooms</p>
+                </div>
+                <span class="menu-item-price">$22</span>
+            </div>
+        </section>
+
+        <section class="menu-category">
+            <h2>Drinks</h2>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>Fresh Lemonade</h3>
+                    <p>Mint, honey, sparkling water</p>
+                </div>
+                <span class="menu-item-price">$6</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h3>House Red Wine</h3>
+                    <p>Glass / Bottle</p>
+                </div>
+                <span class="menu-item-price">$9</span>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-bar">
+        <div>
+            <p class="kv-text-sm kv-text-muted">2 items</p>
+            <p class="kv-font-bold">$36.00</p>
+        </div>
+        <button class="kv-button kv-button-primary">Place order</button>
+    </div>
+
+    <script src="../korvia.js"></script>
+</body>
+</html>
