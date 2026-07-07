@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Editor | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .editor-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .editor-header h1 { font-size: 1.4rem; }
+        .editor-header p { opacity: 0.7; font-size: 0.9rem; }
+        .editor-main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 800px) {
+            .editor-main { grid-template-columns: 1fr; }
+        }
+        .panel {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .panel h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+            color: var(--kv-gray-700);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.65rem;
+            border: 1px solid var(--kv-gray-300);
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .form-group textarea { min-height: 70px; resize: vertical; }
+        .save-btn {
+            width: 100%;
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .menu-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .menu-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem;
+            background: var(--kv-gray-50);
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--kv-primary);
+        }
+        .menu-item-row.unavailable { opacity: 0.55; }
+        .menu-item-row h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+        .menu-item-row p {
+            font-size: 0.8rem;
+            color: var(--kv-gray-500);
+            margin: 0;
+        }
+        .menu-item-actions { display: flex; gap: 0.5rem; }
+        .menu-item-actions button {
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .edit-btn { background: var(--kv-gray-200); }
+        .delete-btn { background: #fee2e2; color: #991b1b; }
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            margin-top: 0.35rem;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--kv-gray-500);
+        }
+        .preview-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #f97316;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="editor-header">
+        <div>
+            <h1>Menu Editor — Sunset Bistro</h1>
+            <p>Add, edit, or remove items. Changes reflect live on your QR menu.</p>
+        </div>
+        <a href="../index.html" style="color: white; text-decoration: none; font-size: 0.9rem;">← Back to Korvia</a>
+    </header>
+
+    <main class="editor-main">
+        <aside class="panel">
+            <h2 id="form-title">Add item</h2>
+            <form id="item-form" onsubmit="event.preventDefault(); saveItem();">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label>Item name</label>
+                    <input type="text" id="item-name" placeholder="e.g. Grilled Salmon" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="item-category">
+                        <option>Starters</option>
+                        <option>Mains</option>
+                        <option>Sides</option>
+                        <option>Drinks</option>
+                        <option>Desserts</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Price ($)</label>
+                    <input type="number" id="item-price" step="0.01" placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="item-desc" placeholder="Short description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="item-available" checked>
+                        Available
+                    </label>
+                </div>
+                <button type="submit" class="save-btn" id="save-btn">Add item</button>
+                <button type="button" class="save-btn" style="background: var(--kv-gray-400); margin-top: 0.5rem; display: none;" id="cancel-btn" onclick="resetForm()">Cancel</button>
+            </form>
+            <a href="qr-menu.html?venue=sunset-bistro&type=restaurant&spot=12" class="preview-link" target="_blank">Preview live menu →</a>
+        </aside>
+
+        <section class="panel">
+            <div class="top-bar">
+                <h2>Your menu</h2>
+                <select id="filter-category" onchange="renderMenu()">
+                    <option value="">All categories</option>
+                    <option>Starters</option>
+                    <option>Mains</option>
+                    <option>Sides</option>
+                    <option>Drinks</option>
+                    <option>Desserts</option>
+                </select>
+            </div>
+            <div id="menu-list" class="menu-list"></div>
+        </section>
+    </main>
+
+    <script>
+        const STORAGE_KEY = 'korvia_menu_sunset_bistro';
+
+        let menu = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [
+            { id: 1, name: 'Crispy Calamari', category: 'Starters', price: 12, desc: 'Lightly fried calamari with lemon aioli.', available: true },
+            { id: 2, name: 'Grilled Salmon', category: 'Mains', price: 24, desc: 'Quinoa, roasted vegetables, dill sauce.', available: true },
+            { id: 3, name: 'Fresh Lemonade', category: 'Drinks', price: 6, desc: 'Mint, honey, sparkling water.', available: true },
+        ];
+
+        function saveMenu() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
+        }
+
+        function saveItem() {
+            const id = document.getElementById('edit-id').value;
+            const name = document.getElementById('item-name').value.trim();
+            const category = document.getElementById('item-category').value;
+            const price = parseFloat(document.getElementById('item-price').value);
+            const desc = document.getElementById('item-desc').value.trim();
+            const available = document.getElementById('item-available').checked;
+
+            if (id) {
+                const item = menu.find(i => i.id == id);
+                item.name = name;
+                item.category = category;
+                item.price = price;
+                item.desc = desc;
+                item.available = available;
+            } else {
+                menu.push({
+                    id: Date.now(),
+                    name, category, price, desc, available
+                });
+            }
+
+            saveMenu();
+            resetForm();
+            renderMenu();
+        }
+
+        function editItem(id) {
+            const item = menu.find(i => i.id == id);
+            document.getElementById('edit-id').value = item.id;
+            document.getElementById('item-name').value = item.name;
+            document.getElementById('item-category').value = item.category;
+            document.getElementById('item-price').value = item.price;
+            document.getElementById('item-desc').value = item.desc;
+            document.getElementById('item-available').checked = item.available;
+            document.getElementById('form-title').textContent = 'Edit item';
+            document.getElementById('save-btn').textContent = 'Update item';
+            document.getElementById('cancel-btn').style.display = 'block';
+        }
+
+        function deleteItem(id) {
+            menu = menu.filter(i => i.id != id);
+            saveMenu();
+            renderMenu();
+        }
+
+        function resetForm() {
+            document.getElementById('item-form').reset();
+            document.getElementById('edit-id').value = '';
+            document.getElementById('form-title').textContent = 'Add item';
+            document.getElementById('save-btn').textContent = 'Add item';
+            document.getElementById('cancel-btn').style.display = 'none';
+        }
+
+        function renderMenu() {
+            const filter = document.getElementById('filter-category').value;
+            const list = document.getElementById('menu-list');
+            const items = filter ? menu.filter(i => i.category === filter) : menu;
+
+            if (items.length === 0) {
+                list.innerHTML = '<div class="empty-state">No items yet. Add your first menu item.</div>';
+                return;
+            }
+
+            list.innerHTML = items.map(item => `
+                <div class="menu-item-row ${item.available ? '' : 'unavailable'}">
+                    <div>
+                        <h4>${item.name} <span style="color: #f97316;">$${item.price.toFixed(2)}</span></h4>
+                        <p>${item.desc}</p>
+                        <span class="tag">${item.category}</span>
+                        ${item.available ? '' : '<span class="tag" style="background:#fee2e2;color:#991b1b;margin-left:0.25rem;">Unavailable</span>'}
+                    </div>
+                    <div class="menu-item-actions">
+                        <button class="edit-btn" onclick="editItem(${item.id})">Edit</button>
+                        <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderMenu();
+    </script>
+</body>
+</html>

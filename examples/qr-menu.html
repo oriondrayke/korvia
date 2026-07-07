@@ -3,317 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunset Bistro — Table 12 | Korvia QR</title>
+    <title>Korvia QR Menu</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        :root {
-            --menu-bg: #ffffff;
-            --menu-accent: #f97316;
-        }
-
-        body {
-            background: var(--kv-gray-50);
-        }
+        :root { --menu-accent: #f97316; }
+        body { background: var(--kv-gray-50); }
 
         .menu-top {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
             position: sticky;
             top: 0;
             z-index: 50;
         }
+        .menu-top-info { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .menu-top-info h1 { font-size: 1.4rem; font-weight: 700; }
+        .menu-top-info p { font-size: 0.8rem; opacity: 0.8; margin: 0; }
+        .table-badge { background: var(--menu-accent); color: white; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
 
-        .menu-top-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
+        .category-tabs { display: flex; gap: 0.6rem; overflow-x: auto; padding-bottom: 0.25rem; }
+        .category-tabs::-webkit-scrollbar { display: none; }
+        .category-tab { flex: 0 0 auto; padding: 0.45rem 1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: none; cursor: pointer; }
+        .category-tab.active { background: var(--menu-accent); color: white; }
 
-        .menu-top-info h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+        .menu-container { max-width: 600px; margin: 0 auto; padding: 1.25rem; padding-bottom: 110px; }
+        .menu-section { margin-bottom: 2rem; }
+        .menu-section-title { font-size: 1.1rem; font-weight: 700; color: var(--kv-gray-900); margin-bottom: 1rem; }
 
-        .menu-top-info p {
-            font-size: 0.875rem;
-            opacity: 0.8;
-        }
+        .menu-item { display: flex; gap: 1rem; background: white; border-radius: 1rem; padding: 1rem; margin-bottom: 0.85rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .menu-item.unavailable { opacity: 0.5; }
+        .item-image { width: 72px; height: 72px; border-radius: 0.65rem; flex-shrink: 0; background-size: cover; }
+        .item-info { flex: 1; }
+        .item-info h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .item-info p { font-size: 0.78rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; line-height: 1.3; }
+        .item-bottom { display: flex; justify-content: space-between; align-items: center; }
+        .item-price { font-weight: 700; color: var(--kv-gray-900); }
+        .add-btn { width: 30px; height: 30px; border-radius: 50%; border: none; background: var(--menu-accent); color: white; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .add-btn:disabled { background: var(--kv-gray-300); cursor: not-allowed; }
 
-        .table-badge {
-            background: var(--menu-accent);
-            color: white;
-            padding: 0.35rem 0.9rem;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
+        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--kv-gray-200); padding: 1rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto; }
+        .cart-info p { margin: 0; }
+        .cart-count { font-size: 0.75rem; color: var(--kv-gray-500); }
+        .cart-total { font-weight: 700; font-size: 1.05rem; }
+        .order-btn { background: var(--menu-accent); color: white; border: none; padding: 0.7rem 1.4rem; border-radius: 999px; font-weight: 600; cursor: pointer; }
 
-        .category-tabs {
-            display: flex;
-            gap: 0.75rem;
-            overflow-x: auto;
-            padding-bottom: 0.25rem;
-        }
-
-        .category-tabs::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-tab {
-            flex: 0 0 auto;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.8);
-            border: none;
-            cursor: pointer;
-        }
-
-        .category-tab.active {
-            background: var(--menu-accent);
-            color: white;
-        }
-
-        .menu-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            padding-bottom: 100px;
-        }
-
-        .menu-section {
-            margin-bottom: 2rem;
-        }
-
-        .menu-section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--kv-gray-900);
-            margin-bottom: 1rem;
-        }
-
-        .menu-item {
-            display: flex;
-            gap: 1rem;
-            background: white;
-            border-radius: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .item-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 0.75rem;
-            flex-shrink: 0;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .item-info {
-            flex: 1;
-        }
-
-        .item-info h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .item-info p {
-            font-size: 0.8rem;
-            color: var(--kv-gray-500);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .item-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .item-price {
-            font-weight: 700;
-            color: var(--kv-gray-900);
-        }
-
-        .add-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: none;
-            background: var(--menu-accent);
-            color: white;
-            font-size: 1.25rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            border-top: 1px solid var(--kv-gray-200);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .cart-info p {
-            margin: 0;
-        }
-
-        .cart-count {
-            font-size: 0.8rem;
-            color: var(--kv-gray-500);
-        }
-
-        .cart-total {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .order-btn {
-            background: var(--menu-accent);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 999px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        .empty-menu { text-align: center; padding: 4rem 2rem; color: var(--kv-gray-500); }
     </style>
 </head>
 <body>
     <div class="menu-top">
         <div class="menu-top-info">
             <div>
-                <h1>Sunset Bistro</h1>
-                <p>Table service • Fresh & local</p>
+                <h1 id="venue-name">Sunset Bistro</h1>
+                <p>Scan, order, pay — no app needed.</p>
             </div>
-            <span class="table-badge">Table 12</span>
+            <span class="table-badge" id="spot-badge">Table 12</span>
         </div>
-        <div class="category-tabs">
-            <button class="category-tab active">All</button>
-            <button class="category-tab">Starters</button>
-            <button class="category-tab">Mains</button>
-            <button class="category-tab">Sides</button>
-            <button class="category-tab">Drinks</button>
-            <button class="category-tab">Desserts</button>
-        </div>
+        <div class="category-tabs" id="category-tabs"></div>
     </div>
 
-    <main class="menu-container">
-        <section class="menu-section">
-            <h2 class="menu-section-title">Starters</h2>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #ff6b6b, #feca57);"></div>
-                <div class="item-info">
-                    <h3>Crispy Calamari</h3>
-                    <p>Lightly fried calamari with lemon aioli and fresh herbs.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$12.00</span>
-                        <button class="add-btn" onclick="addToCart('Crispy Calamari', 12)">+</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #1dd1a1, #48dbfb);"></div>
-                <div class="item-info">
-                    <h3>Bruschetta Trio</h3>
-                    <p>Tomato basil, mushroom truffle, and olive tapenade.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$10.00</span>
-                        <button class="add-btn" onclick="addToCart('Bruschetta Trio', 10)">+</button>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="menu-section-title">Mains</h2>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #ff9ff3, #f368e0);"></div>
-                <div class="item-info">
-                    <h3>Grilled Salmon</h3>
-                    <p>Quinoa, roasted seasonal vegetables, dill cream sauce.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$24.00</span>
-                        <button class="add-btn" onclick="addToCart('Grilled Salmon', 24)">+</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #5f27cd, #341f97);"></div>
-                <div class="item-info">
-                    <h3>Ribeye Steak</h3>
-                    <p>Garlic butter, mashed potato, grilled asparagus.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$34.00</span>
-                        <button class="add-btn" onclick="addToCart('Ribeye Steak', 34)">+</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #feca57, #ff9f43);"></div>
-                <div class="item-info">
-                    <h3>Truffle Pasta</h3>
-                    <p>Creamy parmesan sauce, wild mushrooms, fresh parsley.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$22.00</span>
-                        <button class="add-btn" onclick="addToCart('Truffle Pasta', 22)">+</button>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-        <section class="menu-section">
-            <h2 class="menu-section-title">Drinks</h2>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #54a0ff, #2e86de);"></div>
-                <div class="item-info">
-                    <h3>Fresh Lemonade</h3>
-                    <p>Mint, honey, sparkling water.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$6.00</span>
-                        <button class="add-btn" onclick="addToCart('Fresh Lemonade', 6)">+</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="menu-item">
-                <div class="item-image" style="background: linear-gradient(135deg, #c0392b, #8e44ad);"></div>
-                <div class="item-info">
-                    <h3>House Red Wine</h3>
-                    <p>Dry Cabernet Sauvignon, glass.</p>
-                    <div class="item-bottom">
-                        <span class="item-price">$9.00</span>
-                        <button class="add-btn" onclick="addToCart('House Red Wine', 9)">+</button>
-                    </div>
-                </div>
-            </article>
-        </section>
-    </main>
+    <main class="menu-container" id="menu-container"></main>
 
     <div class="cart-bar">
         <div class="cart-info">
@@ -324,7 +74,81 @@
     </div>
 
     <script>
+        const params = new URLSearchParams(window.location.search);
+        const venue = params.get('venue') || 'sunset-bistro';
+        const spot = params.get('spot') || '12';
+        const type = params.get('type') || 'restaurant';
+
+        document.getElementById('venue-name').textContent = venue.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        document.getElementById('spot-badge').textContent = `${type === 'hotel' ? 'Room' : type === 'events' ? 'Stall' : 'Table'} ${spot}`;
+
+        const STORAGE_KEY = 'korvia_menu_sunset_bistro';
+        const defaultMenu = [
+            { id: 1, name: 'Crispy Calamari', category: 'Starters', price: 12, desc: 'Lightly fried calamari with lemon aioli.', available: true },
+            { id: 2, name: 'Bruschetta Trio', category: 'Starters', price: 10, desc: 'Tomato basil, mushroom truffle, olive tapenade.', available: true },
+            { id: 3, name: 'Grilled Salmon', category: 'Mains', price: 24, desc: 'Quinoa, roasted vegetables, dill sauce.', available: true },
+            { id: 4, name: 'Ribeye Steak', category: 'Mains', price: 34, desc: 'Garlic butter, mashed potato, grilled asparagus.', available: true },
+            { id: 5, name: 'Truffle Pasta', category: 'Mains', price: 22, desc: 'Creamy parmesan sauce, wild mushrooms.', available: true },
+            { id: 6, name: 'Fresh Lemonade', category: 'Drinks', price: 6, desc: 'Mint, honey, sparkling water.', available: true },
+            { id: 7, name: 'House Red Wine', category: 'Drinks', price: 9, desc: 'Dry Cabernet Sauvignon, glass.', available: true },
+        ];
+
+        const menu = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultMenu;
+        const categories = [...new Set(menu.map(i => i.category))];
+        let activeCategory = categories[0] || 'All';
         let cart = [];
+
+        const gradients = [
+            'linear-gradient(135deg, #ff6b6b, #feca57)',
+            'linear-gradient(135deg, #1dd1a1, #48dbfb)',
+            'linear-gradient(135deg, #ff9ff3, #f368e0)',
+            'linear-gradient(135deg, #5f27cd, #341f97)',
+            'linear-gradient(135deg, #feca57, #ff9f43)',
+            'linear-gradient(135deg, #54a0ff, #2e86de)',
+            'linear-gradient(135deg, #c0392b, #8e44ad)',
+        ];
+
+        function renderTabs() {
+            const tabs = document.getElementById('category-tabs');
+            tabs.innerHTML = categories.map(cat => `
+                <button class="category-tab ${cat === activeCategory ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            renderTabs();
+            renderItems();
+        }
+
+        function renderItems() {
+            const container = document.getElementById('menu-container');
+            const items = menu.filter(i => i.category === activeCategory);
+
+            if (items.length === 0) {
+                container.innerHTML = '<div class="empty-menu">No items in this category.</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <section class="menu-section">
+                    <h2 class="menu-section-title">${activeCategory}</h2>
+                    ${items.map((item, idx) => `
+                        <article class="menu-item ${item.available ? '' : 'unavailable'}">
+                            <div class="item-image" style="background: ${gradients[item.id % gradients.length]}"></div>
+                            <div class="item-info">
+                                <h3>${item.name}</h3>
+                                <p>${item.desc}</p>
+                                <div class="item-bottom">
+                                    <span class="item-price">$${item.price.toFixed(2)}</span>
+                                    <button class="add-btn" onclick="addToCart('${item.name}', ${item.price})" ${item.available ? '' : 'disabled'}>${item.available ? '+' : '—'}</button>
+                                </div>
+                            </div>
+                        </article>
+                    `).join('')}
+                </section>
+            `;
+        }
 
         function addToCart(name, price) {
             cart.push({ name, price });
@@ -342,10 +166,13 @@
                 alert('Your cart is empty.');
                 return;
             }
-            alert('Order placed! A server will bring your receipt.');
+            alert(`Order placed for ${venue.replace(/-/g, ' ')} table ${spot}. A server will bring your receipt.`);
             cart = [];
             updateCart();
         }
+
+        renderTabs();
+        renderItems();
     </script>
 </body>
 </html>
