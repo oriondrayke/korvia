@@ -3,134 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu — Table 12 | Korvia QR</title>
+    <title>Sunset Bistro — Table 12 | Korvia QR</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        .menu-header {
-            background: var(--kv-secondary);
-            color: var(--kv-white);
-            padding: var(--kv-space-xl);
-            text-align: center;
+        :root {
+            --menu-bg: #ffffff;
+            --menu-accent: #f97316;
         }
-        .menu-category {
-            margin: var(--kv-space-xl) 0;
+
+        body {
+            background: var(--kv-gray-50);
         }
-        .menu-category h2 {
-            margin-bottom: var(--kv-space-md);
-            color: var(--kv-secondary);
+
+        .menu-top {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
         }
+
+        .menu-top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .menu-top-info h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .menu-top-info p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .table-badge {
+            background: var(--menu-accent);
+            color: white;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-tab {
+            flex: 0 0 auto;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+            border: none;
+            cursor: pointer;
+        }
+
+        .category-tab.active {
+            background: var(--menu-accent);
+            color: white;
+        }
+
+        .menu-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            padding-bottom: 100px;
+        }
+
+        .menu-section {
+            margin-bottom: 2rem;
+        }
+
+        .menu-section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--kv-gray-900);
+            margin-bottom: 1rem;
+        }
+
         .menu-item {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 0.75rem;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-info p {
+            font-size: 0.8rem;
+            color: var(--kv-gray-500);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .item-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: var(--kv-space-md);
-            border-bottom: 1px solid var(--kv-gray-200);
         }
-        .menu-item-info h3 {
-            font-size: var(--kv-text-lg);
-            margin-bottom: var(--kv-space-xs);
+
+        .item-price {
+            font-weight: 700;
+            color: var(--kv-gray-900);
         }
-        .menu-item-info p {
-            font-size: var(--kv-text-sm);
-            color: var(--kv-gray-500);
+
+        .add-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--menu-accent);
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .menu-item-price {
-            font-weight: var(--kv-font-bold);
-            color: var(--kv-primary);
-        }
+
         .cart-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--kv-white);
+            background: white;
             border-top: 1px solid var(--kv-gray-200);
-            padding: var(--kv-space-md) var(--kv-space-lg);
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cart-info p {
+            margin: 0;
+        }
+
+        .cart-count {
+            font-size: 0.8rem;
+            color: var(--kv-gray-500);
+        }
+
+        .cart-total {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .order-btn {
+            background: var(--menu-accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="menu-header">
-        <p class="kv-text-sm">Table 12 • Sunset Bistro</p>
-        <h1 class="kv-display" style="font-size: var(--kv-text-3xl);">Our Menu</h1>
-        <p>Scan, tap, order. We'll bring it to your table.</p>
+    <div class="menu-top">
+        <div class="menu-top-info">
+            <div>
+                <h1>Sunset Bistro</h1>
+                <p>Table service • Fresh & local</p>
+            </div>
+            <span class="table-badge">Table 12</span>
+        </div>
+        <div class="category-tabs">
+            <button class="category-tab active">All</button>
+            <button class="category-tab">Starters</button>
+            <button class="category-tab">Mains</button>
+            <button class="category-tab">Sides</button>
+            <button class="category-tab">Drinks</button>
+            <button class="category-tab">Desserts</button>
+        </div>
     </div>
 
-    <main class="kv-container" style="padding-bottom: 100px;">
-        <section class="menu-category">
-            <h2>Starters</h2>
-            <div class="menu-item">
-                <div class="menu-item-info">
+    <main class="menu-container">
+        <section class="menu-section">
+            <h2 class="menu-section-title">Starters</h2>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #ff6b6b, #feca57);"></div>
+                <div class="item-info">
                     <h3>Crispy Calamari</h3>
-                    <p>Lemon aioli, fresh herbs</p>
+                    <p>Lightly fried calamari with lemon aioli and fresh herbs.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$12.00</span>
+                        <button class="add-btn" onclick="addToCart('Crispy Calamari', 12)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$12</span>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-info">
+            </article>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #1dd1a1, #48dbfb);"></div>
+                <div class="item-info">
                     <h3>Bruschetta Trio</h3>
-                    <p>Tomato, mushroom, olive tapenade</p>
+                    <p>Tomato basil, mushroom truffle, and olive tapenade.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$10.00</span>
+                        <button class="add-btn" onclick="addToCart('Bruschetta Trio', 10)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$10</span>
-            </div>
+            </article>
         </section>
 
-        <section class="menu-category">
-            <h2>Mains</h2>
-            <div class="menu-item">
-                <div class="menu-item-info">
+        <section class="menu-section">
+            <h2 class="menu-section-title">Mains</h2>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #ff9ff3, #f368e0);"></div>
+                <div class="item-info">
                     <h3>Grilled Salmon</h3>
-                    <p>Quinoa, roasted vegetables, dill sauce</p>
+                    <p>Quinoa, roasted seasonal vegetables, dill cream sauce.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$24.00</span>
+                        <button class="add-btn" onclick="addToCart('Grilled Salmon', 24)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$24</span>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-info">
+            </article>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #5f27cd, #341f97);"></div>
+                <div class="item-info">
                     <h3>Ribeye Steak</h3>
-                    <p>Garlic butter, mashed potato, asparagus</p>
+                    <p>Garlic butter, mashed potato, grilled asparagus.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$34.00</span>
+                        <button class="add-btn" onclick="addToCart('Ribeye Steak', 34)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$34</span>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-info">
+            </article>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #feca57, #ff9f43);"></div>
+                <div class="item-info">
                     <h3>Truffle Pasta</h3>
-                    <p>Creamy parmesan, wild mushrooms</p>
+                    <p>Creamy parmesan sauce, wild mushrooms, fresh parsley.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$22.00</span>
+                        <button class="add-btn" onclick="addToCart('Truffle Pasta', 22)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$22</span>
-            </div>
+            </article>
         </section>
 
-        <section class="menu-category">
-            <h2>Drinks</h2>
-            <div class="menu-item">
-                <div class="menu-item-info">
+        <section class="menu-section">
+            <h2 class="menu-section-title">Drinks</h2>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #54a0ff, #2e86de);"></div>
+                <div class="item-info">
                     <h3>Fresh Lemonade</h3>
-                    <p>Mint, honey, sparkling water</p>
+                    <p>Mint, honey, sparkling water.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$6.00</span>
+                        <button class="add-btn" onclick="addToCart('Fresh Lemonade', 6)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$6</span>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-info">
+            </article>
+
+            <article class="menu-item">
+                <div class="item-image" style="background: linear-gradient(135deg, #c0392b, #8e44ad);"></div>
+                <div class="item-info">
                     <h3>House Red Wine</h3>
-                    <p>Glass / Bottle</p>
+                    <p>Dry Cabernet Sauvignon, glass.</p>
+                    <div class="item-bottom">
+                        <span class="item-price">$9.00</span>
+                        <button class="add-btn" onclick="addToCart('House Red Wine', 9)">+</button>
+                    </div>
                 </div>
-                <span class="menu-item-price">$9</span>
-            </div>
+            </article>
         </section>
     </main>
 
     <div class="cart-bar">
-        <div>
-            <p class="kv-text-sm kv-text-muted">2 items</p>
-            <p class="kv-font-bold">$36.00</p>
+        <div class="cart-info">
+            <p class="cart-count"><span id="cart-count">0</span> items</p>
+            <p class="cart-total">$<span id="cart-total">0.00</span></p>
         </div>
-        <button class="kv-button kv-button-primary">Place order</button>
+        <button class="order-btn" onclick="placeOrder()">Place order</button>
     </div>
 
-    <script src="../korvia.js"></script>
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cart.length;
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+            alert('Order placed! A server will bring your receipt.');
+            cart = [];
+            updateCart();
+        }
+    </script>
 </body>
 </html>
