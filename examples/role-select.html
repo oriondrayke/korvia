@@ -97,22 +97,22 @@
     </div>
 
     <div class="roles">
-        <a href="#" class="role-card" onclick="enter('Staff')">
+        <a href="qr-dashboard.html" class="role-card">
             <div class="role-icon">👨‍🍳</div>
             <h2>Staff</h2>
             <p>Kitchen & general</p>
         </a>
-        <a href="#" class="role-card" onclick="enter('Waitress')">
+        <a href="qr-dashboard.html" class="role-card">
             <div class="role-icon">🍽️</div>
             <h2>Waitress / Waiter</h2>
             <p>Table service</p>
         </a>
-        <a href="#" class="role-card" onclick="enter('Manager')">
+        <a href="qr-generator.html" class="role-card">
             <div class="role-icon">📋</div>
             <h2>Manager</h2>
             <p>Operations & team</p>
         </a>
-        <a href="#" class="role-card" onclick="enter('Owner')">
+        <a href="qr-generator.html" class="role-card">
             <div class="role-icon">💼</div>
             <h2>Owner</h2>
             <p>Sales & projections</p>
@@ -131,10 +131,6 @@
 
         const title = portal.charAt(0).toUpperCase() + portal.slice(1);
         document.getElementById('portal-title').innerHTML = `<span>${title}</span> Portal`;
-
-        function enter(role) {
-            alert(`${role} login for ${title} coming next.`);
-        }
     </script>
 </body>
 </html>

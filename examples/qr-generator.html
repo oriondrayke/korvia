@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { background: var(--kv-gray-50); }
+        .gen-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .gen-header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .gen-header p { opacity: 0.8; }
+        .gen-main {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .gen-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 1.5rem;
+        }
+        .gen-card h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .form-row { margin-bottom: 1rem; }
+        .form-row label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+            color: var(--kv-gray-700);
+        }
+        .form-row input,
+        .form-row select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--kv-gray-300);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        .gen-btn {
+            width: 100%;
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .qr-result {
+            text-align: center;
+            display: none;
+        }
+        .qr-result.active { display: block; }
+        .qr-box {
+            display: inline-block;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1rem;
+        }
+        .qr-url {
+            font-size: 0.8rem;
+            color: var(--kv-gray-500);
+            word-break: break-all;
+            margin-bottom: 1rem;
+        }
+        .qr-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .qr-actions button {
+            background: var(--kv-gray-800);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--kv-gray-600);
+            text-decoration: none;
+        }
+        .back-link:hover { color: #f97316; }
+        .help-text {
+            font-size: 0.85rem;
+            color: var(--kv-gray-500);
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="gen-header">
+        <h1>QR Code Generator</h1>
+        <p>Create QR codes that link customers straight to your menu.</p>
+    </header>
+
+    <main class="gen-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="gen-card">
+            <h2>Venue details</h2>
+            <div class="form-row">
+                <label>Venue type</label>
+                <select id="venue-type">
+                    <option value="restaurant">Restaurant</option>
+                    <option value="hotel">Hotel</option>
+                    <option value="events">Event</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label>Venue name</label>
+                <input type="text" id="venue-name" placeholder="e.g. Sunset Bistro">
+            </div>
+            <div class="form-row">
+                <label>Table / Room / Stall number</label>
+                <input type="text" id="spot-id" placeholder="e.g. 12">
+                <p class="help-text">Leave blank for a general venue QR code.</p>
+            </div>
+            <button class="gen-btn" onclick="generateQR()">Generate QR code</button>
+        </div>
+
+        <div class="gen-card qr-result" id="qr-result">
+            <h2>Your QR code</h2>
+            <div class="qr-box" id="qrcode"></div>
+            <p class="qr-url" id="qr-url"></p>
+            <div class="qr-actions">
+                <button onclick="downloadQR()">Download PNG</button>
+                <button onclick="printQR()">Print</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentQR = null;
+
+        function generateQR() {
+            const type = document.getElementById('venue-type').value;
+            const name = document.getElementById('venue-name').value.trim() || 'venue';
+            const spot = document.getElementById('spot-id').value.trim();
+
+            const baseUrl = 'https://oriondrayke.github.io/korvia/examples/qr-menu.html';
+            const params = new URLSearchParams();
+            params.set('venue', name.toLowerCase().replace(/\s+/g, '-'));
+            params.set('type', type);
+            if (spot) params.set('spot', spot);
+
+            const url = `${baseUrl}?${params.toString()}`;
+
+            document.getElementById('qrcode').innerHTML = '';
+            currentQR = new QRCode(document.getElementById('qrcode'), {
+                text: url,
+                width: 200,
+                height: 200,
+                colorDark: '#0f172a',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            document.getElementById('qr-url').textContent = url;
+            document.getElementById('qr-result').classList.add('active');
+        }
+
+        function downloadQR() {
+            const img = document.querySelector('#qrcode img');
+            if (!img) return;
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'korvia-qr.png';
+            link.click();
+        }
+
+        function printQR() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
