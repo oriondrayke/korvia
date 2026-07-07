@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Portal | Korvia QR</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        .login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--kv-gray-50); }
+        .login-box { background: white; padding: 2.5rem; border-radius: 1rem; box-shadow: var(--kv-shadow-lg); width: 100%; max-width: 400px; }
+        .login-box h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .login-box p { color: var(--kv-gray-500); margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.35rem; }
+        .form-group input { width: 100%; padding: 0.75rem; border: 1px solid var(--kv-gray-300); border-radius: 0.5rem; }
+        .login-btn { width: 100%; background: var(--kv-primary); color: white; border: none; padding: 0.85rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-box">
+            <div class="kv-logo" style="margin-bottom: 1rem;">korvia QR.</div>
+            <h1>Manager Portal</h1>
+            <p>Log in to manage menu, staff, and daily operations.</p>
+            <form onsubmit="event.preventDefault(); alert('Manager dashboard coming next.');">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="manager@restaurant.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <button type="submit" class="login-btn">Enter manager dashboard</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

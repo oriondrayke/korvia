@@ -3,133 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korvia — Live Design System</title>
+    <title>Korvia — QR Ordering Ecosystem</title>
     <link rel="stylesheet" href="korvia.css">
+    <style>
+        .portal-hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portal-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+        }
+
+        .portal-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #f97316;
+        }
+
+        .portal-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .portal-main h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+
+        .portal-main p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            margin-bottom: 3rem;
+            max-width: 520px;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .portal-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.25rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .portal-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-6px);
+            border-color: #f97316;
+        }
+
+        .portal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .portal-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portal-card p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        .qr-hint {
+            margin-top: 2.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 999px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body>
-    <header class="kv-header kv-surface-dark">
-        <nav class="kv-container kv-flex kv-flex-between kv-flex-center">
-            <div class="kv-logo">korvia.</div>
-            <ul class="kv-nav kv-flex">
-                <li><a href="#tokens">Tokens</a></li>
-                <li><a href="#components">Components</a></li>
-                <li><a href="#examples">Examples</a></li>
-                <li><a href="https://github.com/oriondrayke/korvia" target="_blank">GitHub</a></li>
-            </ul>
+    <div class="portal-hero">
+        <nav class="portal-nav">
+            <div class="portal-logo">korvia.</div>
+            <a href="#" class="kv-button kv-button-ghost kv-button-sm">Get the system</a>
         </nav>
-    </header>
 
-    <main>
-        <section class="kv-hero kv-surface-dark">
-            <div class="kv-container kv-text-center">
-                <h1 class="kv-display">Korvia Design System</h1>
-                <p class="kv-lead">A living, versioned design system for web projects. Built to be copied, extended, and deployed.</p>
-                <div class="kv-flex kv-justify-center kv-gap-md kv-mt-lg">
-                    <a href="components/buttons.html" class="kv-button kv-button-primary">View Components</a>
-                    <a href="https://github.com/oriondrayke/korvia" class="kv-button kv-button-ghost">Use on GitHub</a>
-                </div>
+        <main class="portal-main">
+            <h1>The QR ordering ecosystem for restaurants, hotels & events</h1>
+            <p>One platform connecting customers, waitstaff, managers, and owners.</p>
+
+            <div class="portal-grid">
+                <a href="examples/qr-menu.html" class="portal-card">
+                    <div class="portal-icon">🍽️</div>
+                    <h2>Customer</h2>
+                    <p>Scan QR code, browse menu, order and pay from your table.</p>
+                </a>
+
+                <a href="examples/staff-portal.html" class="portal-card">
+                    <div class="portal-icon">🍳</div>
+                    <h2>Staff</h2>
+                    <p>Waiters, cooks, and reception see live orders and updates.</p>
+                </a>
+
+                <a href="examples/manager-portal.html" class="portal-card">
+                    <div class="portal-icon">📊</div>
+                    <h2>Manager</h2>
+                    <p>Monitor operations, menu, staff, and daily performance.</p>
+                </a>
+
+                <a href="examples/owner-portal.html" class="portal-card">
+                    <div class="portal-icon">💼</div>
+                    <h2>Owner</h2>
+                    <p>Sales reports, earnings projections, and business analytics.</p>
+                </a>
             </div>
-        </section>
 
-        <section id="tokens" class="kv-section">
-            <div class="kv-container">
-                <h2 class="kv-section-title">Design Tokens</h2>
-                <div class="kv-grid kv-grid-3">
-                    <div class="kv-card">
-                        <h3>Colors</h3>
-                        <div class="kv-color-grid">
-                            <div class="kv-swatch" style="--swatch: var(--kv-primary)" title="Primary"></div>
-                            <div class="kv-swatch" style="--swatch: var(--kv-secondary)" title="Secondary"></div>
-                            <div class="kv-swatch" style="--swatch: var(--kv-accent)" title="Accent"></div>
-                            <div class="kv-swatch" style="--swatch: var(--kv-success)" title="Success"></div>
-                            <div class="kv-swatch" style="--swatch: var(--kv-warning)" title="Warning"></div>
-                            <div class="kv-swatch" style="--swatch: var(--kv-danger)" title="Danger"></div>
-                        </div>
-                    </div>
-                    <div class="kv-card">
-                        <h3>Typography</h3>
-                        <p class="kv-text-sm">Small text</p>
-                        <p class="kv-text-base">Base text</p>
-                        <p class="kv-text-lg">Large text</p>
-                        <p class="kv-text-xl">Extra large</p>
-                    </div>
-                    <div class="kv-card">
-                        <h3>Spacing</h3>
-                        <div class="kv-stack">
-                            <div class="kv-space-bar" style="width: var(--kv-space-xs)"></div>
-                            <div class="kv-space-bar" style="width: var(--kv-space-sm)"></div>
-                            <div class="kv-space-bar" style="width: var(--kv-space-md)"></div>
-                            <div class="kv-space-bar" style="width: var(--kv-space-lg)"></div>
-                            <div class="kv-space-bar" style="width: var(--kv-space-xl)"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="qr-hint">
+                Customers scanning a table QR code skip this page and go straight to the restaurant menu.
             </div>
-        </section>
+        </main>
 
-        <section id="components" class="kv-section kv-surface-light">
-            <div class="kv-container">
-                <h2 class="kv-section-title">Components</h2>
-                <div class="kv-grid kv-grid-3">
-                    <a href="components/buttons.html" class="kv-card kv-card-link">
-                        <h3>Buttons</h3>
-                        <p>Primary, secondary, ghost, sizes, and states.</p>
-                    </a>
-                    <a href="components/cards.html" class="kv-card kv-card-link">
-                        <h3>Cards</h3>
-                        <p>Content containers with elevation and hover states.</p>
-                    </a>
-                    <a href="components/forms.html" class="kv-card kv-card-link">
-                        <h3>Forms</h3>
-                        <p>Inputs, selects, checkboxes, and validation styles.</p>
-                    </a>
-                    <a href="components/navigation.html" class="kv-card kv-card-link">
-                        <h3>Navigation</h3>
-                        <p>Headers, navbars, and footer patterns.</p>
-                    </a>
-                    <a href="components/alerts.html" class="kv-card kv-card-link">
-                        <h3>Alerts</h3>
-                        <p>Status messages and notification banners.</p>
-                    </a>
-                    <a href="components/layout.html" class="kv-card kv-card-link">
-                        <h3>Layout</h3>
-                        <p>Grid, containers, and responsive helpers.</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="kv-section kv-surface-dark">
-            <div class="kv-container kv-text-center">
-                <h2 class="kv-section-title" style="color: var(--kv-white);">Featured Product</h2>
-                <p class="kv-lead kv-mb-xl">QR-powered ordering for restaurants, hotels, and events. Customers scan, order, pay. Owners track sales and earnings.</p>
-                <a href="examples/qr-platform.html" class="kv-button kv-button-primary">Open Korvia QR Platform</a>
-            </div>
-        </section>
-
-        <section id="examples" class="kv-section">
-            <div class="kv-container">
-                <h2 class="kv-section-title">Example Pages</h2>
-                <div class="kv-grid kv-grid-2">
-                    <a href="examples/qr-platform.html" class="kv-card kv-card-link">
-                        <h3>Korvia QR Platform</h3>
-                        <p>QR-code ordering system for restaurants, hotels, and events.</p>
-                    </a>
-                    <a href="examples/dashboard.html" class="kv-card kv-card-link">
-                        <h3>Dashboard</h3>
-                        <p>A dashboard layout using the grid and card system.</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="kv-footer kv-surface-dark">
-        <div class="kv-container kv-text-center">
-            <p>&copy; 2026 Korvia Design System. Open for use.</p>
-        </div>
-    </footer>
-
-    <script src="korvia.js"></script>
+        <footer>
+            <p>&copy; 2026 Korvia. Built for hospitality businesses.</p>
+        </footer>
+    </div>
 </body>
 </html>
