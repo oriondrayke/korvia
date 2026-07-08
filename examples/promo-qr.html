@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo QR Generator | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { background: var(--kv-gray-50); }
+        .promo-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+        .promo-header h1 { font-size: 1.4rem; }
+        .promo-header p { opacity: 0.75; font-size: 0.9rem; }
+        .promo-main { max-width: 700px; margin: 1.5rem auto; padding: 0 1.5rem; }
+        .panel { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .panel h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--kv-gray-700); }
+        .form-group input, .form-group select { width: 100%; padding: 0.7rem; border: 1px solid var(--kv-gray-300); border-radius: 0.5rem; }
+        .promo-btn { width: 100%; background: #f97316; color: white; border: none; padding: 0.85rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; }
+        .qr-result { text-align: center; display: none; }
+        .qr-result.active { display: block; }
+        .qr-box { display: inline-block; padding: 1.5rem; background: white; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin: 1rem 0; }
+        .qr-actions { display: flex; gap: 0.75rem; justify-content: center; }
+        .qr-actions button { background: var(--kv-gray-800); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 0.5rem; cursor: pointer; }
+        .use-cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+        .use-case { background: var(--kv-gray-50); padding: 1rem; border-radius: 0.75rem; font-size: 0.9rem; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header class="promo-header">
+        <h1>Promo QR Generator</h1>
+        <p>Create discount QR codes for flyers, social media, tables, and events.</p>
+    </header>
+
+    <main class="promo-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="panel">
+            <h2>Build your promo</h2>
+            <div class="form-group">
+                <label>Campaign name</label>
+                <input type="text" id="campaign" placeholder="e.g. Weekend Special">
+            </div>
+            <div class="form-group">
+                <label>Discount type</label>
+                <select id="discount-type">
+                    <option value="percent">Percentage off</option>
+                    <option value="fixed">Fixed amount off</option>
+                    <option value="free">Free item</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Value</label>
+                <input type="text" id="discount-value" placeholder="e.g. 20 for 20% or $20 off">
+            </div>
+            <div class="form-group">
+                <label>Promo code</label>
+                <input type="text" id="promo-code" placeholder="e.g. WEEKEND20">
+            </div>
+            <button class="promo-btn" onclick="generatePromoQR()">Generate promo QR</button>
+        </div>
+
+        <div class="panel qr-result" id="qr-result">
+            <h2>Your promo QR</h2>
+            <div class="qr-box" id="qrcode"></div>
+            <p style="color:var(--kv-gray-500);font-size:0.85rem;word-break:break-all;" id="qr-url"></p>
+            <div class="qr-actions">
+                <button onclick="downloadQR()">Download</button>
+                <button onclick="printQR()">Print</button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Use cases</h2>
+            <div class="use-cases">
+                <div class="use-case">🪧 Table tents with “Scan for 10% off”</div>
+                <div class="use-case">📱 Instagram story QR promos</div>
+                <div class="use-case">🎟️ Event tickets with drink voucher</div>
+                <div class="use-case">🎂 Birthday discount for loyal guests</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentQR = null;
+
+        function generatePromoQR() {
+            const campaign = document.getElementById('campaign').value.trim() || 'Promo';
+            const type = document.getElementById('discount-type').value;
+            const value = document.getElementById('discount-value').value.trim() || '0';
+            const code = document.getElementById('promo-code').value.trim().toUpperCase() || 'KORVIA';
+
+            const baseUrl = 'https://oriondrayke.github.io/korvia/examples/qr-menu.html';
+            const params = new URLSearchParams();
+            params.set('promo', code);
+            params.set('discountType', type);
+            params.set('discountValue', value);
+            params.set('campaign', campaign);
+
+            const url = `${baseUrl}?${params.toString()}`;
+
+            document.getElementById('qrcode').innerHTML = '';
+            currentQR = new QRCode(document.getElementById('qrcode'), {
+                text: url,
+                width: 200,
+                height: 200,
+                colorDark: '#0f172a',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            document.getElementById('qr-url').textContent = url;
+            document.getElementById('qr-result').classList.add('active');
+
+            const promos = JSON.parse(localStorage.getItem('korvia_promos') || '[]');
+            promos.push({ campaign, type, value, code, createdAt: new Date().toISOString() });
+            localStorage.setItem('korvia_promos', JSON.stringify(promos));
+        }
+
+        function downloadQR() {
+            const img = document.querySelector('#qrcode img');
+            if (!img) return;
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'korvia-promo-qr.png';
+            link.click();
+        }
+
+        function printQR() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

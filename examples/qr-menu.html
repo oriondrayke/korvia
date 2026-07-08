@@ -203,6 +203,19 @@
         let tipRate = 0.15;
         let discount = 0;
 
+        const promoCode = params.get('promo');
+        const discountType = params.get('discountType');
+        const discountValue = parseFloat(params.get('discountValue') || '0');
+        if (promoCode) {
+            document.getElementById('promo-code').value = promoCode;
+            if (discountType === 'percent') discount = discountValue / 100;
+            if (discountType === 'fixed') {
+                // fixed amount handled in summary logic
+            }
+            document.getElementById('promo-msg').textContent = `${promoCode} applied!`;
+            document.getElementById('promo-msg').style.color = '#16a34a';
+        }
+
         const gradients = [
             'linear-gradient(135deg, #ff6b6b, #feca57)',
             'linear-gradient(135deg, #1dd1a1, #48dbfb)',
@@ -352,8 +365,13 @@
         function updateSummary() {
             const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
             const tip = subtotal * tipRate;
-            const discountAmount = subtotal * discount;
-            const total = subtotal + tip - discountAmount;
+            let discountAmount = 0;
+            if (discountType === 'fixed' && discountValue > 0) {
+                discountAmount = Math.min(discountValue, subtotal);
+            } else {
+                discountAmount = subtotal * discount;
+            }
+            const total = Math.max(0, subtotal + tip - discountAmount);
 
             document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
             document.getElementById('summary-tip').textContent = '$' + tip.toFixed(2);

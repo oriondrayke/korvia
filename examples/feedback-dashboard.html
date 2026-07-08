@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .fd-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+        .fd-header h1 { font-size: 1.4rem; }
+        .fd-header p { opacity: 0.75; font-size: 0.9rem; }
+        .fd-main { max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .stat-card { background: white; border-radius: 1rem; padding: 1.25rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .stat-card .number { font-size: 2rem; font-weight: 700; }
+        .stat-card .label { font-size: 0.85rem; color: var(--kv-gray-500); }
+        .review-card { background: white; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .stars { color: #f59e0b; }
+        .review-text { color: var(--kv-gray-600); font-size: 0.95rem; }
+        .review-meta { font-size: 0.8rem; color: var(--kv-gray-400); margin-top: 0.5rem; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
+        .back-link:hover { color: #f97316; }
+    </style>
+</head>
+<body>
+    <header class="fd-header">
+        <h1>Customer Feedback</h1>
+        <p>Reviews and ratings from QR orders.</p>
+    </header>
+
+    <main class="fd-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number" id="avg-rating">0</div>
+                <div class="label">Average rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="total-reviews">0</div>
+                <div class="label">Reviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="total-tips">$0</div>
+                <div class="label">Tips received</div>
+            </div>
+        </div>
+
+        <div id="reviews-list"></div>
+    </main>
+
+    <script>
+        const feedback = JSON.parse(localStorage.getItem('korvia_feedback') || '[]');
+        const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+
+        const avg = feedback.length ? (feedback.reduce((s, r) => s + r.rating, 0) / feedback.length).toFixed(1) : '0.0';
+        const totalTips = tips.reduce((s, t) => s + t.amount, 0);
+
+        document.getElementById('avg-rating').textContent = avg;
+        document.getElementById('total-reviews').textContent = feedback.length;
+        document.getElementById('total-tips').textContent = '$' + totalTips.toFixed(0);
+
+        const list = document.getElementById('reviews-list');
+        if (feedback.length === 0) {
+            list.innerHTML = '<p style="color:var(--kv-gray-500);">No feedback yet. Customers can leave reviews from their receipt page.</p>';
+        } else {
+            list.innerHTML = feedback.slice().reverse().map(r => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+                        <span style="font-size:0.8rem;color:var(--kv-gray-400);">${new Date(r.time).toLocaleString()}</span>
+                    </div>
+                    <p class="review-text">${r.text || 'No written feedback.'}</p>
+                    <p class="review-meta">Order ${r.orderId.slice(-6)} • ${r.venue}</p>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

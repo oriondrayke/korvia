@@ -98,6 +98,15 @@
     <main class="od-main">
         <a href="../index.html" class="back-link">← Back to Korvia</a>
 
+        <div class="od-section" style="padding:1rem;">
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <a href="qr-generator.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">QR Generator</a>
+                <a href="promo-qr.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Promo QR</a>
+                <a href="feedback-dashboard.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Feedback</a>
+                <a href="menu-editor.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Menu Editor</a>
+            </div>
+        </div>
+
         <div class="od-grid-4">
             <div class="od-card">
                 <h2>Today's Sales</h2>
@@ -147,13 +156,17 @@
             document.getElementById('avg-order').textContent = '$' + avg.toFixed(2);
             document.getElementById('proj-month').textContent = '$' + projected.toFixed(0);
 
-            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            const dayTotals = days.map(() => Math.floor(Math.random() * 800) + 200);
-            const max = Math.max(...dayTotals);
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const dayTotals = [0,0,0,0,0,0,0];
+            orders.forEach(o => {
+                const d = new Date(o.createdAt).getDay();
+                dayTotals[d] += o.total;
+            });
+            const max = Math.max(...dayTotals, 1);
 
             document.getElementById('weekly-chart').innerHTML = days.map((day, i) => `
                 <div class="bar" style="height: ${(dayTotals[i] / max) * 100}%;">
-                    <span class="bar-value">$${dayTotals[i]}</span>
+                    <span class="bar-value">$${dayTotals[i].toFixed(0)}</span>
                     <span class="bar-label">${day}</span>
                 </div>
             `).join('');
