@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .md-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+        .md-header h1 { font-size: 1.4rem; }
+        .md-header p { opacity: 0.75; font-size: 0.9rem; }
+        .md-main { max-width: 1100px; margin: 1.5rem auto; padding: 0 1.5rem; }
+        .md-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .md-card { background: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .md-card h2 { font-size: 0.9rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; }
+        .md-card .number { font-size: 1.7rem; font-weight: 700; color: var(--kv-gray-900); }
+        .md-section { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .md-section h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+        .order-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--kv-gray-100);
+        }
+        .status-pill {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        .status-new { background: #dbeafe; color: #1e40af; }
+        .status-preparing { background: #fef3c7; color: #92400e; }
+        .status-ready { background: #dcfce7; color: #166534; }
+        .status-done { background: #f1f5f9; color: #475569; }
+        .table-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.75rem; }
+        .table-card {
+            background: var(--kv-gray-100);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .table-card.occupied { background: #fee2e2; }
+        .table-card.free { background: #dcfce7; }
+        .table-card.cleaning { background: #fef3c7; }
+        .table-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .table-card p { font-size: 0.75rem; color: var(--kv-gray-600); margin: 0; }
+        .staff-row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--kv-gray-100); }
+        .alert { background: #fee2e2; color: #991b1b; padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 0.9rem; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
+        .back-link:hover { color: #f97316; }
+        .quick-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .quick-links a { background: #f97316; color: white; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <header class="md-header">
+        <h1>Manager Dashboard</h1>
+        <p>Operations, staff, tables, and live orders.</p>
+    </header>
+
+    <main class="md-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="quick-links">
+            <a href="menu-editor.html">Menu Studio</a>
+            <a href="qr-generator.html">QR Generator</a>
+            <a href="feedback-dashboard.html">Feedback</a>
+        </div>
+
+        <div class="md-grid-4">
+            <div class="md-card">
+                <h2>Active Orders</h2>
+                <div class="number" id="active-orders">0</div>
+            </div>
+            <div class="md-card">
+                <h2>Occupied Tables</h2>
+                <div class="number" id="occupied-tables">0</div>
+            </div>
+            <div class="md-card">
+                <h2>Staff on Duty</h2>
+                <div class="number" id="staff-duty">4</div>
+            </div>
+            <div class="md-card">
+                <h2>Today's Sales</h2>
+                <div class="number" id="today-sales">$0</div>
+            </div>
+        </div>
+
+        <div class="md-section">
+            <h2>Stock Alerts</h2>
+            <div id="stock-alerts"></div>
+        </div>
+
+        <div class="md-section">
+            <h2>Live Orders</h2>
+            <div id="live-orders-list"></div>
+        </div>
+
+        <div class="md-section">
+            <h2>Table Status</h2>
+            <div class="table-grid" id="table-grid"></div>
+        </div>
+
+        <div class="md-section">
+            <h2>Staff on Duty</h2>
+            <div id="staff-list"></div>
+        </div>
+    </main>
+
+    <script>
+        const STORAGE_KEY = 'korvia_orders';
+        const tables = Array.from({length: 12}, (_, i) => ({
+            id: i + 1,
+            status: ['free', 'occupied', 'occupied', 'free', 'cleaning'][Math.floor(Math.random() * 5)],
+            guests: Math.floor(Math.random() * 4) + 1
+        }));
+        const staff = [
+            { name: 'Asha', role: 'Waitress', tables: '1-4', orders: 12 },
+            { name: 'Juma', role: 'Cook', station: 'Grill', orders: 24 },
+            { name: 'Mariam', role: 'Waitress', tables: '5-8', orders: 9 },
+            { name: 'Omari', role: 'Reception', station: 'Front', orders: 0 }
+        ];
+
+        function loadOrders() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+
+        function render() {
+            const orders = loadOrders();
+            const active = orders.filter(o => o.status !== 'done' && o.status !== 'paid');
+            const total = orders.reduce((sum, o) => sum + o.total, 0);
+            const occupied = tables.filter(t => t.status === 'occupied').length;
+
+            document.getElementById('active-orders').textContent = active.length;
+            document.getElementById('occupied-tables').textContent = occupied;
+            document.getElementById('today-sales').textContent = '$' + total.toFixed(0);
+
+            document.getElementById('stock-alerts').innerHTML = `
+                <div class="alert">⚠️ Ribeye Steak running low — 3 portions left</div>
+                <div class="alert">⚠️ House Red Wine out of stock</div>
+            `;
+
+            document.getElementById('live-orders-list').innerHTML = active.length ? active.map(o => `
+                <div class="order-row">
+                    <div>
+                        <strong>${o.spotType === 'hotel' ? 'Room' : o.spotType === 'events' ? 'Stall' : 'Table'} ${o.spot}</strong>
+                        <p style="font-size:0.8rem;color:var(--kv-gray-500);margin:0;">${o.items.map(i => i.name).join(', ')}</p>
+                    </div>
+                    <span>$${o.total.toFixed(2)}</span>
+                    <span class="status-pill status-${o.status}">${o.status}</span>
+                    <button style="border:none;background:var(--kv-gray-200);padding:0.3rem 0.7rem;border-radius:0.4rem;cursor:pointer;" onclick="alert('Assign staff')">Assign</button>
+                </div>
+            `).join('') : '<p style="color:var(--kv-gray-500);">No active orders.</p>';
+
+            document.getElementById('table-grid').innerHTML = tables.map(t => `
+                <div class="table-card ${t.status}" onclick="toggleTable(${t.id})">
+                    <h3>${t.status === 'hotel' ? 'Room' : 'Table'} ${t.id}</h3>
+                    <p>${t.status}</p>
+                    ${t.status === 'occupied' ? `<p>${t.guests} guests</p>` : ''}
+                </div>
+            `).join('');
+
+            document.getElementById('staff-list').innerHTML = staff.map(s => `
+                <div class="staff-row">
+                    <span><strong>${s.name}</strong> — ${s.role} ${s.tables ? `• Tables ${s.tables}` : `• ${s.station}`}</span>
+                    <span>${s.orders} orders</span>
+                </div>
+            `).join('');
+        }
+
+        function toggleTable(id) {
+            const t = tables.find(x => x.id === id);
+            const states = ['free', 'occupied', 'cleaning'];
+            t.status = states[(states.indexOf(t.status) + 1) % states.length];
+            render();
+        }
+
+        render();
+        setInterval(render, 3000);
+    </script>
+</body>
+</html>
