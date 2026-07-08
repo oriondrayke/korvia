@@ -3,64 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Editor | Korvia</title>
+    <title>Menu Studio | Korvia</title>
     <link rel="stylesheet" href="../korvia.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         body { background: var(--kv-gray-50); }
-        .editor-header {
+        .ms-header {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            padding: 1.25rem 2rem;
         }
-        .editor-header h1 { font-size: 1.4rem; }
-        .editor-header p { opacity: 0.7; font-size: 0.9rem; }
-        .editor-main {
+        .ms-header h1 { font-size: 1.4rem; }
+        .ms-header p { opacity: 0.75; font-size: 0.85rem; }
+        .ms-main {
             max-width: 1100px;
-            margin: 2rem auto;
+            margin: 1.5rem auto;
             padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 1.5rem;
         }
-        @media (max-width: 800px) {
-            .editor-main { grid-template-columns: 1fr; }
+        .ms-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
         }
+        .ms-tab {
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            background: white;
+            border: 1px solid var(--kv-gray-200);
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .ms-tab.active { background: #f97316; color: white; border-color: #f97316; }
         .panel {
             background: white;
             border-radius: 1rem;
             padding: 1.5rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 1rem;
         }
         .panel h2 { font-size: 1.1rem; margin-bottom: 1rem; }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 0.35rem;
-            color: var(--kv-gray-700);
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-row { margin-bottom: 1rem; }
+        .form-row label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--kv-gray-700); }
+        .form-row input, .form-row select, .form-row textarea {
             width: 100%;
-            padding: 0.65rem;
+            padding: 0.7rem;
             border: 1px solid var(--kv-gray-300);
             border-radius: 0.5rem;
             font-size: 0.95rem;
         }
-        .form-group textarea { min-height: 70px; resize: vertical; }
-        .save-btn {
+        .form-row textarea { min-height: 70px; resize: vertical; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+        .img-upload {
+            border: 2px dashed var(--kv-gray-300);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            background: var(--kv-gray-50);
+        }
+        .img-preview {
             width: 100%;
+            height: 140px;
+            border-radius: 0.5rem;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 0.75rem;
+        }
+        .ai-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .save-btn {
             background: #f97316;
             color: white;
             border: none;
-            padding: 0.8rem;
+            padding: 0.85rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 600;
             cursor: pointer;
@@ -68,7 +93,7 @@
         .menu-list { display: flex; flex-direction: column; gap: 0.75rem; }
         .menu-item-row {
             display: flex;
-            justify-content: space-between;
+            gap: 1rem;
             align-items: center;
             padding: 0.9rem;
             background: var(--kv-gray-50);
@@ -76,151 +101,232 @@
             border-left: 4px solid var(--kv-primary);
         }
         .menu-item-row.unavailable { opacity: 0.55; }
-        .menu-item-row h4 { font-size: 1rem; margin-bottom: 0.2rem; }
-        .menu-item-row p {
-            font-size: 0.8rem;
-            color: var(--kv-gray-500);
-            margin: 0;
+        .item-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 0.5rem;
+            background-size: cover;
+            flex-shrink: 0;
         }
-        .menu-item-actions { display: flex; gap: 0.5rem; }
-        .menu-item-actions button {
+        .item-details { flex: 1; }
+        .item-details h4 { font-size: 1rem; margin-bottom: 0.15rem; }
+        .item-details p { font-size: 0.8rem; color: var(--kv-gray-500); }
+        .item-tag {
+            font-size: 0.7rem;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+        }
+        .item-actions { display: flex; gap: 0.4rem; }
+        .item-actions button {
             border: none;
-            padding: 0.4rem 0.8rem;
+            padding: 0.4rem 0.75rem;
             border-radius: 0.4rem;
             font-size: 0.8rem;
             cursor: pointer;
         }
         .edit-btn { background: var(--kv-gray-200); }
         .delete-btn { background: #fee2e2; color: #991b1b; }
-        .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 0.15rem 0.5rem;
-            border-radius: 999px;
-            margin-top: 0.35rem;
+        .qr-studio {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
         }
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: var(--kv-gray-500);
+        @media (max-width: 700px) { .qr-studio { grid-template-columns: 1fr; } }
+        .qr-result { text-align: center; padding: 1rem; }
+        .qr-box { display: inline-block; padding: 1rem; background: white; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .preview-frame {
+            border: 1px solid var(--kv-gray-200);
+            border-radius: 0.75rem;
+            height: 400px;
+            overflow: hidden;
         }
-        .preview-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: #f97316;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
+        .preview-frame iframe { width: 100%; height: 100%; border: none; }
+        .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-    <header class="editor-header">
-        <div>
-            <h1>Menu Editor — Sunset Bistro</h1>
-            <p>Add, edit, or remove items. Changes reflect live on your QR menu.</p>
-        </div>
-        <a href="../index.html" style="color: white; text-decoration: none; font-size: 0.9rem;">← Back to Korvia</a>
+    <header class="ms-header">
+        <h1>Menu Studio</h1>
+        <p>Build menu, add photos, and create table QR codes — for any staff member.</p>
     </header>
 
-    <main class="editor-main">
-        <aside class="panel">
-            <h2 id="form-title">Add item</h2>
-            <form id="item-form" onsubmit="event.preventDefault(); saveItem();">
-                <input type="hidden" id="edit-id">
-                <div class="form-group">
-                    <label>Item name</label>
-                    <input type="text" id="item-name" placeholder="e.g. Grilled Salmon" required>
-                </div>
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="item-category">
-                        <option>Starters</option>
-                        <option>Mains</option>
-                        <option>Sides</option>
-                        <option>Drinks</option>
-                        <option>Desserts</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Price ($)</label>
-                    <input type="number" id="item-price" step="0.01" placeholder="0.00" required>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea id="item-desc" placeholder="Short description..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" id="item-available" checked>
-                        Available
-                    </label>
-                </div>
-                <button type="submit" class="save-btn" id="save-btn">Add item</button>
-                <button type="button" class="save-btn" style="background: var(--kv-gray-400); margin-top: 0.5rem; display: none;" id="cancel-btn" onclick="resetForm()">Cancel</button>
-            </form>
-            <a href="qr-menu.html?venue=sunset-bistro&type=restaurant&spot=12" class="preview-link" target="_blank">Preview live menu →</a>
-        </aside>
+    <main class="ms-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
 
-        <section class="panel">
-            <div class="top-bar">
-                <h2>Your menu</h2>
-                <select id="filter-category" onchange="renderMenu()">
-                    <option value="">All categories</option>
-                    <option>Starters</option>
-                    <option>Mains</option>
-                    <option>Sides</option>
-                    <option>Drinks</option>
-                    <option>Desserts</option>
-                </select>
+        <div class="ms-tabs">
+            <button class="ms-tab active" onclick="setTab('edit')">📝 Edit Menu</button>
+            <button class="ms-tab" onclick="setTab('preview')">👁️ Preview Menu</button>
+            <button class="ms-tab" onclick="setTab('qr')">📱 QR Codes</button>
+        </div>
+
+        <!-- EDIT TAB -->
+        <div id="tab-edit">
+            <div class="panel">
+                <h2 id="form-title">Add menu item</h2>
+                <form id="item-form" onsubmit="event.preventDefault(); saveItem();">
+                    <input type="hidden" id="edit-id">
+                    <div class="two-col">
+                        <div class="form-row">
+                            <label>Item name</label>
+                            <input type="text" id="item-name" placeholder="e.g. Grilled Salmon" required>
+                        </div>
+                        <div class="form-row">
+                            <label>Category</label>
+                            <select id="item-category">
+                                <option>Starters</option>
+                                <option>Mains</option>
+                                <option>Sides</option>
+                                <option>Drinks</option>
+                                <option>Desserts</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two-col">
+                        <div class="form-row">
+                            <label>Price ($)</label>
+                            <input type="number" id="item-price" step="0.01" placeholder="0.00" required>
+                        </div>
+                        <div class="form-row">
+                            <label>Availability</label>
+                            <select id="item-available">
+                                <option value="true">Available</option>
+                                <option value="false">Out of stock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label>Description</label>
+                        <textarea id="item-desc" placeholder="Short description..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <label>Photo</label>
+                        <div class="img-upload" onclick="document.getElementById('item-photo').click()">
+                            <div class="img-preview" id="photo-preview" style="display:none;"></div>
+                            <p id="upload-text">Tap to capture or upload photo</p>
+                            <input type="file" id="item-photo" accept="image/*;capture=camera" style="display:none;" onchange="handlePhoto(event)">
+                        </div>
+                        <button type="button" class="ai-btn" onclick="polishWithAI()">✨ Polish with AI</button>
+                        <p style="font-size:0.75rem;color:var(--kv-gray-500);margin-top:0.35rem;">AI polish requires API key setup in Korvia settings.</p>
+                    </div>
+                    <button type="submit" class="save-btn" id="save-btn">Add item</button>
+                    <button type="button" class="save-btn hidden" style="background:var(--kv-gray-400);margin-top:0.5rem;" id="cancel-btn" onclick="resetForm()">Cancel</button>
+                </form>
             </div>
-            <div id="menu-list" class="menu-list"></div>
-        </section>
+
+            <div class="panel">
+                <h2>Menu items</h2>
+                <div id="menu-list" class="menu-list"></div>
+            </div>
+        </div>
+
+        <!-- PREVIEW TAB -->
+        <div id="tab-preview" class="hidden">
+            <div class="panel">
+                <h2 class="section-title">Live customer view</h2>
+                <div class="preview-frame">
+                    <iframe id="preview-frame" src="qr-menu.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- QR TAB -->
+        <div id="tab-qr" class="hidden">
+            <div class="panel qr-studio">
+                <div>
+                    <h2 class="section-title">Generate table QR codes</h2>
+                    <div class="form-row">
+                        <label>How many tables / rooms / stalls?</label>
+                        <input type="number" id="table-count" value="10" min="1" max="100">
+                    </div>
+                    <div class="form-row">
+                        <label>Venue name</label>
+                        <input type="text" id="qr-venue" value="sunset-bistro">
+                    </div>
+                    <div class="form-row">
+                        <label>Venue type</label>
+                        <select id="qr-type">
+                            <option value="restaurant">Restaurant</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="events">Event</option>
+                        </select>
+                    </div>
+                    <button class="save-btn" onclick="generateTableQRs()">Generate QR codes</button>
+                    <p style="font-size:0.8rem;color:var(--kv-gray-500);margin-top:0.75rem;">Creates one QR code per table. Customers scan and land directly on your menu.</p>
+                </div>
+                <div>
+                    <h2 class="section-title">QR preview</h2>
+                    <div id="qr-results"></div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
         const STORAGE_KEY = 'korvia_menu_sunset_bistro';
-
         let menu = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [
-            { id: 1, name: 'Crispy Calamari', category: 'Starters', price: 12, desc: 'Lightly fried calamari with lemon aioli.', available: true },
-            { id: 2, name: 'Grilled Salmon', category: 'Mains', price: 24, desc: 'Quinoa, roasted vegetables, dill sauce.', available: true },
-            { id: 3, name: 'Fresh Lemonade', category: 'Drinks', price: 6, desc: 'Mint, honey, sparkling water.', available: true },
+            { id: 1, name: 'Crispy Calamari', category: 'Starters', price: 12, desc: 'Lightly fried calamari with lemon aioli.', available: true, photo: '' },
+            { id: 2, name: 'Grilled Salmon', category: 'Mains', price: 24, desc: 'Quinoa, roasted vegetables, dill sauce.', available: true, photo: '' },
+            { id: 3, name: 'Fresh Lemonade', category: 'Drinks', price: 6, desc: 'Mint, honey, sparkling water.', available: true, photo: '' },
         ];
+        let currentPhoto = '';
 
-        function saveMenu() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
+        function setTab(tab) {
+            document.querySelectorAll('.ms-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            ['edit','preview','qr'].forEach(t => {
+                document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
+            });
+            if (tab === 'preview') {
+                document.getElementById('preview-frame').src = 'qr-menu.html?' + Date.now();
+            }
+        }
+
+        function handlePhoto(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                currentPhoto = ev.target.result;
+                document.getElementById('photo-preview').style.backgroundImage = `url(${currentPhoto})`;
+                document.getElementById('photo-preview').style.display = 'block';
+                document.getElementById('upload-text').textContent = 'Change photo';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function polishWithAI() {
+            const key = localStorage.getItem('korvia_ai_key');
+            if (!key) {
+                alert('AI polish needs an API key. Add it to Korvia settings (korvia_ai_key in localStorage for demo).');
+                return;
+            }
+            alert('AI polish would call image API here. In production this sends the photo to your AI service and returns an enhanced version.');
         }
 
         function saveItem() {
             const id = document.getElementById('edit-id').value;
-            const name = document.getElementById('item-name').value.trim();
-            const category = document.getElementById('item-category').value;
-            const price = parseFloat(document.getElementById('item-price').value);
-            const desc = document.getElementById('item-desc').value.trim();
-            const available = document.getElementById('item-available').checked;
+            const item = {
+                name: document.getElementById('item-name').value.trim(),
+                category: document.getElementById('item-category').value,
+                price: parseFloat(document.getElementById('item-price').value),
+                desc: document.getElementById('item-desc').value.trim(),
+                available: document.getElementById('item-available').value === 'true',
+                photo: currentPhoto
+            };
 
             if (id) {
-                const item = menu.find(i => i.id == id);
-                item.name = name;
-                item.category = category;
-                item.price = price;
-                item.desc = desc;
-                item.available = available;
+                const idx = menu.findIndex(i => i.id == id);
+                menu[idx] = { ...menu[idx], ...item };
             } else {
-                menu.push({
-                    id: Date.now(),
-                    name, category, price, desc, available
-                });
+                item.id = Date.now();
+                menu.push(item);
             }
 
-            saveMenu();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
             resetForm();
             renderMenu();
         }
@@ -232,51 +338,90 @@
             document.getElementById('item-category').value = item.category;
             document.getElementById('item-price').value = item.price;
             document.getElementById('item-desc').value = item.desc;
-            document.getElementById('item-available').checked = item.available;
-            document.getElementById('form-title').textContent = 'Edit item';
+            document.getElementById('item-available').value = item.available ? 'true' : 'false';
+            currentPhoto = item.photo || '';
+            if (currentPhoto) {
+                document.getElementById('photo-preview').style.backgroundImage = `url(${currentPhoto})`;
+                document.getElementById('photo-preview').style.display = 'block';
+                document.getElementById('upload-text').textContent = 'Change photo';
+            }
+            document.getElementById('form-title').textContent = 'Edit menu item';
             document.getElementById('save-btn').textContent = 'Update item';
-            document.getElementById('cancel-btn').style.display = 'block';
+            document.getElementById('cancel-btn').classList.remove('hidden');
         }
 
         function deleteItem(id) {
             menu = menu.filter(i => i.id != id);
-            saveMenu();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
             renderMenu();
         }
 
         function resetForm() {
             document.getElementById('item-form').reset();
             document.getElementById('edit-id').value = '';
-            document.getElementById('form-title').textContent = 'Add item';
+            document.getElementById('form-title').textContent = 'Add menu item';
             document.getElementById('save-btn').textContent = 'Add item';
-            document.getElementById('cancel-btn').style.display = 'none';
+            document.getElementById('cancel-btn').classList.add('hidden');
+            document.getElementById('photo-preview').style.display = 'none';
+            document.getElementById('upload-text').textContent = 'Tap to capture or upload photo';
+            currentPhoto = '';
         }
 
         function renderMenu() {
-            const filter = document.getElementById('filter-category').value;
             const list = document.getElementById('menu-list');
-            const items = filter ? menu.filter(i => i.category === filter) : menu;
-
-            if (items.length === 0) {
-                list.innerHTML = '<div class="empty-state">No items yet. Add your first menu item.</div>';
+            if (menu.length === 0) {
+                list.innerHTML = '<p style="color:var(--kv-gray-500);">No items yet.</p>';
                 return;
             }
-
-            list.innerHTML = items.map(item => `
+            list.innerHTML = menu.map(item => `
                 <div class="menu-item-row ${item.available ? '' : 'unavailable'}">
-                    <div>
-                        <h4>${item.name} <span style="color: #f97316;">$${item.price.toFixed(2)}</span></h4>
+                    <div class="item-thumb" style="background: ${item.photo ? `url(${item.photo})` : gradients[item.id % gradients.length]}"></div>
+                    <div class="item-details">
+                        <h4>${item.name} <span style="color:#f97316;">$${item.price.toFixed(2)}</span></h4>
                         <p>${item.desc}</p>
-                        <span class="tag">${item.category}</span>
-                        ${item.available ? '' : '<span class="tag" style="background:#fee2e2;color:#991b1b;margin-left:0.25rem;">Unavailable</span>'}
+                        <span class="item-tag">${item.category}</span>
+                        ${item.available ? '' : '<span class="item-tag" style="background:#fee2e2;color:#991b1b;margin-left:0.25rem;">Out of stock</span>'}
                     </div>
-                    <div class="menu-item-actions">
+                    <div class="item-actions">
                         <button class="edit-btn" onclick="editItem(${item.id})">Edit</button>
                         <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
                     </div>
                 </div>
             `).join('');
         }
+
+        function generateTableQRs() {
+            const count = parseInt(document.getElementById('table-count').value) || 1;
+            const venue = document.getElementById('qr-venue').value.trim() || 'sunset-bistro';
+            const type = document.getElementById('qr-type').value;
+            const container = document.getElementById('qr-results');
+            container.innerHTML = '';
+
+            for (let i = 1; i <= count; i++) {
+                const url = `https://oriondrayke.github.io/korvia/examples/qr-menu.html?venue=${venue}&type=${type}&spot=${i}`;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'qr-box';
+                wrapper.style.marginBottom = '1rem';
+                wrapper.innerHTML = `<p style="font-weight:600;margin-bottom:0.5rem;">${type === 'hotel' ? 'Room' : type === 'events' ? 'Stall' : 'Table'} ${i}</p>`;
+                new QRCode(wrapper, {
+                    text: url,
+                    width: 140,
+                    height: 140,
+                    colorDark: '#0f172a',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+                container.appendChild(wrapper);
+            }
+        }
+
+        const gradients = [
+            'linear-gradient(135deg, #ff6b6b, #feca57)',
+            'linear-gradient(135deg, #1dd1a1, #48dbfb)',
+            'linear-gradient(135deg, #ff9ff3, #f368e0)',
+            'linear-gradient(135deg, #5f27cd, #341f97)',
+            'linear-gradient(135deg, #feca57, #ff9f43)',
+        ];
 
         renderMenu();
     </script>
