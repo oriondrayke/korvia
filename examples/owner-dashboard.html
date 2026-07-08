@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .od-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+        .od-header h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .od-header p { opacity: 0.75; font-size: 0.9rem; }
+        .od-main {
+            max-width: 1100px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+        }
+        .od-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .od-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .od-card h2 { font-size: 0.9rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; }
+        .od-card .number { font-size: 1.8rem; font-weight: 700; color: var(--kv-gray-900); }
+        .od-card .trend { font-size: 0.8rem; color: #16a34a; margin-top: 0.25rem; }
+        .od-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .od-section h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.75rem;
+            height: 160px;
+            padding-top: 1rem;
+        }
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, #f97316, #fb923c);
+            border-radius: 0.4rem 0.4rem 0 0;
+            min-height: 20px;
+            position: relative;
+        }
+        .bar-label {
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--kv-gray-500);
+            white-space: nowrap;
+        }
+        .bar-value {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .top-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--kv-gray-100);
+        }
+        .top-item:last-child { border-bottom: none; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--kv-gray-600);
+            text-decoration: none;
+        }
+        .back-link:hover { color: #f97316; }
+    </style>
+</head>
+<body>
+    <header class="od-header">
+        <h1>Owner Dashboard</h1>
+        <p>Sales, projections, and business analytics.</p>
+    </header>
+
+    <main class="od-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="od-grid-4">
+            <div class="od-card">
+                <h2>Today's Sales</h2>
+                <div class="number" id="today-sales">$0</div>
+                <div class="trend">↑ vs yesterday</div>
+            </div>
+            <div class="od-card">
+                <h2>Orders Today</h2>
+                <div class="number" id="today-orders">0</div>
+            </div>
+            <div class="od-card">
+                <h2>Average Order</h2>
+                <div class="number" id="avg-order">$0</div>
+            </div>
+            <div class="od-card">
+                <h2>Projected Month</h2>
+                <div class="number" id="proj-month">$0</div>
+            </div>
+        </div>
+
+        <div class="od-section">
+            <h2>Weekly Sales</h2>
+            <div class="bar-chart" id="weekly-chart"></div>
+        </div>
+
+        <div class="od-section">
+            <h2>Top Selling Items</h2>
+            <div id="top-items"></div>
+        </div>
+    </main>
+
+    <script>
+        const STORAGE_KEY = 'korvia_orders';
+
+        function loadOrders() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+
+        function render() {
+            const orders = loadOrders();
+            const total = orders.reduce((sum, o) => sum + o.total, 0);
+            const avg = orders.length ? total / orders.length : 0;
+            const projected = total * 30;
+
+            document.getElementById('today-sales').textContent = '$' + total.toFixed(0);
+            document.getElementById('today-orders').textContent = orders.length;
+            document.getElementById('avg-order').textContent = '$' + avg.toFixed(2);
+            document.getElementById('proj-month').textContent = '$' + projected.toFixed(0);
+
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const dayTotals = days.map(() => Math.floor(Math.random() * 800) + 200);
+            const max = Math.max(...dayTotals);
+
+            document.getElementById('weekly-chart').innerHTML = days.map((day, i) => `
+                <div class="bar" style="height: ${(dayTotals[i] / max) * 100}%;">
+                    <span class="bar-value">$${dayTotals[i]}</span>
+                    <span class="bar-label">${day}</span>
+                </div>
+            `).join('');
+
+            const itemCounts = {};
+            orders.forEach(o => o.items.forEach(i => {
+                itemCounts[i.name] = (itemCounts[i.name] || 0) + 1;
+            }));
+            const sorted = Object.entries(itemCounts).sort((a,b) => b[1] - a[1]).slice(0, 5);
+
+            document.getElementById('top-items').innerHTML = sorted.length ? sorted.map(([name, count]) => `
+                <div class="top-item">
+                    <span>${name}</span>
+                    <strong>${count} sold</strong>
+                </div>
+            `).join('') : '<p style="color:var(--kv-gray-500);">No orders yet.</p>';
+        }
+
+        render();
+    </script>
+</body>
+</html>

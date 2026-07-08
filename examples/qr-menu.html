@@ -166,7 +166,23 @@
                 alert('Your cart is empty.');
                 return;
             }
-            alert(`Order placed for ${venue.replace(/-/g, ' ')} table ${spot}. A server will bring your receipt.`);
+
+            const order = {
+                id: 'ORD-' + Date.now(),
+                venue: venue,
+                spot: spot,
+                spotType: type,
+                items: [...cart],
+                total: cart.reduce((sum, item) => sum + item.price, 0),
+                status: 'new',
+                createdAt: new Date().toISOString()
+            };
+
+            const orders = JSON.parse(localStorage.getItem('korvia_orders') || '[]');
+            orders.push(order);
+            localStorage.setItem('korvia_orders', JSON.stringify(orders));
+
+            alert(`Order placed for ${venue.replace(/-/g, ' ')} ${type === 'hotel' ? 'room' : type === 'events' ? 'stall' : 'table'} ${spot}.`);
             cart = [];
             updateCart();
         }

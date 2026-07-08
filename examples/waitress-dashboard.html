@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waitress Dashboard | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .wd-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+        .wd-header h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .wd-header p { opacity: 0.75; font-size: 0.9rem; }
+        .wd-main {
+            max-width: 900px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+        }
+        .wd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .wd-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .wd-card h2 { font-size: 1rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; }
+        .wd-card .number { font-size: 2rem; font-weight: 700; color: var(--kv-gray-900); }
+        .order-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--kv-primary);
+        }
+        .order-card.ready { border-left-color: #22c55e; }
+        .order-card.new { border-left-color: #3b82f6; }
+        .order-card.served { border-left-color: var(--kv-gray-300); opacity: 0.7; }
+        .order-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .order-header strong { font-size: 1.05rem; }
+        .order-status {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        .status-new { background: #dbeafe; color: #1e40af; }
+        .status-preparing { background: #fef3c7; color: #92400e; }
+        .status-ready { background: #dcfce7; color: #166534; }
+        .status-done { background: #f1f5f9; color: #475569; }
+        .order-items { font-size: 0.9rem; color: var(--kv-gray-600); margin-bottom: 0.75rem; }
+        .order-total { font-weight: 700; color: #f97316; }
+        .order-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+        .order-actions button {
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-serve { background: #22c55e; color: white; }
+        .btn-pay { background: #f97316; color: white; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--kv-gray-600);
+            text-decoration: none;
+        }
+        .back-link:hover { color: #f97316; }
+        .section-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <header class="wd-header">
+        <h1>Waitress Dashboard</h1>
+        <p>Track your tables, serve orders, and collect payments.</p>
+    </header>
+
+    <main class="wd-main">
+        <a href="../index.html" class="back-link">← Back to Korvia</a>
+
+        <div class="wd-grid">
+            <div class="wd-card">
+                <h2>My active tables</h2>
+                <div class="number" id="active-tables">0</div>
+            </div>
+            <div class="wd-card">
+                <h2>Orders to serve</h2>
+                <div class="number" id="ready-orders">0</div>
+            </div>
+            <div class="wd-card">
+                <h2>Tips today</h2>
+                <div class="number">$0</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Live orders</h2>
+        <div id="orders-list"></div>
+    </main>
+
+    <script>
+        const STORAGE_KEY = 'korvia_orders';
+
+        function loadOrders() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+        }
+
+        function updateStatus(id, status) {
+            const orders = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const order = orders.find(o => o.id === id);
+            if (order) {
+                order.status = status;
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+            }
+            render();
+        }
+
+        function timeSince(iso) {
+            const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000 / 60);
+            return diff < 1 ? 'just now' : `${diff} min ago`;
+        }
+
+        function render() {
+            const orders = loadOrders();
+            const active = [...new Set(orders.filter(o => o.status !== 'done').map(o => o.spot))];
+            const ready = orders.filter(o => o.status === 'ready');
+
+            document.getElementById('active-tables').textContent = active.length;
+            document.getElementById('ready-orders').textContent = ready.length;
+
+            const list = document.getElementById('orders-list');
+            if (orders.length === 0) {
+                list.innerHTML = '<p style="color:var(--kv-gray-500);">No orders yet.</p>';
+                return;
+            }
+
+            list.innerHTML = orders.map(order => `
+                <div class="order-card ${order.status}">
+                    <div class="order-header">
+                        <strong>${order.spotType === 'hotel' ? 'Room' : order.spotType === 'events' ? 'Stall' : 'Table'} ${order.spot}</strong>
+                        <span class="order-status status-${order.status}">${order.status}</span>
+                    </div>
+                    <div class="order-items">
+                        ${order.items.map(i => i.name).join(', ')}
+                    </div>
+                    <div class="order-total">$${order.total.toFixed(2)} • ${timeSince(order.createdAt)}</div>
+                    <div class="order-actions">
+                        ${order.status === 'ready' ? `<button class="btn-serve" onclick="updateStatus('${order.id}', 'done')">Mark served</button>` : ''}
+                        ${order.status === 'done' ? `<button class="btn-pay" onclick="updateStatus('${order.id}', 'paid')">Collect payment</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        render();
+        setInterval(render, 3000);
+    </script>
+</body>
+</html>

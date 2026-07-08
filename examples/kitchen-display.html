@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Display | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--kv-font-sans);
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+        .kd-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .kd-header h1 { font-size: 1.5rem; }
+        .kd-stats { display: flex; gap: 1rem; }
+        .kd-stat { background: rgba(255,255,255,0.08); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; }
+        .kd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .ticket {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            border-left: 5px solid #f97316;
+        }
+        .ticket.new { border-left-color: #3b82f6; }
+        .ticket.preparing { border-left-color: #f59e0b; }
+        .ticket.ready { border-left-color: #22c55e; }
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .ticket-id { font-weight: 700; }
+        .ticket-table { font-size: 0.85rem; opacity: 0.7; }
+        .ticket-time { font-size: 0.75rem; opacity: 0.5; margin-bottom: 1rem; }
+        .ticket-items { margin-bottom: 1rem; }
+        .ticket-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.35rem 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+        }
+        .ticket-total {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f97316;
+        }
+        .ticket-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .ticket-actions button {
+            flex: 1;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .btn-prep { background: #f59e0b; color: #422006; }
+        .btn-ready { background: #22c55e; color: #052e16; }
+        .btn-done { background: rgba(255,255,255,0.15); color: white; }
+        .empty { text-align: center; padding: 4rem; opacity: 0.5; }
+        .back {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back:hover { color: #f97316; }
+    </style>
+</head>
+<body>
+    <header class="kd-header">
+        <div>
+            <a href="../index.html" class="back">← Korvia</a>
+            <h1>Kitchen Display</h1>
+        </div>
+        <div class="kd-stats">
+            <div class="kd-stat">New: <span id="count-new">0</span></div>
+            <div class="kd-stat">Preparing: <span id="count-prep">0</span></div>
+            <div class="kd-stat">Ready: <span id="count-ready">0</span></div>
+        </div>
+    </header>
+
+    <main class="kd-grid" id="tickets"></main>
+
+    <script>
+        const STORAGE_KEY = 'korvia_orders';
+
+        function loadOrders() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(o => o.status !== 'done');
+        }
+
+        function updateStatus(id, status) {
+            const orders = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const order = orders.find(o => o.id === id);
+            if (order) {
+                order.status = status;
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+            }
+            render();
+        }
+
+        function timeSince(iso) {
+            const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000 / 60);
+            return diff < 1 ? 'just now' : `${diff} min ago`;
+        }
+
+        function render() {
+            const orders = loadOrders();
+            const container = document.getElementById('tickets');
+
+            document.getElementById('count-new').textContent = orders.filter(o => o.status === 'new').length;
+            document.getElementById('count-prep').textContent = orders.filter(o => o.status === 'preparing').length;
+            document.getElementById('count-ready').textContent = orders.filter(o => o.status === 'ready').length;
+
+            if (orders.length === 0) {
+                container.innerHTML = '<div class="empty">No active orders.</div>';
+                return;
+            }
+
+            container.innerHTML = orders.map(order => `
+                <article class="ticket ${order.status}">
+                    <div class="ticket-header">
+                        <span class="ticket-id">${order.id.split('-')[1].slice(-4)}</span>
+                        <span class="ticket-table">${order.spotType === 'hotel' ? 'Room' : order.spotType === 'events' ? 'Stall' : 'Table'} ${order.spot}</span>
+                    </div>
+                    <div class="ticket-time">${timeSince(order.createdAt)}</div>
+                    <div class="ticket-items">
+                        ${order.items.map(i => `
+                            <div class="ticket-item"><span>${i.name}</span><span>$${i.price.toFixed(2)}</span></div>
+                        `).join('')}
+                    </div>
+                    <div class="ticket-total">Total: $${order.total.toFixed(2)}</div>
+                    <div class="ticket-actions">
+                        ${order.status === 'new' ? `<button class="btn-prep" onclick="updateStatus('${order.id}', 'preparing')">Start preparing</button>` : ''}
+                        ${order.status === 'preparing' ? `<button class="btn-ready" onclick="updateStatus('${order.id}', 'ready')">Mark ready</button>` : ''}
+                        ${order.status === 'ready' ? `<button class="btn-done" onclick="updateStatus('${order.id}', 'done')">Served / Done</button>` : ''}
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        render();
+        setInterval(render, 3000);
+    </script>
+</body>
+</html>
