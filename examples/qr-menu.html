@@ -27,7 +27,7 @@
         .category-tab { flex: 0 0 auto; padding: 0.45rem 1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: none; cursor: pointer; }
         .category-tab.active { background: var(--menu-accent); color: white; }
 
-        .menu-container { max-width: 600px; margin: 0 auto; padding: 1.25rem; padding-bottom: 110px; }
+        .menu-container { max-width: 600px; margin: 0 auto; padding: 1.25rem; padding-bottom: 140px; }
         .menu-section { margin-bottom: 2rem; }
         .menu-section-title { font-size: 1.1rem; font-weight: 700; color: var(--kv-gray-900); margin-bottom: 1rem; }
 
@@ -39,16 +39,50 @@
         .item-info p { font-size: 0.78rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; line-height: 1.3; }
         .item-bottom { display: flex; justify-content: space-between; align-items: center; }
         .item-price { font-weight: 700; color: var(--kv-gray-900); }
-        .add-btn { width: 30px; height: 30px; border-radius: 50%; border: none; background: var(--menu-accent); color: white; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .add-btn:disabled { background: var(--kv-gray-300); cursor: not-allowed; }
+        .qty-control { display: flex; align-items: center; gap: 0.5rem; }
+        .qty-btn { width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--menu-accent); color: white; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .qty-count { font-weight: 600; min-width: 20px; text-align: center; }
 
-        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--kv-gray-200); padding: 1rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto; }
-        .cart-info p { margin: 0; }
-        .cart-count { font-size: 0.75rem; color: var(--kv-gray-500); }
-        .cart-total { font-weight: 700; font-size: 1.05rem; }
-        .order-btn { background: var(--menu-accent); color: white; border: none; padding: 0.7rem 1.4rem; border-radius: 999px; font-weight: 600; cursor: pointer; }
+        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--kv-gray-200); padding: 1rem; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); max-width: 600px; margin: 0 auto; z-index: 100; }
+        .cart-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .cart-total { font-weight: 700; font-size: 1.1rem; }
+        .cart-count { font-size: 0.8rem; color: var(--kv-gray-500); }
+        .cart-actions { display: flex; gap: 0.5rem; }
+        .cart-actions button { flex: 1; border: none; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; }
+        .btn-view { background: var(--kv-gray-100); color: var(--kv-gray-800); }
+        .btn-order { background: var(--menu-accent); color: white; }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: flex-end; justify-content: center; z-index: 200; }
+        .modal-overlay.active { display: flex; }
+        .modal { background: white; width: 100%; max-width: 600px; max-height: 85vh; overflow-y: auto; border-radius: 1.25rem 1.25rem 0 0; padding: 1.5rem; }
+        .modal h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .cart-item { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--kv-gray-100); }
+        .cart-item-info h4 { font-size: 0.95rem; }
+        .cart-item-info p { font-size: 0.8rem; color: var(--kv-gray-500); }
+        .section { margin: 1.25rem 0; }
+        .section h3 { font-size: 0.95rem; margin-bottom: 0.6rem; }
+        .option-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .option-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--kv-gray-300);
+            background: white;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .option-btn.active { background: var(--menu-accent); color: white; border-color: var(--menu-accent); }
+        .input-row { display: flex; gap: 0.5rem; }
+        .input-row input { flex: 1; padding: 0.65rem; border: 1px solid var(--kv-gray-300); border-radius: 0.5rem; }
+        .input-row button { background: var(--kv-gray-800); color: white; border: none; padding: 0 1rem; border-radius: 0.5rem; cursor: pointer; }
+        .summary-row { display: flex; justify-content: space-between; padding: 0.4rem 0; }
+        .summary-row.total { font-weight: 700; font-size: 1.1rem; border-top: 1px solid var(--kv-gray-200); margin-top: 0.5rem; padding-top: 0.75rem; }
+        .loyalty-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 0.75rem; padding: 1rem; margin-bottom: 1rem; }
+        .loyalty-box p { font-size: 0.85rem; color: #7c2d12; margin-bottom: 0.5rem; }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .modal-header { position: relative; }
 
         .empty-menu { text-align: center; padding: 4rem 2rem; color: var(--kv-gray-500); }
+        .promo-applied { color: #16a34a; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -67,10 +101,78 @@
 
     <div class="cart-bar">
         <div class="cart-info">
-            <p class="cart-count"><span id="cart-count">0</span> items</p>
-            <p class="cart-total">$<span id="cart-total">0.00</span></p>
+            <div>
+                <p class="cart-count"><span id="cart-count">0</span> items</p>
+                <p class="cart-total">$<span id="cart-total">0.00</span></p>
+            </div>
         </div>
-        <button class="order-btn" onclick="placeOrder()">Place order</button>
+        <div class="cart-actions">
+            <button class="btn-view" onclick="openCart()">View cart</button>
+            <button class="btn-order" onclick="openCart()">Order now</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cart-modal" onclick="closeCart(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>Your order</h2>
+                <button class="close-btn" onclick="closeCart()">&times;</button>
+            </div>
+
+            <div id="cart-items"></div>
+
+            <div class="section">
+                <h3>Payment method</h3>
+                <div class="option-row">
+                    <button class="option-btn active" onclick="setPayment('mpesa')">M-Pesa</button>
+                    <button class="option-btn" onclick="setPayment('card')">Card</button>
+                    <button class="option-btn" onclick="setPayment('cash')">Cash</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Tip your server</h3>
+                <div class="option-row">
+                    <button class="option-btn" onclick="setTip(0)">No tip</button>
+                    <button class="option-btn" onclick="setTip(0.1)">10%</button>
+                    <button class="option-btn active" onclick="setTip(0.15)">15%</button>
+                    <button class="option-btn" onclick="setTip(0.2)">20%</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Promo code</h3>
+                <div class="input-row">
+                    <input type="text" id="promo-code" placeholder="Enter code">
+                    <button onclick="applyPromo()">Apply</button>
+                </div>
+                <p id="promo-msg" class="promo-applied"></p>
+            </div>
+
+            <div class="section">
+                <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">$0.00</span></div>
+                <div class="summary-row"><span>Tip</span><span id="summary-tip">$0.00</span></div>
+                <div class="summary-row"><span>Discount</span><span id="summary-discount">$0.00</span></div>
+                <div class="summary-row total"><span>Total</span><span id="summary-total">$0.00</span></div>
+            </div>
+
+            <div class="loyalty-box">
+                <p>Join Korvia Rewards and earn points on this order.</p>
+                <div class="input-row">
+                    <input type="tel" id="loyalty-phone" placeholder="Phone number">
+                    <button onclick="joinLoyalty()">Join</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Split bill</h3>
+                <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.5rem;">Others at this table can scan the same QR and pay their share.</p>
+                <button class="option-btn" onclick="generateGroupCode()">Create group order</button>
+                <p id="group-code" style="margin-top:0.5rem;font-weight:600;color:var(--kv-primary);"></p>
+            </div>
+
+            <button class="btn-order" style="width:100%;margin-top:1rem;" onclick="placeOrder()">Place order</button>
+        </div>
     </div>
 
     <script>
@@ -97,6 +199,9 @@
         const categories = [...new Set(menu.map(i => i.category))];
         let activeCategory = categories[0] || 'All';
         let cart = [];
+        let paymentMethod = 'mpesa';
+        let tipRate = 0.15;
+        let discount = 0;
 
         const gradients = [
             'linear-gradient(135deg, #ff6b6b, #feca57)',
@@ -133,7 +238,9 @@
             container.innerHTML = `
                 <section class="menu-section">
                     <h2 class="menu-section-title">${activeCategory}</h2>
-                    ${items.map((item, idx) => `
+                    ${items.map((item) => {
+                        const qty = cartQty(item.name);
+                        return `
                         <article class="menu-item ${item.available ? '' : 'unavailable'}">
                             <div class="item-image" style="background: ${gradients[item.id % gradients.length]}"></div>
                             <div class="item-info">
@@ -141,18 +248,32 @@
                                 <p>${item.desc}</p>
                                 <div class="item-bottom">
                                     <span class="item-price">$${item.price.toFixed(2)}</span>
-                                    <button class="add-btn" onclick="addToCart('${item.name}', ${item.price})" ${item.available ? '' : 'disabled'}>${item.available ? '+' : '—'}</button>
+                                    <div class="qty-control">
+                                        <button class="qty-btn" onclick="updateCartItem('${item.name}', ${item.price}, -1)" ${item.available ? '' : 'disabled'}>-</button>
+                                        <span class="qty-count">${qty}</span>
+                                        <button class="qty-btn" onclick="updateCartItem('${item.name}', ${item.price}, 1)" ${item.available ? '' : 'disabled'}>+</button>
+                                    </div>
                                 </div>
                             </div>
                         </article>
-                    `).join('')}
+                    `}).join('')}
                 </section>
             `;
         }
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
+        function cartQty(name) {
+            return cart.filter(i => i.name === name).length;
+        }
+
+        function updateCartItem(name, price, delta) {
+            if (delta > 0) {
+                cart.push({ name, price });
+            } else {
+                const idx = cart.findIndex(i => i.name === name);
+                if (idx > -1) cart.splice(idx, 1);
+            }
             updateCart();
+            renderItems();
         }
 
         function updateCart() {
@@ -161,11 +282,111 @@
             document.getElementById('cart-total').textContent = total.toFixed(2);
         }
 
+        function openCart() {
+            document.getElementById('cart-modal').classList.add('active');
+            renderCartModal();
+        }
+
+        function closeCart(e) {
+            if (!e || e.target.id === 'cart-modal') {
+                document.getElementById('cart-modal').classList.remove('active');
+            }
+        }
+
+        function renderCartModal() {
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color:var(--kv-gray-500);padding:1rem 0;">Your cart is empty.</p>';
+            } else {
+                const grouped = {};
+                cart.forEach(i => {
+                    if (!grouped[i.name]) grouped[i.name] = { ...i, qty: 0 };
+                    grouped[i.name].qty++;
+                });
+                container.innerHTML = Object.values(grouped).map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>$${item.price.toFixed(2)} x ${item.qty}</p>
+                        </div>
+                        <strong>$${(item.price * item.qty).toFixed(2)}</strong>
+                    </div>
+                `).join('');
+            }
+            updateSummary();
+        }
+
+        function setPayment(method) {
+            paymentMethod = method;
+            document.querySelectorAll('.option-row')[0].querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase().includes(method));
+            });
+        }
+
+        function setTip(rate) {
+            tipRate = rate;
+            document.querySelectorAll('.option-row')[1].querySelectorAll('.option-btn').forEach(btn => {
+                const text = btn.textContent;
+                const active = rate === 0 ? text.includes('No') : text.includes((rate * 100) + '%');
+                btn.classList.toggle('active', active);
+            });
+            updateSummary();
+        }
+
+        function applyPromo() {
+            const code = document.getElementById('promo-code').value.trim().toUpperCase();
+            if (code === 'KORVIA20') {
+                discount = 0.2;
+                document.getElementById('promo-msg').textContent = '20% discount applied!';
+            } else if (code === 'WELCOME') {
+                discount = 0.1;
+                document.getElementById('promo-msg').textContent = '10% discount applied!';
+            } else {
+                discount = 0;
+                document.getElementById('promo-msg').textContent = 'Invalid code.';
+                document.getElementById('promo-msg').style.color = '#991b1b';
+            }
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const tip = subtotal * tipRate;
+            const discountAmount = subtotal * discount;
+            const total = subtotal + tip - discountAmount;
+
+            document.getElementById('summary-subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('summary-tip').textContent = '$' + tip.toFixed(2);
+            document.getElementById('summary-discount').textContent = '-$' + discountAmount.toFixed(2);
+            document.getElementById('summary-total').textContent = '$' + total.toFixed(2);
+        }
+
+        function joinLoyalty() {
+            const phone = document.getElementById('loyalty-phone').value.trim();
+            if (!phone) {
+                alert('Enter your phone number.');
+                return;
+            }
+            localStorage.setItem('korvia_loyalty', JSON.stringify({ phone, venue, joined: new Date().toISOString() }));
+            alert('Welcome to Korvia Rewards!');
+        }
+
+        function generateGroupCode() {
+            const code = 'GRP-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            document.getElementById('group-code').textContent = 'Group code: ' + code;
+            localStorage.setItem('korvia_group_' + code, JSON.stringify({ venue, spot, type }));
+        }
+
         function placeOrder() {
             if (cart.length === 0) {
                 alert('Your cart is empty.');
                 return;
             }
+
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const tip = subtotal * tipRate;
+            const discountAmount = subtotal * discount;
+            const total = subtotal + tip - discountAmount;
 
             const order = {
                 id: 'ORD-' + Date.now(),
@@ -173,7 +394,8 @@
                 spot: spot,
                 spotType: type,
                 items: [...cart],
-                total: cart.reduce((sum, item) => sum + item.price, 0),
+                subtotal, tip, discount: discountAmount, total,
+                paymentMethod,
                 status: 'new',
                 createdAt: new Date().toISOString()
             };
@@ -182,13 +404,12 @@
             orders.push(order);
             localStorage.setItem('korvia_orders', JSON.stringify(orders));
 
-            alert(`Order placed for ${venue.replace(/-/g, ' ')} ${type === 'hotel' ? 'room' : type === 'events' ? 'stall' : 'table'} ${spot}.`);
-            cart = [];
-            updateCart();
+            window.location.href = `receipt.html?order=${order.id}`;
         }
 
         renderTabs();
         renderItems();
+        updateSummary();
     </script>
 </body>
 </html>

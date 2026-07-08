@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        body { background: var(--kv-gray-50); }
+        .receipt-page { max-width: 500px; margin: 0 auto; padding: 1.5rem; }
+        .receipt-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 1rem;
+        }
+        .receipt-header { text-align: center; margin-bottom: 1.5rem; }
+        .receipt-header h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        .receipt-header p { color: var(--kv-gray-500); font-size: 0.9rem; }
+        .success-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .receipt-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px dashed var(--kv-gray-200); }
+        .receipt-row.total { font-weight: 700; font-size: 1.1rem; border-top: 2px solid var(--kv-gray-800); border-bottom: none; margin-top: 0.5rem; padding-top: 0.75rem; }
+        .qr-box { text-align: center; padding: 1rem; }
+        .qr-box p { font-size: 0.85rem; color: var(--kv-gray-500); margin-top: 0.75rem; }
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .action-btn {
+            background: white;
+            border: 1px solid var(--kv-gray-200);
+            padding: 0.9rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .action-btn.primary { background: #f97316; color: white; border-color: #f97316; }
+        .feedback-stars { display: flex; gap: 0.5rem; justify-content: center; font-size: 2rem; margin: 1rem 0; }
+        .star { cursor: pointer; opacity: 0.3; }
+        .star.active { opacity: 1; color: #f59e0b; }
+        textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--kv-gray-300); border-radius: 0.5rem; min-height: 80px; margin-top: 0.5rem; }
+        .submit-btn { width: 100%; background: var(--kv-gray-800); color: white; border: none; padding: 0.8rem; border-radius: 0.5rem; margin-top: 0.75rem; cursor: pointer; }
+        .tip-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        .tip-btn { border: 1px solid var(--kv-gray-300); background: white; padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; }
+        .tip-btn.active { background: #f97316; color: white; border-color: #f97316; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="receipt-page">
+        <a href="qr-menu.html" class="back-link">← Back to menu</a>
+
+        <div class="receipt-card">
+            <div class="receipt-header">
+                <div class="success-badge">Order placed</div>
+                <h1 id="venue-name">Sunset Bistro</h1>
+                <p id="spot-info">Table 12</p>
+                <p id="order-id" style="font-size:0.8rem;color:var(--kv-gray-400);"></p>
+            </div>
+
+            <div id="items-list"></div>
+
+            <div class="receipt-row">
+                <span>Subtotal</span>
+                <span id="r-subtotal">$0.00</span>
+            </div>
+            <div class="receipt-row">
+                <span>Tip</span>
+                <span id="r-tip">$0.00</span>
+            </div>
+            <div class="receipt-row">
+                <span>Discount</span>
+                <span id="r-discount">$0.00</span>
+            </div>
+            <div class="receipt-row total">
+                <span>Total paid</span>
+                <span id="r-total">$0.00</span>
+            </div>
+
+            <div class="qr-box">
+                <div id="receipt-qr"></div>
+                <p>Scan for digital receipt, re-order, or feedback.</p>
+            </div>
+        </div>
+
+        <div class="receipt-card">
+            <h2 style="text-align:center;margin-bottom:0.5rem;">Tip your server</h2>
+            <p style="text-align:center;font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:1rem;">100% goes to the staff who served you.</p>
+            <div class="tip-btns">
+                <button class="tip-btn" onclick="addExtraTip(2)">$2</button>
+                <button class="tip-btn" onclick="addExtraTip(5)">$5</button>
+                <button class="tip-btn" onclick="addExtraTip(10)">$10</button>
+            </div>
+        </div>
+
+        <div class="receipt-card">
+            <h2 style="text-align:center;margin-bottom:0.5rem;">How was your experience?</h2>
+            <div class="feedback-stars">
+                <span class="star" onclick="setRating(1)">★</span>
+                <span class="star" onclick="setRating(2)">★</span>
+                <span class="star" onclick="setRating(3)">★</span>
+                <span class="star" onclick="setRating(4)">★</span>
+                <span class="star" onclick="setRating(5)">★</span>
+            </div>
+            <textarea id="feedback-text" placeholder="Tell us what you liked or how we can improve..."></textarea>
+            <button class="submit-btn" onclick="submitFeedback()">Send feedback</button>
+        </div>
+
+        <div class="action-grid">
+            <button class="action-btn" onclick="downloadReceipt()">Download receipt</button>
+            <button class="action-btn primary" onclick="reorder()">Order again</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get('order');
+        const orders = JSON.parse(localStorage.getItem('korvia_orders') || '[]');
+        const order = orders.find(o => o.id === orderId);
+
+        if (!order) {
+            document.body.innerHTML = '<div style="padding:2rem;text-align:center;">Order not found. <a href="qr-menu.html">Back to menu</a></div>';
+            throw new Error('Order not found');
+        }
+
+        document.getElementById('venue-name').textContent = order.venue.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        document.getElementById('spot-info').textContent = `${order.spotType === 'hotel' ? 'Room' : order.spotType === 'events' ? 'Stall' : 'Table'} ${order.spot}`;
+        document.getElementById('order-id').textContent = order.id;
+
+        const grouped = {};
+        order.items.forEach(i => {
+            if (!grouped[i.name]) grouped[i.name] = { ...i, qty: 0 };
+            grouped[i.name].qty++;
+        });
+
+        document.getElementById('items-list').innerHTML = Object.values(grouped).map(item => `
+            <div class="receipt-row">
+                <span>${item.name} x ${item.qty}</span>
+                <span>$${(item.price * item.qty).toFixed(2)}</span>
+            </div>
+        `).join('');
+
+        document.getElementById('r-subtotal').textContent = '$' + order.subtotal.toFixed(2);
+        document.getElementById('r-tip').textContent = '$' + order.tip.toFixed(2);
+        document.getElementById('r-discount').textContent = '-$' + order.discount.toFixed(2);
+        document.getElementById('r-total').textContent = '$' + order.total.toFixed(2);
+
+        new QRCode(document.getElementById('receipt-qr'), {
+            text: window.location.href,
+            width: 140,
+            height: 140,
+            colorDark: '#0f172a',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        let rating = 0;
+        function setRating(n) {
+            rating = n;
+            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < n));
+        }
+
+        function addExtraTip(amount) {
+            const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+            tips.push({ orderId: order.id, amount, venue: order.venue, spot: order.spot, time: new Date().toISOString() });
+            localStorage.setItem('korvia_tips', JSON.stringify(tips));
+            alert(`Thank you for the $${amount} tip!`);
+        }
+
+        function submitFeedback() {
+            const text = document.getElementById('feedback-text').value.trim();
+            if (!rating && !text) {
+                alert('Please rate or write something.');
+                return;
+            }
+            const feedback = JSON.parse(localStorage.getItem('korvia_feedback') || '[]');
+            feedback.push({ orderId: order.id, venue: order.venue, rating, text, time: new Date().toISOString() });
+            localStorage.setItem('korvia_feedback', JSON.stringify(feedback));
+            alert('Thank you for your feedback!');
+            document.getElementById('feedback-text').value = '';
+        }
+
+        function downloadReceipt() {
+            alert('Receipt download coming in full version.');
+        }
+
+        function reorder() {
+            window.location.href = `qr-menu.html?venue=${order.venue}&type=${order.spotType}&spot=${order.spot}`;
+        }
+    </script>
+</body>
+</html>
