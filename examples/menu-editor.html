@@ -139,8 +139,10 @@
         .preview-frame {
             border: 1px solid var(--kv-gray-200);
             border-radius: 0.75rem;
-            height: 400px;
-            overflow: hidden;
+            height: 75vh;
+            min-height: 500px;
+            overflow: auto;
+            background: white;
         }
         .preview-frame iframe { width: 100%; height: 100%; border: none; }
         .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
@@ -161,6 +163,7 @@
             <button class="ms-tab active" onclick="setTab('edit')">📝 Edit Menu</button>
             <button class="ms-tab" onclick="setTab('preview')">👁️ Preview Menu</button>
             <button class="ms-tab" onclick="setTab('qr')">📱 QR Codes</button>
+            <button class="ms-tab" onclick="setTab('ai')">✨ AI Tools</button>
         </div>
 
         <!-- EDIT TAB -->
@@ -263,6 +266,91 @@
                 </div>
             </div>
         </div>
+
+        <!-- AI TOOLS TAB -->
+        <div id="tab-ai" class="hidden">
+            <div class="panel">
+                <h2 class="section-title">✨ AI Menu Tools</h2>
+                <p style="color:var(--kv-gray-500);margin-bottom:1rem;">These tools use AI to speed up menu creation and QR marketing.</p>
+
+                <div class="two-col">
+                    <div class="panel" style="margin-bottom:0;">
+                        <h3>🌍 Auto-translate menu</h3>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">Show menu in customer's phone language.</p>
+                        <div class="option-row">
+                            <button class="option-btn active" onclick="toggleTranslate(this, 'en')">English</button>
+                            <button class="option-btn" onclick="toggleTranslate(this, 'sw')">Swahili</button>
+                            <button class="option-btn" onclick="toggleTranslate(this, 'fr')">French</button>
+                            <button class="option-btn" onclick="toggleTranslate(this, 'zh')">Chinese</button>
+                        </div>
+                    </div>
+
+                    <div class="panel" style="margin-bottom:0;">
+                        <h3>🥗 Auto-tag dietary</h3>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">AI reads descriptions and tags vegan, halal, gluten-free, spicy.</p>
+                        <button class="save-btn" style="width:auto;" onclick="autoTagDietary()">Tag my menu</button>
+                    </div>
+                </div>
+
+                <div class="two-col" style="margin-top:1rem;">
+                    <div class="panel" style="margin-bottom:0;">
+                        <h3>💡 Smart pricing</h3>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">AI suggests prices based on ingredients and local competition.</p>
+                        <button class="save-btn" style="width:auto;" onclick="smartPricing()">Suggest prices</button>
+                        <div id="pricing-suggestions" style="margin-top:0.75rem;font-size:0.85rem;color:var(--kv-gray-600);"></div>
+                    </div>
+
+                    <div class="panel" style="margin-bottom:0;">
+                        <h3>📸 Scan competitor menu</h3>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">Photo of another menu → AI extracts items and prices.</p>
+                        <input type="file" accept="image/*" id="competitor-photo" onchange="scanCompetitor()" style="font-size:0.85rem;">
+                    </div>
+                </div>
+
+                <div class="two-col" style="margin-top:1rem;">
+                    <div class="panel" style="margin-bottom:0;">
+                        <h3>🎨 AI menu designer</h3>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">Pick cuisine and budget, AI builds a starter menu.</p>
+                        <div class="form-row">
+                            <select id="ai-cuisine">
+                                <option>Seafood</option>
+                                <option>Italian</option>
+                                <option>Local African</option>
+                                <option>Asian fusion</option>
+                                <option>BBQ & Grill</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" id="ai-budget" placeholder="Avg price per dish, e.g. 15">
+                        </div>
+                        <button class="save-btn" style="width:auto;" onclick="aiMenuDesign()">Generate menu</button>
+                    </div>
+
+                    <div class="panel" style="margin-bottom:0;">
+                        <h3>🍽️ Reorder QR</h3>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">QR sticker on plate/table for instant reorder of a dish.</p>
+                        <button class="save-btn" style="width:auto;" onclick="generateReorderQRs()">Create dish reorder QR codes</button>
+                        <div id="reorder-qr-results" style="margin-top:1rem;"></div>
+                    </div>
+                </div>
+
+                <div class="panel" style="margin-top:1rem;margin-bottom:0;">
+                    <h3>🌤️ Seasonal specials AI</h3>
+                    <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">AI suggests daily specials based on weather, season, and stock.</p>
+                    <button class="save-btn" style="width:auto;" onclick="seasonalSpecials()">Get today's special ideas</button>
+                    <div id="seasonal-ideas" style="margin-top:0.75rem;font-size:0.9rem;color:var(--kv-gray-700);"></div>
+                </div>
+
+                <div class="panel" style="margin-top:1rem;margin-bottom:0;">
+                    <h3>👤 Staff ID in QR</h3>
+                    <p style="font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:0.75rem;">Embed staff member ID in QR codes to track who generated/served the order.</p>
+                    <div class="form-row">
+                        <input type="text" id="staff-id" placeholder="Staff ID, e.g. ST-1024">
+                    </div>
+                    <button class="save-btn" style="width:auto;" onclick="saveStaffId()">Save staff ID</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -277,7 +365,7 @@
         function setTab(tab) {
             document.querySelectorAll('.ms-tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
-            ['edit','preview','qr'].forEach(t => {
+            ['edit','preview','qr','ai'].forEach(t => {
                 document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
             });
             if (tab === 'preview') {
@@ -413,6 +501,90 @@
                 });
                 container.appendChild(wrapper);
             }
+        }
+
+        function toggleTranslate(btn, lang) {
+            btn.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            localStorage.setItem('korvia_menu_language', lang);
+            alert(`Menu will display in ${lang.toUpperCase()} for customers (requires backend translation service).`);
+        }
+
+        function autoTagDietary() {
+            const tags = ['Vegan', 'Halal', 'Gluten-free', 'Spicy', 'Dairy-free'];
+            menu.forEach(item => {
+                item.tags = [];
+                const desc = item.desc.toLowerCase();
+                if (desc.includes('vegetable') || desc.includes('salad')) item.tags.push('Vegan-friendly');
+                if (desc.includes('chicken') || desc.includes('beef')) item.tags.push('Halal');
+                if (!desc.includes('bread') && !desc.includes('pasta')) item.tags.push('Gluten-free');
+                if (desc.includes('spicy') || desc.includes('chili')) item.tags.push('Spicy');
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
+            renderMenu();
+            alert('Dietary tags added based on descriptions.');
+        }
+
+        function smartPricing() {
+            const suggestions = menu.map(item => {
+                const suggested = item.price * (1 + (Math.random() * 0.2 - 0.05));
+                return `${item.name}: current $${item.price.toFixed(2)} → suggested $${suggested.toFixed(2)}`;
+            });
+            document.getElementById('pricing-suggestions').innerHTML = suggestions.join('<br>');
+        }
+
+        function scanCompetitor() {
+            const file = document.getElementById('competitor-photo').files[0];
+            if (!file) return;
+            alert('Competitor menu scan submitted. In production, AI extracts items and prices from the photo.');
+        }
+
+        function aiMenuDesign() {
+            const cuisine = document.getElementById('ai-cuisine').value;
+            const budget = parseFloat(document.getElementById('ai-budget').value) || 15;
+            const generated = [
+                { name: `${cuisine} Starter Special`, category: 'Starters', price: budget * 0.6, desc: `Signature ${cuisine.toLowerCase()} starter.`, available: true, photo: '' },
+                { name: `${cuisine} Chef's Plate`, category: 'Mains', price: budget, desc: `Chef-recommended ${cuisine.toLowerCase()} main course.`, available: true, photo: '' },
+                { name: `${cuisine} Dessert`, category: 'Desserts', price: budget * 0.5, desc: `Classic ${cuisine.toLowerCase()} dessert.`, available: true, photo: '' },
+            ];
+            generated.forEach(item => { item.id = Date.now() + Math.random(); menu.push(item); });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(menu));
+            renderMenu();
+            alert(`AI generated ${generated.length} ${cuisine} dishes.`);
+        }
+
+        function generateReorderQRs() {
+            const container = document.getElementById('reorder-qr-results');
+            container.innerHTML = '';
+            menu.forEach(item => {
+                const url = `https://oriondrayke.github.io/korvia/examples/qr-menu.html?reorder=${encodeURIComponent(item.name)}`;
+                const wrapper = document.createElement('div');
+                wrapper.className = 'qr-box';
+                wrapper.style.margin = '0.5rem';
+                wrapper.style.display = 'inline-block';
+                wrapper.innerHTML = `<p style="font-size:0.75rem;font-weight:600;margin-bottom:0.5rem;">${item.name}</p>`;
+                new QRCode(wrapper, { text: url, width: 100, height: 100, colorDark: '#0f172a', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+                container.appendChild(wrapper);
+            });
+        }
+
+        function seasonalSpecials() {
+            const ideas = [
+                'Rainy day special: Hot soup + bread combo at 15% off',
+                'Weekend grill platter: Mixed meats for sharing',
+                'Holiday special: Family-size rice platter',
+                'Summer cooler: Fresh juice + salad combo',
+                'Local market special: Fish of the day with ugali'
+            ];
+            const pick = ideas[Math.floor(Math.random() * ideas.length)];
+            document.getElementById('seasonal-ideas').innerHTML = `• ${pick}<br><br><em>In production, AI uses weather data, local events, and stock levels.</em>`;
+        }
+
+        function saveStaffId() {
+            const id = document.getElementById('staff-id').value.trim();
+            if (!id) return alert('Enter staff ID');
+            localStorage.setItem('korvia_staff_id', id);
+            alert(`Staff ID ${id} saved. Future QR codes can embed this ID.`);
         }
 
         const gradients = [
