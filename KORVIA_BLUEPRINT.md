@@ -44,8 +44,8 @@ A single venue can operate in one or more verticals. For example, a hotel may ha
 |------|--------------|
 | **Guest / Customer** | Browse menu, order, pay, split bill, tip, rate, request help |
 | **Staff / Cook** | Edit menu in Menu Studio, manage item availability, view kitchen display |
-| **Waitress / Waiter** | Serve assigned tables/rooms, update order status, collect payment, resolve guest requests |
-| **Manager** | Monitor live orders, table status, staff roster, stock alerts, daily operations |
+| **Waitress / Waiter** | View all live orders, serve any table/room, update order status, collect payment, resolve guest requests |
+| **Manager** | Monitor all live orders, table status, staff roster, stock alerts, daily operations; access historical revenue only if owner grants permission |
 | **Owner** | View analytics, projections, feedback, manage subscription/billing, generate promo QR codes |
 | **Platform Admin** (Korvia team) | Onboard venues, moderate marketplace, manage payouts, feature venues |
 
@@ -56,11 +56,35 @@ A single venue can operate in one or more verticals. For example, a hotel may ha
 | View menu | own venue only | own venue | own venue | own venue | own venue | all |
 | Place order | own session | no | no | no | no | no |
 | Update menu | no | yes | no | yes | yes | no |
-| Manage orders | no | kitchen only | assigned spots | yes | yes | read-only |
-| View analytics | no | no | no | partial | full | all |
+| View all live orders | no | kitchen only | yes | yes | yes | read-only |
+| Update order status | no | kitchen only | yes (serve/collect) | yes | yes | no |
+| View historical orders | no | no | no | owner-granted | yes | read-only |
+| View revenue / payouts | no | no | no | owner-granted | yes | admin only |
 | Manage staff | no | no | no | yes | yes | no |
 | Billing | no | no | no | no | yes | admin only |
 | Feature in Client Hub | no | no | no | no | opt-in | yes |
+
+### 3.2 Cross-venue isolation and sensitive data
+
+#### Order visibility rule
+
+Waiters and waitresses can **view all live orders**, not only their assigned tables. This prevents missed orders and avoids blame when an assigned waiter does not see an order that another staff member could have handled. However, they can only update status on orders they are serving or collecting payment for.
+
+#### Sensitive financial data
+
+- **Owner** has full access to revenue, payouts, projections, and historical analytics by default.
+- **Manager** sees only operational numbers needed to run the shift (active orders, occupied tables, today's sales).
+- **Historical revenue, profit margins, and payout data** are owner-only by default.
+- Owner can grant managers expanded financial access in venue settings if needed.
+- **Sensitive actions** — refunds, price changes, payout requests, staff role changes — can require owner OTP approval.
+
+#### Cross-venue login prevention
+
+1. **Global account, per-venue access.** One `Account` per email/phone. A user can have multiple `StaffProfile` records, each tied to a different venue and role.
+2. **Invitation-only access.** Staff cannot self-register for a venue. The owner or manager invites them by email/phone and assigns a role. The invitation is tied to a single venue.
+3. **JWT contains `venue_id`.** After login, if the user belongs to multiple venues, they pick one. Every API request enforces `WHERE venue_id = jwt.venue_id`.
+4. **Role-based filtering.** Even within a venue, endpoints filter data by role. A waiter cannot view billing or manage staff.
+5. **No URL guessing.** Direct object references (e.g., `/orders/123`) verify both ownership and role before returning data.
 
 ---
 
@@ -153,10 +177,20 @@ Payment
 ├── paid_at, refunded_at
 
 StaffProfile
-├── id, account_id, venue_id, role
-├── assigned_spots, shift_start, shift_end
+├── id, account_id, venue_id
+├── role (owner | manager | waiter | staff | kitchen)
+├── permissions: ["view:all_orders", "edit:menu", "view:revenue"]
+├── assigned_spots (optional)
+├── shift_start, shift_end
 ├── tips_earned
+├── invitation_status (pending | active | revoked)
+├── created_by_owner_id
 └── is_active
+
+Invitation
+├── id, venue_id, email, phone, role
+├── invited_by, token, expires_at
+└── status (pending | accepted | expired | revoked)
 
 Feedback
 ├── id, venue_id, order_id, rating, comment, tags
@@ -337,22 +371,33 @@ menu:updated        { venue_id }
 - **Phone OTP** for quick staff onboarding and guest checkout.
 - **Magic link** optional for owners.
 
-### 8.2 JWT claims
+### 8.2 Multi-venue login flow
+
+1. User logs in with email/phone + password or OTP.
+2. System looks up all active `StaffProfile` records for that account.
+3. If the user has only one venue, the JWT is issued with that `venue_id` and `role`.
+4. If the user has multiple venues, the API returns a venue list and the user selects one before receiving a scoped JWT.
+5. To switch venues, the user logs out and back in, or requests a new token for a different venue (if permitted).
+
+### 8.3 JWT claims
 
 ```json
 {
   "sub": "account_id",
   "venue_id": "venue_id",
+  "staff_profile_id": "staff_profile_id",
   "role": "owner | manager | waiter | staff | admin",
-  "permissions": ["read:orders", "write:menu"]
+  "permissions": ["read:orders", "write:menu", "view:revenue"]
 }
 ```
 
-### 8.3 Middleware
+### 8.4 Middleware
 
 - `requireAuth` — valid JWT.
 - `requireRole(...roles)` — role-based access.
-- `requireVenueAccess` — user belongs to the requested venue.
+- `requireVenueAccess` — user's `StaffProfile` belongs to the requested venue.
+- `requirePermission(...permissions)` — fine-grained permission check (e.g., `view:revenue`).
+- `requireOwnerApproval` — triggers OTP challenge for sensitive actions.
 
 ---
 

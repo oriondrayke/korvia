@@ -78,12 +78,37 @@
         }
         .back-link:hover { color: #f97316; }
         .section-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; }
+        .tables-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+        .table-chip {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 0.9rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--kv-gray-300);
+        }
+        .table-chip.active { border-left-color: #22c55e; }
+        .table-chip.call { border-left-color: #f97316; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .table-chip h4 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+        .table-chip p { font-size: 0.7rem; color: var(--kv-gray-500); margin: 0; }
+        .request-card {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 0.75rem;
+            padding: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .request-card button { background: #f97316; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 0.4rem; cursor: pointer; font-size: 0.8rem; }
     </style>
 </head>
 <body>
     <header class="wd-header">
         <h1>Waitress Dashboard</h1>
-        <p>Track your tables, serve orders, and collect payments.</p>
+        <p>Track all tables, serve orders, and collect payments.</p>
     </header>
 
     <main class="wd-main">
@@ -91,7 +116,7 @@
 
         <div class="wd-grid">
             <div class="wd-card">
-                <h2>My active tables</h2>
+                <h2>Active orders</h2>
                 <div class="number" id="active-tables">0</div>
             </div>
             <div class="wd-card">
@@ -104,7 +129,13 @@
             </div>
         </div>
 
-        <h2 class="section-title">Live orders</h2>
+        <h2 class="section-title">All tables</h2>
+        <div class="tables-grid" id="all-tables"></div>
+
+        <h2 class="section-title">Customer requests</h2>
+        <div id="requests-list"></div>
+
+        <h2 class="section-title">All live orders</h2>
         <div id="orders-list"></div>
     </main>
 
@@ -130,13 +161,43 @@
             return diff < 1 ? 'just now' : `${diff} min ago`;
         }
 
+        const myTables = ['1', '2', '3', '4'];
+        let requests = JSON.parse(localStorage.getItem('korvia_waitress_requests') || '[]');
+
         function render() {
             const orders = loadOrders();
-            const active = [...new Set(orders.filter(o => o.status !== 'done').map(o => o.spot))];
+            const active = orders.filter(o => o.status !== 'done' && o.status !== 'paid');
             const ready = orders.filter(o => o.status === 'ready');
+            const myActive = active.filter(o => myTables.includes(o.spot));
+            const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+            const myTips = tips.reduce((s, t) => s + t.amount, 0);
 
             document.getElementById('active-tables').textContent = active.length;
             document.getElementById('ready-orders').textContent = ready.length;
+            document.querySelector('.wd-card:nth-child(3) .number').textContent = '$' + myTips.toFixed(0);
+
+            const allTables = ['1', '2', '3', '4', '5', '6', '7', '8'];
+            document.getElementById('all-tables').innerHTML = allTables.map(t => {
+                const hasCall = requests.some(r => r.table === t && !r.resolved);
+                const isActive = active.some(o => o.spot === t);
+                const isMine = myTables.includes(t);
+                return `
+                    <div class="table-chip ${isActive ? 'active' : ''} ${hasCall ? 'call' : ''}">
+                        <h4>Table ${t}${isMine ? ' • You' : ''}</h4>
+                        <p>${hasCall ? 'Needs help' : isActive ? 'Active' : 'Free'}</p>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('requests-list').innerHTML = requests.filter(r => !r.resolved).length ? requests.filter(r => !r.resolved).map(r => `
+                <div class="request-card">
+                    <div>
+                        <strong>Table ${r.table}</strong>
+                        <p style="font-size:0.85rem;color:var(--kv-gray-600);margin:0;">${r.message}</p>
+                    </div>
+                    <button onclick="resolveRequest('${r.id}')">Done</button>
+                </div>
+            `).join('') : '<p style="color:var(--kv-gray-500);">No customer requests.</p>';
 
             const list = document.getElementById('orders-list');
             if (orders.length === 0) {
@@ -144,10 +205,12 @@
                 return;
             }
 
-            list.innerHTML = orders.map(order => `
+            list.innerHTML = orders.map(order => {
+                const isMine = myTables.includes(order.spot);
+                return `
                 <div class="order-card ${order.status}">
                     <div class="order-header">
-                        <strong>${order.spotType === 'hotel' ? 'Room' : order.spotType === 'events' ? 'Stall' : 'Table'} ${order.spot}</strong>
+                        <strong>${order.spotType === 'hotel' ? 'Room' : order.spotType === 'events' ? 'Stall' : 'Table'} ${order.spot}${isMine ? ' <span style="color:#f97316;">(Yours)</span>' : ''}</strong>
                         <span class="order-status status-${order.status}">${order.status}</span>
                     </div>
                     <div class="order-items">
@@ -159,7 +222,13 @@
                         ${order.status === 'done' ? `<button class="btn-pay" onclick="updateStatus('${order.id}', 'paid')">Collect payment</button>` : ''}
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
+        }
+
+        function resolveRequest(id) {
+            requests = requests.map(r => r.id === id ? { ...r, resolved: true } : r);
+            localStorage.setItem('korvia_waitress_requests', JSON.stringify(requests));
+            render();
         }
 
         render();
