@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korvia — Staff Hub Login</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--kv-font-sans);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .auth-box {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 1.25rem;
+            padding: 2rem;
+        }
+        .auth-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 1rem;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+        .auth-box h1 { text-align: center; font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .auth-box .subtitle { text-align: center; opacity: 0.7; margin-bottom: 1.5rem; }
+        .step-badge {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.85rem; margin-bottom: 0.35rem; opacity: 0.9; }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 1rem;
+        }
+        .form-group input::placeholder { color: rgba(255,255,255,0.4); }
+        .hint {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 0.35rem;
+        }
+        .otp-row { display: flex; gap: 0.5rem; }
+        .otp-row input { flex: 1; }
+        .otp-row button {
+            padding: 0 1rem;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .auth-btn {
+            width: 100%;
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .auth-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .back-link {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { color: #f97316; }
+        .hidden { display: none; }
+        .audit-note {
+            margin-top: 1.25rem;
+            padding: 0.9rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        .audit-note strong { color: #fb923c; }
+    </style>
+</head>
+<body>
+    <div class="auth-box">
+        <div class="auth-logo">K</div>
+        <h1>Staff Hub Login</h1>
+        <p class="subtitle">Waiter, waitress, kitchen, and staff entry</p>
+
+        <div class="step-badge" id="step-badge">Step 1 of 2 — Identify yourself</div>
+
+        <form id="staff-auth-form" onsubmit="event.preventDefault(); handleSubmit();">
+            <div id="step-1">
+                <div class="form-group">
+                    <label>Your worker handle</label>
+                    <input type="text" id="worker-handle" placeholder="e.g. anna" required>
+                    <p class="hint">The short name the venue gave you.</p>
+                </div>
+                <div class="form-group">
+                    <label>Restaurant username</label>
+                    <input type="text" id="restaurant-username" placeholder="e.g. sunset-bistro" required>
+                    <p class="hint">The venue's username or slug.</p>
+                </div>
+                <div class="form-group">
+                    <label>Restaurant email</label>
+                    <input type="email" id="restaurant-email" placeholder="owner@sunsetbistro.co.tz" required>
+                    <p class="hint">The email registered to the venue.</p>
+                </div>
+                <button type="button" class="auth-btn" onclick="lookupAndSendOTP()">Request manager/owner OTP</button>
+            </div>
+
+            <div id="step-2" class="hidden">
+                <div class="form-group">
+                    <label>Manager / owner OTP</label>
+                    <div class="otp-row">
+                        <input type="text" id="otp" placeholder="123456" maxlength="6" required>
+                        <button type="button" onclick="sendOTP()">Resend</button>
+                    </div>
+                    <p class="hint">Ask the manager or owner for the code sent to their phone/email.</p>
+                </div>
+                <button type="submit" class="auth-btn" id="login-btn">Start shift and log in</button>
+            </div>
+        </form>
+
+        <div class="audit-note">
+            <strong>Tracked for security:</strong> this login creates a shift record tied to your worker handle, venue, device, and the approving manager or owner. Owners can review all staff login attempts and active shifts.
+        </div>
+    </div>
+
+    <a href="role-select.html" class="back-link">← Back to portal selection</a>
+
+    <script>
+        let currentStep = 1;
+
+        function setStep(step) {
+            currentStep = step;
+            document.getElementById('step-1').classList.toggle('hidden', step !== 1);
+            document.getElementById('step-2').classList.toggle('hidden', step !== 2);
+            document.getElementById('step-badge').textContent = step === 1
+                ? 'Step 1 of 2 — Identify yourself'
+                : 'Step 2 of 2 — Manager/owner approval';
+        }
+
+        function getFormValues() {
+            return {
+                handle: document.getElementById('worker-handle').value.trim().toLowerCase(),
+                venue: document.getElementById('restaurant-username').value.trim().toLowerCase(),
+                email: document.getElementById('restaurant-email').value.trim().toLowerCase()
+            };
+        }
+
+        function lookupAndSendOTP() {
+            const { handle, venue, email } = getFormValues();
+            if (!handle || !venue || !email) {
+                alert('Fill in all fields.');
+                return;
+            }
+
+            // Demo lookup: validate against a few seeded examples
+            const knownWorkers = {
+                'anna': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'waiter', name: 'Anna' },
+                'ben': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'staff', name: 'Ben' },
+                'grace': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'kitchen', name: 'Grace' }
+            };
+
+            const worker = knownWorkers[handle];
+            if (!worker || worker.venue !== venue || worker.email !== email) {
+                alert('No active worker found for that handle, restaurant, and email. Check with the owner.');
+                return;
+            }
+
+            sendOTP();
+            setStep(2);
+        }
+
+        function sendOTP() {
+            const code = Math.floor(100000 + Math.random() * 900000);
+            localStorage.setItem('korvia_staff_otp', code);
+            alert(`Demo OTP sent to manager/owner: ${code}`);
+        }
+
+        function handleSubmit() {
+            const { handle, venue, email } = getFormValues();
+            const otp = document.getElementById('otp').value;
+            const storedOTP = localStorage.getItem('korvia_staff_otp') || '123456';
+
+            if (otp !== storedOTP) {
+                alert('Invalid OTP. Ask the manager/owner for the current code.');
+                return;
+            }
+
+            const knownWorkers = {
+                'anna': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'waiter', name: 'Anna' },
+                'ben': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'staff', name: 'Ben' },
+                'grace': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'kitchen', name: 'Grace' }
+            };
+            const worker = knownWorkers[handle];
+
+            // Create a tracked shift/session
+            const shift = {
+                id: 'shift_' + Date.now(),
+                handle,
+                venue,
+                email,
+                role: worker.role,
+                name: worker.name,
+                startedAt: new Date().toISOString(),
+                device: navigator.userAgent
+            };
+            localStorage.setItem('korvia_staff_session', JSON.stringify(shift));
+
+            // Append to audit log
+            const log = JSON.parse(localStorage.getItem('korvia_staff_auth_log') || '[]');
+            log.push({
+                id: 'attempt_' + Date.now(),
+                handle,
+                venue,
+                email,
+                status: 'approved',
+                at: new Date().toISOString()
+            });
+            localStorage.setItem('korvia_staff_auth_log', JSON.stringify(log));
+
+            // Route by role
+            let destination = 'waitress-dashboard.html';
+            if (worker.role === 'kitchen' || worker.role === 'staff') destination = 'menu-editor.html';
+            window.location.href = destination;
+        }
+    </script>
+</body>
+</html>

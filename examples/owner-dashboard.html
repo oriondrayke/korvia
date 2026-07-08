@@ -160,6 +160,11 @@
         </div>
 
         <div class="od-section">
+            <h2>Active Staff Shifts</h2>
+            <div id="active-shifts-list"></div>
+        </div>
+
+        <div class="od-section">
             <h2>Weekly Sales</h2>
             <div class="bar-chart" id="weekly-chart"></div>
         </div>
@@ -191,6 +196,8 @@
             document.getElementById('proj-month').textContent = '$' + projected.toFixed(0);
             document.getElementById('income-per-order').textContent = '$' + incomePerOrder.toFixed(2);
             document.getElementById('live-orders-count').textContent = live.length;
+
+            renderActiveShifts();
 
             document.getElementById('live-orders-list').innerHTML = live.length ? live.map(o => `
                 <div class="order-row">
@@ -230,6 +237,32 @@
                     <strong>${count} sold</strong>
                 </div>
             `).join('') : '<p style="color:var(--kv-gray-500);">No orders yet.</p>';
+        }
+
+        function renderActiveShifts() {
+            const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
+            const container = document.getElementById('active-shifts-list');
+            if (!session) {
+                container.innerHTML = '<p style="color:var(--kv-gray-500);">No active staff shifts.</p>';
+                return;
+            }
+            const started = new Date(session.startedAt);
+            const mins = Math.floor((Date.now() - started.getTime()) / 60000);
+            container.innerHTML = `
+                <div class="order-row">
+                    <div>
+                        <strong>${session.name} (${session.handle})</strong>
+                        <p style="font-size:0.8rem;color:var(--kv-gray-500);margin:0;">${session.role} • ${session.venue} • on duty ${mins} min</p>
+                    </div>
+                    <span>${session.device.split(' ')[0]}</span>
+                    <button onclick="endShift()" class="status-pill" style="background:#fee2e2;color:#991b1b;border:none;cursor:pointer;">End shift</button>
+                </div>
+            `;
+        }
+
+        function endShift() {
+            localStorage.removeItem('korvia_staff_session');
+            renderActiveShifts();
         }
 
         render();

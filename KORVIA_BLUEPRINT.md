@@ -86,6 +86,32 @@ Waiters and waitresses can **view all live orders**, not only their assigned tab
 4. **Role-based filtering.** Even within a venue, endpoints filter data by role. A waiter cannot view billing or manage staff.
 5. **No URL guessing.** Direct object references (e.g., `/orders/123`) verify both ownership and role before returning data.
 
+#### Staff onboarding and owner approval
+
+Staff cannot join a venue without explicit owner approval. The flow ensures every staff member is tied to a real restaurant and approved by the owner.
+
+1. **Owner or manager invites staff.** They enter:
+   - Full name (e.g., Anna)
+   - Email or phone
+   - Role (waiter, manager, kitchen, etc.)
+   - Venue (always the current venue)
+   - Optional: assigned spots
+
+2. **System sends approval request to the restaurant's owner email.** For management roles (manager, owner-level permissions), the owner must approve via OTP sent to the restaurant's registered email.
+
+3. **Staff receives invitation.** After owner approval, the invited person gets an email/SMS with a secure link to accept the invitation and set their own password.
+
+4. **Staff creates password and account.** Their `Account` is created and linked to the venue via a `StaffProfile`.
+
+5. **Staff logs in.** They use their email/phone + password. The JWT is scoped to the venue they were invited to.
+
+6. **Manager vs owner approval.**
+   - Managers can invite waiters and kitchen staff.
+   - Only owners can invite other managers or approve management-level invites.
+   - All manager invites require owner OTP approval via the restaurant email.
+
+7. **Revocation.** Owners can revoke staff access at any time, which invalidates the `StaffProfile` and JWTs.
+
 ---
 
 ## 4. User Journeys
@@ -117,9 +143,11 @@ Waiters and waitresses can **view all live orders**, not only their assigned tab
 
 ```
 Account
-├── id, email, phone, name, role
+├── id, email, phone, name (e.g., Anna)
+├── password_hash, email_verified, phone_verified
+├── role (super_admin)
 ├── created_at, updated_at
-└── belongs_to Venue (optional for platform admins)
+└── has many StaffProfiles (one per venue)
 
 Venue
 ├── id, name, slug, type (restaurant | hotel | event | mixed)
@@ -179,18 +207,35 @@ Payment
 StaffProfile
 ├── id, account_id, venue_id
 ├── role (owner | manager | waiter | staff | kitchen)
+├── worker_handle: "anna" (unique per venue, used at staff login)
 ├── permissions: ["view:all_orders", "edit:menu", "view:revenue"]
 ├── assigned_spots (optional)
-├── shift_start, shift_end
 ├── tips_earned
 ├── invitation_status (pending | active | revoked)
 ├── created_by_owner_id
+├── approved_by_owner_id
 └── is_active
 
 Invitation
 ├── id, venue_id, email, phone, role
+├── worker_handle (suggested login handle)
 ├── invited_by, token, expires_at
 └── status (pending | accepted | expired | revoked)
+
+WorkerAuthAttempt
+├── id, venue_id, staff_profile_id
+├── worker_handle, restaurant_username, restaurant_email
+├── manager_or_owner_id, otp_code, otp_sent_to
+├── ip_address, device_fingerprint
+├── status (pending | approved | denied | expired)
+└── created_at, resolved_at
+
+Shift
+├── id, venue_id, staff_profile_id
+├── started_at, ended_at
+├── start_auth_attempt_id, end_auth_attempt_id
+├── device_fingerprint
+└── orders_served_count, tips_earned
 
 Feedback
 ├── id, venue_id, order_id, rating, comment, tags
@@ -291,6 +336,12 @@ Authentication: JWT in `Authorization: Bearer <token>` header.
 | GET | `/venues/:id/staff` | List staff |
 | PATCH | `/staff/:id` | Update staff role/assignment |
 | DELETE | `/staff/:id` | Remove staff |
+| POST | `/staff-auth/lookup` | Look up worker by handle + venue + email |
+| POST | `/staff-auth/otp` | Request manager/owner OTP |
+| POST | `/staff-auth/verify` | Verify OTP, issue JWT, start shift |
+| POST | `/staff-auth/logout` | End shift and invalidate token |
+| GET | `/venues/:id/shifts` | List shifts |
+| POST | `/shifts/:id/end` | Force-end shift |
 
 ### 6.7 Payments
 
@@ -367,37 +418,118 @@ menu:updated        { venue_id }
 
 ### 8.1 Auth methods
 
-- **Email + password** for owners and managers.
-- **Phone OTP** for quick staff onboarding and guest checkout.
-- **Magic link** optional for owners.
+- **Email + password** — every staff member, manager, and owner has a personal account with name, email, and password.
+- **Phone OTP** — for quick staff onboarding and guest checkout.
+- **Magic link** — optional for owners.
 
-### 8.2 Multi-venue login flow
+Every login identifies **who** the person is (e.g., Anna), **which venue** they belong to, and **what role** they have there. A user can work at multiple venues with the same identity but different roles.
 
-1. User logs in with email/phone + password or OTP.
-2. System looks up all active `StaffProfile` records for that account.
-3. If the user has only one venue, the JWT is issued with that `venue_id` and `role`.
-4. If the user has multiple venues, the API returns a venue list and the user selects one before receiving a scoped JWT.
-5. To switch venues, the user logs out and back in, or requests a new token for a different venue (if permitted).
+### 8.2 Login flow
 
-### 8.3 JWT claims
+1. User enters email/phone + password (or requests OTP).
+2. System authenticates the `Account` and looks up active `StaffProfile` records.
+3. If no venue is found, access is denied.
+4. If one venue, the JWT is issued with `venue_id`, `staff_profile_id`, `role`, and `name`.
+5. If multiple venues, the user picks a venue and receives a token scoped to that venue.
+
+### 8.3 Multi-venue switching
+
+- A user can belong to multiple venues (e.g., Anna works at two restaurants).
+- To switch venues, the user selects from a venue list; a new scoped JWT is issued.
+- No token can access data outside its `venue_id`.
+
+### 8.4 JWT claims
 
 ```json
 {
   "sub": "account_id",
+  "name": "Anna",
   "venue_id": "venue_id",
+  "venue_name": "Sunset Bistro",
   "staff_profile_id": "staff_profile_id",
   "role": "owner | manager | waiter | staff | admin",
   "permissions": ["read:orders", "write:menu", "view:revenue"]
 }
 ```
 
-### 8.4 Middleware
+### 8.5 Middleware
 
 - `requireAuth` — valid JWT.
 - `requireRole(...roles)` — role-based access.
 - `requireVenueAccess` — user's `StaffProfile` belongs to the requested venue.
 - `requirePermission(...permissions)` — fine-grained permission check (e.g., `view:revenue`).
 - `requireOwnerApproval` — triggers OTP challenge for sensitive actions.
+
+---
+
+## 8.6 Staff hub login and shift tracking
+
+Staff, waiters, waitresses, and kitchen workers do **not** log in with the same screen as owners. They use a separate **staff hub login** that binds their identity to a specific venue and creates an auditable shift record.
+
+### Why a separate flow
+
+- A worker can work at multiple venues with the same personal email but a different `worker_handle` per venue.
+- The venue owner or manager must explicitly approve each staff login attempt with an OTP.
+- Every successful login starts a tracked `Shift`, so owners know **who was on duty, when, and on which device**.
+
+### Staff login fields
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| Worker handle | Short unique name inside the venue | `anna` |
+| Restaurant username | Venue slug / owner username | `sunset-bistro` |
+| Restaurant email | Registered venue email for verification | `owner@sunsetbistro.co.tz` |
+| Manager/owner OTP | One-time code sent to the approving manager or owner | `739201` |
+
+### Staff login flow
+
+1. **Worker opens staff hub** and enters:
+   - Worker handle (e.g., `anna`)
+   - Restaurant username / venue slug (e.g., `sunset-bistro`)
+   - Restaurant email (e.g., `owner@sunsetbistro.co.tz`)
+
+2. **System looks up** the `StaffProfile` where:
+   - `worker_handle` matches
+   - `Venue.slug` matches
+   - `Venue.contact.email` matches
+   - `StaffProfile.is_active` is true
+
+3. **OTP request.** If the profile exists, the system sends an OTP to the venue owner or an on-duty manager. The worker cannot proceed without approval.
+
+4. **Manager/owner approves.** The approving person receives the OTP and shares it with the worker (in person or via a trusted channel). For higher security, the approver can also see the worker's device fingerprint before confirming.
+
+5. **Worker enters OTP.** The system creates a `WorkerAuthAttempt` record with status `approved` and issues a short-lived JWT scoped to the venue.
+
+6. **Shift starts.** A `Shift` record is created with `started_at` and the approved `WorkerAuthAttempt`. The worker is now on duty.
+
+7. **Shift ends.** When the worker logs out, closes the tab, or the shift timeout fires, the `Shift` is closed and `ended_at` is recorded.
+
+### Shift rules
+
+- A worker can only have **one active shift per venue at a time**.
+- JWTs issued to staff are short-lived (e.g., 4 hours or the configured shift length).
+- Owners can force-end any active shift from the owner dashboard.
+- Orders updated by a worker are tagged with the active `shift_id` for audit.
+
+### Security benefits
+
+- Stolen credentials alone are not enough; the owner/manager OTP is required.
+- Each worker is bound to one venue per login, preventing cross-venue data leaks.
+- The audit trail proves **who served which order** during which shift.
+- Device fingerprinting helps detect suspicious logins (new phone, new location).
+
+### API endpoints for staff auth and shifts
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/staff-auth/lookup` | Look up venue by worker handle + restaurant username + restaurant email |
+| POST | `/staff-auth/otp` | Request owner/manager OTP for a staff login attempt |
+| POST | `/staff-auth/verify` | Verify OTP and issue staff JWT + start shift |
+| POST | `/staff-auth/logout` | End current shift and invalidate token |
+| GET | `/venues/:id/shifts` | List shifts for a venue (owner/manager) |
+| GET | `/shifts/:id` | Get shift details |
+| POST | `/shifts/:id/end` | Force-end a shift (owner/manager) |
+| GET | `/venues/:id/worker-auth-attempts` | Audit log of staff login attempts (owner) |
 
 ---
 
@@ -524,6 +656,7 @@ The prototype hints at an AI tools tab. Recommended AI features:
 
 - [ ] Database schema and migrations
 - [ ] Auth system (register, login, OTP, roles)
+- [ ] Staff hub login with worker handle + venue + manager/owner OTP + shift tracking
 - [ ] Venue and spot management
 - [ ] Menu CRUD with categories and items
 - [ ] QR code generation service (server-side, stored images, bulk generation)
