@@ -286,6 +286,16 @@ Authentication: JWT in `Authorization: Bearer <token>` header.
 | GET | `/hub/featured` | Featured venues |
 | POST | `/hub/venues/:id/claim` | Claim a venue listing (admin) |
 
+### 6.10 QR code generation
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/spots/:id/qr` | Generate QR image for a spot |
+| GET | `/spots/:id/qr` | Retrieve existing QR image URL |
+| POST | `/venues/:id/qr/bulk` | Bulk-generate QR codes for all spots |
+
+**Implementation note:** QR codes must be generated server-side, stored in object storage (R2/S3), and linked to the spot record. The encoded URL must follow the public menu format: `https://korvia.io/m/{venue_slug}/{spot_code}`. A dedicated QR generation service/module is required.
+
 ---
 
 ## 7. Real-Time Architecture
@@ -426,6 +436,7 @@ The prototype hints at an AI tools tab. Recommended AI features:
 | Storage | Cloudflare R2 / AWS S3 | Menu photos, QR images |
 | Search | PostgreSQL full-text or Meilisearch | Client Hub search |
 | Auth | Custom JWT + bcrypt/Argon2 | Full control over roles |
+| QR generation | `qrcode` (Node.js) or `qrcode` + Pillow (Python) | Server-side QR creation |
 
 ### 12.2 Frontend
 
@@ -470,7 +481,7 @@ The prototype hints at an AI tools tab. Recommended AI features:
 - [ ] Auth system (register, login, OTP, roles)
 - [ ] Venue and spot management
 - [ ] Menu CRUD with categories and items
-- [ ] QR code generation
+- [ ] QR code generation service (server-side, stored images, bulk generation)
 
 ### Phase 2: Order engine
 
@@ -524,3 +535,7 @@ The existing static prototype in `~/github-recovery/korvia` is a functional UX r
 ---
 
 *Last updated: 2026-07-08*
+
+### QR code generation reminder
+
+A dedicated QR code generation instrument must be implemented when backend development begins. See sections 6.10 and 12.1 for requirements and tool recommendations.
