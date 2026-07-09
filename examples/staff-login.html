@@ -40,6 +40,23 @@
         }
         .auth-box h1 { text-align: center; font-size: 1.4rem; margin-bottom: 0.25rem; }
         .auth-box .subtitle { text-align: center; opacity: 0.7; margin-bottom: 1.5rem; }
+        .method-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .method-tab {
+            flex: 1;
+            padding: 0.6rem;
+            text-align: center;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .method-tab.active { background: #f97316; border-color: #f97316; }
         .step-badge {
             display: inline-block;
             background: rgba(249, 115, 22, 0.2);
@@ -112,6 +129,35 @@
             opacity: 0.8;
         }
         .audit-note strong { color: #fb923c; }
+        .alert {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            display: none;
+        }
+        .alert.warn { background: #fef3c7; color: #92400e; }
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .avatar {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .avatar:hover, .avatar.selected {
+            background: rgba(249, 115, 22, 0.2);
+            border-color: #f97316;
+        }
+        .avatar .icon { font-size: 1.5rem; margin-bottom: 0.35rem; }
+        .avatar .name { font-size: 0.85rem; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -120,38 +166,62 @@
         <h1>Staff Hub Login</h1>
         <p class="subtitle">Waiter, waitress, kitchen, and staff entry</p>
 
+        <div class="method-tabs">
+            <div class="method-tab active" onclick="setMethod('full')" id="tab-full">Full login</div>
+            <div class="method-tab" onclick="setMethod('pin')" id="tab-pin">Tablet PIN</div>
+        </div>
+
+        <div class="alert warn" id="alert-box"></div>
+
         <div class="step-badge" id="step-badge">Step 1 of 2 — Identify yourself</div>
 
         <form id="staff-auth-form" onsubmit="event.preventDefault(); handleSubmit();">
-            <div id="step-1">
-                <div class="form-group">
-                    <label>Your worker handle</label>
-                    <input type="text" id="worker-handle" placeholder="e.g. anna" required>
-                    <p class="hint">The short name the venue gave you.</p>
+            <div id="full-flow">
+                <div id="step-1">
+                    <div class="form-group">
+                        <label>Your worker handle</label>
+                        <input type="text" id="worker-handle" placeholder="e.g. anna">
+                        <p class="hint">The short name the venue gave you.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Restaurant username</label>
+                        <input type="text" id="restaurant-username" placeholder="e.g. sunset-bistro">
+                        <p class="hint">The venue's username or slug.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Restaurant email</label>
+                        <input type="email" id="restaurant-email" placeholder="owner@sunsetbistro.co.tz">
+                        <p class="hint">The email registered to the venue.</p>
+                    </div>
+                    <button type="button" class="auth-btn" onclick="lookupAndSendOTP()">Request manager/owner OTP</button>
                 </div>
-                <div class="form-group">
-                    <label>Restaurant username</label>
-                    <input type="text" id="restaurant-username" placeholder="e.g. sunset-bistro" required>
-                    <p class="hint">The venue's username or slug.</p>
+
+                <div id="step-2" class="hidden">
+                    <div class="form-group">
+                        <label>Manager / owner OTP</label>
+                        <div class="otp-row">
+                            <input type="text" id="otp" placeholder="123456" maxlength="6">
+                            <button type="button" onclick="sendOTP()">Resend</button>
+                        </div>
+                        <p class="hint">Ask the manager or owner for the code sent to their phone/email.</p>
+                    </div>
+                    <button type="submit" class="auth-btn" id="login-btn">Start shift and log in</button>
                 </div>
-                <div class="form-group">
-                    <label>Restaurant email</label>
-                    <input type="email" id="restaurant-email" placeholder="owner@sunsetbistro.co.tz" required>
-                    <p class="hint">The email registered to the venue.</p>
-                </div>
-                <button type="button" class="auth-btn" onclick="lookupAndSendOTP()">Request manager/owner OTP</button>
             </div>
 
-            <div id="step-2" class="hidden">
-                <div class="form-group">
-                    <label>Manager / owner OTP</label>
-                    <div class="otp-row">
-                        <input type="text" id="otp" placeholder="123456" maxlength="6" required>
-                        <button type="button" onclick="sendOTP()">Resend</button>
-                    </div>
-                    <p class="hint">Ask the manager or owner for the code sent to their phone/email.</p>
+            <div id="pin-flow" class="hidden">
+                <div id="pin-step-1">
+                    <label style="display:block;font-size:0.85rem;margin-bottom:0.5rem;opacity:0.9;">Tap your name</label>
+                    <div class="avatar-grid" id="avatar-grid"></div>
                 </div>
-                <button type="submit" class="auth-btn" id="login-btn">Start shift and log in</button>
+                <div id="pin-step-2" class="hidden">
+                    <div class="form-group">
+                        <label>Enter your PIN</label>
+                        <input type="password" id="worker-pin" placeholder="••••" maxlength="6">
+                        <p class="hint">Demo PIN for Anna is 1234, Ben is 5678, Grace is 0000.</p>
+                    </div>
+                    <button type="button" class="auth-btn" onclick="verifyPIN()">Start shift</button>
+                </div>
             </div>
         </form>
 
@@ -163,10 +233,45 @@
     <a href="role-select.html" class="back-link">← Back to portal selection</a>
 
     <script>
-        let currentStep = 1;
+        let currentMethod = 'full';
+        let selectedHandle = null;
+
+        const knownWorkers = {
+            'anna': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'waiter', name: 'Anna', pin: '1234', icon: '👩‍🍳' },
+            'ben': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'staff', name: 'Ben', pin: '5678', icon: '👨‍🍳' },
+            'grace': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'kitchen', name: 'Grace', pin: '0000', icon: '👩‍🍳' }
+        };
+
+        function setMethod(method) {
+            currentMethod = method;
+            document.getElementById('tab-full').classList.toggle('active', method === 'full');
+            document.getElementById('tab-pin').classList.toggle('active', method === 'pin');
+            document.getElementById('full-flow').classList.toggle('hidden', method !== 'full');
+            document.getElementById('pin-flow').classList.toggle('hidden', method !== 'pin');
+            document.getElementById('step-badge').style.display = method === 'pin' ? 'none' : 'inline-block';
+            if (method === 'pin') renderAvatars();
+        }
+
+        function renderAvatars() {
+            const grid = document.getElementById('avatar-grid');
+            grid.innerHTML = Object.entries(knownWorkers).map(([handle, w]) => `
+                <div class="avatar" onclick="selectHandle('${handle}')" data-handle="${handle}">
+                    <div class="icon">${w.icon}</div>
+                    <div class="name">${w.name}</div>
+                </div>
+            `).join('');
+        }
+
+        function selectHandle(handle) {
+            selectedHandle = handle;
+            document.querySelectorAll('.avatar').forEach(el => {
+                el.classList.toggle('selected', el.dataset.handle === handle);
+            });
+            document.getElementById('pin-step-1').classList.add('hidden');
+            document.getElementById('pin-step-2').classList.remove('hidden');
+        }
 
         function setStep(step) {
-            currentStep = step;
             document.getElementById('step-1').classList.toggle('hidden', step !== 1);
             document.getElementById('step-2').classList.toggle('hidden', step !== 2);
             document.getElementById('step-badge').textContent = step === 1
@@ -182,6 +287,51 @@
             };
         }
 
+        function showAlert(msg) {
+            const box = document.getElementById('alert-box');
+            box.textContent = msg;
+            box.style.display = 'block';
+            setTimeout(() => box.style.display = 'none', 5000);
+        }
+
+        function detectSuspicious(handle, venue) {
+            const hour = new Date().getHours();
+            const isOffHours = hour < 6 || hour > 23;
+            const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
+            const doubleLogin = session && session.handle === handle && session.venue === venue;
+
+            if (isOffHours) return 'Login outside venue hours';
+            if (doubleLogin) return 'Same worker already has an active shift';
+            return null;
+        }
+
+        function recordAttempt(data, status) {
+            const log = JSON.parse(localStorage.getItem('korvia_staff_auth_attempts') || '[]');
+            log.unshift({
+                id: 'attempt_' + Date.now(),
+                ...data,
+                device: navigator.userAgent,
+                status,
+                at: new Date().toISOString()
+            });
+            localStorage.setItem('korvia_staff_auth_attempts', JSON.stringify(log));
+        }
+
+        function recordSecurityAlert(handle, venue, reason) {
+            const alerts = JSON.parse(localStorage.getItem('korvia_security_alerts') || '[]');
+            alerts.unshift({
+                id: 'alert_' + Date.now(),
+                handle,
+                venue,
+                type: reason,
+                severity: 'medium',
+                device: navigator.userAgent,
+                at: new Date().toISOString(),
+                resolved: false
+            });
+            localStorage.setItem('korvia_security_alerts', JSON.stringify(alerts));
+        }
+
         function lookupAndSendOTP() {
             const { handle, venue, email } = getFormValues();
             if (!handle || !venue || !email) {
@@ -189,19 +339,20 @@
                 return;
             }
 
-            // Demo lookup: validate against a few seeded examples
-            const knownWorkers = {
-                'anna': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'waiter', name: 'Anna' },
-                'ben': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'staff', name: 'Ben' },
-                'grace': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'kitchen', name: 'Grace' }
-            };
-
             const worker = knownWorkers[handle];
             if (!worker || worker.venue !== venue || worker.email !== email) {
+                recordAttempt({ handle, venue, email }, 'denied');
                 alert('No active worker found for that handle, restaurant, and email. Check with the owner.');
                 return;
             }
 
+            const suspicious = detectSuspicious(handle, venue);
+            if (suspicious) {
+                recordSecurityAlert(handle, venue, suspicious);
+                showAlert('⚠️ ' + suspicious + '. A security alert was sent to the owner.');
+            }
+
+            recordAttempt({ handle, venue, email }, 'pending');
             sendOTP();
             setStep(2);
         }
@@ -212,24 +363,14 @@
             alert(`Demo OTP sent to manager/owner: ${code}`);
         }
 
-        function handleSubmit() {
-            const { handle, venue, email } = getFormValues();
-            const otp = document.getElementById('otp').value;
-            const storedOTP = localStorage.getItem('korvia_staff_otp') || '123456';
-
-            if (otp !== storedOTP) {
-                alert('Invalid OTP. Ask the manager/owner for the current code.');
-                return;
+        function startShift(handle, venue, email, worker, method) {
+            const suspicious = detectSuspicious(handle, venue);
+            if (suspicious && method === 'pin') {
+                recordSecurityAlert(handle, venue, suspicious);
+                showAlert('⚠️ ' + suspicious + '. Use full login instead.');
+                return false;
             }
 
-            const knownWorkers = {
-                'anna': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'waiter', name: 'Anna' },
-                'ben': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'staff', name: 'Ben' },
-                'grace': { venue: 'sunset-bistro', email: 'owner@sunsetbistro.co.tz', role: 'kitchen', name: 'Grace' }
-            };
-            const worker = knownWorkers[handle];
-
-            // Create a tracked shift/session
             const shift = {
                 id: 'shift_' + Date.now(),
                 handle,
@@ -238,27 +379,67 @@
                 role: worker.role,
                 name: worker.name,
                 startedAt: new Date().toISOString(),
-                device: navigator.userAgent
+                device: navigator.userAgent,
+                breakMinutes: 0,
+                onBreak: false
             };
             localStorage.setItem('korvia_staff_session', JSON.stringify(shift));
+            recordAttempt({ handle, venue, email }, 'approved');
+            return true;
+        }
 
-            // Append to audit log
-            const log = JSON.parse(localStorage.getItem('korvia_staff_auth_log') || '[]');
-            log.push({
-                id: 'attempt_' + Date.now(),
-                handle,
-                venue,
-                email,
-                status: 'approved',
-                at: new Date().toISOString()
-            });
-            localStorage.setItem('korvia_staff_auth_log', JSON.stringify(log));
+        function handleSubmit() {
+            const { handle, venue, email } = getFormValues();
+            const otp = document.getElementById('otp').value;
+            const storedOTP = localStorage.getItem('korvia_staff_otp') || '123456';
 
-            // Route by role
+            if (otp !== storedOTP) {
+                recordAttempt({ handle, venue, email }, 'denied');
+                alert('Invalid OTP. Ask the manager/owner for the current code.');
+                return;
+            }
+
+            const worker = knownWorkers[handle];
+            if (!startShift(handle, venue, email, worker, 'full')) return;
+
+            routeByRole(worker.role);
+        }
+
+        function verifyPIN() {
+            if (!selectedHandle) return;
+            const pin = document.getElementById('worker-pin').value;
+            const worker = knownWorkers[selectedHandle];
+            if (pin !== worker.pin) {
+                recordAttempt({ handle: selectedHandle, venue: worker.venue, email: worker.email }, 'denied');
+                alert('Wrong PIN.');
+                return;
+            }
+            if (!startShift(selectedHandle, worker.venue, worker.email, worker, 'pin')) return;
+            routeByRole(worker.role);
+        }
+
+        function routeByRole(role) {
             let destination = 'waitress-dashboard.html';
-            if (worker.role === 'kitchen' || worker.role === 'staff') destination = 'menu-editor.html';
+            if (role === 'kitchen' || role === 'staff') destination = 'menu-editor.html';
             window.location.href = destination;
         }
+
+        // Idle logout warning
+        let idleTimer;
+        function resetIdleTimer() {
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
+                if (session && confirm('You have been idle. Stay logged in?')) {
+                    resetIdleTimer();
+                } else {
+                    localStorage.removeItem('korvia_staff_session');
+                    window.location.href = 'staff-login.html';
+                }
+            }, 5 * 60 * 1000); // 5 min demo idle timeout
+        }
+        ['click', 'keydown', 'touchstart'].forEach(e => document.addEventListener(e, resetIdleTimer));
+        resetIdleTimer();
     </script>
 </body>
 </html>

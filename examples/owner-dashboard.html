@@ -106,12 +106,53 @@
             text-decoration: none;
         }
         .back-link:hover { color: #f97316; }
+        .alert-card {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.9rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .alert-card.warn { background: #fef3c7; color: #92400e; }
+        .alert-card button {
+            background: white;
+            border: none;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.35rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .payout-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--kv-gray-100);
+        }
+        .payout-row button {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
     <header class="od-header">
         <h1>Owner Dashboard</h1>
-        <p>Sales, projections, and business analytics.</p>
+        <p>Sales, projections, staff, and security.</p>
     </header>
 
     <main class="od-main">
@@ -123,6 +164,7 @@
                 <a href="promo-qr.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Promo QR</a>
                 <a href="feedback-dashboard.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Feedback</a>
                 <a href="menu-editor.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Menu Editor</a>
+                <a href="manager-approval.html" class="action-btn primary" style="text-decoration:none;padding:0.6rem 1rem;display:inline-block;">Staff Approvals</a>
             </div>
         </div>
 
@@ -137,21 +179,26 @@
                 <div class="number" id="today-orders">0</div>
             </div>
             <div class="od-card">
-                <h2>Average Order</h2>
-                <div class="number" id="avg-order">$0</div>
+                <h2>Tips Today</h2>
+                <div class="number" id="tips-today">$0</div>
+            </div>
+            <div class="od-card">
+                <h2>Active Staff Shifts</h2>
+                <div class="number" id="active-shifts-count">0</div>
             </div>
             <div class="od-card">
                 <h2>Projected Month</h2>
                 <div class="number" id="proj-month">$0</div>
             </div>
             <div class="od-card">
-                <h2>Income Per Order</h2>
-                <div class="number" id="income-per-order">$0</div>
-            </div>
-            <div class="od-card">
                 <h2>Live Orders</h2>
                 <div class="number" id="live-orders-count">0</div>
             </div>
+        </div>
+
+        <div class="od-section">
+            <h2>Security Alerts</h2>
+            <div id="security-alerts-list"></div>
         </div>
 
         <div class="od-section">
@@ -162,6 +209,17 @@
         <div class="od-section">
             <h2>Active Staff Shifts</h2>
             <div id="active-shifts-list"></div>
+        </div>
+
+        <div class="two-col">
+            <div class="od-section">
+                <h2>Tip Payouts</h2>
+                <div id="tip-payouts-list"></div>
+            </div>
+            <div class="od-section">
+                <h2>Recent Staff Login Attempts</h2>
+                <div id="auth-attempts-list"></div>
+            </div>
         </div>
 
         <div class="od-section">
@@ -185,19 +243,21 @@
         function render() {
             const orders = loadOrders();
             const total = orders.reduce((sum, o) => sum + o.total, 0);
-            const avg = orders.length ? total / orders.length : 0;
+            const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+            const tipsTotal = tips.reduce((s, t) => s + t.amount, 0);
             const projected = total * 30;
             const live = orders.filter(o => o.status !== 'done' && o.status !== 'paid');
-            const incomePerOrder = orders.length ? total / orders.length : 0;
 
             document.getElementById('today-sales').textContent = '$' + total.toFixed(0);
             document.getElementById('today-orders').textContent = orders.length;
-            document.getElementById('avg-order').textContent = '$' + avg.toFixed(2);
+            document.getElementById('tips-today').textContent = '$' + tipsTotal.toFixed(0);
             document.getElementById('proj-month').textContent = '$' + projected.toFixed(0);
-            document.getElementById('income-per-order').textContent = '$' + incomePerOrder.toFixed(2);
             document.getElementById('live-orders-count').textContent = live.length;
 
             renderActiveShifts();
+            renderSecurityAlerts();
+            renderTipPayouts();
+            renderAuthAttempts();
 
             document.getElementById('live-orders-list').innerHTML = live.length ? live.map(o => `
                 <div class="order-row">
@@ -242,6 +302,7 @@
         function renderActiveShifts() {
             const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
             const container = document.getElementById('active-shifts-list');
+            document.getElementById('active-shifts-count').textContent = session ? 1 : 0;
             if (!session) {
                 container.innerHTML = '<p style="color:var(--kv-gray-500);">No active staff shifts.</p>';
                 return;
@@ -252,7 +313,7 @@
                 <div class="order-row">
                     <div>
                         <strong>${session.name} (${session.handle})</strong>
-                        <p style="font-size:0.8rem;color:var(--kv-gray-500);margin:0;">${session.role} • ${session.venue} • on duty ${mins} min</p>
+                        <p style="font-size:0.8rem;color:var(--kv-gray-500);margin:0;">${session.role} • ${session.venue} • on duty ${mins} min${session.onBreak ? ' • ON BREAK' : ''}</p>
                     </div>
                     <span>${session.device.split(' ')[0]}</span>
                     <button onclick="endShift()" class="status-pill" style="background:#fee2e2;color:#991b1b;border:none;cursor:pointer;">End shift</button>
@@ -260,12 +321,82 @@
             `;
         }
 
+        function renderSecurityAlerts() {
+            const alerts = JSON.parse(localStorage.getItem('korvia_security_alerts') || '[]');
+            const container = document.getElementById('security-alerts-list');
+            const unresolved = alerts.filter(a => !a.resolved);
+            if (!unresolved.length) {
+                container.innerHTML = '<p style="color:var(--kv-gray-500);">No unresolved security alerts.</p>';
+                return;
+            }
+            container.innerHTML = unresolved.map(a => `
+                <div class="alert-card ${a.severity === 'medium' ? 'warn' : ''}">
+                    <div>
+                        <strong>${a.type}</strong>
+                        <p style="margin:0;font-size:0.8rem;">${a.handle} at ${a.venue} • ${new Date(a.at).toLocaleTimeString()}</p>
+                    </div>
+                    <button onclick="resolveAlert('${a.id}')">Resolve</button>
+                </div>
+            `).join('');
+        }
+
+        function resolveAlert(id) {
+            const alerts = JSON.parse(localStorage.getItem('korvia_security_alerts') || '[]');
+            localStorage.setItem('korvia_security_alerts', JSON.stringify(alerts.map(a => a.id === id ? { ...a, resolved: true } : a)));
+            render();
+        }
+
+        function renderTipPayouts() {
+            const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+            const container = document.getElementById('tip-payouts-list');
+            if (!tips.length) {
+                container.innerHTML = '<p style="color:var(--kv-gray-500);">No tips recorded yet.</p>';
+                return;
+            }
+            const byWorker = {};
+            tips.filter(t => !t.paid).forEach(t => {
+                byWorker[t.handle] = (byWorker[t.handle] || 0) + t.amount;
+            });
+            container.innerHTML = Object.entries(byWorker).map(([handle, amount]) => `
+                <div class="payout-row">
+                    <span>${handle}</span>
+                    <strong>$${amount.toFixed(2)}</strong>
+                    <button onclick="payTips('${handle}')">Mark paid</button>
+                </div>
+            `).join('');
+        }
+
+        function payTips(handle) {
+            const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+            localStorage.setItem('korvia_tips', JSON.stringify(tips.map(t => t.handle === handle ? { ...t, paid: true, paidAt: new Date().toISOString() } : t)));
+            render();
+        }
+
+        function renderAuthAttempts() {
+            const attempts = JSON.parse(localStorage.getItem('korvia_staff_auth_attempts') || '[]');
+            const container = document.getElementById('auth-attempts-list');
+            if (!attempts.length) {
+                container.innerHTML = '<p style="color:var(--kv-gray-500);">No recent login attempts.</p>';
+                return;
+            }
+            container.innerHTML = attempts.slice(0, 6).map(a => `
+                <div class="order-row" style="grid-template-columns:1fr auto;">
+                    <div>
+                        <strong>${a.handle}</strong>
+                        <p style="font-size:0.8rem;color:var(--kv-gray-500);margin:0;">${a.venue} • ${new Date(a.at).toLocaleTimeString()}</p>
+                    </div>
+                    <span class="status-pill" style="background:${a.status === 'approved' ? '#dcfce7' : a.status === 'denied' ? '#fee2e2' : '#fef3c7'};color:${a.status === 'approved' ? '#166534' : a.status === 'denied' ? '#991b1b' : '#92400e'};">${a.status}</span>
+                </div>
+            `).join('');
+        }
+
         function endShift() {
             localStorage.removeItem('korvia_staff_session');
-            renderActiveShifts();
+            render();
         }
 
         render();
+        setInterval(render, 3000);
     </script>
 </body>
 </html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Report | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--kv-font-sans);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .report {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 1.25rem;
+            padding: 2rem;
+        }
+        .report h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+        .report .subtitle { opacity: 0.7; margin-bottom: 1.5rem; }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .metric:last-child { border-bottom: none; }
+        .metric span:first-child { opacity: 0.75; }
+        .metric strong { font-size: 1.1rem; }
+        .total-row {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(249, 115, 22, 0.5);
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+        }
+        .note-box {
+            margin-top: 1.5rem;
+        }
+        .note-box label { display: block; font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.35rem; }
+        .note-box textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-family: inherit;
+            min-height: 80px;
+            resize: vertical;
+        }
+        .btn {
+            width: 100%;
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .back-link {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover { color: #f97316; }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <h1>Shift Report</h1>
+        <p class="subtitle" id="subtitle"></p>
+
+        <div class="metric">
+            <span>Shift started</span>
+            <strong id="started">—</strong>
+        </div>
+        <div class="metric">
+            <span>Shift ended</span>
+            <strong id="ended">—</strong>
+        </div>
+        <div class="metric">
+            <span>Duration</span>
+            <strong id="duration">—</strong>
+        </div>
+        <div class="metric">
+            <span>Break time</span>
+            <strong id="break-time">0 min</strong>
+        </div>
+        <div class="metric">
+            <span>Orders served</span>
+            <strong id="orders-served">0</strong>
+        </div>
+        <div class="metric">
+            <span>Payments collected</span>
+            <strong id="payments-collected">$0</strong>
+        </div>
+        <div class="metric">
+            <span>Cash collected</span>
+            <strong id="cash-collected">$0</strong>
+        </div>
+        <div class="metric">
+            <span>Mobile money collected</span>
+            <strong id="mobile-collected">$0</strong>
+        </div>
+        <div class="metric">
+            <span>Tips earned</span>
+            <strong id="tips">$0</strong>
+        </div>
+        <div class="metric">
+            <span>Refunds issued</span>
+            <strong id="refunds">$0</strong>
+        </div>
+
+        <div class="total-row">
+            <span>Net handled</span>
+            <strong id="net">$0</strong>
+        </div>
+
+        <div class="note-box">
+            <label>Handover note</label>
+            <textarea id="handover-note" placeholder="Anything the next shift should know..."></textarea>
+        </div>
+
+        <button class="btn" onclick="finish()">End shift and save report</button>
+    </div>
+
+    <a href="waitress-dashboard.html" class="back-link">← Back to dashboard</a>
+
+    <script>
+        const session = JSON.parse(localStorage.getItem('korvia_staff_session') || '{}');
+        const orders = JSON.parse(localStorage.getItem('korvia_orders') || '[]');
+        const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+
+        function formatMoney(n) { return '$' + (n || 0).toFixed(2); }
+
+        function render() {
+            if (!session.startedAt) {
+                document.querySelector('.report').innerHTML = '<h1>No active shift</h1><p class="subtitle">Start a shift from the staff login page.</p>';
+                return;
+            }
+
+            const started = new Date(session.startedAt);
+            const ended = session.endedAt ? new Date(session.endedAt) : new Date();
+            const mins = Math.max(1, Math.floor((ended - started) / 60000));
+            const breakMins = session.breakMinutes || 0;
+
+            const myOrders = orders.filter(o => o.servedBy === session.handle || o.paymentBy === session.handle);
+            const payments = myOrders.filter(o => o.status === 'paid').reduce((s, o) => s + o.total, 0);
+            const cash = payments * 0.4; // demo split
+            const mobile = payments * 0.6;
+            const myTips = tips.filter(t => t.handle === session.handle).reduce((s, t) => s + (t.amount || 0), 0);
+            const refunds = myOrders.filter(o => o.status === 'cancelled').reduce((s, o) => s + o.total, 0);
+            const net = payments + myTips - refunds;
+
+            document.getElementById('subtitle').textContent = `${session.name} (${session.handle}) at ${session.venue}`;
+            document.getElementById('started').textContent = started.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('ended').textContent = session.endedAt ? ended.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Now';
+            document.getElementById('duration').textContent = `${mins} min`;
+            document.getElementById('break-time').textContent = `${breakMins} min`;
+            document.getElementById('orders-served').textContent = myOrders.filter(o => o.status === 'done' || o.status === 'paid').length;
+            document.getElementById('payments-collected').textContent = formatMoney(payments);
+            document.getElementById('cash-collected').textContent = formatMoney(cash);
+            document.getElementById('mobile-collected').textContent = formatMoney(mobile);
+            document.getElementById('tips').textContent = formatMoney(myTips);
+            document.getElementById('refunds').textContent = formatMoney(refunds);
+            document.getElementById('net').textContent = formatMoney(net);
+        }
+
+        function finish() {
+            const note = document.getElementById('handover-note').value;
+            const report = {
+                ...session,
+                endedAt: new Date().toISOString(),
+                handoverNote: note,
+                breakMinutes: session.breakMinutes || 0
+            };
+            const history = JSON.parse(localStorage.getItem('korvia_shift_history') || '[]');
+            history.unshift(report);
+            localStorage.setItem('korvia_shift_history', JSON.stringify(history));
+            localStorage.removeItem('korvia_staff_session');
+            alert('Shift ended and report saved.');
+            window.location.href = 'staff-login.html';
+        }
+
+        render();
+    </script>
+</body>
+</html>

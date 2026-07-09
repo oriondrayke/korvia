@@ -108,10 +108,15 @@
         }
 
         function updateStatus(id, status) {
+            const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
             const orders = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
             const order = orders.find(o => o.id === id);
             if (order) {
                 order.status = status;
+                order.statusHistory = order.statusHistory || [];
+                order.statusHistory.push({ status, by: session?.handle || 'kitchen', at: new Date().toISOString() });
+                if (status === 'ready') order.readyBy = session?.handle;
+                if (status === 'done') order.doneBy = session?.handle;
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
             }
             render();
@@ -148,6 +153,8 @@
                         `).join('')}
                     </div>
                     <div class="ticket-total">Total: $${order.total.toFixed(2)}</div>
+                    ${order.servedBy ? `<div style="font-size:0.8rem;opacity:0.7;margin-bottom:0.5rem;">Served by ${order.servedBy}</div>` : ''}
+                    ${order.readyBy ? `<div style="font-size:0.8rem;opacity:0.7;margin-bottom:0.5rem;">Ready by ${order.readyBy}</div>` : ''}
                     <div class="ticket-actions">
                         ${order.status === 'new' ? `<button class="btn-prep" onclick="updateStatus('${order.id}', 'preparing')">Start preparing</button>` : ''}
                         ${order.status === 'preparing' ? `<button class="btn-ready" onclick="updateStatus('${order.id}', 'ready')">Mark ready</button>` : ''}

@@ -14,6 +14,27 @@
         }
         .wd-header h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
         .wd-header p { opacity: 0.75; font-size: 0.9rem; }
+        .shift-bar {
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .shift-bar span { font-size: 0.85rem; opacity: 0.9; }
+        .shift-bar .actions { display: flex; gap: 0.5rem; }
+        .shift-bar button {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .shift-bar button.primary { background: #f97316; border-color: #f97316; }
         .wd-main {
             max-width: 900px;
             margin: 1.5rem auto;
@@ -21,7 +42,7 @@
         }
         .wd-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
@@ -70,6 +91,7 @@
         }
         .btn-serve { background: #22c55e; color: white; }
         .btn-pay { background: #f97316; color: white; }
+        .btn-tip { background: #3b82f6; color: white; }
         .back-link {
             display: inline-block;
             margin-bottom: 1rem;
@@ -103,6 +125,23 @@
             align-items: center;
         }
         .request-card button { background: #f97316; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 0.4rem; cursor: pointer; font-size: 0.8rem; }
+        .audit-tag {
+            font-size: 0.75rem;
+            color: var(--kv-gray-500);
+            margin-top: 0.5rem;
+        }
+        .idle-warning {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: none;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +149,14 @@
         <h1>Waitress Dashboard</h1>
         <p>Track all tables, serve orders, and collect payments.</p>
     </header>
+
+    <div class="shift-bar" id="shift-bar">
+        <span id="shift-info">No active shift</span>
+        <div class="actions">
+            <button id="break-btn" onclick="toggleBreak()">Start break</button>
+            <button class="primary" onclick="endShift()">End shift</button>
+        </div>
+    </div>
 
     <main class="wd-main">
         <a href="../index.html" class="back-link">← Back to Korvia</a>
@@ -124,8 +171,12 @@
                 <div class="number" id="ready-orders">0</div>
             </div>
             <div class="wd-card">
-                <h2>Tips today</h2>
-                <div class="number">$0</div>
+                <h2>Served this shift</h2>
+                <div class="number" id="served-count">0</div>
+            </div>
+            <div class="wd-card">
+                <h2>Tips this shift</h2>
+                <div class="number" id="tips-total">$0</div>
             </div>
         </div>
 
@@ -139,8 +190,15 @@
         <div id="orders-list"></div>
     </main>
 
+    <div class="idle-warning" id="idle-warning">Idle timeout soon. Tap anywhere to stay logged in.</div>
+
     <script>
         const STORAGE_KEY = 'korvia_orders';
+        const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
+
+        if (!session) {
+            window.location.href = 'staff-login.html';
+        }
 
         function loadOrders() {
             return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -151,8 +209,21 @@
             const order = orders.find(o => o.id === id);
             if (order) {
                 order.status = status;
+                if (status === 'done') order.servedBy = session.handle;
+                if (status === 'paid') order.paymentBy = session.handle;
+                order.statusHistory = order.statusHistory || [];
+                order.statusHistory.push({ status, by: session.handle, at: new Date().toISOString() });
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
             }
+            render();
+        }
+
+        function addTip(orderId) {
+            const amount = parseFloat(prompt('Tip amount:', '2')) || 0;
+            if (amount <= 0) return;
+            const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
+            tips.push({ orderId, amount, handle: session.handle, at: new Date().toISOString() });
+            localStorage.setItem('korvia_tips', JSON.stringify(tips));
             render();
         }
 
@@ -161,20 +232,50 @@
             return diff < 1 ? 'just now' : `${diff} min ago`;
         }
 
-        const myTables = ['1', '2', '3', '4'];
+        const myTables = session?.assignedTables || ['1', '2', '3', '4'];
         let requests = JSON.parse(localStorage.getItem('korvia_waitress_requests') || '[]');
 
+        function renderShiftBar() {
+            if (!session) return;
+            const started = new Date(session.startedAt);
+            const mins = Math.floor((Date.now() - started.getTime()) / 60000);
+            const breakText = session.onBreak ? ' • ON BREAK' : '';
+            document.getElementById('shift-info').innerHTML =
+                `<strong>${session.name}</strong> (${session.handle}) at ${session.venue} • on duty ${mins} min${breakText}`;
+            document.getElementById('break-btn').textContent = session.onBreak ? 'End break' : 'Start break';
+        }
+
+        function toggleBreak() {
+            session.onBreak = !session.onBreak;
+            if (session.onBreak) {
+                session.breakStartedAt = new Date().toISOString();
+            } else if (session.breakStartedAt) {
+                const mins = Math.floor((Date.now() - new Date(session.breakStartedAt).getTime()) / 60000);
+                session.breakMinutes = (session.breakMinutes || 0) + mins;
+                delete session.breakStartedAt;
+            }
+            localStorage.setItem('korvia_staff_session', JSON.stringify(session));
+            renderShiftBar();
+        }
+
+        function endShift() {
+            if (!confirm('End your shift and open the shift report?')) return;
+            window.location.href = 'shift-report.html';
+        }
+
         function render() {
+            renderShiftBar();
             const orders = loadOrders();
             const active = orders.filter(o => o.status !== 'done' && o.status !== 'paid');
             const ready = orders.filter(o => o.status === 'ready');
-            const myActive = active.filter(o => myTables.includes(o.spot));
+            const served = orders.filter(o => o.servedBy === session.handle && o.status === 'paid');
             const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
-            const myTips = tips.reduce((s, t) => s + t.amount, 0);
+            const myTips = tips.filter(t => t.handle === session.handle).reduce((s, t) => s + t.amount, 0);
 
             document.getElementById('active-tables').textContent = active.length;
             document.getElementById('ready-orders').textContent = ready.length;
-            document.querySelector('.wd-card:nth-child(3) .number').textContent = '$' + myTips.toFixed(0);
+            document.getElementById('served-count').textContent = served.length;
+            document.getElementById('tips-total').textContent = '$' + myTips.toFixed(0);
 
             const allTables = ['1', '2', '3', '4', '5', '6', '7', '8'];
             document.getElementById('all-tables').innerHTML = allTables.map(t => {
@@ -207,6 +308,7 @@
 
             list.innerHTML = orders.map(order => {
                 const isMine = myTables.includes(order.spot);
+                const audit = order.statusHistory?.map(h => `${h.status} by ${h.by}`).join(' → ') || '';
                 return `
                 <div class="order-card ${order.status}">
                     <div class="order-header">
@@ -220,9 +322,12 @@
                     <div class="order-actions">
                         ${order.status === 'ready' ? `<button class="btn-serve" onclick="updateStatus('${order.id}', 'done')">Mark served</button>` : ''}
                         ${order.status === 'done' ? `<button class="btn-pay" onclick="updateStatus('${order.id}', 'paid')">Collect payment</button>` : ''}
+                        ${order.status === 'paid' ? `<button class="btn-tip" onclick="addTip('${order.id}')">+ Tip</button>` : ''}
                     </div>
+                    ${audit ? `<div class="audit-tag">${audit}</div>` : ''}
                 </div>
-            `}).join('');
+            `;
+            }).join('');
         }
 
         function resolveRequest(id) {
@@ -230,6 +335,23 @@
             localStorage.setItem('korvia_waitress_requests', JSON.stringify(requests));
             render();
         }
+
+        // Idle warning and auto-logout
+        let idleTimer, warningTimer;
+        function resetIdleTimer() {
+            clearTimeout(idleTimer);
+            clearTimeout(warningTimer);
+            document.getElementById('idle-warning').style.display = 'none';
+            warningTimer = setTimeout(() => {
+                document.getElementById('idle-warning').style.display = 'block';
+            }, 4 * 60 * 1000);
+            idleTimer = setTimeout(() => {
+                localStorage.removeItem('korvia_staff_session');
+                window.location.href = 'staff-login.html';
+            }, 5 * 60 * 1000);
+        }
+        ['click', 'keydown', 'touchstart'].forEach(e => document.addEventListener(e, resetIdleTimer));
+        resetIdleTimer();
 
         render();
         setInterval(render, 3000);

@@ -154,7 +154,11 @@ Venue
 ├── location: { address, city, country, lat, lon }
 ├── contact: { phone, email, social_links }
 ├── branding: { logo, primary_color, accent_color }
-├── settings: { currency, tax_rate, service_charge, tips_enabled }
+├── settings: {
+│   currency, tax_rate, service_charge, tips_enabled,
+│   shift_timeout_minutes, idle_timeout_minutes,
+│   require_otp_every_login, trusted_devices_skip_otp
+│ }
 ├── payment_methods: [mpesa, card, cash]
 ├── subscription_tier
 ├── is_active, is_verified, is_featured
@@ -192,7 +196,16 @@ Order
 ├── payment_method, transaction_reference
 ├── promo_code_id
 ├── created_at, updated_at
+├── assigned_shift_id (who is serving this order)
+├── status_updated_by_shift_id (last status change)
+├── served_by_shift_id
+├── payment_collected_by_shift_id
 └── belongs_to Staff (assigned, optional)
+
+OrderStatusHistory
+├── id, order_id, status
+├── shift_id, staff_profile_id
+├── note, created_at
 
 OrderItem
 ├── id, menu_item_id, name, quantity, unit_price
@@ -208,13 +221,14 @@ StaffProfile
 ├── id, account_id, venue_id
 ├── role (owner | manager | waiter | staff | kitchen)
 ├── worker_handle: "anna" (unique per venue, used at staff login)
+├── worker_pin_hash (optional, for shared-tablet quick login)
 ├── permissions: ["view:all_orders", "edit:menu", "view:revenue"]
 ├── assigned_spots (optional)
-├── tips_earned
 ├── invitation_status (pending | active | revoked)
 ├── created_by_owner_id
 ├── approved_by_owner_id
-└── is_active
+├── is_active
+└── has many Shifts, TipPayouts
 
 Invitation
 ├── id, venue_id, email, phone, role
@@ -227,6 +241,7 @@ WorkerAuthAttempt
 ├── worker_handle, restaurant_username, restaurant_email
 ├── manager_or_owner_id, otp_code, otp_sent_to
 ├── ip_address, device_fingerprint
+├── is_trusted_device, is_suspicious
 ├── status (pending | approved | denied | expired)
 └── created_at, resolved_at
 
@@ -235,7 +250,27 @@ Shift
 ├── started_at, ended_at
 ├── start_auth_attempt_id, end_auth_attempt_id
 ├── device_fingerprint
-└── orders_served_count, tips_earned
+├── notes (handover note)
+├── orders_served_count
+├── tips_earned
+├── break_minutes
+└── cash_collected, mobile_money_collected
+
+ShiftBreak
+├── id, shift_id, started_at, ended_at
+
+TipPayout
+├── id, venue_id, staff_profile_id, shift_id (optional)
+├── amount, status (pending | paid | cancelled)
+├── paid_at, paid_by
+
+SecurityAlert
+├── id, venue_id, staff_profile_id (optional)
+├── type (new_device | off_hours | failed_otp | double_login | suspicious_location)
+├── message, severity (low | medium | high)
+├── ip_address, device_fingerprint
+├── resolved_at, resolved_by
+└── created_at
 
 Feedback
 ├── id, venue_id, order_id, rating, comment, tags
@@ -324,11 +359,12 @@ Authentication: JWT in `Authorization: Bearer <token>` header.
 | GET | `/venues/:id/orders` | List venue orders (with filters) |
 | GET | `/orders/:id` | Get order details |
 | PATCH | `/orders/:id/status` | Update order status |
+| GET | `/orders/:id/status-history` | Audit log of status changes |
 | PATCH | `/orders/:id/assign` | Assign staff to order |
 | POST | `/orders/:id/pay` | Initiate payment |
 | POST | `/orders/:id/split` | Split bill |
 
-### 6.6 Staff
+### 6.6 Staff, shifts, and security
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -339,10 +375,21 @@ Authentication: JWT in `Authorization: Bearer <token>` header.
 | POST | `/staff-auth/lookup` | Look up worker by handle + venue + email |
 | POST | `/staff-auth/otp` | Request manager/owner OTP |
 | POST | `/staff-auth/verify` | Verify OTP, issue JWT, start shift |
+| POST | `/staff-auth/pin` | PIN login for trusted/shared devices |
 | POST | `/staff-auth/logout` | End shift and invalidate token |
+| POST | `/staff-auth/devices/:id/trust` | Mark device trusted |
+| POST | `/staff-auth/devices/:id/revoke` | Revoke trusted device |
 | GET | `/venues/:id/shifts` | List shifts |
+| GET | `/shifts/:id` | Get shift details |
 | POST | `/shifts/:id/end` | Force-end shift |
-
+| POST | `/shifts/:id/break/start` | Start break |
+| POST | `/shifts/:id/break/end` | End break |
+| GET | `/venues/:id/shift-reports` | End-of-shift reports |
+| GET | `/venues/:id/tip-payouts` | Tip payout summary |
+| POST | `/tip-payouts/:id/pay` | Mark tips paid |
+| GET | `/venues/:id/security-alerts` | Security alerts |
+| POST | `/security-alerts/:id/resolve` | Resolve alert |
+| GET | `/venues/:id/worker-auth-attempts` | Staff login audit log |
 ### 6.7 Payments
 
 | Method | Endpoint | Description |
@@ -472,7 +519,14 @@ Staff, waiters, waitresses, and kitchen workers do **not** log in with the same 
 - The venue owner or manager must explicitly approve each staff login attempt with an OTP.
 - Every successful login starts a tracked `Shift`, so owners know **who was on duty, when, and on which device**.
 
-### Staff login fields
+### Staff login methods
+
+| Method | Best for | Flow |
+|--------|----------|------|
+| **Full auth** | Personal phones / first login | Handle + venue + email + manager/owner OTP |
+| **PIN** | Shared tablets / fast re-entry | Select handle + enter 4–6 digit PIN tied to active profile |
+
+### Full auth fields
 
 | Field | Purpose | Example |
 |-------|---------|---------|
@@ -481,7 +535,7 @@ Staff, waiters, waitresses, and kitchen workers do **not** log in with the same 
 | Restaurant email | Registered venue email for verification | `owner@sunsetbistro.co.tz` |
 | Manager/owner OTP | One-time code sent to the approving manager or owner | `739201` |
 
-### Staff login flow
+### Full auth flow
 
 1. **Worker opens staff hub** and enters:
    - Worker handle (e.g., `anna`)
@@ -502,21 +556,71 @@ Staff, waiters, waitresses, and kitchen workers do **not** log in with the same 
 
 6. **Shift starts.** A `Shift` record is created with `started_at` and the approved `WorkerAuthAttempt`. The worker is now on duty.
 
-7. **Shift ends.** When the worker logs out, closes the tab, or the shift timeout fires, the `Shift` is closed and `ended_at` is recorded.
+### PIN flow (shared tablet)
+
+1. Tablet displays worker avatars/handles for the venue.
+2. Worker taps their handle and enters their PIN.
+3. System validates the PIN hash against `StaffProfile.worker_pin_hash`.
+4. If the device is trusted and the profile is active, a shift starts immediately without OTP.
+5. If the device is new, the full OTP flow is required first; the device can then be marked trusted.
 
 ### Shift rules
 
 - A worker can only have **one active shift per venue at a time**.
 - JWTs issued to staff are short-lived (e.g., 4 hours or the configured shift length).
+- **Idle timeout:** after `idle_timeout_minutes` of inactivity, the worker is warned and then logged out.
+- **Auto-logout:** when `shift_timeout_minutes` is reached, the shift is ended automatically.
 - Owners can force-end any active shift from the owner dashboard.
 - Orders updated by a worker are tagged with the active `shift_id` for audit.
 
+### Break tracking
+
+- Workers can start/end breaks from their dashboard.
+- Breaks are stored as `ShiftBreak` records and subtracted from shift duration.
+- Orders are not routed to workers on break unless explicitly overridden.
+
+### Shift handover and end-of-shift report
+
+When a shift ends, the system generates a report:
+
+- Shift duration and break minutes
+- Orders served and collected
+- Tips earned
+- Cash collected vs mobile money collected
+- Refunds issued
+- Handover note (optional)
+- Discrepancy warnings
+
+### Tips and payouts
+
+- Tips can be added to orders and tagged per `Shift`.
+- `TipPayout` records track how much each worker is owed.
+- Owners can mark tips as paid and export a payout summary.
+
+### Security alerts
+
+The system creates `SecurityAlert` records when:
+
+- Login from a **new device** or browser fingerprint
+- Login **outside venue hours**
+- **Multiple failed OTP attempts**
+- Same handle logged in **twice** (double login)
+- Login from an **unusual location**
+
+Alerts are shown to owners and managers in real time. High-severity alerts can block the login until reviewed.
+
+### Trusted devices
+
+- A device can be marked trusted after the first OTP-approved login.
+- Venue setting `trusted_devices_skip_otp` controls whether trusted devices can use PIN-only login.
+- Owners can revoke trusted devices at any time.
+
 ### Security benefits
 
-- Stolen credentials alone are not enough; the owner/manager OTP is required.
+- Stolen credentials alone are not enough; the owner/manager OTP is required for new devices.
 - Each worker is bound to one venue per login, preventing cross-venue data leaks.
 - The audit trail proves **who served which order** during which shift.
-- Device fingerprinting helps detect suspicious logins (new phone, new location).
+- Device fingerprinting and alerts catch suspicious behavior early.
 
 ### API endpoints for staff auth and shifts
 
@@ -525,10 +629,20 @@ Staff, waiters, waitresses, and kitchen workers do **not** log in with the same 
 | POST | `/staff-auth/lookup` | Look up venue by worker handle + restaurant username + restaurant email |
 | POST | `/staff-auth/otp` | Request owner/manager OTP for a staff login attempt |
 | POST | `/staff-auth/verify` | Verify OTP and issue staff JWT + start shift |
+| POST | `/staff-auth/pin` | PIN login for trusted/shared devices |
 | POST | `/staff-auth/logout` | End current shift and invalidate token |
+| POST | `/staff-auth/devices/:id/trust` | Mark a device as trusted |
+| POST | `/staff-auth/devices/:id/revoke` | Revoke trusted device |
 | GET | `/venues/:id/shifts` | List shifts for a venue (owner/manager) |
 | GET | `/shifts/:id` | Get shift details |
 | POST | `/shifts/:id/end` | Force-end a shift (owner/manager) |
+| POST | `/shifts/:id/break/start` | Start a break |
+| POST | `/shifts/:id/break/end` | End a break |
+| GET | `/venues/:id/shift-reports` | End-of-shift reports |
+| GET | `/venues/:id/tip-payouts` | Tip payout summary |
+| POST | `/tip-payouts/:id/pay` | Mark tips as paid |
+| GET | `/venues/:id/security-alerts` | Security alerts (owner/manager) |
+| POST | `/security-alerts/:id/resolve` | Resolve an alert |
 | GET | `/venues/:id/worker-auth-attempts` | Audit log of staff login attempts (owner) |
 
 ---

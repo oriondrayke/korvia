@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login Approvals | Korvia</title>
+    <link rel="stylesheet" href="../korvia.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--kv-font-sans);
+            background: var(--kv-gray-50);
+            color: var(--kv-gray-900);
+            min-height: 100vh;
+        }
+        .ma-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+        .ma-header h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+        .ma-header p { opacity: 0.75; font-size: 0.9rem; }
+        .ma-main {
+            max-width: 900px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--kv-gray-600);
+            text-decoration: none;
+        }
+        .back-link:hover { color: #f97316; }
+        .section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .section h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+        .request-card {
+            border: 1px solid var(--kv-gray-200);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .request-info p { margin: 0.15rem 0; font-size: 0.85rem; color: var(--kv-gray-600); }
+        .request-info strong { color: var(--kv-gray-900); font-size: 1rem; }
+        .actions { display: flex; gap: 0.5rem; }
+        .btn {
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-approve { background: #22c55e; color: white; }
+        .btn-deny { background: #ef4444; color: white; }
+        .btn-otp { background: #f97316; color: white; }
+        .otp-display {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.2rem;
+            color: #f97316;
+            margin: 0.5rem 0;
+        }
+        .trusted-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        .empty {
+            color: var(--kv-gray-500);
+            font-size: 0.9rem;
+        }
+        .alert-banner {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="ma-header">
+        <h1>Staff Login Approvals</h1>
+        <p>Review and approve worker login requests.</p>
+    </header>
+
+    <main class="ma-main">
+        <a href="role-select.html" class="back-link">← Back to portals</a>
+
+        <div class="alert-banner" id="alert-banner"></div>
+
+        <div class="section">
+            <h2>Pending requests</h2>
+            <div id="pending-list"></div>
+        </div>
+
+        <div class="section">
+            <h2>Recently approved</h2>
+            <div id="approved-list"></div>
+        </div>
+    </main>
+
+    <script>
+        const ATTEMPTS_KEY = 'korvia_staff_auth_attempts';
+        const OTP_KEY = 'korvia_staff_otp';
+
+        function loadAttempts() {
+            return JSON.parse(localStorage.getItem(ATTEMPTS_KEY) || '[]');
+        }
+
+        function saveAttempts(attempts) {
+            localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts));
+        }
+
+        function seedDemoRequest() {
+            const attempts = loadAttempts();
+            if (!attempts.some(a => a.status === 'pending')) {
+                attempts.unshift({
+                    id: 'req_' + Date.now(),
+                    handle: 'grace',
+                    venue: 'sunset-bistro',
+                    email: 'owner@sunsetbistro.co.tz',
+                    device: 'Chrome / Android',
+                    status: 'pending',
+                    at: new Date().toISOString()
+                });
+                saveAttempts(attempts);
+            }
+        }
+
+        function approve(id) {
+            const code = Math.floor(100000 + Math.random() * 900000);
+            localStorage.setItem(OTP_KEY, code);
+
+            const attempts = loadAttempts().map(a =>
+                a.id === id ? { ...a, status: 'approved', otp: code, approvedAt: new Date().toISOString() } : a
+            );
+            saveAttempts(attempts);
+
+            document.getElementById('alert-banner').style.display = 'block';
+            document.getElementById('alert-banner').innerHTML = `
+                Approved <strong>grace</strong>. Share this OTP: <span class="otp-display">${code}</span>
+            `;
+            render();
+        }
+
+        function deny(id) {
+            const attempts = loadAttempts().map(a =>
+                a.id === id ? { ...a, status: 'denied', deniedAt: new Date().toISOString() } : a
+            );
+            saveAttempts(attempts);
+            render();
+        }
+
+        function renderCard(a, isPending) {
+            const when = new Date(a.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            return `
+                <div class="request-card">
+                    <div class="request-info">
+                        <strong>${a.handle}</strong>
+                        <p>Venue: ${a.venue}</p>
+                        <p>Device: ${a.device}</p>
+                        <p>Requested at ${when}</p>
+                        ${a.otp ? `<p>OTP: <span class="otp-display">${a.otp}</span></p>` : ''}
+                    </div>
+                    ${isPending ? `
+                    <div class="actions">
+                        <label class="trusted-toggle">
+                            <input type="checkbox" checked> Trust device
+                        </label>
+                        <button class="btn btn-deny" onclick="deny('${a.id}')">Deny</button>
+                        <button class="btn btn-approve" onclick="approve('${a.id}')">Approve</button>
+                    </div>
+                    ` : `<span style="font-size:0.85rem;color:${a.status === 'approved' ? '#166534' : '#991b1b'};font-weight:600;">${a.status}</span>`}
+                </div>
+            `;
+        }
+
+        function render() {
+            const attempts = loadAttempts();
+            const pending = attempts.filter(a => a.status === 'pending');
+            const approved = attempts.filter(a => a.status !== 'pending').slice(0, 5);
+
+            document.getElementById('pending-list').innerHTML = pending.length
+                ? pending.map(a => renderCard(a, true)).join('')
+                : '<p class="empty">No pending login requests.</p>';
+
+            document.getElementById('approved-list').innerHTML = approved.length
+                ? approved.map(a => renderCard(a, false)).join('')
+                : '<p class="empty">No recent approvals.</p>';
+        }
+
+        seedDemoRequest();
+        render();
+        setInterval(render, 3000);
+    </script>
+</body>
+</html>

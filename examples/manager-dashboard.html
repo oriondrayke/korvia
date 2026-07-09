@@ -75,6 +75,7 @@
             <a href="menu-editor.html">Menu Studio</a>
             <a href="qr-generator.html">QR Generator</a>
             <a href="feedback-dashboard.html">Feedback</a>
+            <a href="manager-approval.html">Staff Approvals</a>
         </div>
 
         <div class="md-grid-4">
@@ -140,10 +141,12 @@
             const active = orders.filter(o => o.status !== 'done' && o.status !== 'paid');
             const total = orders.reduce((sum, o) => sum + o.total, 0);
             const occupied = tables.filter(t => t.status === 'occupied').length;
+            const session = JSON.parse(localStorage.getItem('korvia_staff_session') || 'null');
 
             document.getElementById('active-orders').textContent = active.length;
             document.getElementById('occupied-tables').textContent = occupied;
             document.getElementById('today-sales').textContent = '$' + total.toFixed(0);
+            document.getElementById('staff-duty').textContent = session ? 1 : 0;
 
             document.getElementById('stock-alerts').innerHTML = `
                 <div class="alert">⚠️ Ribeye Steak running low — 3 portions left</div>
@@ -170,12 +173,12 @@
                 </div>
             `).join('');
 
-            document.getElementById('staff-list').innerHTML = staff.map(s => `
+            document.getElementById('staff-list').innerHTML = session ? `
                 <div class="staff-row">
-                    <span><strong>${s.name}</strong> — ${s.role} ${s.tables ? `• Tables ${s.tables}` : `• ${s.station}`}</span>
-                    <span>${s.orders} orders</span>
+                    <span><strong>${session.name}</strong> — ${session.role} • on duty</span>
+                    <span>${session.venue}</span>
                 </div>
-            `).join('');
+            ` : '<p style="color:var(--kv-gray-500);">No staff currently on duty.</p>';
         }
 
         function toggleTable(id) {
