@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir Grid — Korvia Design Direction</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif; background: #0a0a0a; color: #d4c5a9;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #000; border-bottom: 1px solid #333;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #e42718; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #888; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.1em; }
+.noir-grid2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #333; border: 1px solid #333; margin-bottom: 24px; }
+.noir-cell { background: #111; padding: 20px; text-align: center; border: 1px solid #222; }
+.noir-cell.red { background: #e42718; color: #000; }
+.noir-cell.gold { background: #d4af37; color: #000; }
+.gold-btn {
+    display: inline-block; padding: 14px 28px; border: 1px solid #d4af37; background: transparent;
+    color: #d4af37; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; cursor: pointer;
+}
+.noir-rect2 { width: 100px; height: 80px; background: #000; border: 1px solid #d4af37; display: inline-block; margin-right: 16px; margin-bottom: 24px; box-shadow: 6px 6px 0 #333; }
+.rule2 { width: 120px; height: 2px; background: #d4af37; display: inline-block; margin-right: 16px; margin-bottom: 24px; }
+.signal { width: 16px; height: 16px; background: #e42718; border-radius: 50%; display: inline-block; margin-right: 16px; margin-bottom: 24px; box-shadow: 0 0 10px #e42718; }
+.showcase-footer { padding: 20px; background: #000; color: #555; border-top: 1px solid #333; text-align: center; }
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="swisscracked.html">← Prev</a>
+  <a href="index.html">Showcase · 51 / 52</a>
+  <a href="swisslounge.html">Next →</a>
+</nav>
+
+<style>
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="noir-grid2">
+<a href="#client" class="noir-cell" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1rem;">Client</h3><p style="margin:0;font-size:.75rem;line-height:1.4;opacity:.9;">Discover venues.</p></a>
+<a href="#restaurant" class="noir-cell gold" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1rem;">Restaurant</h3><p style="margin:0;font-size:.75rem;line-height:1.4;">QR menus.</p></a>
+<a href="#hotel" class="noir-cell" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1rem;">Hotel</h3><p style="margin:0;font-size:.75rem;line-height:1.4;opacity:.9;">Room service.</p></a>
+<a href="#events" class="noir-cell" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1rem;">Events</h3><p style="margin:0;font-size:.75rem;line-height:1.4;opacity:.9;">Parties.</p></a>
+<a href="#" class="noir-cell red" style="display:block;"><h3 style="margin:0;font-size:1rem;">Scan QR</h3></a>
+<a href="#" class="noir-cell" style="display:block;"><h3 style="margin:0;font-size:1rem;">Dashboard</h3></a>
+</div>
+<h2>Direction accent</h2>
+<div class="noir-rect2"></div><div class="rule2"></div><div class="signal"></div>
+</div>
+
+<footer class="showcase-footer">Korvia Design Direction Showcase · 51 / 52</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grid Rust — Korvia Design Direction</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Anton&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif; background: #2b1d16; color: #e6d5b8;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #1f140f; border-bottom: 3px solid #e42718;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #c5a059; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Anton', sans-serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; text-transform: uppercase; }
+.desc { color: #c2a882; margin-bottom: 40px; }
+.rust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #e42718; border: 2px solid #e42718; margin-bottom: 24px; }
+.rust-cell { background: #3a271d; padding: 24px; border: 1px solid #8b7d4b; }
+.gold-btn {
+    display: inline-block; padding: 14px 28px; border: 2px solid #c5a059; background: #b3542f;
+    color: #e6d5b8; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer;
+}
+.plate { width: 120px; height: 80px; background: repeating-linear-gradient(45deg, #c5a059, #c5a059 3px, #b3542f 3px, #b3542f 6px); display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.bolt { width: 12px; height: 12px; background: #c5a059; border-radius: 50%; display: inline-block; margin: 3px; box-shadow: inset 0 0 3px #000; }
+.tick { width: 60px; height: 8px; background: #e42718; display: inline-block; margin-right: 16px; margin-bottom: 24px; }
+.showcase-footer { padding: 20px; background: #1f140f; color: #8a6a4a; border-top: 3px solid #e42718; text-align: center; }
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="reddecay.html">← Prev</a>
+  <a href="index.html">Showcase · 44 / 52</a>
+  <a href="brutalornate.html">Next →</a>
+</nav>
+
+<style>
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="rust-grid">
+<a href="#client" class="rust-cell" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.85rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="rust-cell" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.85rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="rust-cell" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.85rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="rust-cell" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.85rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="plate"></div><div class="tick"></div><div style="margin-bottom:24px;"><div class="bolt"></div><div class="bolt"></div><div class="bolt"></div></div>
+</div>
+
+<footer class="showcase-footer">Korvia Design Direction Showcase · 44 / 52</footer>
+</body>
+</html>

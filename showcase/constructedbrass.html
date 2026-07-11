@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constructed Brass — Korvia Design Direction</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif; background: #1a1710; color: #d8d0c0;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #12100a; border-bottom: 2px solid #e42718;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #8b7d4b; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Oswald', sans-serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; text-transform: uppercase; }
+.desc { color: #a8a080; margin-bottom: 40px; }
+.const-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #e42718; border: 2px solid #e42718; margin-bottom: 24px; }
+.const-cell { background: #2a2518; padding: 20px; text-align: center; }
+.const-cell.red { background: #e42718; color: #fff; }
+.gold-btn {
+    display: inline-block; padding: 14px 28px; border: 2px solid #8b7d4b; background: transparent;
+    color: #8b7d4b; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer;
+}
+.brass-tri { width: 0; height: 0; border-left: 40px solid transparent; border-right: 40px solid transparent; border-bottom: 70px solid #8b7d4b; display: inline-block; margin-right: 16px; margin-bottom: 24px; }
+.diag { width: 120px; height: 12px; background: #e42718; transform: rotate(-30deg); display: inline-block; margin-right: 16px; margin-bottom: 24px; }
+.showcase-footer { padding: 20px; background: #12100a; color: #6b6048; border-top: 2px solid #e42718; text-align: center; }
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="swissvelvet.html">← Prev</a>
+  <a href="index.html">Showcase · 47 / 52</a>
+  <a href="gridriot.html">Next →</a>
+</nav>
+
+<style>
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="const-grid">
+<a href="#client" class="const-cell" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1rem;">Client</h3><p style="margin:0;font-size:.75rem;line-height:1.4;opacity:.9;">Discover venues.</p></a>
+<a href="#restaurant" class="const-cell red" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1rem;">Restaurant</h3><p style="margin:0;font-size:.75rem;line-height:1.4;">QR menus.</p></a>
+<a href="#hotel" class="const-cell" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1rem;">Hotel</h3><p style="margin:0;font-size:.75rem;line-height:1.4;opacity:.9;">Room service.</p></a>
+<a href="#events" class="const-cell" style="display:block;"><div style="font-size:1.6rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1rem;">Events</h3><p style="margin:0;font-size:.75rem;line-height:1.4;opacity:.9;">Parties.</p></a>
+<a href="#" class="const-cell red" style="display:block;"><h3 style="margin:0;font-size:1rem;">Scan QR</h3></a>
+<a href="#" class="const-cell" style="display:block;"><h3 style="margin:0;font-size:1rem;">Dashboard</h3></a>
+</div>
+<h2>Direction accent</h2>
+<div class="brass-tri"></div><div class="diag"></div>
+</div>
+
+<footer class="showcase-footer">Korvia Design Direction Showcase · 47 / 52</footer>
+</body>
+</html>
