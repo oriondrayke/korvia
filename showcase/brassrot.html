@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brass Rot — Korvia Design Direction</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+English&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'IM Fell English', serif; background: #1a1710; color: #d8d0b8;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #12100a; border-bottom: 2px solid #3a5a4a;
+}
+.showcase-nav a { color: #8b7d4b; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #a8a080; margin-bottom: 40px; }
+.brass-card {
+    background: repeating-linear-gradient(90deg, #2a2518, #2a2518 3px, #3a3520 3px, #3a3520 6px);
+    border: 2px solid #8b7d4b; padding: 28px; margin-bottom: 24px; position: relative;
+    clip-path: polygon(0% 0%, 99% 2%, 100% 100%, 1% 98%);
+}
+.brass-card::before { content: ""; position: absolute; inset: 6px; border: 1px dashed #3a5a4a; pointer-events: none; }
+.gold-btn {
+    display: inline-block; padding: 14px 28px; border: 2px solid #8b7d4b; background: #3a5a4a;
+    color: #d8d0b8; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer;
+}
+.plate2 { width: 120px; height: 80px; background: linear-gradient(135deg, #8b7d4b, #3a5a4a); display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.plate2::after { content: ""; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 1px dotted #1a1710; }
+.rivet { width: 10px; height: 10px; background: radial-gradient(circle at 30% 30%, #d8d0b8, #3a5a4a); border-radius: 50%; display: inline-block; margin: 3px; }
+.tarnish { width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, rgba(58,90,74,0.5) 0%, transparent 70%); display: inline-block; margin-right: 16px; }
+.showcase-footer { padding: 20px; background: #12100a; color: #6b6a58; border-top: 2px solid #3a5a4a; text-align: center; }
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="velvetbruise.html">← Prev</a>
+  <a href="index.html">Showcase · 36 / 41</a>
+  <a href="gildedriot.html">Next →</a>
+</nav>
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="brass-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="brass-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="brass-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="brass-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="plate2"></div><div class="tarnish"></div><div style="margin-bottom:24px;"><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div></div>
+</div>
+
+<footer class="showcase-footer">Korvia Design Direction Showcase · 36 / 41</footer>
+</body>
+</html>

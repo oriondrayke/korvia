@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cracked Gilding — Korvia Design Direction</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital@0;1&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Libre Baskerville', serif; background: #f5f1ea; color: #3a3530;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #fff; border-bottom: 1px solid #d4af37;
+}
+.showcase-nav a { color: #8a7e72; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; color: #3a3530; }
+.desc { color: #8a7e72; margin-bottom: 40px; }
+.cracked-card {
+    background: #fff; border: 1px solid #d4af37; padding: 28px; margin-bottom: 24px;
+    position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.cracked-card::before { content: ""; position: absolute; top: 10px; left: 10px; width: 40px; height: 1px; background: #d4af37; transform: rotate(35deg); opacity: 0.6; }
+.cracked-card::after { content: ""; position: absolute; bottom: 20px; right: 15px; width: 60px; height: 1px; background: #d4af37; transform: rotate(-20deg); opacity: 0.5; }
+.gold-btn {
+    display: inline-block; padding: 14px 28px; border: 1px solid #d4af37; background: transparent;
+    color: #8a7e72; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer;
+}
+.marble { width: 120px; height: 90px; background: #fff; border: 1px solid #d4af37; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.marble::after { content: ""; position: absolute; top: 20px; left: 10px; width: 80px; height: 1px; background: #d4af37; transform: rotate(25deg); opacity: 0.6; }
+.vein { width: 100px; height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); transform: rotate(-12deg); display: inline-block; margin-bottom: 24px; opacity: 0.7; }
+.chip { width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 35px solid #d4af37; display: inline-block; margin-right: 16px; opacity: 0.6; }
+.showcase-footer { padding: 20px; background: #fff; color: #8a7e72; border-top: 1px solid #d4af37; text-align: center; }
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="palaceafterhours.html">← Prev</a>
+  <a href="index.html">Showcase · 39 / 41</a>
+  <a href="noirgrunge.html">Next →</a>
+</nav>
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="cracked-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="cracked-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="cracked-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="cracked-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="marble"></div><div class="vein"></div><div class="chip"></div>
+</div>
+
+<footer class="showcase-footer">Korvia Design Direction Showcase · 39 / 41</footer>
+</body>
+</html>
