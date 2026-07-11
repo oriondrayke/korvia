@@ -52,51 +52,31 @@ h2 { font-size: 1rem; text-transform: uppercase; margin: 40px 0 16px; border-bot
 
 <div class="stripes"></div>
 <div class="wrap">
-    <h1>Brutalist Raw</h1>
-    <p class="desc">Brutalist Raw makes Korvia's kitchen display impossible to ignore during a rush. Thick borders and screaming contrast turn ticket status into commands, not suggestions.</p>
+    <h1>Korvia · Brutalist Raw</h1>
+    <p class="desc">System fonts, thick borders, rectangles only, zero polish.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="shape rect" style="width:100%;height:auto;background:#fff;padding:18px;margin-bottom:16px;">
-        <strong>Masai Coffee House</strong><br>
-        Open tables 8 / 20 · QR scans today 312
-    </div>
-    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="shape square" style="width:120px;height:120px;display:grid;place-items:center;">
-            <span style="font-size:1.4rem;font-weight:700;">14</span>
-        </div>
-        <div>
-            <button class="big-btn">Fire orders</button>
-            <button class="big-btn secondary" style="margin-left:8px;">QR setup</button>
-            <p style="margin-top:12px;">Live order #204 · 3 items · 12 min</p>
-        </div>
+    <div class="shape rect" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="shape rect" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="type-scale" style="padding:10px 0;margin-bottom:8px;">QR menus without apps</div>
+        <div class="type-scale" style="padding:10px 0;margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="type-scale" style="padding:10px 0;margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#000;"><span>#000000</span></div>
-        <div class="swatch" style="background:#fff;"><span>#FFFFFF</span></div>
-        <div class="swatch" style="background:#ff0000;"><span style="color:#fff">#FF0000</span></div>
+    <div class="shape rect" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="big-btn">Scan QR to order</a>
+        <a class="big-btn secondary">Open dashboard</a>
     </div>
 
-    <h2>Shapes</h2>
-    <div class="shapes">
-        <div class="shape square"></div>
-        <div class="shape rect"></div>
-        <div class="shape rect" style="width:180px;"></div>
-    </div>
-
-    <h2>Type Scale</h2>
-    <div class="type-scale">
-        <p style="font-size:2.5rem; font-weight:700;">Display — 40px bold</p>
-        <p style="font-size:1.25rem; font-weight:700;">Headline — 20px bold uppercase</p>
-        <p style="font-size:1rem;">Body — 16px monospace, harsh line breaks</p>
-        <p style="font-size:0.75rem; color:#666;">Caption — 12px muted</p>
-    </div>
-
-    <h2>Components</h2>
-    <button class="big-btn">Primary</button>
-    <button class="big-btn secondary">Secondary</button>
+    <h2>Direction accent</h2>
+    <div class="square"></div>
 </div>
+
         """
     },
     {
@@ -145,52 +125,30 @@ h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; marg
 
 <div class="squares"></div>
 <div class="wrap">
-    <h1>Swiss Grid</h1>
-    <p class="desc">Swiss Grid brings editorial order to the Korvia venue dashboard, separating revenue, open tables, and live orders into a scan-friendly hierarchy with one disciplined accent color.</p>
+    <h1>Korvia · Swiss Grid</h1>
+    <p class="desc">Asymmetric grids, red accents, absolute order.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="grid" style="margin-bottom:24px;">
-        <div class="cell black">
-            <h3 style="margin:0 0 8px;">Masai Coffee House</h3>
-            <p style="margin:0;">Open tables 8 / 20</p>
-        </div>
-        <div class="cell red">
-            <p style="font-size:2.4rem;font-weight:900;margin:0;">14</p>
-            <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;margin:8px 0 0;">Live orders</p>
-        </div>
-        <div class="cell">
-            <p style="margin:0;font-weight:700;">QR scans today</p>
-            <p style="font-size:1.8rem;font-weight:900;margin:8px 0 0;">312</p>
-        </div>
-        <div class="cell red">
-            <p style="margin:0;font-weight:700;">Action required</p>
-            <p style="margin:8px 0 0;">Fire dessert course · Table 12</p>
-        </div>
+    <div class="cell" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="cell" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="cell" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="cell" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="cell" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#111;"><span style="color:#fff">#111111</span></div>
-        <div class="swatch" style="background:#f4f4f4;"><span>#F4F4F4</span></div>
-        <div class="swatch" style="background:#ff2500;"><span>#FF2500</span></div>
+    <div class="cell" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
 
-    <h2>Grid / Asymmetry</h2>
-    <div class="grid">
-        <div class="cell"><p style="font-size:2rem; font-weight:900; margin:0;">Aa</p><p class="label" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:#666; margin-top:8px;">Display type</p></div>
-        <div class="cell red"><p style="font-size:1.4rem; font-weight:700; margin:0;">01</p></div>
-        <div class="cell black"><p style="margin:0; font-size:0.9rem;">Small caps labels carry hierarchy.</p></div>
-        <div class="cell"><p style="font-size:1.8rem; font-weight:900; margin:0;">24px</p></div>
-    </div>
-
-    <h2>Type Scale</h2>
-    <div class="type-scale">
-        <p style="font-size:2.4rem; font-weight:900; letter-spacing:-0.03em;">Display — tight, loud</p>
-        <p style="font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Headline — small caps</p>
-        <p style="font-size:1rem;">Body — neutral sans, generous line height</p>
-        <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:#888;">Caption — metadata grey</p>
-    </div>
+    <h2>Direction accent</h2>
 </div>
+
         """
     },
     {
@@ -240,42 +198,30 @@ h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 40px 0 1
 
 <div class="lines"></div>
 <div class="wrap">
-    <h1>Editorial Magazine</h1>
-    <p class="deck">Editorial Magazine treats the Korvia menu like a feature story: generous whitespace, drop caps, and pull quotes turn each dish into a reason to order.</p>
+    <h1>Korvia · Editorial Magazine</h1>
+    <p class="deck">Serif headlines, columns, pull quotes, footnotes.</p>
 
     <h2>Korvia scenario</h2>
-    <p class="deck">The Serengeti Bistro — evening service preview</p>
-    <div class="columns" style="margin-bottom:24px;">
-        <div class="pull-quote">
-            Chef's tasting menu: 86 covers booked. First seating at 19:00.
-        </div>
-        <div>
-            <p style="margin:0 0 12px;"><strong>Live orders</strong> · 23 tickets firing</p>
-            <p style="margin:0 0 12px;"><strong>QR scans today</strong> · 198</p>
-            <p style="margin:0;"><strong>Staff on floor</strong> · 6 servers, 2 hosts</p>
-        </div>
+    <div class="pull-quote" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="pull-quote" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="columns" style="margin-bottom:12px;"><p style="margin:0;"><strong>QR menus without apps</strong></p></div>
+        <div class="columns" style="margin-bottom:12px;"><p style="margin:0;"><strong>Kitchen gets it instantly</strong></p></div>
+        <div class="columns" style="margin-bottom:12px;"><p style="margin:0;"><strong>Staff know what to serve</strong></p></div>
     </div>
 
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#2a2520;"><span style="color:#fff">Ink</span></div>
-        <div class="swatch" style="background:#faf8f3;"><span>Paper</span></div>
-        <div class="swatch" style="background:#8b0000;"><span style="color:#fff">Accent</span></div>
+    <div class="pull-quote" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
 
-    <div class="columns">
-        <p class="drop-cap">Serif display type sets the mood before the reader absorbs a single word. The body follows in a neutral sans, held in by columns and ruled lines.</p>
-        <p>Footnotes, captions, and pull quotes are not decoration — they are the rhythm section. They give the eye places to rest and the brain places to land.</p>
-    </div>
-
-    <blockquote class="pull-quote">"Good typography is invisible. Great typography is unforgettable."</blockquote>
-
-    <h2>Type Scale</h2>
-    <p style="font-family:'Playfair Display',serif; font-size:2.2rem; margin:8px 0;">Display serif — elegant authority</p>
-    <p style="font-family:'Playfair Display',serif; font-size:1.3rem; font-style:italic; margin:8px 0;">Italic subhead — conversational rhythm</p>
-    <p style="font-size:1rem; margin:8px 0;">Body sans — readable, neutral, generous</p>
-    <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a8175; margin:8px 0;">Caption — small, spaced, grey</p>
+    <h2>Direction accent</h2>
 </div>
+
         """
     },
     {
@@ -327,50 +273,32 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 0 0 24px; font-weight: 800; }
 
 <div class="squiggle-bg"></div>
 <div class="wrap">
-    <h1>Memphis Pop</h1>
-    <p class="desc">Memphis Pop turns a Korvia order card into a playful, high-energy ticket that floor staff can read at a glance during peak service.</p>
+    <h1>Korvia · Memphis Pop</h1>
+    <p class="desc">Squiggles, circles, triangles, pastel chaos.</p>
 
     <h2>Korvia scenario</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;margin-bottom:24px;">
-        <div class="card">
-            <strong>Zanzibar Bites</strong><br>
-            Tables 14 / 28
-        </div>
-        <div class="card" style="background:#ff3d00;color:#fff;">
-            <strong>Live order #204</strong><br>
-            3 items · 12 min
-        </div>
-        <div class="card">
-            <strong>QR menu</strong><br>
-            142 scans today
-        </div>
-    </div>
-    <div class="shapes" style="margin-bottom:24px;">
-        <div class="shape circle"></div>
-        <div class="shape triangle"></div>
-        <div class="shape squiggle"></div>
+    <div class="card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="card" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="card" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="card" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
 
-    <h2 style="margin-top:0;">Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#f6d7ff;"><span>Lavender</span></div>
-        <div class="swatch" style="background:#fff6a3;"><span>Lemon</span></div>
-        <div class="swatch" style="background:#a3fff0;"><span>Mint</span></div>
-        <div class="swatch" style="background:#ffc4a3;"><span>Peach</span></div>
+    <div class="card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
 
-    <h2>Shapes</h2>
-    <div class="shapes">
-        <div class="shape circle"></div>
-        <div class="shape triangle"></div>
-        <div class="shape squiggle"></div>
-        <div class="shape circle" style="background:#7c4dff;"></div>
-    </div>
-
-    <h2>Cards</h2>
-    <div class="card"><h3 style="margin:0 0 8px;">Pop</h3><p style="margin:0; font-size:0.9rem;">Bold, rotated, unapologetic.</p></div>
-    <div class="card" style="background:#fff6a3; transform:rotate(-3deg);"><h3 style="margin:0 0 8px;">Zig</h3><p style="margin:0; font-size:0.9rem;">No two cards align.</p></div>
+    <h2>Direction accent</h2>
+    <div class="circle"></div>
+    <div class="triangle"></div>
 </div>
+
         """
     },
     {
@@ -428,43 +356,33 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 8px; font-weight: 700; tex
 
 <div class="geo"></div>
 <div class="wrap">
-    <h1>Bauhaus Function</h1>
-    <p class="desc">Bauhaus Function maps Korvia's core hospitality jobs to primary forms: red for urgent orders, yellow for menus, and blue for QR status.</p>
+    <h1>Korvia · Bauhaus Function</h1>
+    <p class="desc">Circles, squares, triangles, primary colors.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="stage" style="margin-bottom:24px;">
-        <div class="module red"><h2 style="margin:0;">Orders</h2><div class="big">12</div></div>
-        <div class="module yellow"><h2 style="margin:0;">Menu</h2><div class="big">QR</div></div>
-        <div class="module blue"><h2 style="margin:0;">Tables</h2><div class="big">8</div></div>
-        <div class="module white"><h2 style="margin:0;">Staff</h2><div class="big">3</div></div>
-        <div class="module blue"><h2 style="margin:0;">Revenue</h2><div class="big">TZS</div></div>
-        <div class="module red"><h2 style="margin:0;">Alert</h2><div class="big">!</div></div>
+    <div class="module" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="module" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="module" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="module" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="module" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
 
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#e63946;"><span style="color:#fff">Red</span></div>
-        <div class="swatch" style="background:#ffcc00;"><span>Yellow</span></div>
-        <div class="swatch" style="background:#1d3557;"><span style="color:#fff">Blue</span></div>
+    <div class="module" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
 
-    <h2>Primary Shapes</h2>
-    <div class="shapes">
-        <div class="shape sq"></div>
-        <div class="shape ci"></div>
-        <div class="shape tr"></div>
-    </div>
-
-    <h2>Grid Modules</h2>
-    <div class="stage">
-        <div class="module red"><h2>Square</h2><div class="big">□</div></div>
-        <div class="module yellow"><h2>Circle</h2><div class="big">○</div></div>
-        <div class="module blue"><h2>Triangle</h2><div class="big">△</div></div>
-        <div class="module white"><h2>White</h2><div class="big">—</div></div>
-        <div class="module blue"><h2>Blue</h2><div class="big">●</div></div>
-        <div class="module red"><h2>Red</h2><div class="big">■</div></div>
-    </div>
+    <h2>Direction accent</h2>
+    <div class="sq"></div>
+    <div class="ci"></div>
+    <div class="tr"></div>
 </div>
+
         """
     },
     {
@@ -517,38 +435,31 @@ h1 { font-family: 'Patrick Hand', cursive; font-size: clamp(2.5rem, 8vw, 5rem); 
 
 <div class="paper"></div>
 <div class="wrap">
-    <h1>Hand-Drawn Sketch</h1>
-    <p class="desc">Hand-Drawn Sketch makes Korvia feel like the head chef's personal tickets: quick, human, and easy to annotate during a busy prep window.</p>
+    <h1>Korvia · Hand-Drawn Sketch</h1>
+    <p class="desc">Rough edges, paper texture, pencil marks.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="napkin" style="margin-bottom:16px;">
-        <div class="tape"></div>
-        <div class="row"><span>Venue</span><span>Kilimanjaro Rooftop</span></div>
-        <div class="row"><span>Open tables</span><span>6 / 18</span></div>
-        <div class="row"><span>Live order</span><span>#312 · 4 items</span></div>
-        <div class="row"><span>QR scans</span><span>89 today</span></div>
-    </div>
-    <button class="sketch-btn">Mark ready</button>
-    <button class="sketch-btn" style="background:#fffef8;">QR menu</button>
+    <div class="napkin" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="napkin" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
 
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#f7f2e6;"><span>Paper</span></div>
-        <div class="swatch" style="background:#3a3026;"><span style="color:#fff">Ink</span></div>
-        <div class="swatch" style="background:#b45f06;"><span>Pencil</span></div>
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="row" style="margin-bottom:8px;"><span>✓</span><span>QR menus without apps</span></div>
+        <div class="row" style="margin-bottom:8px;"><span>✓</span><span>Kitchen gets it instantly</span></div>
+        <div class="row" style="margin-bottom:8px;"><span>✓</span><span>Staff know what to serve</span></div>
     </div>
 
-    <div class="napkin">
-        <div class="tape"></div>
-        <div class="row"><span>Display type</span><span>Patrick Hand</span></div>
-        <div class="row"><span>UI type</span><span>Kalam</span></div>
-        <div class="row"><span>Border style</span><span>Dashed / wavy</span></div>
-        <div class="row"><span>Radius</span><span>Random organic</span></div>
+    <div class="napkin" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="sketch-btn">Scan QR to order</a>
+        <a class="sketch-btn" style="opacity:0.85;">Open dashboard</a>
     </div>
 
-    <button class="sketch-btn">Save sketch</button>
-    <button class="sketch-btn" style="background:#fffef8;">Erase</button>
+    <h2>Direction accent</h2>
+    <div class="tape"></div>
 </div>
+
         """
     },
     {
@@ -601,42 +512,33 @@ h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 
         "content": """
 
 <div class="wrap">
-    <div class="fan"></div>
-    <h1>Art Deco Luxe</h1>
-    <p class="desc">Art Deco Luxe frames Korvia's fine-dining venues with gilded panels and diamond motifs, turning a reservation screen into part of the guest experience.</p>
+    <h1>Korvia · Art Deco Luxe</h1>
+    <p class="desc">Gold, black, stepped geometry, fan patterns.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="panel">
-        <h2 style="margin:0 0 8px;">The Gilded Palm</h2>
-        <p style="margin:0;">Reservations tonight: 42 covers · VIP table 4</p>
-    </div>
-    <div style="display:flex;gap:12px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <button class="gold-btn">Seat guests</button>
-        <button class="gold-btn">View menu</button>
-        <div class="diamond"></div>
-        <div class="step"></div>
+    <div class="panel" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="panel" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="step" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="step" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="step" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2 style="color:#c5a059; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.2em;">Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#050505;"><span style="color:#fff">Black</span></div>
-        <div class="swatch" style="background:#c5a059;"><span>Gold</span></div>
-        <div class="swatch" style="background:#f5e7c8;"><span>Cream</span></div>
+    <div class="panel" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="gold-btn">Scan QR to order</a>
+        <a class="gold-btn" style="opacity:0.85;">Open dashboard</a>
     </div>
 
-    <h2 style="color:#c5a059; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.2em;">Motifs</h2>
-    <div class="shapes">
-        <div class="diamond"></div>
-        <div class="step"></div>
-        <div class="diamond" style="background:#f5e7c8;"></div>
-    </div>
-
-    <div class="panel">
-        <p style="font-size:1.3rem; margin:0 0 12px;">Your experience begins here.</p>
-        <p style="color:#8a7e63; margin:0 0 24px;">Cinzel headings · Marcellus body · Gold accents</p>
-        <button class="gold-btn">Enter</button>
-    </div>
+    <h2>Direction accent</h2>
+    <div class="fan"></div>
+    <div class="diamond"></div>
+    <div class="step"></div>
 </div>
+
         """
     },
     {
@@ -690,44 +592,34 @@ h1 { font-family: 'Gochi Hand', cursive; font-size: clamp(2.4rem, 7vw, 4.5rem); 
         """,
         "content": """
 
-<div class="cork"></div>
 <div class="wrap">
-    <h1>Scrapbook Collage</h1>
-    <p class="desc">Scrapbook Collage lets Korvia venues paste together photos, polaroids, and washi-tape notes for a personality-rich events board.</p>
+    <h1>Korvia · Scrapbook Collage</h1>
+    <p class="desc">Washi tape, polaroids, layered paper, soft dopamine.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="collage" style="margin-bottom:24px;">
-        <div class="polaroid" style="position:relative;">
-            <div class="washi"></div>
-            <div class="img">📷</div>
-            <p style="margin:12px 0 0;text-align:center;">New menu shoot</p>
-        </div>
-        <div class="polaroid" style="position:relative;">
-            <div class="washi"></div>
-            <div class="img">🍹</div>
-            <p style="margin:12px 0 0;text-align:center;">Cocktail special</p>
-        </div>
-        <div class="polaroid" style="position:relative;">
-            <div class="washi"></div>
-            <div class="img">🎟️</div>
-            <p style="margin:12px 0 0;text-align:center;">Event booking</p>
-        </div>
+    <div class="polaroid" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="polaroid" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="washi" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="washi" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="washi" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#e6f0e8;"><span>Mint</span></div>
-        <div class="swatch" style="background:#e07050;"><span>Terracotta</span></div>
-        <div class="swatch" style="background:#ffb74d;"><span>Tape</span></div>
+    <div class="polaroid" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
 
-    <h2>Polaroids</h2>
-    <div class="collage">
-        <div class="polaroid"><div class="washi"></div><div class="img">🎨</div><p>Color study</p></div>
-        <div class="polaroid"><div class="washi"></div><div class="img">✂️</div><p>Cut paper</p></div>
-        <div class="polaroid"><div class="washi"></div><div class="img">📝</div><p>Hand note</p></div>
-    </div>
+    <h2>Direction accent</h2>
+    <div class="cork"></div>
+    <div class="collage"></div>
+    <div class="washi"></div>
 </div>
+
         """
     },
     {
@@ -773,37 +665,34 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 300; margin: 0 0 24px; 
         """,
         "content": """
 
-<div class="ink"></div>
 <div class="wrap">
-    <div class="vertical">間 · 2026</div>
-    <h1>Japanese Minimal</h1>
-    <p class="desc">Japanese Minimal gives Korvia the calm of a ryokan check-in: one seal, one vertical accent, and absolute clarity between occupied and empty space.</p>
+    <h1>Korvia · Japanese Minimal</h1>
+    <p class="desc">Space, ink, red seals, vertical rhythm.</p>
 
     <h2>Korvia scenario</h2>
-    <div style="display:flex;align-items:flex-start;gap:24px;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="seal">K</div>
-        <div>
-            <div class="type-line" style="font-size:1.5rem;">Masao Sushi</div>
-            <div class="type-line">8 tables open · 6 live orders</div>
-            <div class="type-line" style="color:#8c8c8c;">QR scans today: 156</div>
-        </div>
+    <div class="seal" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="seal" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="type-line" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="type-line" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="type-line" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2 style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;">Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#f7f5f0;"><span>Paper</span></div>
-        <div class="swatch" style="background:#2b2b2b;"><span style="color:#fff">Ink</span></div>
-        <div class="swatch" style="background:#b02a2a;"><span style="color:#fff">Seal</span></div>
+    <div class="seal" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
 
-    <div class="seal">美</div>
-
-    <h2 style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;">Type Rhythm</h2>
-    <div class="type-line" style="font-size:2rem;">静かな余白</div>
-    <div class="type-line" style="font-size:1.3rem;">Quiet white space</div>
-    <div class="type-line" style="font-size:1rem;">Body text floats with generous leading.</div>
-    <div class="type-line" style="font-size:0.75rem; color:#8c8c8c;">Caption — small, spaced, grey</div>
+    <h2>Direction accent</h2>
+    <div class="ink"></div>
+    <div class="seal"></div>
+    <div class="type-line"></div>
 </div>
+
         """
     },
     {
@@ -853,40 +742,31 @@ h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 16px; font-weight: 400; }
 
 <div class="scanlines"></div>
 <div class="wrap">
-    <h1>> RETRO_TERMINAL</h1>
-    <p class="desc">Retro Terminal turns Korvia into a heads-down command center for back-of-house: logs, prompts, and a blinking cursor keep cooks in flow.</p>
+    <h1>Korvia · Retro Terminal</h1>
+    <p class="desc">Monospace green, scanlines, CRT glow.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="log" style="margin-bottom:24px;">
-        <p><span class="prompt">$</span> korvia --venue=savannah status</p>
-        <p>[OK] 7 tables occupied</p>
-        <p>[WARN] order #404 waiting 14m</p>
-        <p>[OK] QR menu served 312 guests</p>
-        <p><span class="prompt">$</span> fire_course table_12<span class="cursor">_</span></p>
+    <div class="log" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="log" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="bar" style="padding:10px 0;margin-bottom:8px;">QR menus without apps</div>
+        <div class="bar" style="padding:10px 0;margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="bar" style="padding:10px 0;margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2 style="font-size:1rem; color:#33ff00cc;">Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#050a05;"><span style="color:#33ff00">Black</span></div>
-        <div class="swatch" style="background:#33ff00;"><span style="color:#050a05">Green</span></div>
-        <div class="swatch" style="background:#0f3d0f;"><span>Dim</span></div>
+    <div class="log" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="prompt">Scan QR to order</a>
+        <a class="prompt" style="opacity:0.85;">Open dashboard</a>
     </div>
 
-    <h2 style="font-size:1rem; color:#33ff00cc;">Shapes</h2>
-    <div class="shapes">
-        <div class="bar"></div>
-        <div class="bar" style="width:100px;"></div>
-        <div class="grid2"></div>
-    </div>
-
-    <div class="log">
-        <p><span class="prompt">$</span> load_ui --theme=terminal</p>
-        <p>[OK] monospace loaded</p>
-        <p>[OK] scanlines enabled</p>
-        <p>[OK] 80 columns ready</p>
-        <p><span class="prompt">$</span> run_presentation<span class="cursor">_</span></p>
-    </div>
+    <h2>Direction accent</h2>
+    <div class="cursor"></div>
 </div>
+
         """
     },
     {
@@ -932,31 +812,34 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
         """,
         "content": """
 
-<div class="organic"></div>
 <div class="wrap">
-    <h1>Organic Blob</h1>
-    <p class="desc">Organic Blob softens Korvia's guest touchpoints with fluid shapes that feel welcoming, like a reservation card made of warm earth.</p>
+    <h1>Korvia · Organic Blob</h1>
+    <p class="desc">Fluid shapes, earth tones, no sharp edges.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="blob" style="padding:24px;margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Safari Lodge</h3>
-        <p style="margin:0;">Check-ins: 18 / 24 · Dinner covers: 40</p>
+    <div class="organic" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="organic" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="blob" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="blob" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="blob" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:24px;">
-        <div class="oval" style="width:140px;">QR check-in</div>
-        <div class="wave" style="flex:1;min-width:120px;"></div>
+
+    <div class="organic" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#e6ddd4;"><span>Sand</span></div>
-        <div class="swatch" style="background:#7a6a5a;"><span style="color:#fff">Stone</span></div>
-        <div class="swatch" style="background:#c4a77d;"><span>Oak</span></div>
-    </div>
-    <div class="blob">A soft container with no straight corners.</div>
-    <div class="oval">Oval pill</div>
-    <div class="oval" style="background:#c4a77d;">Oval two</div>
+
+    <h2>Direction accent</h2>
+    <div class="blob"></div>
     <div class="wave"></div>
+    <div class="oval"></div>
 </div>
+
         """
     },
     {
@@ -1003,32 +886,31 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
         "content": """
 
 <div class="wrap">
-    <h1>Neobrutalism</h1>
-    <p class="desc">Neobrutalism gives Korvia chunky cards and loud shadows so hosts and managers never miss the next actionable order.</p>
+    <h1>Korvia · Neobrutalism</h1>
+    <p class="desc">Bright colors, hard shadows, rounded but bold.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="card2 coral" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Live order #55</h3>
-        <p style="margin:0;">2 items · 9 min · Table 7</p>
+    <div class="card2" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="card2" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="card2" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="card2" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="card2" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div class="card2 mint" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Mara Kitchen</h3>
-        <p style="margin:0;">Tables 11 / 22 · Staff 4</p>
+
+    <div class="card2" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="neo-btn">Scan QR to order</a>
+        <a class="neo-btn" style="opacity:0.85;">Open dashboard</a>
     </div>
-    <button class="neo-btn" style="margin-bottom:16px;">Open QR menu</button>
+
+    <h2>Direction accent</h2>
     <div class="star"></div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#ff6b6b;"><span>Coral</span></div>
-        <div class="swatch" style="background:#4ecdc4;"><span>Mint</span></div>
-        <div class="swatch" style="background:#ffe66d;"><span>Lemon</span></div>
-    </div>
-    <div class="star"></div>
-    <div class="card2 coral">Coral card with hard shadow.</div>
-    <div class="card2 mint">Mint card with hard shadow.</div>
-    <button class="neo-btn">Click me</button>
-    <button class="neo-btn" style="background:#ffe66d;">Or me</button>
 </div>
+
         """
     },
     {
@@ -1073,32 +955,31 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
         "content": """
 
 <div class="wrap">
-    <h1>Claymorphism</h1>
-    <p class="desc">Claymorphism makes Korvia buttons and cards feel squeezable — ideal for tablet-based hosts tapping through reservations with gloved hands.</p>
+    <h1>Korvia · Claymorphism</h1>
+    <p class="desc">Soft 3D pastels, puffy shapes, inner shadows.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="clay-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Coastal Cafe host station</h3>
-        <p style="margin:0;">6 tables open · Next reservation 13:00</p>
+    <div class="clay-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="clay-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="puffy" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="puffy" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="puffy" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="puffy" style="width:90px;height:90px;">QR</div>
-        <div class="puffy" style="width:90px;height:90px;background:#c1e1c1;">4</div>
-        <div class="clay-card green" style="margin:0;flex:1;min-width:160px;">Order #77 ready</div>
+
+    <div class="clay-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#ffe5ec;"><span>Pink</span></div>
-        <div class="swatch" style="background:#c1e1c1;"><span>Sage</span></div>
-        <div class="swatch" style="background:#b5deff;"><span>Sky</span></div>
-    </div>
-    <div class="puffy">A</div>
-    <div class="puffy" style="background:#c1e1c1;">B</div>
-    <div class="puffy" style="background:#b5deff;">C</div>
-    <div class="clay-card">Soft pink clay panel.</div>
-    <div class="clay-card green">Soft green clay panel.</div>
-    <div class="clay-card blue">Soft blue clay panel.</div>
+
+    <h2>Direction accent</h2>
+    <div class="puffy"></div>
 </div>
+
         """
     },
     {
@@ -1147,34 +1028,32 @@ h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; font-weight: 700; le
 
 <div class="grid-bg"></div>
 <div class="wrap">
-    <h1>Cyberpunk Neon</h1>
-    <p class="desc">Cyberpunk Neon turns Korvia's late-night bar mode into a glowing command deck where orders pulse and QR scans cut through the dark.</p>
+    <h1>Korvia · Cyberpunk Neon</h1>
+    <p class="desc">Dark city, neon edges, sharp angles.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="neon-box" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Neon Lounge</h3>
-        <p style="margin:0;">Open tabs: 23 · Live orders: 9</p>
+    <div class="neon-box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="neon-box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="neon-box" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="neon-box" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="neon-box" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div class="neon-box" style="border-color:#ff00ff;box-shadow:0 0 12px #ff00ff33;margin-bottom:16px;">
-        <p style="margin:0;">Live order #99 · Cocktails ×4 · Table 15</p>
+
+    <div class="neon-box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <div style="display:flex;gap:16px;margin-bottom:24px;">
-        <div class="tri"></div>
-        <div class="hex"></div>
-        <div class="hex" style="background:#ff00ff;"></div>
-    </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#0a0a12;"><span style="color:#00ffff">Void</span></div>
-        <div class="swatch" style="background:#ff00ff;"><span>Magenta</span></div>
-        <div class="swatch" style="background:#00ffff;"><span>Cyan</span></div>
-    </div>
-    <div class="tri"></div>
+
+    <h2>Direction accent</h2>
     <div class="hex"></div>
-    <div class="hex" style="background:#ff00ff;"></div>
-    <div class="neon-box">Neon panel one — cyan edge glow.</div>
-    <div class="neon-box" style="border-color:#ff00ff; box-shadow:0 0 12px #ff00ff33;">Neon panel two — magenta edge glow.</div>
+    <div class="tri"></div>
 </div>
+
         """
     },
     {
@@ -1223,32 +1102,32 @@ h1 { font-family: 'Rye', cursive; font-size: clamp(2.2rem, 6vw, 4rem); margin: 0
         "content": """
 
 <div class="wrap">
-    <h1>Steampunk Brass</h1>
-    <p class="desc">Steampunk Brass wraps Korvia's heritage hotel dashboard in riveted plates and gauges, making occupancy and service diagnostics feel tangible.</p>
+    <h1>Korvia · Steampunk Brass</h1>
+    <p class="desc">Gears, gauges, copper, and rivets.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="plate" style="margin-bottom:16px;">
-        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
-        <p style="margin:12px 0 0;font-weight:700;">Grand Hotel · Occupancy 78% · 41 guests checked in</p>
+    <div class="plate" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="plate" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="rivet" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="rivet" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="rivet" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="gauge"></div>
-        <div class="gear"></div>
-        <p style="margin:0;">Steam pressure: optimal<br>QR scans today: 267</p>
+
+    <div class="plate" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#3e2723;"><span style="color:#e6d5b8">Leather</span></div>
-        <div class="swatch" style="background:#b87333;"><span>Brass</span></div>
-        <div class="swatch" style="background:#e6d5b8;"><span>Parchment</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="gear"></div>
     <div class="gauge"></div>
-    <div class="plate">
-        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
-        <p style="margin:12px 0 0; font-weight:700;">Riveted brass panel.</p>
-    </div>
 </div>
+
         """
     },
     {
@@ -1301,31 +1180,32 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; 
 
 <div class="floral-bg"></div>
 <div class="wrap">
-    <h1>Cottagecore Floral</h1>
-    <p class="desc">Cottagecore Floral gives Korvia's farm-to-table venues a pressed-flower warmth that matches menus built on local ingredients.</p>
+    <h1>Korvia · Cottagecore Floral</h1>
+    <p class="desc">Soft florals, rounded script, gentle dopamine.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="floral-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Green Valley Bistro</h3>
-        <p style="margin:0;">Today's special: pumpkin soup · 18 covers</p>
+    <div class="floral-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="floral-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="floral-card" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="floral-card" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="floral-card" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
-        <div class="flower"></div>
-        <div class="leaf"></div>
-        <div class="floral-card" style="margin:0;flex:1;min-width:160px;">Order #12 · Table 5 · ready</div>
+
+    <div class="floral-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#faf6f0;"><span>Cream</span></div>
-        <div class="swatch" style="background:#e8b4b8;"><span>Rose</span></div>
-        <div class="swatch" style="background:#a8c686;"><span>Sage</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="flower"></div>
     <div class="leaf"></div>
-    <div class="leaf" style="transform:rotate(20deg); background:#e8b4b8;"></div>
-    <div class="floral-card">A gentle card with rounded corners and a soft shadow.</div>
-    <div class="floral-card" style="background:#f9f1f1;">Another petal-soft container.</div>
 </div>
+
         """
     },
     {
@@ -1372,31 +1252,33 @@ h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; -webkit-text-stroke:
         """,
         "content": """
 
+<div class="warp"></div>
 <div class="wrap">
-    <h1>Acid Rave</h1>
-    <p class="desc">Acid Rave keeps Korvia's festival and event pop-ups readable under strobe conditions with high-voltage boxes and dripping urgency.</p>
+    <h1>Korvia · Acid Rave</h1>
+    <p class="desc">Neon green, chrome, warped geometry.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="acid-box" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Event: Nyege Nyege Popup</h3>
-        <p style="margin:0;">Queue: 31 · QR scans: 892 · Staff 8</p>
+    <div class="acid-box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="acid-box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="acid-box" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="acid-box" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="acid-box" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div class="drip" style="margin-bottom:16px;"></div>
-    <div class="acid-box" style="margin-bottom:16px;">
-        <p style="margin:0;">Live order #666 · 2 combos · 6 min</p>
+
+    <div class="acid-box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <div class="warp"></div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#1a1a1a;"><span style="color:#ccff00">Black</span></div>
-        <div class="swatch" style="background:#ccff00;"><span>Acid</span></div>
-        <div class="swatch" style="background:#9d00ff;"><span>Purple</span></div>
-    </div>
-    <div class="warp"></div>
-    <div class="warp" style="background:#ccff00;"></div>
+
+    <h2>Direction accent</h2>
     <div class="drip"></div>
-    <div class="acid-box">Striped acid panel.</div>
 </div>
+
         """
     },
     {
@@ -1448,35 +1330,32 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8d
         "content": """
 
 <div class="wrap">
-    <h1>Deconstructivism</h1>
-    <p class="desc">Deconstructivism breaks the Korvia dashboard into overlapping shards so managers can compare kitchen load, floor plan, and QR traffic at once.</p>
+    <h1>Korvia · Deconstructivism</h1>
+    <p class="desc">Broken grid, diagonal slices, overlapping planes.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="overlap" style="margin-bottom:16px;height:160px;">
-        <div class="box" style="left:0;top:0;background:#fff;padding:16px;">Venue load</div>
-        <div class="box" style="left:60px;top:40px;background:#ff4d4d;color:#fff;padding:16px;">Orders 9</div>
-        <div class="box" style="left:130px;top:80px;background:#111;color:#fff;padding:16px;">QR 412</div>
+    <div class="box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="box" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="box" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="box" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="shard"></div>
-        <div class="slice" style="flex:1;min-width:160px;">Action: consolidate Table 4 + Table 6</div>
+
+    <div class="box" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#f5f5f5;"><span>Grey</span></div>
-        <div class="swatch" style="background:#111;"><span style="color:#fff">Black</span></div>
-        <div class="swatch" style="background:#ff4d4d;"><span>Red</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="shard"></div>
-    <div class="shard blue"></div>
-    <div class="overlap">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-    </div>
-    <div class="slice">Skewed slice one.</div>
-    <div class="slice">Skewed slice two.</div>
+    <div class="slice"></div>
 </div>
+
         """
     },
     {
@@ -1528,35 +1407,32 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 600; }
 
 <div class="nature-bg"></div>
 <div class="wrap">
-    <h1>Biophilic Nature</h1>
-    <p class="desc">Biophilic Nature weaves Korvia's eco-lodge and farm venues into leaf, branch, and stone textures that echo their sustainability story.</p>
+    <h1>Korvia · Biophilic Nature</h1>
+    <p class="desc">Leaf forms, earth tones, living lines.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="nature-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Arusha Eco-Lodge</h3>
-        <p style="margin:0;">Guests checked in: 14 / 20 · Solar: 100%</p>
+    <div class="nature-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="nature-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="nature-card" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="nature-card" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="nature-card" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
-        <div class="leaf"></div>
-        <div class="leaf two"></div>
-        <div class="branch" style="flex:1;min-width:80px;"></div>
+
+    <div class="nature-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <div class="nature-card" style="margin-bottom:16px;">Order #21 · Vegan set ×2 · Table 8</div>
-    <div class="pebble">QR</div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#f4f1ea;"><span>Stone</span></div>
-        <div class="swatch" style="background:#4a5d23;"><span style="color:#fff">Moss</span></div>
-        <div class="swatch" style="background:#d4a373;"><span>Terracotta</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="leaf"></div>
-    <div class="leaf two"></div>
-    <div class="pebble"></div>
-    <div class="pebble" style="background:#4a5d23;"></div>
-    <div class="branch" style="width:60%"></div>
-    <div class="branch" style="width:40%"></div>
-    <div class="nature-card">A card shaped like a leaf's edge.</div>
+    <div class="branch"></div>
 </div>
+
         """
     },
     {
@@ -1601,30 +1477,32 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; text-transform: uppe
         "content": """
 
 <div class="wrap">
-    <h1>Constructivism</h1>
-    <p class="desc">Constructivism delivers Korvia's service updates like rally posters: skewed banners and bold wedges broadcast priorities across a noisy kitchen.</p>
+    <h1>Korvia · Constructivism</h1>
+    <p class="desc">Red, black, diagonals, propaganda posters.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="banner" style="margin-bottom:16px;">Service alert: VIP party of 6 arriving 19:30</div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="photo" style="display:grid;place-items:center;color:#fff;font-weight:700;">QR</div>
-        <div class="wedge"></div>
-        <div class="wedge red"></div>
-        <div style="font-weight:700;">Live orders: 11 · Scans: 205</div>
+    <div class="banner" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="banner" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="wedge" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="wedge" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="wedge" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#d62828;"><span style="color:#fff">Red</span></div>
-        <div class="swatch" style="background:#111;"><span style="color:#fff">Black</span></div>
-        <div class="swatch" style="background:#f4f1de;"><span>Paper</span></div>
+
+    <div class="banner" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
+
+    <h2>Direction accent</h2>
     <div class="wedge"></div>
-    <div class="wedge red"></div>
-    <div class="banner">Forward — the future is now</div>
-    <div class="photo"></div>
-    <div class="photo" style="background:#d62828;"></div>
     <div class="photo"></div>
 </div>
+
         """
     },
     {
@@ -1670,30 +1548,32 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
         "content": """
 
 <div class="wrap">
-    <h1>Psychedelic 70s</h1>
-    <p class="desc">Psychedelic 70s turns Korvia's happy-hour dashboard into a sunburst of color-coded bubbles, making promo items impossible to miss.</p>
+    <h1>Korvia · Psychedelic 70s</h1>
+    <p class="desc">Wavy patterns, warm colors, groovy type.</p>
 
     <h2>Korvia scenario</h2>
+    <div class="bubble" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="bubble" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
     <div style="margin-bottom:16px;">
-        <div class="bubble">Sunset Combo · 30% off</div>
-        <div class="bubble" style="background:#ff9f1c;">Live orders: 18</div>
-        <div class="bubble" style="background:#00f5d4;color:#111;">QR scans: 124</div>
+        <div class="bubble" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="bubble" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="bubble" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="sunburst"></div>
-        <div class="wavey" style="flex:1;min-width:120px;"></div>
+
+    <div class="bubble" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#ff9f1c;"><span>Orange</span></div>
-        <div class="swatch" style="background:#ffbf69;"><span>Mango</span></div>
-        <div class="swatch" style="background:#9b5de5;"><span style="color:#fff">Purple</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="sunburst"></div>
     <div class="wavey"></div>
-    <div class="bubble">Groovy</div>
-    <div class="bubble" style="background:#ff9f1c; color:#3a0ca3;">Funky</div>
 </div>
+
         """
     },
     {
@@ -1745,31 +1625,33 @@ h1 { font-size: clamp(2.5rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.04
         "content": """
 
 <div class="wrap">
-    <h1>Pop Art</h1>
-    <p class="desc">Pop Art makes Korvia's menu items jump off the screen like comic panels, ideal for fast-casual counters where guests order from tablets.</p>
+    <h1>Korvia · Pop Art</h1>
+    <p class="desc">Ben-Day dots, bold outlines, comic panels.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="comic-panel red" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Burger Blast</h3>
-        <p style="margin:0;">#1 combo · 24 sold today · TZS 18,000</p>
+    <div class="comic-panel" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="comic-panel" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="speech" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="speech" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="speech" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="speech" style="margin:0;">Scan QR to order!</div>
-        <div class="starburst"></div>
-        <div class="dots"></div>
+
+    <div class="comic-panel" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#ffd400;"><span>Yellow</span></div>
-        <div class="swatch" style="background:#ff3333;"><span>Red</span></div>
-        <div class="swatch" style="background:#0066cc;"><span style="color:#fff">Blue</span></div>
-    </div>
-    <div class="starburst"></div>
-    <div class="speech">POW!</div>
+
+    <h2>Direction accent</h2>
     <div class="dots"></div>
-    <div class="comic-panel">Comic panel one.</div>
-    <div class="comic-panel red">Comic panel two.</div>
+    <div class="starburst"></div>
+    <div class="speech"></div>
 </div>
+
         """
     },
     {
@@ -1815,31 +1697,31 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
         "content": """
 
 <div class="wrap">
-    <h1>Nordic Minimal</h1>
-    <p class="desc">Nordic Minimal keeps Korvia's front desk calm with soft cards, rounded pills, and quiet color that lets guest information breathe.</p>
+    <h1>Korvia · Nordic Minimal</h1>
+    <p class="desc">Muted colors, soft curves, cozy utility.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="nordic-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Nordic Lodge reception</h3>
-        <p style="margin:0;">Check-ins pending: 4 · Occupied: 16 / 20</p>
+    <div class="nordic-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="nordic-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="pill" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="pill" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="pill" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="pill" style="margin:0;">QR check-in</div>
-        <div class="soft-circle" style="margin:0;">12</div>
-        <div class="soft-circle" style="margin:0;background:#e8e0d8;">QR</div>
+
+    <div class="nordic-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="pill">Scan QR to order</a>
+        <a class="soft-circle">Open dashboard</a>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#f5f1ed;"><span>Wool</span></div>
-        <div class="swatch" style="background:#d4c5b9;"><span>Wood</span></div>
-        <div class="swatch" style="background:#a8b8a6;"><span>Sage</span></div>
-    </div>
-    <div class="soft-circle">A</div>
-    <div class="soft-circle" style="background:#a8b8a6; color:#fff;">B</div>
-    <div class="pill">Cozy</div>
-    <div class="pill" style="background:#d4c5b9; color:#4a4a48;">Calm</div>
-    <div class="nordic-card">A soft, warm card with generous space.</div>
+
+    <h2>Direction accent</h2>
+    <div class="soft-circle"></div>
 </div>
+
         """
     },
     {
@@ -1887,31 +1769,33 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 800; }
         "content": """
 
 <div class="wrap">
-    <h1>Tropical Vibes</h1>
-    <p class="desc">Tropical Vibes dresses Korvia's beach resort and rooftop pool menus in sun, arch, and palm shapes that feel like vacation from the first tap.</p>
+    <h1>Korvia · Tropical Vibes</h1>
+    <p class="desc">Palm leaves, vivid color, organic shapes.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="tropic-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Beach Shack</h3>
-        <p style="margin:0;">Sunbeds: 9 / 16 reserved · Orders: 5</p>
+    <div class="tropic-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="tropic-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="tropic-card" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="tropic-card" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="tropic-card" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap;">
-        <div class="sun"></div>
-        <div class="arch"></div>
-        <div class="palm"></div>
+
+    <div class="tropic-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <div class="tropic-card">Order #10 · Coconut cocktails ×2 · Cabana 3</div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#06d6a0;"><span>Jade</span></div>
-        <div class="swatch" style="background:#ffd166;"><span>Sun</span></div>
-        <div class="swatch" style="background:#ef476f;"><span>Coral</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="palm"></div>
-    <div class="arch"></div>
     <div class="sun"></div>
-    <div class="tropic-card">A bright card under the tropical sun.</div>
+    <div class="arch"></div>
 </div>
+
         """
     },
     {
@@ -1960,31 +1844,32 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
 
 <div class="grunge-bg"></div>
 <div class="wrap">
-    <h1>Grunge Distress</h1>
-    <p class="desc">Grunge Distress fits Korvia's dive bar and live-music venues: torn cards, stains, and tape-ripped textures match the grit of a busy service.</p>
+    <h1>Korvia · Grunge Distress</h1>
+    <p class="desc">Torn paper, noise, rough edges.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="torn" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Rock Bar — Setlist Night</h3>
-        <p style="margin:0;">Open tabs: 22 · Queue: 8 · Staff: 4</p>
+    <div class="torn" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="torn" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="org" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="org" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="org" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div class="tape-rip" style="margin-bottom:16px;"></div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="stain"></div>
-        <div class="torn" style="margin:0;flex:1;min-width:160px;">Live order #13 · Nachos ×3</div>
+
+    <div class="torn" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#2b2b2b;"><span style="color:#d4d4d4">Charcoal</span></div>
-        <div class="swatch" style="background:#8c8c8c;"><span>Grey</span></div>
-        <div class="swatch" style="background:#b33939;"><span>Rust</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="stain"></div>
-    <div class="stain" style="background:radial-gradient(circle, rgba(140,140,140,0.4) 0%, transparent 70%);"></div>
     <div class="tape-rip"></div>
-    <div class="torn">Torn paper panel with rough edges.</div>
-    <div class="torn" style="border-left-color:#8c8c8c;">Another distressed layer.</div>
 </div>
+
         """
     },
     {
@@ -2032,32 +1917,33 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; letter-spacing: 0.04
         "content": """
 
 <div class="wrap">
-    <h1>Futurist Aero</h1>
-    <p class="desc">Futurist Aero gives Korvia's high-end hotel and airport F&B kiosks a speed-driven, silver-sheeted interface that signals precision.</p>
+    <h1>Korvia · Futurist Aero</h1>
+    <p class="desc">Speed lines, silver, streamlined motion.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="aero-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Sky Lounge Kiosk</h3>
-        <p style="margin:0;">Boarding guests: 47 · Orders in window: 12</p>
+    <div class="aero-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="aero-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="silver-circle" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="silver-circle" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="silver-circle" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
-        <div class="airfoil"></div>
-        <div class="silver-circle" style="margin:0;">QR</div>
+
+    <div class="aero-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <div class="speed" style="margin-bottom:24px;"></div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#c0c0c0;"><span>Silver</span></div>
-        <div class="swatch" style="background:#1e3a5f;"><span style="color:#fff">Navy</span></div>
-        <div class="swatch" style="background:#e8e8e8;"><span>Cloud</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="airfoil"></div>
-    <div class="speed" style="width:80%"></div>
-    <div class="speed" style="width:50%"></div>
+    <div class="speed"></div>
     <div class="silver-circle"></div>
-    <div class="silver-circle" style="background:radial-gradient(circle at 30% 30%,#e8e8e8,#1e3a5f 50%,#0f1f33);"></div>
-    <div class="aero-card">Streamlined card with an aerodynamic tail.</div>
 </div>
+
         """
     },
     {
@@ -2099,29 +1985,32 @@ h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 0 0 16px; font-style: italic
         "content": """
 
 <div class="wrap">
-    <h1>Rococo Ornate</h1>
-    <p class="desc">Rococo Ornate frames Korvia's heritage tea rooms and wedding venues in gilded flourishes, turning bookings into invitations.</p>
+    <h1>Korvia · Rococo Ornate</h1>
+    <p class="desc">Pastel frames, gold flourishes, decorative excess.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="ornate" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Tea Room · Wedding Booking</h3>
-        <p style="margin:0;">Covers: 80 · Menu confirmed · Deposit paid</p>
+    <div class="ornate" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="ornate" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="ornate" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="ornate" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="ornate" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="oval2"></div>
-        <div class="flourish" style="flex:1;min-width:120px;"></div>
+
+    <div class="ornate" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#fff0f5;"><span>Blush</span></div>
-        <div class="swatch" style="background:#d4af37;"><span>Gold</span></div>
-        <div class="swatch" style="background:#98d8c8;"><span>Mint</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="flourish"></div>
     <div class="oval2"></div>
-    <div class="oval2" style="background:#fff0f5;"></div>
-    <div class="ornate">Ornate frame with corner fleurons.</div>
 </div>
+
         """
     },
     {
@@ -2169,33 +2058,32 @@ h1 { font-size: clamp(1.4rem, 4vw, 2.4rem); margin: 0 0 24px; line-height: 1.5; 
         "content": """
 
 <div class="wrap">
-    <h1>Pixel 8-bit</h1>
-    <p class="desc">Pixel 8-bit gives Korvia a playful retro game aesthetic for family restaurants and arcade bars, making QR ordering feel like a power-up.</p>
+    <h1>Korvia · Pixel 8-bit</h1>
+    <p class="desc">Blocky squares, limited palette, retro sprites.</p>
 
     <h2>Korvia scenario</h2>
-    <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
-        <div class="block">Venue</div>
-        <div class="block" style="background:#ff004d;">Order</div>
-        <div class="block" style="background:#ffcd00;">QR</div>
+    <div class="block" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="block" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="block" style="margin-bottom:8px;">QR menus without apps</div>
+        <div class="block" style="margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="block" style="margin-bottom:8px;">Staff know what to serve</div>
     </div>
-    <button class="pixel-btn" style="margin-bottom:16px;">Start order</button>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="sprite"></div>
-        <p style="margin:0;">Arcade Bar · Live orders: 6 · High score: TZS 240k</p>
+
+    <div class="block" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="pixel-btn">Scan QR to order</a>
+        <a class="pixel-btn" style="opacity:0.85;">Open dashboard</a>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#000;"><span style="color:#fff">Black</span></div>
-        <div class="swatch" style="background:#ff004d;"><span>Red</span></div>
-        <div class="swatch" style="background:#00e436;"><span>Green</span></div>
-    </div>
+
+    <h2>Direction accent</h2>
     <div class="sprite"></div>
     <div class="block"></div>
-    <div class="block" style="background:#ff004d;"></div>
-    <div class="block" style="background:#fff;"></div>
-    <button class="pixel-btn">START</button>
-    <button class="pixel-btn" style="background:#ff004d; color:#fff;">SELECT</button>
 </div>
+
         """
     },
     {
@@ -2247,31 +2135,33 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 7vw, 5rem);
         "content": """
 
 <div class="wrap">
-    <h1>Afrofuturism</h1>
-    <p class="desc">Afrofuturism connects Korvia's Pan-African venues to a forward-looking visual lineage where sun motifs and earth grids honor the menu's roots.</p>
+    <h1>Korvia · Afrofuturism</h1>
+    <p class="desc">Metallics, bold patterns, ancestral geometry.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="afro-card" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Kilimanjaro Rooftop</h3>
-        <p style="margin:0;">Reservations: 34 · Walk-ins: 6 · Staff: 5</p>
+    <div class="afro-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="afro-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="afro-card" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="afro-card" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="afro-card" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="sun2"></div>
-        <div class="arc"></div>
-        <div class="mud"></div>
-        <div class="afro-card" style="margin:0;flex:1;min-width:160px;">Live order #7 · Injera platter ×2</div>
+
+    <div class="afro-card" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#1a1a1a;"><span style="color:#f4e4bc">Void</span></div>
-        <div class="swatch" style="background:#b87333;"><span>Copper</span></div>
-        <div class="swatch" style="background:#f4e4bc;"><span>Sand</span></div>
-    </div>
-    <div class="mud"></div>
+
+    <h2>Direction accent</h2>
     <div class="sun2"></div>
     <div class="arc"></div>
-    <div class="afro-card">A panel bordered in copper, grounded in pattern.</div>
+    <div class="mud"></div>
 </div>
+
         """
     },
     {
@@ -2319,33 +2209,33 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; 
         "content": """
 
 <div class="wrap">
-    <h1>Dark Academia</h1>
-    <p class="desc">Dark Academia gives Korvia's historic hotel and library cafes a scholarly ledger feel, with parchment panels and wax-seal confirmations.</p>
+    <h1>Korvia · Dark Academia</h1>
+    <p class="desc">Old paper, deep green, serifs, wax seals.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="parchment" style="margin-bottom:16px;">
-        <h3 style="margin:0 0 8px;">Old Library Hotel</h3>
-        <p style="margin:0;">Guests: 28 / 32 · Dinner service: 18:30 · Wine list: 44</p>
+    <div class="parchment" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="parchment" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="parchment" style="margin-bottom:8px;padding:12px;">QR menus without apps</div>
+        <div class="parchment" style="margin-bottom:8px;padding:12px;">Kitchen gets it instantly</div>
+        <div class="parchment" style="margin-bottom:8px;padding:12px;">Staff know what to serve</div>
     </div>
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
-        <div class="seal2">✦</div>
-        <div class="oval-frame"></div>
-        <div class="spine"></div>
-        <div class="parchment" style="margin:0;flex:1;min-width:160px;">Confirmed: Table 9, party of 4</div>
+
+    <div class="parchment" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
+        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
     </div>
-    <h2>Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#2c3e2d;"><span style="color:#d4c5a9">Forest</span></div>
-        <div class="swatch" style="background:#d4c5a9;"><span>Paper</span></div>
-        <div class="swatch" style="background:#8b0000;"><span style="color:#d4c5a9">Seal</span></div>
-    </div>
-    <div class="seal2">✦</div>
-    <div class="spine"></div>
+
+    <h2>Direction accent</h2>
     <div class="oval-frame"></div>
-    <div class="parchment">
-        <p style="margin:0; font-size:1.15rem;">Aged parchment panel with classic serif type and an inset shadow.</p>
-    </div>
+    <div class="seal2"></div>
+    <div class="spine"></div>
 </div>
+
         """
     }
 ]

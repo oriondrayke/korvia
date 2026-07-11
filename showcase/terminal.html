@@ -53,40 +53,31 @@ h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 16px; font-weight: 400; }
 
 <div class="scanlines"></div>
 <div class="wrap">
-    <h1>> RETRO_TERMINAL</h1>
-    <p class="desc">Retro Terminal turns Korvia into a heads-down command center for back-of-house: logs, prompts, and a blinking cursor keep cooks in flow.</p>
+    <h1>Korvia · Retro Terminal</h1>
+    <p class="desc">Monospace green, scanlines, CRT glow.</p>
 
     <h2>Korvia scenario</h2>
-    <div class="log" style="margin-bottom:24px;">
-        <p><span class="prompt">$</span> korvia --venue=savannah status</p>
-        <p>[OK] 7 tables occupied</p>
-        <p>[WARN] order #404 waiting 14m</p>
-        <p>[OK] QR menu served 312 guests</p>
-        <p><span class="prompt">$</span> fire_course table_12<span class="cursor">_</span></p>
+    <div class="log" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
+    <div class="log" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
+
+    <h2>Value props</h2>
+    <div style="margin-bottom:16px;">
+        <div class="bar" style="padding:10px 0;margin-bottom:8px;">QR menus without apps</div>
+        <div class="bar" style="padding:10px 0;margin-bottom:8px;">Kitchen gets it instantly</div>
+        <div class="bar" style="padding:10px 0;margin-bottom:8px;">Staff know what to serve</div>
     </div>
 
-    <h2 style="font-size:1rem; color:#33ff00cc;">Palette</h2>
-    <div class="swatches">
-        <div class="swatch" style="background:#050a05;"><span style="color:#33ff00">Black</span></div>
-        <div class="swatch" style="background:#33ff00;"><span style="color:#050a05">Green</span></div>
-        <div class="swatch" style="background:#0f3d0f;"><span>Dim</span></div>
+    <div class="log" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
+
+    <div style="margin:24px 0;">
+        <a class="prompt">Scan QR to order</a>
+        <a class="prompt" style="opacity:0.85;">Open dashboard</a>
     </div>
 
-    <h2 style="font-size:1rem; color:#33ff00cc;">Shapes</h2>
-    <div class="shapes">
-        <div class="bar"></div>
-        <div class="bar" style="width:100px;"></div>
-        <div class="grid2"></div>
-    </div>
-
-    <div class="log">
-        <p><span class="prompt">$</span> load_ui --theme=terminal</p>
-        <p>[OK] monospace loaded</p>
-        <p>[OK] scanlines enabled</p>
-        <p>[OK] 80 columns ready</p>
-        <p><span class="prompt">$</span> run_presentation<span class="cursor">_</span></p>
-    </div>
+    <h2>Direction accent</h2>
+    <div class="cursor"></div>
 </div>
+
         
 <footer class="showcase-footer">Korvia Design Direction Showcase · 10 / 30</footer>
 </body>
