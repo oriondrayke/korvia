@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neobrutalism — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'DM Sans', sans-serif; background: #f7f7f7; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #ff6b6b; color: #111; border-bottom: 4px solid #111;
+    font-weight: 700;
+}
+.showcase-nav a { color: #111; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { font-size: 1.1rem; margin-bottom: 40px; }
+.card2 {
+    background: #fff; border: 3px solid #111; border-radius: 16px;
+    padding: 28px; margin-bottom: 24px; box-shadow: 8px 8px 0 #111;
+}
+.card2.coral { background: #ff6b6b; }
+.card2.mint { background: #4ecdc4; }
+.card2.lemon { background: #ffe66d; }
+.neo-btn {
+    display: inline-block; padding: 14px 28px; border: 3px solid #111; border-radius: 12px;
+    background: #fff; color: #111; font-weight: 700; box-shadow: 5px 5px 0 #111; margin-right: 12px; cursor: pointer;
+}
+.star { width: 70px; height: 70px; background: #ffe66d; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); margin-bottom: 24px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 3px solid #111; border-radius: 12px; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; border-top: 4px solid #111; background: #ff6b6b; text-align: center; font-weight: 700; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="organic.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="clay.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Neobrutalism</h1>
+    <p class="desc">A friendlier brute: rounded corners meet thick black outlines and aggressive offset shadows.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ff6b6b;"><span>Coral</span></div>
+        <div class="swatch" style="background:#4ecdc4;"><span>Mint</span></div>
+        <div class="swatch" style="background:#ffe66d;"><span>Lemon</span></div>
+    </div>
+    <div class="star"></div>
+    <div class="card2 coral">Coral card with hard shadow.</div>
+    <div class="card2 mint">Mint card with hard shadow.</div>
+    <button class="neo-btn">Click me</button>
+    <button class="neo-btn" style="background:#ffe66d;">Or me</button>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 12 / 30</footer>
+</body>
+</html>

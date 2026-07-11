@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constructivism — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Oswald', sans-serif; background: #f4f1de; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #111; color: #f4f1de; text-transform: uppercase;
+}
+.showcase-nav a { color: #d62828; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; text-transform: uppercase; font-weight: 700; }
+.desc { font-family: sans-serif; margin-bottom: 40px; }
+.banner {
+    background: #d62828; color: #fff; padding: 18px 24px; margin-bottom: 24px;
+    transform: skewX(-15deg); text-transform: uppercase; font-weight: 700; font-size: 1.2rem;
+}
+.wedge {
+    width: 120px; height: 120px; background: #111; clip-path: polygon(0 0, 100% 0, 0 100%); display: inline-block; margin-right: -30px; margin-bottom: 24px;
+}
+.wedge.red { background: #d62828; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+.photo {
+    width: 160px; height: 120px; background: #111; border: 4px solid #d62828; display: inline-block; margin-right: 16px; margin-bottom: 16px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #111; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #111; color: #f4f1de; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="biophilic.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="psychedelic.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Constructivism</h1>
+    <p class="desc">The visual language of revolutionary posters: red and black, diagonal text, photomontage rectangles, and urgent sans-serif.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#d62828;"><span style="color:#fff">Red</span></div>
+        <div class="swatch" style="background:#111;"><span style="color:#fff">Black</span></div>
+        <div class="swatch" style="background:#f4f1de;"><span>Paper</span></div>
+    </div>
+    <div class="wedge"></div>
+    <div class="wedge red"></div>
+    <div class="banner">Forward — the future is now</div>
+    <div class="photo"></div>
+    <div class="photo" style="background:#d62828;"></div>
+    <div class="photo"></div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 20 / 30</footer>
+</body>
+</html>

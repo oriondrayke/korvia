@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cottagecore Floral — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@600&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Playfair Display', serif; background: #faf6f0; color: #5d4e4e;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #f5ebe0;
+}
+.showcase-nav a { color: #a8c686; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; }
+.desc { color: #8a7878; margin-bottom: 40px; }
+.floral-card {
+    background: #fff; border-radius: 24px; padding: 28px; margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(93,78,78,0.08); border: 1px solid #e8d5d5;
+}
+.flower {
+    width: 70px; height: 70px; background: #e8b4b8; border-radius: 50%;
+    position: relative; margin-bottom: 24px;
+}
+.flower::before, .flower::after {
+    content: ""; position: absolute; width: 70px; height: 70px; background: #e8b4b8; border-radius: 50%;
+}
+.flower::before { left: -30px; } .flower::after { right: -30px; }
+.leaf { width: 50px; height: 80px; background: #a8c686; border-radius: 0 80% 0 80%; display: inline-block; margin-right: 16px; transform: rotate(-20deg); }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e8d5d5; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #8a7878; }
+.floral-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(circle at 10% 20%, rgba(232,180,184,0.2) 60px, transparent 61px),
+        radial-gradient(circle at 90% 80%, rgba(168,198,134,0.2) 80px, transparent 81px);
+}
+.showcase-footer { padding: 20px; background: #f5ebe0; text-align: center; color: #8a7878; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="steampunk.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="acid.html">Next →</a>
+</nav>
+
+<div class="floral-bg"></div>
+<div class="wrap">
+    <h1>Cottagecore Floral</h1>
+    <p class="desc">A UI that feels like a pressed-flower journal: soft colors, delicate patterns, rounded corners, and handwritten warmth.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#faf6f0;"><span>Cream</span></div>
+        <div class="swatch" style="background:#e8b4b8;"><span>Rose</span></div>
+        <div class="swatch" style="background:#a8c686;"><span>Sage</span></div>
+    </div>
+    <div class="flower"></div>
+    <div class="leaf"></div>
+    <div class="leaf" style="transform:rotate(20deg); background:#e8b4b8;"></div>
+    <div class="floral-card">A gentle card with rounded corners and a soft shadow.</div>
+    <div class="floral-card" style="background:#f9f1f1;">Another petal-soft container.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 16 / 30</footer>
+</body>
+</html>

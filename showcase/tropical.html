@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tropical Vibes — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Poppins', sans-serif; background: #fffbe6; color: #073b4c;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #06d6a0; color: #fff; font-weight: 700;
+}
+.showcase-nav a { color: #073b4c; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 800; }
+.desc { color: #118ab2; margin-bottom: 40px; }
+.palm {
+    width: 100px; height: 160px; background: #06d6a0; clip-path: polygon(50% 0%, 65% 35%, 100% 35%, 70% 60%, 85% 100%, 50% 75%, 15% 100%, 30% 60%, 0% 35%, 35% 35%);
+    display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.arch {
+    width: 120px; height: 160px; background: #ffd166; border-radius: 60px 60px 0 0; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.sun {
+    width: 100px; height: 100px; background: #ef476f; border-radius: 50%; display: inline-block; margin-bottom: 24px;
+}
+.tropic-card {
+    background: #fff; border-radius: 24px; padding: 28px; margin-bottom: 24px;
+    border: 2px solid #ffd166;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #06d6a0; color: #fff; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="nordic.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="grunge.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Tropical Vibes</h1>
+    <p class="desc">A vacation in interface form: saturated greens and corals, leaf silhouettes, and shapes with relaxed curves.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#06d6a0;"><span>Jade</span></div>
+        <div class="swatch" style="background:#ffd166;"><span>Sun</span></div>
+        <div class="swatch" style="background:#ef476f;"><span>Coral</span></div>
+    </div>
+    <div class="palm"></div>
+    <div class="arch"></div>
+    <div class="sun"></div>
+    <div class="tropic-card">A bright card under the tropical sun.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 24 / 30</footer>
+</body>
+</html>

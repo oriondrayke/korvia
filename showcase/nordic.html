@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nordic Minimal — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Quicksand', sans-serif; background: #f5f1ed; color: #4a4a48;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #e8e2db;
+}
+.showcase-nav a { color: #a8b8a6; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { color: #7a7a78; margin-bottom: 40px; }
+.nordic-card {
+    background: #fff; border-radius: 20px; padding: 28px; margin-bottom: 24px;
+    border: 1px solid #d4c5b9;
+}
+.pill {
+    display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px;
+    background: #a8b8a6; color: #fff; border-radius: 999px; font-weight: 600; margin-right: 12px; margin-bottom: 12px;
+}
+.soft-circle {
+    width: 90px; height: 90px; background: #d4c5b9; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; margin-right: 16px; margin-bottom: 24px; font-weight: 700;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 16px; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #7a7a78; }
+.showcase-footer { padding: 20px; background: #e8e2db; text-align: center; color: #7a7a78; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="popart.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="tropical.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Nordic Minimal</h1>
+    <p class="desc">Hygge in interface form: warm greys, dusty pastels, generous padding, and friendly rounded corners without the gloss.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#f5f1ed;"><span>Wool</span></div>
+        <div class="swatch" style="background:#d4c5b9;"><span>Wood</span></div>
+        <div class="swatch" style="background:#a8b8a6;"><span>Sage</span></div>
+    </div>
+    <div class="soft-circle">A</div>
+    <div class="soft-circle" style="background:#a8b8a6; color:#fff;">B</div>
+    <div class="pill">Cozy</div>
+    <div class="pill" style="background:#d4c5b9; color:#4a4a48;">Calm</div>
+    <div class="nordic-card">A soft, warm card with generous space.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 23 / 30</footer>
+</body>
+</html>

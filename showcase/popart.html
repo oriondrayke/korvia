@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop Art — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Bangers', cursive; background: #fff; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #ffd400; border-bottom: 4px solid #111;
+}
+.showcase-nav a { color: #111; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.5rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.04em; -webkit-text-stroke: 2px #111; }
+.desc { font-family: sans-serif; margin-bottom: 40px; }
+.comic-panel {
+    border: 4px solid #111; padding: 24px; margin-bottom: 24px; background: #fff;
+    box-shadow: 6px 6px 0 #111;
+}
+.comic-panel.red { background: #ff3333; color: #fff; }
+.comic-panel.blue { background: #0066cc; color: #fff; }
+.speech {
+    position: relative; background: #fff; border: 4px solid #111; border-radius: 50%; padding: 24px; width: 180px; text-align: center; margin-bottom: 24px;
+}
+.speech::after { content: ""; position: absolute; bottom: -20px; left: 30px; border: 10px solid transparent; border-top-color: #111; }
+.dots {
+    width: 140px; height: 80px; background: #fff; background-image: radial-gradient(#ff3333 3px, transparent 3px); background-size: 10px 10px;
+    border: 4px solid #111; margin-bottom: 24px;
+}
+.starburst {
+    width: 100px; height: 100px; background: #ffd400; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    border: 3px solid #111; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 3px solid #111; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #ffd400; border-top: 4px solid #111; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="psychedelic.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="nordic.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Pop Art</h1>
+    <p class="desc">Roy Lichtenstein goes UI: primary colors, halftone dots, thick black outlines, and speech-bubble callouts.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ffd400;"><span>Yellow</span></div>
+        <div class="swatch" style="background:#ff3333;"><span>Red</span></div>
+        <div class="swatch" style="background:#0066cc;"><span style="color:#fff">Blue</span></div>
+    </div>
+    <div class="starburst"></div>
+    <div class="speech">POW!</div>
+    <div class="dots"></div>
+    <div class="comic-panel">Comic panel one.</div>
+    <div class="comic-panel red">Comic panel two.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 22 / 30</footer>
+</body>
+</html>

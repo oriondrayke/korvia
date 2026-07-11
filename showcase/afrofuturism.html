@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afrofuturism — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Space Grotesk', sans-serif; background: #1a1a1a; color: #f4e4bc;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #111; border-bottom: 2px solid #b87333;
+}
+.showcase-nav a { color: #b87333; text-decoration: none; font-weight: 700; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.06em; }
+.desc { color: #c2b58a; margin-bottom: 40px; }
+.mud {
+    width: 140px; height: 140px; background: #f4e4bc;
+    background-image:
+        linear-gradient(#1a1a1a 10px, transparent 10px),
+        linear-gradient(90deg, #1a1a1a 10px, transparent 10px);
+    background-size: 40px 40px; border: 4px solid #b87333; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.sun2 {
+    width: 120px; height: 120px; background: #b87333; border-radius: 50%;
+    background-image: repeating-conic-gradient(from 0deg, #b87333 0deg 10deg, #f4e4bc 10deg 20deg);
+    display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.arc {
+    width: 140px; height: 70px; background: #b87333; border-radius: 140px 140px 0 0; display: inline-block; margin-bottom: 24px;
+}
+.afro-card {
+    background: #111; border: 2px solid #b87333; padding: 28px; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #b87333; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #c2b58a; }
+.showcase-footer { padding: 20px; background: #111; color: #b87333; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="pixel.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="darkacademia.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Afrofuturism</h1>
+    <p class="desc">A forward-facing vision rooted in pattern: copper and gold, mud-cloth grids, sunbursts, and geometric African motifs reimagined for screens.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#1a1a1a;"><span style="color:#f4e4bc">Void</span></div>
+        <div class="swatch" style="background:#b87333;"><span>Copper</span></div>
+        <div class="swatch" style="background:#f4e4bc;"><span>Sand</span></div>
+    </div>
+    <div class="mud"></div>
+    <div class="sun2"></div>
+    <div class="arc"></div>
+    <div class="afro-card">A panel bordered in copper, grounded in pattern.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 29 / 30</footer>
+</body>
+</html>

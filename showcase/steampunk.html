@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steampunk Brass — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Roboto+Slab:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Roboto Slab', serif; background: #3e2723; color: #e6d5b8;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #281815; border-bottom: 4px solid #b87333;
+    font-family: 'Rye', cursive;
+}
+.showcase-nav a { color: #b87333; text-decoration: none; }
+.wrap { flex: 1; max-width: 880px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Rye', cursive; font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
+.desc { color: #c2b096; margin-bottom: 40px; }
+.plate {
+    background: repeating-linear-gradient(45deg, #b87333, #b87333 2px, #9c5f28 2px, #9c5f28 4px);
+    border: 4px solid #5d4037; border-radius: 8px; padding: 28px; margin-bottom: 24px;
+    color: #281815; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+}
+.gear {
+    width: 80px; height: 80px; background: #b87333; border-radius: 50%;
+    background-image: radial-gradient(circle at center, #3e2723 20px, transparent 21px),
+        repeating-conic-gradient(from 0deg, #b87333 0deg 15deg, #8d5524 15deg 30deg);
+    margin-bottom: 24px;
+}
+.rivet { width: 14px; height: 14px; background: radial-gradient(circle at 30% 30%, #e6d5b8, #5d4037); border-radius: 50%; display: inline-block; margin: 4px; }
+.gauge { width: 120px; height: 60px; background: #e6d5b8; border-radius: 120px 120px 0 0; border: 4px solid #b87333; position: relative; margin-bottom: 24px; }
+.gauge::after { content: ""; position: absolute; bottom: 0; left: 50%; width: 4px; height: 50px; background: #b87333; transform: rotate(45deg); transform-origin: bottom left; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #b87333; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #c2b096; }
+.showcase-footer { padding: 20px; background: #281815; border-top: 4px solid #b87333; text-align: center; color: #b87333; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="cyberpunk.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="cottagecore.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Steampunk Brass</h1>
+    <p class="desc">Victorian machinery meets digital interface: brass plates, cog motifs, riveted borders, and sepia warmth.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#3e2723;"><span style="color:#e6d5b8">Leather</span></div>
+        <div class="swatch" style="background:#b87333;"><span>Brass</span></div>
+        <div class="swatch" style="background:#e6d5b8;"><span>Parchment</span></div>
+    </div>
+    <div class="gear"></div>
+    <div class="gauge"></div>
+    <div class="plate">
+        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+        <p style="margin:12px 0 0; font-weight:700;">Riveted brass panel.</p>
+    </div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 15 / 30</footer>
+</body>
+</html>

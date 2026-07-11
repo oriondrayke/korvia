@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grunge Distress — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Special Elite', monospace; background: #2b2b2b; color: #d4d4d4;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #1a1a1a; border-bottom: 2px dashed #555;
+}
+.showcase-nav a { color: #b33939; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
+.desc { color: #999; margin-bottom: 40px; }
+.torn {
+    background: #3a3a3a; padding: 28px; margin-bottom: 24px;
+    clip-path: polygon(0% 3%, 100% 0%, 98% 95%, 2% 100%); border-left: 4px solid #b33939;
+}
+.stain {
+    width: 100px; height: 100px; background: radial-gradient(circle, rgba(179,57,57,0.4) 0%, transparent 70%); border-radius: 50%; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.tape-rip {
+    height: 30px; background: repeating-linear-gradient(90deg, #555, #555 20px, transparent 20px, transparent 25px); margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 1px solid #555; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #999; }
+.grunge-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+.showcase-footer { padding: 20px; background: #1a1a1a; color: #666; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="tropical.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="futurist.html">Next →</a>
+</nav>
+
+<div class="grunge-bg"></div>
+<div class="wrap">
+    <h1>Grunge Distress</h1>
+    <p class="desc">An interface that looks like it has been photocopied and left in a pocket: rough borders, dust, scratches, and torn layers.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#2b2b2b;"><span style="color:#d4d4d4">Charcoal</span></div>
+        <div class="swatch" style="background:#8c8c8c;"><span>Grey</span></div>
+        <div class="swatch" style="background:#b33939;"><span>Rust</span></div>
+    </div>
+    <div class="stain"></div>
+    <div class="stain" style="background:radial-gradient(circle, rgba(140,140,140,0.4) 0%, transparent 70%);"></div>
+    <div class="tape-rip"></div>
+    <div class="torn">Torn paper panel with rough edges.</div>
+    <div class="torn" style="border-left-color:#8c8c8c;">Another distressed layer.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 25 / 30</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acid Rave — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Rubik Mono One', sans-serif; background: #1a1a1a; color: #ccff00;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #000; border-bottom: 2px solid #ccff00;
+}
+.showcase-nav a { color: #9d00ff; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; -webkit-text-stroke: 1px #ccff00; color: transparent; }
+.desc { color: #ccff00aa; font-family: sans-serif; margin-bottom: 40px; }
+.acid-box {
+    border: 2px solid #ccff00; padding: 24px; margin-bottom: 24px;
+    background: repeating-linear-gradient(90deg, #000, #000 10px, #ccff00 10px, #ccff00 12px);
+    color: #fff;
+}
+.drip {
+    width: 120px; height: 80px; background: #ccff00; border-radius: 20px 20px 40px 60px;
+    margin-bottom: 24px;
+}
+.warp {
+    width: 100px; height: 100px; background: #9d00ff; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    display: inline-block; margin-right: 16px; animation: morph 4s ease-in-out infinite;
+}
+@keyframes morph { 0%,100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; } }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #ccff00; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #ccff00aa; }
+.showcase-footer { padding: 20px; background: #000; border-top: 2px solid #ccff00; text-align: center; color: #9d00ff; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="cottagecore.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="deconstruct.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Acid Rave</h1>
+    <p class="desc">Loud, sticky, and slightly illegal. Chrome text, neon green edges, and shapes that look like they are melting.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#1a1a1a;"><span style="color:#ccff00">Black</span></div>
+        <div class="swatch" style="background:#ccff00;"><span>Acid</span></div>
+        <div class="swatch" style="background:#9d00ff;"><span>Purple</span></div>
+    </div>
+    <div class="warp"></div>
+    <div class="warp" style="background:#ccff00;"></div>
+    <div class="drip"></div>
+    <div class="acid-box">Striped acid panel.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 17 / 30</footer>
+</body>
+</html>

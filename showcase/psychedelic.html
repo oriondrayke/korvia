@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychedelic 70s — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Fredoka One', cursive; background: #ffbf69; color: #3a0ca3;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #ff9f1c;
+}
+.showcase-nav a { color: #3a0ca3; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
+.desc { font-family: sans-serif; margin-bottom: 40px; }
+.bubble {
+    background: #9b5de5; color: #fff; border-radius: 40px; padding: 24px; margin-bottom: 24px;
+    display: inline-block; margin-right: 16px;
+}
+.wavey {
+    height: 40px; background: repeating-linear-gradient(135deg, #ff9f1c, #ff9f1c 15px, #9b5de5 15px, #9b5de5 30px);
+    border-radius: 20px; margin-bottom: 24px;
+}
+.sunburst {
+    width: 120px; height: 120px; background: repeating-conic-gradient(from 0deg, #ff9f1c 0deg 10deg, #ffbf69 10deg 20deg);
+    border-radius: 50%; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #3a0ca3; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #ff9f1c; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="constructivist.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="popart.html">Next →</a>
+</nav>
+
+<div class="wrap">
+    <h1>Psychedelic 70s</h1>
+    <p class="desc">A lava-lamp interface: undulating borders, warm color bands, and bubble-letter headings.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ff9f1c;"><span>Orange</span></div>
+        <div class="swatch" style="background:#ffbf69;"><span>Mango</span></div>
+        <div class="swatch" style="background:#9b5de5;"><span style="color:#fff">Purple</span></div>
+    </div>
+    <div class="sunburst"></div>
+    <div class="wavey"></div>
+    <div class="bubble">Groovy</div>
+    <div class="bubble" style="background:#ff9f1c; color:#3a0ca3;">Funky</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 21 / 30</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Blob — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Quicksand', sans-serif; background: #e6ddd4; color: #4a4239;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 28px; background: #f3ece4; border-bottom: 1px solid #d1c4b6;
+}
+.showcase-nav a { color: #7a6a5a; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 56px 28px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { color: #7a6a5a; font-size: 1.1rem; margin-bottom: 40px; }
+.blob {
+    background: #c4a77d; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    padding: 48px; margin-bottom: 32px; color: #fff; font-size: 1.2rem;
+}
+.oval {
+    width: 160px; height: 90px; background: #7a6a5a; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; color: #fff; margin-right: 16px; margin-bottom: 16px;
+}
+.wave { height: 60px; background: repeating-linear-gradient(45deg, #c4a77d, #c4a77d 10px, transparent 10px, transparent 20px); border-radius: 30px; margin-bottom: 32px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #7a6a5a; }
+.organic {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(circle at 20% 30%, rgba(196,167,125,0.2) 120px, transparent 121px);
+}
+.showcase-footer { padding: 24px 28px; background: #f3ece4; border-top: 1px solid #d1c4b6; text-align: center; color: #7a6a5a; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="terminal.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="neobrutal.html">Next →</a>
+</nav>
+
+<div class="organic"></div>
+<div class="wrap">
+    <h1>Organic Blob</h1>
+    <p class="desc">Everything breathes. Blobs replace boxes, earth tones replace primary colors, and the layout flows like water.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#e6ddd4;"><span>Sand</span></div>
+        <div class="swatch" style="background:#7a6a5a;"><span style="color:#fff">Stone</span></div>
+        <div class="swatch" style="background:#c4a77d;"><span>Oak</span></div>
+    </div>
+    <div class="blob">A soft container with no straight corners.</div>
+    <div class="oval">Oval pill</div>
+    <div class="oval" style="background:#c4a77d;">Oval two</div>
+    <div class="wave"></div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 11 / 30</footer>
+</body>
+</html>

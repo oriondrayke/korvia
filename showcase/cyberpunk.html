@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberpunk Neon — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Orbitron', sans-serif; background: #0a0a12; color: #00ffff;
+    min-height: 100vh; display: flex; flex-direction: column; text-shadow: 0 0 8px #00ffff66;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #12121f; border-bottom: 1px solid #ff00ff;
+}
+.showcase-nav a { color: #ff00ff; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; font-weight: 700; letter-spacing: 0.08em; }
+.desc { color: #00ffffaa; margin-bottom: 40px; }
+.neon-box {
+    border: 1px solid #00ffff; padding: 24px; margin-bottom: 24px; background: #12121f;
+    box-shadow: 0 0 12px #00ffff33; position: relative;
+}
+.neon-box::before {
+    content: ""; position: absolute; top: -1px; right: -1px; width: 20px; height: 20px;
+    border-top: 2px solid #ff00ff; border-right: 2px solid #ff00ff;
+}
+.tri { width: 80px; height: 80px; background: #ff00ff; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); margin-bottom: 24px; filter: drop-shadow(0 0 8px #ff00ff); }
+.hex { width: 80px; height: 80px; background: #00ffff; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); display: inline-block; margin-right: 16px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 1px solid #00ffff; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #00ffffaa; }
+.grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: linear-gradient(to bottom, transparent 95%, #00ffff11 95%), linear-gradient(to right, transparent 95%, #00ffff11 95%); background-size: 40px 40px;
+}
+.showcase-footer { padding: 20px; background: #12121f; border-top: 1px solid #ff00ff; text-align: center; color: #ff00ff; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="clay.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="steampunk.html">Next →</a>
+</nav>
+
+<div class="grid-bg"></div>
+<div class="wrap">
+    <h1>Cyberpunk Neon</h1>
+    <p class="desc">A night-mode interface sliced by cyan and magenta light. Sharp polygons and grid floors.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#0a0a12;"><span style="color:#00ffff">Void</span></div>
+        <div class="swatch" style="background:#ff00ff;"><span>Magenta</span></div>
+        <div class="swatch" style="background:#00ffff;"><span>Cyan</span></div>
+    </div>
+    <div class="tri"></div>
+    <div class="hex"></div>
+    <div class="hex" style="background:#ff00ff;"></div>
+    <div class="neon-box">Neon panel one — cyan edge glow.</div>
+    <div class="neon-box" style="border-color:#ff00ff; box-shadow:0 0 12px #ff00ff33;">Neon panel two — magenta edge glow.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 14 / 30</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biophilic Nature — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Work Sans', sans-serif; background: #f4f1ea; color: #3a4422;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #e8e4da;
+}
+.showcase-nav a { color: #4a5d23; font-weight: 600; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 600; }
+.desc { color: #5e6b3a; margin-bottom: 40px; }
+.leaf {
+    width: 80px; height: 140px; background: #4a5d23; border-radius: 0 80% 0 80%; display: inline-block;
+    margin-right: 20px; margin-bottom: 24px; transform: rotate(-10deg);
+}
+.leaf.two { background: #d4a373; transform: rotate(10deg); border-radius: 80% 0 80% 0; }
+.pebble {
+    width: 100px; height: 60px; background: #8c8c74; border-radius: 50%; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.branch { height: 4px; background: #4a5d23; border-radius: 2px; margin-bottom: 16px; }
+.nature-card {
+    background: #fff; border-radius: 24px 4px 24px 4px; padding: 28px; margin-bottom: 24px;
+    border: 1px solid #d4c8b0;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #5e6b3a; }
+.nature-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(circle at 80% 20%, rgba(74,93,35,0.08) 120px, transparent 121px);
+}
+.showcase-footer { padding: 20px; background: #e8e4da; text-align: center; color: #5e6b3a; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="deconstruct.html">← Prev</a>
+  <a href="index.html">Showcase</a>
+  <a href="constructivist.html">Next →</a>
+</nav>
+
+<div class="nature-bg"></div>
+<div class="wrap">
+    <h1>Biophilic Nature</h1>
+    <p class="desc">Nature as interface: leaf silhouettes, branching lines, soil and moss colors, and shapes that grow rather than snap.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#f4f1ea;"><span>Stone</span></div>
+        <div class="swatch" style="background:#4a5d23;"><span style="color:#fff">Moss</span></div>
+        <div class="swatch" style="background:#d4a373;"><span>Terracotta</span></div>
+    </div>
+    <div class="leaf"></div>
+    <div class="leaf two"></div>
+    <div class="pebble"></div>
+    <div class="pebble" style="background:#4a5d23;"></div>
+    <div class="branch" style="width:60%"></div>
+    <div class="branch" style="width:40%"></div>
+    <div class="nature-card">A card shaped like a leaf's edge.</div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 19 / 30</footer>
+</body>
+</html>

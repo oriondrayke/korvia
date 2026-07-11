@@ -727,6 +727,1200 @@ h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 16px; font-weight: 400; }
     </div>
 </div>
 """
+    },
+
+    {
+        "id": "organic",
+        "name": "Organic Blob",
+        "tagline": "Fluid shapes, earth tones, no sharp edges.",
+        "desc": "Everything breathes. Blobs replace boxes, earth tones replace primary colors, and the layout flows like water around stones.",
+        "palette": ["#E6DDD4", "#7A6A5A", "#C4A77D"],
+        "shapes": ["blob", "oval", "wave"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Quicksand', sans-serif; background: #e6ddd4; color: #4a4239;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 28px; background: #f3ece4; border-bottom: 1px solid #d1c4b6;
+}
+.showcase-nav a { color: #7a6a5a; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 56px 28px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { color: #7a6a5a; font-size: 1.1rem; margin-bottom: 40px; }
+.blob {
+    background: #c4a77d; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    padding: 48px; margin-bottom: 32px; color: #fff; font-size: 1.2rem;
+}
+.oval {
+    width: 160px; height: 90px; background: #7a6a5a; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; color: #fff; margin-right: 16px; margin-bottom: 16px;
+}
+.wave { height: 60px; background: repeating-linear-gradient(45deg, #c4a77d, #c4a77d 10px, transparent 10px, transparent 20px); border-radius: 30px; margin-bottom: 32px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #7a6a5a; }
+.organic {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(circle at 20% 30%, rgba(196,167,125,0.2) 120px, transparent 121px);
+}
+.showcase-footer { padding: 24px 28px; background: #f3ece4; border-top: 1px solid #d1c4b6; text-align: center; color: #7a6a5a; }
+""",
+        "content": """
+<div class="organic"></div>
+<div class="wrap">
+    <h1>Organic Blob</h1>
+    <p class="desc">Everything breathes. Blobs replace boxes, earth tones replace primary colors, and the layout flows like water.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#e6ddd4;"><span>Sand</span></div>
+        <div class="swatch" style="background:#7a6a5a;"><span style="color:#fff">Stone</span></div>
+        <div class="swatch" style="background:#c4a77d;"><span>Oak</span></div>
+    </div>
+    <div class="blob">A soft container with no straight corners.</div>
+    <div class="oval">Oval pill</div>
+    <div class="oval" style="background:#c4a77d;">Oval two</div>
+    <div class="wave"></div>
+</div>
+"""
+    },
+    {
+        "id": "neobrutal",
+        "name": "Neobrutalism",
+        "tagline": "Bright colors, hard shadows, rounded but bold.",
+        "desc": "A friendlier brute: rounded corners meet thick black outlines and aggressive offset shadows. No gradients, just flat color clashes.",
+        "palette": ["#FF6B6B", "#4ECDC4", "#FFE66D"],
+        "shapes": ["rounded-rect", "star", "circle"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'DM Sans', sans-serif; background: #f7f7f7; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #ff6b6b; color: #111; border-bottom: 4px solid #111;
+    font-weight: 700;
+}
+.showcase-nav a { color: #111; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { font-size: 1.1rem; margin-bottom: 40px; }
+.card2 {
+    background: #fff; border: 3px solid #111; border-radius: 16px;
+    padding: 28px; margin-bottom: 24px; box-shadow: 8px 8px 0 #111;
+}
+.card2.coral { background: #ff6b6b; }
+.card2.mint { background: #4ecdc4; }
+.card2.lemon { background: #ffe66d; }
+.neo-btn {
+    display: inline-block; padding: 14px 28px; border: 3px solid #111; border-radius: 12px;
+    background: #fff; color: #111; font-weight: 700; box-shadow: 5px 5px 0 #111; margin-right: 12px; cursor: pointer;
+}
+.star { width: 70px; height: 70px; background: #ffe66d; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); margin-bottom: 24px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 3px solid #111; border-radius: 12px; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; border-top: 4px solid #111; background: #ff6b6b; text-align: center; font-weight: 700; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Neobrutalism</h1>
+    <p class="desc">A friendlier brute: rounded corners meet thick black outlines and aggressive offset shadows.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ff6b6b;"><span>Coral</span></div>
+        <div class="swatch" style="background:#4ecdc4;"><span>Mint</span></div>
+        <div class="swatch" style="background:#ffe66d;"><span>Lemon</span></div>
+    </div>
+    <div class="star"></div>
+    <div class="card2 coral">Coral card with hard shadow.</div>
+    <div class="card2 mint">Mint card with hard shadow.</div>
+    <button class="neo-btn">Click me</button>
+    <button class="neo-btn" style="background:#ffe66d;">Or me</button>
+</div>
+"""
+    },
+    {
+        "id": "clay",
+        "name": "Claymorphism",
+        "tagline": "Soft 3D pastels, puffy shapes, inner shadows.",
+        "desc": "Elements look like squeezable clay: soft pastel surfaces, rounded forms, and inset shadows that suggest thickness.",
+        "palette": ["#FFE5EC", "#C1E1C1", "#B5DEFF"],
+        "shapes": ["puffy-circle", "soft-rect", "sphere"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Nunito', sans-serif; background: #f0f4f8; color: #4a5568;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #e2e8f0;
+}
+.showcase-nav a { color: #4a5568; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { font-size: 1.1rem; margin-bottom: 40px; }
+.clay-card {
+    background: #ffe5ec; border-radius: 32px; padding: 32px; margin-bottom: 28px;
+    box-shadow: inset 8px 8px 16px rgba(255,255,255,0.7), inset -8px -8px 16px rgba(0,0,0,0.05), 12px 12px 24px rgba(0,0,0,0.08);
+}
+.clay-card.green { background: #c1e1c1; }
+.clay-card.blue { background: #b5deff; }
+.puffy {
+    width: 100px; height: 100px; border-radius: 50%; background: #ffe5ec; display: inline-flex;
+    align-items: center; justify-content: center; margin-right: 20px; margin-bottom: 20px;
+    box-shadow: inset 6px 6px 12px rgba(255,255,255,0.8), inset -6px -6px 12px rgba(0,0,0,0.06), 8px 8px 16px rgba(0,0,0,0.08);
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 24px; box-shadow: inset 4px 4px 8px rgba(255,255,255,0.6), inset -4px -4px 8px rgba(0,0,0,0.05); }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #e2e8f0; text-align: center; color: #718096; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Claymorphism</h1>
+    <p class="desc">Elements look like squeezable clay: soft pastel surfaces, rounded forms, and inset shadows that suggest thickness.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ffe5ec;"><span>Pink</span></div>
+        <div class="swatch" style="background:#c1e1c1;"><span>Sage</span></div>
+        <div class="swatch" style="background:#b5deff;"><span>Sky</span></div>
+    </div>
+    <div class="puffy">A</div>
+    <div class="puffy" style="background:#c1e1c1;">B</div>
+    <div class="puffy" style="background:#b5deff;">C</div>
+    <div class="clay-card">Soft pink clay panel.</div>
+    <div class="clay-card green">Soft green clay panel.</div>
+    <div class="clay-card blue">Soft blue clay panel.</div>
+</div>
+"""
+    },
+    {
+        "id": "cyberpunk",
+        "name": "Cyberpunk Neon",
+        "tagline": "Dark city, neon edges, sharp angles.",
+        "desc": "A night-mode interface sliced by cyan and magenta light. Sharp polygons, grid floors, and a permanent sense of rain.",
+        "palette": ["#0A0A12", "#FF00FF", "#00FFFF"],
+        "shapes": ["triangle", "hexagon", "grid"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Orbitron', sans-serif; background: #0a0a12; color: #00ffff;
+    min-height: 100vh; display: flex; flex-direction: column; text-shadow: 0 0 8px #00ffff66;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #12121f; border-bottom: 1px solid #ff00ff;
+}
+.showcase-nav a { color: #ff00ff; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; font-weight: 700; letter-spacing: 0.08em; }
+.desc { color: #00ffffaa; margin-bottom: 40px; }
+.neon-box {
+    border: 1px solid #00ffff; padding: 24px; margin-bottom: 24px; background: #12121f;
+    box-shadow: 0 0 12px #00ffff33; position: relative;
+}
+.neon-box::before {
+    content: ""; position: absolute; top: -1px; right: -1px; width: 20px; height: 20px;
+    border-top: 2px solid #ff00ff; border-right: 2px solid #ff00ff;
+}
+.tri { width: 80px; height: 80px; background: #ff00ff; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); margin-bottom: 24px; filter: drop-shadow(0 0 8px #ff00ff); }
+.hex { width: 80px; height: 80px; background: #00ffff; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); display: inline-block; margin-right: 16px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 1px solid #00ffff; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #00ffffaa; }
+.grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: linear-gradient(to bottom, transparent 95%, #00ffff11 95%), linear-gradient(to right, transparent 95%, #00ffff11 95%); background-size: 40px 40px;
+}
+.showcase-footer { padding: 20px; background: #12121f; border-top: 1px solid #ff00ff; text-align: center; color: #ff00ff; }
+""",
+        "content": """
+<div class="grid-bg"></div>
+<div class="wrap">
+    <h1>Cyberpunk Neon</h1>
+    <p class="desc">A night-mode interface sliced by cyan and magenta light. Sharp polygons and grid floors.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#0a0a12;"><span style="color:#00ffff">Void</span></div>
+        <div class="swatch" style="background:#ff00ff;"><span>Magenta</span></div>
+        <div class="swatch" style="background:#00ffff;"><span>Cyan</span></div>
+    </div>
+    <div class="tri"></div>
+    <div class="hex"></div>
+    <div class="hex" style="background:#ff00ff;"></div>
+    <div class="neon-box">Neon panel one — cyan edge glow.</div>
+    <div class="neon-box" style="border-color:#ff00ff; box-shadow:0 0 12px #ff00ff33;">Neon panel two — magenta edge glow.</div>
+</div>
+"""
+    },
+    {
+        "id": "steampunk",
+        "name": "Steampunk Brass",
+        "tagline": "Gears, gauges, copper, and rivets.",
+        "desc": "Victorian machinery meets digital interface: brass plates, cog motifs, riveted borders, and sepia warmth.",
+        "palette": ["#3E2723", "#B87333", "#E6D5B8"],
+        "shapes": ["gear", "rivet", "gauge"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Roboto+Slab:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Roboto Slab', serif; background: #3e2723; color: #e6d5b8;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #281815; border-bottom: 4px solid #b87333;
+    font-family: 'Rye', cursive;
+}
+.showcase-nav a { color: #b87333; text-decoration: none; }
+.wrap { flex: 1; max-width: 880px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Rye', cursive; font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
+.desc { color: #c2b096; margin-bottom: 40px; }
+.plate {
+    background: repeating-linear-gradient(45deg, #b87333, #b87333 2px, #9c5f28 2px, #9c5f28 4px);
+    border: 4px solid #5d4037; border-radius: 8px; padding: 28px; margin-bottom: 24px;
+    color: #281815; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+}
+.gear {
+    width: 80px; height: 80px; background: #b87333; border-radius: 50%;
+    background-image: radial-gradient(circle at center, #3e2723 20px, transparent 21px),
+        repeating-conic-gradient(from 0deg, #b87333 0deg 15deg, #8d5524 15deg 30deg);
+    margin-bottom: 24px;
+}
+.rivet { width: 14px; height: 14px; background: radial-gradient(circle at 30% 30%, #e6d5b8, #5d4037); border-radius: 50%; display: inline-block; margin: 4px; }
+.gauge { width: 120px; height: 60px; background: #e6d5b8; border-radius: 120px 120px 0 0; border: 4px solid #b87333; position: relative; margin-bottom: 24px; }
+.gauge::after { content: ""; position: absolute; bottom: 0; left: 50%; width: 4px; height: 50px; background: #b87333; transform: rotate(45deg); transform-origin: bottom left; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #b87333; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #c2b096; }
+.showcase-footer { padding: 20px; background: #281815; border-top: 4px solid #b87333; text-align: center; color: #b87333; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Steampunk Brass</h1>
+    <p class="desc">Victorian machinery meets digital interface: brass plates, cog motifs, riveted borders, and sepia warmth.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#3e2723;"><span style="color:#e6d5b8">Leather</span></div>
+        <div class="swatch" style="background:#b87333;"><span>Brass</span></div>
+        <div class="swatch" style="background:#e6d5b8;"><span>Parchment</span></div>
+    </div>
+    <div class="gear"></div>
+    <div class="gauge"></div>
+    <div class="plate">
+        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+        <p style="margin:12px 0 0; font-weight:700;">Riveted brass panel.</p>
+    </div>
+</div>
+"""
+    },
+    {
+        "id": "cottagecore",
+        "name": "Cottagecore Floral",
+        "tagline": "Soft florals, rounded script, gentle dopamine.",
+        "desc": "A UI that feels like a pressed-flower journal: soft colors, delicate patterns, rounded corners, and handwritten warmth.",
+        "palette": ["#FAF6F0", "#E8B4B8", "#A8C686"],
+        "shapes": ["flower", "rounded-rect", "leaf"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@600&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Playfair Display', serif; background: #faf6f0; color: #5d4e4e;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #f5ebe0;
+}
+.showcase-nav a { color: #a8c686; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; }
+.desc { color: #8a7878; margin-bottom: 40px; }
+.floral-card {
+    background: #fff; border-radius: 24px; padding: 28px; margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(93,78,78,0.08); border: 1px solid #e8d5d5;
+}
+.flower {
+    width: 70px; height: 70px; background: #e8b4b8; border-radius: 50%;
+    position: relative; margin-bottom: 24px;
+}
+.flower::before, .flower::after {
+    content: ""; position: absolute; width: 70px; height: 70px; background: #e8b4b8; border-radius: 50%;
+}
+.flower::before { left: -30px; } .flower::after { right: -30px; }
+.leaf { width: 50px; height: 80px; background: #a8c686; border-radius: 0 80% 0 80%; display: inline-block; margin-right: 16px; transform: rotate(-20deg); }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e8d5d5; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #8a7878; }
+.floral-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(circle at 10% 20%, rgba(232,180,184,0.2) 60px, transparent 61px),
+        radial-gradient(circle at 90% 80%, rgba(168,198,134,0.2) 80px, transparent 81px);
+}
+.showcase-footer { padding: 20px; background: #f5ebe0; text-align: center; color: #8a7878; }
+""",
+        "content": """
+<div class="floral-bg"></div>
+<div class="wrap">
+    <h1>Cottagecore Floral</h1>
+    <p class="desc">A UI that feels like a pressed-flower journal: soft colors, delicate patterns, rounded corners, and handwritten warmth.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#faf6f0;"><span>Cream</span></div>
+        <div class="swatch" style="background:#e8b4b8;"><span>Rose</span></div>
+        <div class="swatch" style="background:#a8c686;"><span>Sage</span></div>
+    </div>
+    <div class="flower"></div>
+    <div class="leaf"></div>
+    <div class="leaf" style="transform:rotate(20deg); background:#e8b4b8;"></div>
+    <div class="floral-card">A gentle card with rounded corners and a soft shadow.</div>
+    <div class="floral-card" style="background:#f9f1f1;">Another petal-soft container.</div>
+</div>
+"""
+    },
+    {
+        "id": "acid",
+        "name": "Acid Rave",
+        "tagline": "Neon green, chrome, warped geometry.",
+        "desc": "Loud, sticky, and slightly illegal. Chrome text, neon green edges, and shapes that look like they are melting.",
+        "palette": ["#1A1A1A", "#CCFF00", "#9D00FF"],
+        "shapes": ["wave", "drip", "chrome-circle"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Rubik Mono One', sans-serif; background: #1a1a1a; color: #ccff00;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #000; border-bottom: 2px solid #ccff00;
+}
+.showcase-nav a { color: #9d00ff; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; -webkit-text-stroke: 1px #ccff00; color: transparent; }
+.desc { color: #ccff00aa; font-family: sans-serif; margin-bottom: 40px; }
+.acid-box {
+    border: 2px solid #ccff00; padding: 24px; margin-bottom: 24px;
+    background: repeating-linear-gradient(90deg, #000, #000 10px, #ccff00 10px, #ccff00 12px);
+    color: #fff;
+}
+.drip {
+    width: 120px; height: 80px; background: #ccff00; border-radius: 20px 20px 40px 60px;
+    margin-bottom: 24px;
+}
+.warp {
+    width: 100px; height: 100px; background: #9d00ff; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    display: inline-block; margin-right: 16px; animation: morph 4s ease-in-out infinite;
+}
+@keyframes morph { 0%,100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; } }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #ccff00; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #ccff00aa; }
+.showcase-footer { padding: 20px; background: #000; border-top: 2px solid #ccff00; text-align: center; color: #9d00ff; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Acid Rave</h1>
+    <p class="desc">Loud, sticky, and slightly illegal. Chrome text, neon green edges, and shapes that look like they are melting.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#1a1a1a;"><span style="color:#ccff00">Black</span></div>
+        <div class="swatch" style="background:#ccff00;"><span>Acid</span></div>
+        <div class="swatch" style="background:#9d00ff;"><span>Purple</span></div>
+    </div>
+    <div class="warp"></div>
+    <div class="warp" style="background:#ccff00;"></div>
+    <div class="drip"></div>
+    <div class="acid-box">Striped acid panel.</div>
+</div>
+"""
+    },
+    {
+        "id": "deconstruct",
+        "name": "Deconstructivism",
+        "tagline": "Broken grid, diagonal slices, overlapping planes.",
+        "desc": "The grid is a suggestion, not a rule. Elements overlap, tilt, and slice across each other at odd angles.",
+        "palette": ["#F5F5F5", "#111111", "#FF4D4D"],
+        "shapes": ["diagonal", "overlap", "shard"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Archivo Black', sans-serif; background: #f5f5f5; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #111; color: #f5f5f5;
+}
+.showcase-nav a { color: #ff4d4d; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8deg); }
+.desc { font-family: sans-serif; color: #444; margin-bottom: 48px; max-width: 560px; }
+.shard {
+    width: 160px; height: 160px; background: #ff4d4d; clip-path: polygon(0 0, 100% 20%, 80% 100%, 20% 80%);
+    display: inline-block; margin-right: -40px; margin-bottom: 24px;
+}
+.shard.blue { background: #111; clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 80%); }
+.slice {
+    background: #111; color: #fff; padding: 24px; margin-bottom: 24px; transform: skewX(-12deg);
+}
+.slice:nth-child(even) { background: #ff4d4d; transform: skewX(12deg); color: #111; }
+.overlap {
+    position: relative; height: 180px; margin-bottom: 32px;
+}
+.overlap .box {
+    position: absolute; width: 200px; height: 120px; border: 3px solid #111; background: #fff;
+}
+.overlap .box:nth-child(1) { top: 0; left: 0; transform: rotate(-5deg); }
+.overlap .box:nth-child(2) { top: 30px; left: 80px; background: #ff4d4d; transform: rotate(4deg); z-index: 1; }
+.overlap .box:nth-child(3) { top: 60px; left: 160px; transform: rotate(-3deg); }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #111; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #111; color: #888; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Deconstructivism</h1>
+    <p class="desc">The grid is a suggestion, not a rule. Elements overlap, tilt, and slice across each other at odd angles.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#f5f5f5;"><span>Grey</span></div>
+        <div class="swatch" style="background:#111;"><span style="color:#fff">Black</span></div>
+        <div class="swatch" style="background:#ff4d4d;"><span>Red</span></div>
+    </div>
+    <div class="shard"></div>
+    <div class="shard blue"></div>
+    <div class="overlap">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <div class="slice">Skewed slice one.</div>
+    <div class="slice">Skewed slice two.</div>
+</div>
+"""
+    },
+    {
+        "id": "biophilic",
+        "name": "Biophilic Nature",
+        "tagline": "Leaf forms, earth tones, living lines.",
+        "desc": "Nature as interface: leaf silhouettes, branching lines, soil and moss colors, and shapes that grow rather than snap.",
+        "palette": ["#F4F1EA", "#4A5D23", "#D4A373"],
+        "shapes": ["leaf", "branch", "pebble"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Work Sans', sans-serif; background: #f4f1ea; color: #3a4422;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #e8e4da;
+}
+.showcase-nav a { color: #4a5d23; font-weight: 600; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 600; }
+.desc { color: #5e6b3a; margin-bottom: 40px; }
+.leaf {
+    width: 80px; height: 140px; background: #4a5d23; border-radius: 0 80% 0 80%; display: inline-block;
+    margin-right: 20px; margin-bottom: 24px; transform: rotate(-10deg);
+}
+.leaf.two { background: #d4a373; transform: rotate(10deg); border-radius: 80% 0 80% 0; }
+.pebble {
+    width: 100px; height: 60px; background: #8c8c74; border-radius: 50%; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.branch { height: 4px; background: #4a5d23; border-radius: 2px; margin-bottom: 16px; }
+.nature-card {
+    background: #fff; border-radius: 24px 4px 24px 4px; padding: 28px; margin-bottom: 24px;
+    border: 1px solid #d4c8b0;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #5e6b3a; }
+.nature-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(circle at 80% 20%, rgba(74,93,35,0.08) 120px, transparent 121px);
+}
+.showcase-footer { padding: 20px; background: #e8e4da; text-align: center; color: #5e6b3a; }
+""",
+        "content": """
+<div class="nature-bg"></div>
+<div class="wrap">
+    <h1>Biophilic Nature</h1>
+    <p class="desc">Nature as interface: leaf silhouettes, branching lines, soil and moss colors, and shapes that grow rather than snap.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#f4f1ea;"><span>Stone</span></div>
+        <div class="swatch" style="background:#4a5d23;"><span style="color:#fff">Moss</span></div>
+        <div class="swatch" style="background:#d4a373;"><span>Terracotta</span></div>
+    </div>
+    <div class="leaf"></div>
+    <div class="leaf two"></div>
+    <div class="pebble"></div>
+    <div class="pebble" style="background:#4a5d23;"></div>
+    <div class="branch" style="width:60%"></div>
+    <div class="branch" style="width:40%"></div>
+    <div class="nature-card">A card shaped like a leaf's edge.</div>
+</div>
+"""
+    },
+    {
+        "id": "constructivist",
+        "name": "Constructivism",
+        "tagline": "Red, black, diagonals, propaganda posters.",
+        "desc": "The visual language of revolutionary posters: red and black, diagonal text, photomontage rectangles, and urgent sans-serif.",
+        "palette": ["#D62828", "#111111", "#F4F1DE"],
+        "shapes": ["diagonal-banner", "photomontage", "wedge"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Oswald', sans-serif; background: #f4f1de; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #111; color: #f4f1de; text-transform: uppercase;
+}
+.showcase-nav a { color: #d62828; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; text-transform: uppercase; font-weight: 700; }
+.desc { font-family: sans-serif; margin-bottom: 40px; }
+.banner {
+    background: #d62828; color: #fff; padding: 18px 24px; margin-bottom: 24px;
+    transform: skewX(-15deg); text-transform: uppercase; font-weight: 700; font-size: 1.2rem;
+}
+.wedge {
+    width: 120px; height: 120px; background: #111; clip-path: polygon(0 0, 100% 0, 0 100%); display: inline-block; margin-right: -30px; margin-bottom: 24px;
+}
+.wedge.red { background: #d62828; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+.photo {
+    width: 160px; height: 120px; background: #111; border: 4px solid #d62828; display: inline-block; margin-right: 16px; margin-bottom: 16px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #111; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #111; color: #f4f1de; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Constructivism</h1>
+    <p class="desc">The visual language of revolutionary posters: red and black, diagonal text, photomontage rectangles, and urgent sans-serif.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#d62828;"><span style="color:#fff">Red</span></div>
+        <div class="swatch" style="background:#111;"><span style="color:#fff">Black</span></div>
+        <div class="swatch" style="background:#f4f1de;"><span>Paper</span></div>
+    </div>
+    <div class="wedge"></div>
+    <div class="wedge red"></div>
+    <div class="banner">Forward — the future is now</div>
+    <div class="photo"></div>
+    <div class="photo" style="background:#d62828;"></div>
+    <div class="photo"></div>
+</div>
+"""
+    },
+    {
+        "id": "psychedelic",
+        "name": "Psychedelic 70s",
+        "tagline": "Wavy patterns, warm colors, groovy type.",
+        "desc": "A lava-lamp interface: undulating borders, warm gradients avoided by using solid color bands, and bubble-letter headings.",
+        "palette": ["#FF9F1C", "#FFBF69", "#9B5DE5"],
+        "shapes": ["wave", "bubble", "sunburst"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Fredoka One', cursive; background: #ffbf69; color: #3a0ca3;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #ff9f1c;
+}
+.showcase-nav a { color: #3a0ca3; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
+.desc { font-family: sans-serif; margin-bottom: 40px; }
+.bubble {
+    background: #9b5de5; color: #fff; border-radius: 40px; padding: 24px; margin-bottom: 24px;
+    display: inline-block; margin-right: 16px;
+}
+.wavey {
+    height: 40px; background: repeating-linear-gradient(135deg, #ff9f1c, #ff9f1c 15px, #9b5de5 15px, #9b5de5 30px);
+    border-radius: 20px; margin-bottom: 24px;
+}
+.sunburst {
+    width: 120px; height: 120px; background: repeating-conic-gradient(from 0deg, #ff9f1c 0deg 10deg, #ffbf69 10deg 20deg);
+    border-radius: 50%; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #3a0ca3; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #ff9f1c; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Psychedelic 70s</h1>
+    <p class="desc">A lava-lamp interface: undulating borders, warm color bands, and bubble-letter headings.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ff9f1c;"><span>Orange</span></div>
+        <div class="swatch" style="background:#ffbf69;"><span>Mango</span></div>
+        <div class="swatch" style="background:#9b5de5;"><span style="color:#fff">Purple</span></div>
+    </div>
+    <div class="sunburst"></div>
+    <div class="wavey"></div>
+    <div class="bubble">Groovy</div>
+    <div class="bubble" style="background:#ff9f1c; color:#3a0ca3;">Funky</div>
+</div>
+"""
+    },
+    {
+        "id": "popart",
+        "name": "Pop Art",
+        "tagline": "Ben-Day dots, bold outlines, comic panels.",
+        "desc": "Roy Lichtenstein goes UI: primary colors, halftone dots, thick black outlines, and speech-bubble callouts.",
+        "palette": ["#FFD400", "#FF3333", "#0066CC"],
+        "shapes": ["speech-bubble", "dot-pattern", "starburst"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Bangers', cursive; background: #fff; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #ffd400; border-bottom: 4px solid #111;
+}
+.showcase-nav a { color: #111; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.5rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.04em; -webkit-text-stroke: 2px #111; }
+.desc { font-family: sans-serif; margin-bottom: 40px; }
+.comic-panel {
+    border: 4px solid #111; padding: 24px; margin-bottom: 24px; background: #fff;
+    box-shadow: 6px 6px 0 #111;
+}
+.comic-panel.red { background: #ff3333; color: #fff; }
+.comic-panel.blue { background: #0066cc; color: #fff; }
+.speech {
+    position: relative; background: #fff; border: 4px solid #111; border-radius: 50%; padding: 24px; width: 180px; text-align: center; margin-bottom: 24px;
+}
+.speech::after { content: ""; position: absolute; bottom: -20px; left: 30px; border: 10px solid transparent; border-top-color: #111; }
+.dots {
+    width: 140px; height: 80px; background: #fff; background-image: radial-gradient(#ff3333 3px, transparent 3px); background-size: 10px 10px;
+    border: 4px solid #111; margin-bottom: 24px;
+}
+.starburst {
+    width: 100px; height: 100px; background: #ffd400; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    border: 3px solid #111; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 3px solid #111; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #ffd400; border-top: 4px solid #111; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Pop Art</h1>
+    <p class="desc">Roy Lichtenstein goes UI: primary colors, halftone dots, thick black outlines, and speech-bubble callouts.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#ffd400;"><span>Yellow</span></div>
+        <div class="swatch" style="background:#ff3333;"><span>Red</span></div>
+        <div class="swatch" style="background:#0066cc;"><span style="color:#fff">Blue</span></div>
+    </div>
+    <div class="starburst"></div>
+    <div class="speech">POW!</div>
+    <div class="dots"></div>
+    <div class="comic-panel">Comic panel one.</div>
+    <div class="comic-panel red">Comic panel two.</div>
+</div>
+"""
+    },
+    {
+        "id": "nordic",
+        "name": "Nordic Minimal",
+        "tagline": "Muted colors, soft curves, cozy utility.",
+        "desc": "Hygge in interface form: warm greys, dusty pastels, generous padding, and friendly rounded corners without the gloss.",
+        "palette": ["#F5F1ED", "#D4C5B9", "#A8B8A6"],
+        "shapes": ["soft-rectangle", "rounded-pill", "circle"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Quicksand', sans-serif; background: #f5f1ed; color: #4a4a48;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #e8e2db;
+}
+.showcase-nav a { color: #a8b8a6; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
+.desc { color: #7a7a78; margin-bottom: 40px; }
+.nordic-card {
+    background: #fff; border-radius: 20px; padding: 28px; margin-bottom: 24px;
+    border: 1px solid #d4c5b9;
+}
+.pill {
+    display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px;
+    background: #a8b8a6; color: #fff; border-radius: 999px; font-weight: 600; margin-right: 12px; margin-bottom: 12px;
+}
+.soft-circle {
+    width: 90px; height: 90px; background: #d4c5b9; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; margin-right: 16px; margin-bottom: 24px; font-weight: 700;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 16px; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #7a7a78; }
+.showcase-footer { padding: 20px; background: #e8e2db; text-align: center; color: #7a7a78; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Nordic Minimal</h1>
+    <p class="desc">Hygge in interface form: warm greys, dusty pastels, generous padding, and friendly rounded corners without the gloss.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#f5f1ed;"><span>Wool</span></div>
+        <div class="swatch" style="background:#d4c5b9;"><span>Wood</span></div>
+        <div class="swatch" style="background:#a8b8a6;"><span>Sage</span></div>
+    </div>
+    <div class="soft-circle">A</div>
+    <div class="soft-circle" style="background:#a8b8a6; color:#fff;">B</div>
+    <div class="pill">Cozy</div>
+    <div class="pill" style="background:#d4c5b9; color:#4a4a48;">Calm</div>
+    <div class="nordic-card">A soft, warm card with generous space.</div>
+</div>
+"""
+    },
+    {
+        "id": "tropical",
+        "name": "Tropical Vibes",
+        "tagline": "Palm leaves, vivid color, organic shapes.",
+        "desc": "A vacation in interface form: saturated greens and corals, leaf silhouettes, and shapes with relaxed curves.",
+        "palette": ["#06D6A0", "#FFD166", "#EF476F"],
+        "shapes": ["palm-leaf", "arch", "sun"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Poppins', sans-serif; background: #fffbe6; color: #073b4c;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #06d6a0; color: #fff; font-weight: 700;
+}
+.showcase-nav a { color: #073b4c; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 800; }
+.desc { color: #118ab2; margin-bottom: 40px; }
+.palm {
+    width: 100px; height: 160px; background: #06d6a0; clip-path: polygon(50% 0%, 65% 35%, 100% 35%, 70% 60%, 85% 100%, 50% 75%, 15% 100%, 30% 60%, 0% 35%, 35% 35%);
+    display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.arch {
+    width: 120px; height: 160px; background: #ffd166; border-radius: 60px 60px 0 0; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.sun {
+    width: 100px; height: 100px; background: #ef476f; border-radius: 50%; display: inline-block; margin-bottom: 24px;
+}
+.tropic-card {
+    background: #fff; border-radius: 24px; padding: 28px; margin-bottom: 24px;
+    border: 2px solid #ffd166;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border-radius: 50%; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #06d6a0; color: #fff; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Tropical Vibes</h1>
+    <p class="desc">A vacation in interface form: saturated greens and corals, leaf silhouettes, and shapes with relaxed curves.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#06d6a0;"><span>Jade</span></div>
+        <div class="swatch" style="background:#ffd166;"><span>Sun</span></div>
+        <div class="swatch" style="background:#ef476f;"><span>Coral</span></div>
+    </div>
+    <div class="palm"></div>
+    <div class="arch"></div>
+    <div class="sun"></div>
+    <div class="tropic-card">A bright card under the tropical sun.</div>
+</div>
+"""
+    },
+    {
+        "id": "grunge",
+        "name": "Grunge Distress",
+        "tagline": "Torn paper, noise, rough edges.",
+        "desc": "An interface that looks like it has been photocopied and left in a pocket: rough borders, dust, scratches, and torn layers.",
+        "palette": ["#2B2B2B", "#8C8C8C", "#B33939"],
+        "shapes": ["torn-rect", "scratch", "stain"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Special Elite', monospace; background: #2b2b2b; color: #d4d4d4;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #1a1a1a; border-bottom: 2px dashed #555;
+}
+.showcase-nav a { color: #b33939; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
+.desc { color: #999; margin-bottom: 40px; }
+.torn {
+    background: #3a3a3a; padding: 28px; margin-bottom: 24px;
+    clip-path: polygon(0% 3%, 100% 0%, 98% 95%, 2% 100%); border-left: 4px solid #b33939;
+}
+.stain {
+    width: 100px; height: 100px; background: radial-gradient(circle, rgba(179,57,57,0.4) 0%, transparent 70%); border-radius: 50%; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.tape-rip {
+    height: 30px; background: repeating-linear-gradient(90deg, #555, #555 20px, transparent 20px, transparent 25px); margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 1px solid #555; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #999; }
+.grunge-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+.showcase-footer { padding: 20px; background: #1a1a1a; color: #666; text-align: center; }
+""",
+        "content": """
+<div class="grunge-bg"></div>
+<div class="wrap">
+    <h1>Grunge Distress</h1>
+    <p class="desc">An interface that looks like it has been photocopied and left in a pocket: rough borders, dust, scratches, and torn layers.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#2b2b2b;"><span style="color:#d4d4d4">Charcoal</span></div>
+        <div class="swatch" style="background:#8c8c8c;"><span>Grey</span></div>
+        <div class="swatch" style="background:#b33939;"><span>Rust</span></div>
+    </div>
+    <div class="stain"></div>
+    <div class="stain" style="background:radial-gradient(circle, rgba(140,140,140,0.4) 0%, transparent 70%);"></div>
+    <div class="tape-rip"></div>
+    <div class="torn">Torn paper panel with rough edges.</div>
+    <div class="torn" style="border-left-color:#8c8c8c;">Another distressed layer.</div>
+</div>
+"""
+    },
+    {
+        "id": "futurist",
+        "name": "Futurist Aero",
+        "tagline": "Speed lines, silver, streamlined motion.",
+        "desc": "The optimism of early aviation design: metallic silver, aerodynamic curves, speed lines, and a sense of forward thrust.",
+        "palette": ["#C0C0C0", "#1E3A5F", "#E8E8E8"],
+        "shapes": ["airfoil", "speed-line", "silver-circle"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Anton', sans-serif; background: #e8e8e8; color: #1e3a5f;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #1e3a5f; color: #e8e8e8; text-transform: uppercase;
+}
+.showcase-nav a { color: #c0c0c0; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; letter-spacing: 0.04em; }
+.desc { font-family: sans-serif; color: #4a6fa5; margin-bottom: 40px; }
+.airfoil {
+    width: 220px; height: 80px; background: #c0c0c0; border-radius: 50% 10% 50% 10%; margin-bottom: 24px;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), inset 10px 10px 20px rgba(255,255,255,0.6);
+}
+.speed {
+    height: 8px; background: repeating-linear-gradient(90deg, #1e3a5f, #1e3a5f 40px, transparent 40px, transparent 60px); margin-bottom: 16px; border-radius: 4px;
+}
+.silver-circle {
+    width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff, #c0c0c0 50%, #888); display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.aero-card {
+    background: #fff; border-radius: 40px 10px 40px 10px; padding: 28px; margin-bottom: 24px;
+    border: 2px solid #c0c0c0;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #1e3a5f; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
+.showcase-footer { padding: 20px; background: #1e3a5f; color: #c0c0c0; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Futurist Aero</h1>
+    <p class="desc">The optimism of early aviation design: metallic silver, aerodynamic curves, speed lines, and a sense of forward thrust.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#c0c0c0;"><span>Silver</span></div>
+        <div class="swatch" style="background:#1e3a5f;"><span style="color:#fff">Navy</span></div>
+        <div class="swatch" style="background:#e8e8e8;"><span>Cloud</span></div>
+    </div>
+    <div class="airfoil"></div>
+    <div class="speed" style="width:80%"></div>
+    <div class="speed" style="width:50%"></div>
+    <div class="silver-circle"></div>
+    <div class="silver-circle" style="background:radial-gradient(circle at 30% 30%,#e8e8e8,#1e3a5f 50%,#0f1f33);"></div>
+    <div class="aero-card">Streamlined card with an aerodynamic tail.</div>
+</div>
+"""
+    },
+    {
+        "id": "rococo",
+        "name": "Rococo Ornate",
+        "tagline": "Pastel frames, gold flourishes, decorative excess.",
+        "desc": "The anti-minimal: ornate borders, scrollwork, pastel grounds, and gold accents that refuse to apologize for decoration.",
+        "palette": ["#FFF0F5", "#D4AF37", "#98D8C8"],
+        "shapes": ["scroll-frame", "oval", "flourish"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Cormorant Garamond', serif; background: #fff0f5; color: #5a4a4a;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 28px; background: #f8e1e7; border-bottom: 2px solid #d4af37;
+}
+.showcase-nav a { color: #d4af37; text-decoration: none; font-weight: 700; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 28px; width: 100%; text-align: center; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 0 0 16px; font-style: italic; }
+.desc { font-size: 1.15rem; color: #8a6a6a; margin-bottom: 40px; }
+.ornate {
+    border: 4px double #d4af37; border-radius: 20px; padding: 32px; margin-bottom: 24px; background: #fff;
+    position: relative;
+}
+.ornate::before, .ornate::after { content: "❧"; color: #d4af37; position: absolute; font-size: 1.5rem; }
+.ornate::before { top: 10px; left: 14px; } .ornate::after { bottom: 10px; right: 14px; }
+.oval2 { width: 160px; height: 100px; background: #98d8c8; border-radius: 50%; border: 3px solid #d4af37; display: inline-block; margin: 0 12px 24px; }
+.flourish { height: 40px; background: radial-gradient(circle, transparent 20%, #d4af37 25%, transparent 30%); background-size: 40px 40px; margin-bottom: 24px; }
+.swatches { display: flex; gap: 16px; justify-content: center; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #d4af37; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #8a6a6a; }
+.showcase-footer { padding: 20px; background: #f8e1e7; color: #8a6a6a; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Rococo Ornate</h1>
+    <p class="desc">The anti-minimal: ornate borders, scrollwork, pastel grounds, and gold accents that refuse to apologize for decoration.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#fff0f5;"><span>Blush</span></div>
+        <div class="swatch" style="background:#d4af37;"><span>Gold</span></div>
+        <div class="swatch" style="background:#98d8c8;"><span>Mint</span></div>
+    </div>
+    <div class="flourish"></div>
+    <div class="oval2"></div>
+    <div class="oval2" style="background:#fff0f5;"></div>
+    <div class="ornate">Ornate frame with corner fleurons.</div>
+</div>
+"""
+    },
+    {
+        "id": "pixel",
+        "name": "Pixel 8-bit",
+        "tagline": "Blocky squares, limited palette, retro sprites.",
+        "desc": "Back to the grid: chunky pixels, square shapes, a tiny color set, and the charming imprecision of 8-bit hardware.",
+        "palette": ["#000000", "#FF004D", "#00E436"],
+        "shapes": ["pixel-square", "sprite", "block"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Press Start 2P', cursive; background: #202020; color: #fff;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #000; border-bottom: 4px solid #ff004d;
+    font-size: 0.7rem;
+}
+.showcase-nav a { color: #00e436; text-decoration: none; }
+.wrap { flex: 1; max-width: 860px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(1.4rem, 4vw, 2.4rem); margin: 0 0 24px; line-height: 1.5; }
+.desc { font-family: sans-serif; font-size: 0.95rem; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
+.pixel-btn {
+    display: inline-block; padding: 16px 24px; background: #00e436; color: #000;
+    border: 4px solid #fff; box-shadow: 4px 4px 0 #000; font-size: 0.8rem; margin-right: 12px; margin-bottom: 16px;
+}
+.sprite {
+    width: 80px; height: 80px; background: #ff004d;
+    box-shadow:
+        20px 0 0 #ff004d, 40px 0 0 #ff004d,
+        0 20px 0 #ff004d, 20px 20px 0 #fff, 40px 20px 0 #ff004d,
+        0 40px 0 #ff004d, 20px 40px 0 #ff004d, 40px 40px 0 #ff004d;
+    margin: 0 60px 60px 0;
+}
+.block { width: 64px; height: 64px; background: #00e436; border: 4px solid #fff; display: inline-block; margin-right: 12px; margin-bottom: 24px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 64px; height: 64px; border: 4px solid #fff; }
+.swatch span { display: block; font-size: 0.55rem; padding-top: 72px; color: #aaa; }
+.showcase-footer { padding: 20px; background: #000; color: #888; text-align: center; font-size: 0.7rem; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Pixel 8-bit</h1>
+    <p class="desc">Back to the grid: chunky pixels, square shapes, a tiny color set, and the charming imprecision of 8-bit hardware.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#000;"><span style="color:#fff">Black</span></div>
+        <div class="swatch" style="background:#ff004d;"><span>Red</span></div>
+        <div class="swatch" style="background:#00e436;"><span>Green</span></div>
+    </div>
+    <div class="sprite"></div>
+    <div class="block"></div>
+    <div class="block" style="background:#ff004d;"></div>
+    <div class="block" style="background:#fff;"></div>
+    <button class="pixel-btn">START</button>
+    <button class="pixel-btn" style="background:#ff004d; color:#fff;">SELECT</button>
+</div>
+"""
+    },
+    {
+        "id": "afrofuturism",
+        "name": "Afrofuturism",
+        "tagline": "Metallics, bold patterns, ancestral geometry.",
+        "desc": "A forward-facing vision rooted in pattern: copper and gold, mud-cloth grids, sunbursts, and geometric African motifs reimagined for screens.",
+        "palette": ["#1A1A1A", "#B87333", "#F4E4BC"],
+        "shapes": ["mud-cloth", "sunburst", "copper-arc"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Space Grotesk', sans-serif; background: #1a1a1a; color: #f4e4bc;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #111; border-bottom: 2px solid #b87333;
+}
+.showcase-nav a { color: #b87333; text-decoration: none; font-weight: 700; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.06em; }
+.desc { color: #c2b58a; margin-bottom: 40px; }
+.mud {
+    width: 140px; height: 140px; background: #f4e4bc;
+    background-image:
+        linear-gradient(#1a1a1a 10px, transparent 10px),
+        linear-gradient(90deg, #1a1a1a 10px, transparent 10px);
+    background-size: 40px 40px; border: 4px solid #b87333; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.sun2 {
+    width: 120px; height: 120px; background: #b87333; border-radius: 50%;
+    background-image: repeating-conic-gradient(from 0deg, #b87333 0deg 10deg, #f4e4bc 10deg 20deg);
+    display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.arc {
+    width: 140px; height: 70px; background: #b87333; border-radius: 140px 140px 0 0; display: inline-block; margin-bottom: 24px;
+}
+.afro-card {
+    background: #111; border: 2px solid #b87333; padding: 28px; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 2px solid #b87333; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #c2b58a; }
+.showcase-footer { padding: 20px; background: #111; color: #b87333; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Afrofuturism</h1>
+    <p class="desc">A forward-facing vision rooted in pattern: copper and gold, mud-cloth grids, sunbursts, and geometric African motifs reimagined for screens.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#1a1a1a;"><span style="color:#f4e4bc">Void</span></div>
+        <div class="swatch" style="background:#b87333;"><span>Copper</span></div>
+        <div class="swatch" style="background:#f4e4bc;"><span>Sand</span></div>
+    </div>
+    <div class="mud"></div>
+    <div class="sun2"></div>
+    <div class="arc"></div>
+    <div class="afro-card">A panel bordered in copper, grounded in pattern.</div>
+</div>
+"""
+    },
+    {
+        "id": "darkacademia",
+        "name": "Dark Academia",
+        "tagline": "Old paper, deep green, serifs, wax seals.",
+        "desc": "An interface that smells like a library: dark forest green, aged paper, classic serifs, and wax-seal accents.",
+        "palette": ["#2C3E2D", "#D4C5A9", "#8B0000"],
+        "shapes": ["seal", "book-spine", "oval-frame"],
+        "css": """
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Crimson Text', serif; background: #2c3e2d; color: #d4c5a9;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; background: #1f2c1f; border-bottom: 1px solid #4a5d3a;
+}
+.showcase-nav a { color: #d4c5a9; text-decoration: none; }
+.wrap { flex: 1; max-width: 820px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; }
+.desc { color: #a89f7e; margin-bottom: 40px; }
+.parchment {
+    background: #d4c5a9; color: #2c3e2d; padding: 32px; margin-bottom: 24px; border-radius: 4px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.15);
+}
+.seal2 {
+    width: 70px; height: 70px; background: #8b0000; border-radius: 50%; display: inline-flex;
+    align-items: center; justify-content: center; color: #d4c5a9; font-weight: 700; margin-right: 16px; margin-bottom: 24px;
+}
+.spine {
+    width: 50px; height: 160px; background: #1f2c1f; border-left: 4px solid #d4c5a9; border-right: 4px solid #d4c5a9; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.oval-frame {
+    width: 140px; height: 100px; border: 4px solid #d4c5a9; border-radius: 50%; display: inline-block; margin-right: 16px; margin-bottom: 24px;
+}
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 70px; height: 70px; border: 1px solid #4a5d3a; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #a89f7e; }
+.showcase-footer { padding: 20px; background: #1f2c1f; color: #a89f7e; text-align: center; }
+""",
+        "content": """
+<div class="wrap">
+    <h1>Dark Academia</h1>
+    <p class="desc">An interface that smells like a library: dark forest green, aged paper, classic serifs, and wax-seal accents.</p>
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#2c3e2d;"><span style="color:#d4c5a9">Forest</span></div>
+        <div class="swatch" style="background:#d4c5a9;"><span>Paper</span></div>
+        <div class="swatch" style="background:#8b0000;"><span style="color:#d4c5a9">Seal</span></div>
+    </div>
+    <div class="seal2">✦</div>
+    <div class="spine"></div>
+    <div class="oval-frame"></div>
+    <div class="parchment">
+        <p style="margin:0; font-size:1.15rem;">Aged parchment panel with classic serif type and an inset shadow.</p>
+    </div>
+</div>
+"""
     }
 ]
 
@@ -742,8 +1936,8 @@ __CSS__
 </head>
 <body>
 <nav class="showcase-nav">
-  <a href="index.html">← Showcase</a>
-  <span>__NAME__</span>
+  <a href="__PREV__.html">← Prev</a>
+  <a href="index.html">Showcase</a>
   <a href="__NEXT__.html">Next →</a>
 </nav>
 __CONTENT__
@@ -805,10 +1999,11 @@ def main():
 
     for i, d in enumerate(DIRECTIONS):
         next_id = DIRECTIONS[(i + 1) % total]["id"]
+        prev_id = DIRECTIONS[(i - 1) % total]["id"]
         html = BASE
         html = html.replace("__TITLE__", f"{d['name']} — UI Direction")
         html = html.replace("__CSS__", d["css"])
-        html = html.replace("__NAME__", d["name"])
+        html = html.replace("__PREV__", prev_id)
         html = html.replace("__NEXT__", next_id)
         html = html.replace("__CONTENT__", d["content"])
         html = html.replace("__INDEX__", str(i + 1))
