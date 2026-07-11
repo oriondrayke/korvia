@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiss Grid — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif; background: #f4f4f4; color: #111;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 32px; background: #fff; border-bottom: 1px solid #ddd;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #ff2500; text-decoration: none; }
+.wrap { flex: 1; max-width: 1100px; margin: 0 auto; padding: 64px 32px; width: 100%; }
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 0.95; margin: 0 0 16px; font-weight: 900; letter-spacing: -0.04em; }
+.desc { color: #555; font-size: 1.1rem; max-width: 560px; margin-bottom: 48px; }
+h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin: 40px 0 20px; font-weight: 700; }
+.grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: #111; border: 1px solid #111; margin-bottom: 48px; }
+.cell { background: #fff; padding: 32px; }
+.cell.red { background: #ff2500; color: #fff; }
+.cell.black { background: #111; color: #fff; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 100px; height: 60px; }
+.swatch span { display: block; font-size: 0.65rem; margin-top: 68px; }
+.type-scale p { margin: 10px 0; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
+.squares {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background:
+        linear-gradient(#ff2500, #ff2500) 8% 12% / 120px 120px no-repeat,
+        linear-gradient(#111, #111) 90% 85% / 80px 80px no-repeat;
+    opacity: 0.10;
+}
+.showcase-footer { padding: 24px 32px; background: #fff; border-top: 1px solid #ddd; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #666; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="index.html">← Showcase</a>
+  <span>Swiss Grid</span>
+  <a href="editorial.html">Next →</a>
+</nav>
+
+<div class="squares"></div>
+<div class="wrap">
+    <h1>Swiss Grid</h1>
+    <p class="desc">Helvetica discipline: flush left, ragged right, a single accent color, and negative space treated as a material.</p>
+
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#111;"><span style="color:#fff">#111111</span></div>
+        <div class="swatch" style="background:#f4f4f4;"><span>#F4F4F4</span></div>
+        <div class="swatch" style="background:#ff2500;"><span>#FF2500</span></div>
+    </div>
+
+    <h2>Grid / Asymmetry</h2>
+    <div class="grid">
+        <div class="cell"><p style="font-size:2rem; font-weight:900; margin:0;">Aa</p><p class="label" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; color:#666; margin-top:8px;">Display type</p></div>
+        <div class="cell red"><p style="font-size:1.4rem; font-weight:700; margin:0;">01</p></div>
+        <div class="cell black"><p style="margin:0; font-size:0.9rem;">Small caps labels carry hierarchy.</p></div>
+        <div class="cell"><p style="font-size:1.8rem; font-weight:900; margin:0;">24px</p></div>
+    </div>
+
+    <h2>Type Scale</h2>
+    <div class="type-scale">
+        <p style="font-size:2.4rem; font-weight:900; letter-spacing:-0.03em;">Display — tight, loud</p>
+        <p style="font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Headline — small caps</p>
+        <p style="font-size:1rem;">Body — neutral sans, generous line height</p>
+        <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:#888;">Caption — metadata grey</p>
+    </div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 2 / 10</footer>
+</body>
+</html>

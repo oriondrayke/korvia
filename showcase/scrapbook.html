@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrapbook Collage — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Nunito', sans-serif; background: #e6f0e8; color: #2f3e35;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 24px; background: #fff; box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+}
+.showcase-nav a { color: #e07050; font-weight: 700; text-decoration: none; }
+.wrap { flex: 1; max-width: 900px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+h1 { font-family: 'Gochi Hand', cursive; font-size: clamp(2.4rem, 7vw, 4.5rem); margin: 0 0 16px; transform: rotate(-1deg); color: #e07050; }
+.desc { color: #5a6b60; margin-bottom: 40px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 80px; height: 80px; border: 2px dashed #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.08); }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 90px; }
+.collage { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-bottom: 40px; }
+.polaroid {
+    background: #fff; padding: 12px 12px 40px; width: 220px; box-shadow: 3px 4px 10px rgba(0,0,0,0.12);
+    transform: rotate(var(--r, -2deg)); position: relative;
+}
+.polaroid:nth-child(2) { --r: 3deg; }
+.polaroid:nth-child(3) { --r: -1deg; }
+.polaroid .img {
+    width: 100%; height: 160px; background: #c8ddd0; display: grid; place-items: center; font-size: 3rem;
+}
+.polaroid p { margin: 12px 0 0; font-family: 'Gochi Hand', cursive; font-size: 1.2rem; text-align: center; }
+.washi {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+    width: 80px; height: 22px; background: rgba(255, 183, 77, 0.75);
+}
+.cork {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(224,112,80,0.15) 80px, transparent 81px),
+        radial-gradient(circle at 80% 70%, rgba(255,193,7,0.15) 100px, transparent 101px);
+}
+.showcase-footer { padding: 20px; text-align: center; color: #7a8a7e; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="index.html">← Showcase</a>
+  <span>Scrapbook Collage</span>
+  <a href="japanese.html">Next →</a>
+</nav>
+
+<div class="cork"></div>
+<div class="wrap">
+    <h1>Scrapbook Collage</h1>
+    <p class="desc">Soft pastels, torn edges, polaroid frames, and yellow tape. A friendly, tactile collage that feels pinned up rather than rendered.</p>
+
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#e6f0e8;"><span>Mint</span></div>
+        <div class="swatch" style="background:#e07050;"><span>Terracotta</span></div>
+        <div class="swatch" style="background:#ffb74d;"><span>Tape</span></div>
+    </div>
+
+    <h2>Polaroids</h2>
+    <div class="collage">
+        <div class="polaroid"><div class="washi"></div><div class="img">🎨</div><p>Color study</p></div>
+        <div class="polaroid"><div class="washi"></div><div class="img">✂️</div><p>Cut paper</p></div>
+        <div class="polaroid"><div class="washi"></div><div class="img">📝</div><p>Hand note</p></div>
+    </div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 8 / 10</footer>
+</body>
+</html>

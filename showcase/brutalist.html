@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brutalist Raw — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Space Mono', monospace; background: #fff; color: #000;
+    min-height: 100vh; display: flex; flex-direction: column; border: 12px solid #000;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px; border-bottom: 4px solid #000; background: #ff0000; color: #fff;
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;
+}
+.showcase-nav a { color: #fff; text-decoration: underline; }
+.wrap { flex: 1; padding: 40px 24px; max-width: 960px; margin: 0 auto; width: 100%; }
+h1 { font-size: clamp(3rem, 12vw, 7rem); line-height: 0.9; margin: 0 0 24px; text-transform: uppercase; }
+h2 { font-size: 1rem; text-transform: uppercase; margin: 40px 0 16px; border-bottom: 2px solid #000; padding-bottom: 8px; }
+.desc { font-size: 1.1rem; border: 3px solid #000; padding: 16px; margin-bottom: 40px; }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 80px; height: 80px; border: 3px solid #000; }
+.swatch span { display: block; font-size: 0.65rem; padding: 4px; background: #fff; border-top: 2px solid #000; }
+.shapes { display: flex; gap: 20px; align-items: flex-end; margin-bottom: 32px; }
+.shape { border: 3px solid #000; background: #fff; }
+.square { width: 60px; height: 60px; }
+.rect { width: 120px; height: 60px; background: #ff0000; }
+.big-btn {
+    display: inline-block; padding: 18px 32px; border: 4px solid #000; background: #000; color: #fff;
+    font-weight: 700; text-transform: uppercase; cursor: pointer; font-size: 1rem;
+}
+.big-btn.secondary { background: #fff; color: #000; }
+.type-scale p { margin: 8px 0; border-bottom: 1px solid #ccc; padding-bottom: 8px; }
+.stripes {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: repeating-linear-gradient(-45deg, #fff, #fff 20px, #ff0000 20px, #ff0000 40px);
+    opacity: 0.08;
+}
+.showcase-footer { padding: 20px; border-top: 4px solid #000; text-align: center; font-size: 0.8rem; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="index.html">← Showcase</a>
+  <span>Brutalist Raw</span>
+  <a href="swiss.html">Next →</a>
+</nav>
+
+<div class="stripes"></div>
+<div class="wrap">
+    <h1>Brutalist Raw</h1>
+    <p class="desc">No radius, no gradients, no harmony. Type is huge, borders are weapons, and the grid is implied by brute force.</p>
+
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#000;"><span>#000000</span></div>
+        <div class="swatch" style="background:#fff;"><span>#FFFFFF</span></div>
+        <div class="swatch" style="background:#ff0000;"><span style="color:#fff">#FF0000</span></div>
+    </div>
+
+    <h2>Shapes</h2>
+    <div class="shapes">
+        <div class="shape square"></div>
+        <div class="shape rect"></div>
+        <div class="shape rect" style="width:180px;"></div>
+    </div>
+
+    <h2>Type Scale</h2>
+    <div class="type-scale">
+        <p style="font-size:2.5rem; font-weight:700;">Display — 40px bold</p>
+        <p style="font-size:1.25rem; font-weight:700;">Headline — 20px bold uppercase</p>
+        <p style="font-size:1rem;">Body — 16px monospace, harsh line breaks</p>
+        <p style="font-size:0.75rem; color:#666;">Caption — 12px muted</p>
+    </div>
+
+    <h2>Components</h2>
+    <button class="big-btn">Primary</button>
+    <button class="big-btn secondary">Secondary</button>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 1 / 10</footer>
+</body>
+</html>

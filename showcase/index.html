@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Direction Showcase</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif; background: #f9f8f6; color: #1c1917;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+header { padding: 56px 32px 32px; text-align: center; border-bottom: 1px solid #e7e5e4; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 12px; }
+p.lead { color: #78716c; margin: 0; }
+main { flex: 1; max-width: 960px; margin: 0 auto; padding: 40px 24px; width: 100%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.card {
+    background: #fff; border: 1px solid #e7e5e4; border-radius: 4px; padding: 24px;
+    transition: transform 150ms ease, border-color 150ms ease;
+}
+.card:hover { transform: translateY(-3px); border-color: #b45309; }
+.card a { text-decoration: none; color: inherit; display: block; }
+.card h2 { margin: 0 0 8px; font-size: 1.15rem; }
+.card p { margin: 0; font-size: 0.9rem; color: #78716c; }
+.index { color: #b45309; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+footer { padding: 32px; text-align: center; color: #78716c; font-size: 0.85rem; border-top: 1px solid #e7e5e4; }
+</style>
+</head>
+<body>
+<header>
+    <h1>UI Direction Showcase</h1>
+    <p class="lead">Human, non-AI interface directions — one per page.</p>
+</header>
+<main>
+    <div class="grid">
+<div class="card"><a href="brutalist.html"><div class="index">Direction 01</div><h2>Brutalist Raw</h2><p>System fonts, thick borders, rectangles only, zero polish.</p></a></div>
+<div class="card"><a href="swiss.html"><div class="index">Direction 02</div><h2>Swiss Grid</h2><p>Asymmetric grids, red accents, absolute order.</p></a></div>
+<div class="card"><a href="editorial.html"><div class="index">Direction 03</div><h2>Editorial Magazine</h2><p>Serif headlines, columns, pull quotes, footnotes.</p></a></div>
+<div class="card"><a href="memphis.html"><div class="index">Direction 04</div><h2>Memphis Pop</h2><p>Squiggles, circles, triangles, pastel chaos.</p></a></div>
+<div class="card"><a href="bauhaus.html"><div class="index">Direction 05</div><h2>Bauhaus Function</h2><p>Circles, squares, triangles, primary colors.</p></a></div>
+<div class="card"><a href="handdrawn.html"><div class="index">Direction 06</div><h2>Hand-Drawn Sketch</h2><p>Rough edges, paper texture, pencil marks.</p></a></div>
+<div class="card"><a href="artdeco.html"><div class="index">Direction 07</div><h2>Art Deco Luxe</h2><p>Gold, black, stepped geometry, fan patterns.</p></a></div>
+<div class="card"><a href="scrapbook.html"><div class="index">Direction 08</div><h2>Scrapbook Collage</h2><p>Washi tape, polaroids, layered paper, soft dopamine.</p></a></div>
+<div class="card"><a href="japanese.html"><div class="index">Direction 09</div><h2>Japanese Minimal</h2><p>Space, ink, red seals, vertical rhythm.</p></a></div>
+<div class="card"><a href="terminal.html"><div class="index">Direction 10</div><h2>Retro Terminal</h2><p>Monospace green, scanlines, CRT glow.</p></a></div>
+    </div>
+</main>
+<footer>← Click a direction, then use Next / Showcase to browse →</footer>
+</body>
+</html>

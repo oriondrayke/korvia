@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Terminal — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'VT323', monospace; background: #050a05; color: #33ff00;
+    min-height: 100vh; display: flex; flex-direction: column; text-shadow: 0 0 5px #33ff0055;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; background: #0a140a; border-bottom: 1px solid #33ff0033;
+    font-size: 1.1rem;
+}
+.showcase-nav a { color: #33ff00; text-decoration: none; }
+.wrap { flex: 1; max-width: 800px; margin: 0 auto; padding: 32px 24px; width: 100%; }
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 16px; font-weight: 400; }
+.desc { color: #33ff00aa; font-size: 1.1rem; margin-bottom: 32px; }
+.log {
+    border: 1px solid #33ff0066; background: #081008; padding: 20px; font-size: 1.2rem; line-height: 1.6; margin-bottom: 32px;
+}
+.log p { margin: 0 0 6px; }
+.prompt { color: #33ff00; }
+.cursor { animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.swatches { display: flex; gap: 16px; margin-bottom: 32px; }
+.swatch { width: 80px; height: 80px; border: 1px solid #33ff0066; }
+.swatch span { display: block; font-size: 0.65rem; padding-top: 90px; color: #33ff0099; }
+.shapes { display: flex; gap: 16px; margin-bottom: 32px; }
+.bar { width: 60px; height: 30px; border: 1px solid #33ff00; }
+.grid2 { width: 60px; height: 60px; background: repeating-linear-gradient(to right, #33ff00 0 2px, transparent 2px 12px); opacity: 0.3; }
+.scanlines {
+    position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0,0,0,0.25) 3px);
+}
+.showcase-footer { padding: 14px 24px; border-top: 1px solid #33ff0033; background: #0a140a; color: #33ff0099; text-align: center; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="index.html">← Showcase</a>
+  <span>Retro Terminal</span>
+  <a href="brutalist.html">Next →</a>
+</nav>
+
+<div class="scanlines"></div>
+<div class="wrap">
+    <h1>> RETRO_TERMINAL</h1>
+    <p class="desc">A phosphor-green interface that feels like it boots from a 5.25-inch floppy. Scanlines, blinking cursor, and pure command-line romance.</p>
+
+    <h2 style="font-size:1rem; color:#33ff00cc;">Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#050a05;"><span style="color:#33ff00">Black</span></div>
+        <div class="swatch" style="background:#33ff00;"><span style="color:#050a05">Green</span></div>
+        <div class="swatch" style="background:#0f3d0f;"><span>Dim</span></div>
+    </div>
+
+    <h2 style="font-size:1rem; color:#33ff00cc;">Shapes</h2>
+    <div class="shapes">
+        <div class="bar"></div>
+        <div class="bar" style="width:100px;"></div>
+        <div class="grid2"></div>
+    </div>
+
+    <div class="log">
+        <p><span class="prompt">$</span> load_ui --theme=terminal</p>
+        <p>[OK] monospace loaded</p>
+        <p>[OK] scanlines enabled</p>
+        <p>[OK] 80 columns ready</p>
+        <p><span class="prompt">$</span> run_presentation<span class="cursor">_</span></p>
+    </div>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 10 / 10</footer>
+</body>
+</html>

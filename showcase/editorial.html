@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial Magazine — UI Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Source Sans 3', sans-serif; background: #faf8f3; color: #2a2520;
+    min-height: 100vh; display: flex; flex-direction: column;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px; border-bottom: 1px solid #d4cfc5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.showcase-nav a { color: #8b0000; text-decoration: none; font-weight: 600; }
+.wrap { flex: 1; max-width: 960px; margin: 0 auto; padding: 64px 40px; width: 100%; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 400; line-height: 1; margin: 0 0 16px; }
+.deck { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; color: #5c5449; margin: 0 0 48px; }
+.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.drop-cap::first-letter {
+    font-family: 'Playfair Display', serif; float: left; font-size: 4.2rem; line-height: 0.8;
+    padding-right: 10px; color: #8b0000;
+}
+.pull-quote {
+    border-top: 3px solid #2a2520; border-bottom: 1px solid #d4cfc5;
+    padding: 24px 0; margin: 32px 0; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic;
+}
+.swatches { display: flex; gap: 16px; margin: 32px 0; }
+.swatch { width: 90px; height: 90px; border: 1px solid #d4cfc5; }
+.swatch span { display: block; font-size: 0.7rem; padding-top: 96px; }
+h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 40px 0 16px; }
+.lines {
+    position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: repeating-linear-gradient(to bottom, transparent, transparent 31px, #e8e3d9 32px);
+    opacity: 0.5;
+}
+.showcase-footer { padding: 30px 40px; border-top: 1px solid #d4cfc5; text-align: center; font-size: 0.75rem; color: #8a8175; }
+
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="index.html">← Showcase</a>
+  <span>Editorial Magazine</span>
+  <a href="memphis.html">Next →</a>
+</nav>
+
+<div class="lines"></div>
+<div class="wrap">
+    <h1>Editorial Magazine</h1>
+    <p class="deck">Magazine layout logic: big display type, multi-column body, generous margins, and a pull quote that interrupts the flow.</p>
+
+    <h2>Palette</h2>
+    <div class="swatches">
+        <div class="swatch" style="background:#2a2520;"><span style="color:#fff">Ink</span></div>
+        <div class="swatch" style="background:#faf8f3;"><span>Paper</span></div>
+        <div class="swatch" style="background:#8b0000;"><span style="color:#fff">Accent</span></div>
+    </div>
+
+    <div class="columns">
+        <p class="drop-cap">Serif display type sets the mood before the reader absorbs a single word. The body follows in a neutral sans, held in by columns and ruled lines.</p>
+        <p>Footnotes, captions, and pull quotes are not decoration — they are the rhythm section. They give the eye places to rest and the brain places to land.</p>
+    </div>
+
+    <blockquote class="pull-quote">"Good typography is invisible. Great typography is unforgettable."</blockquote>
+
+    <h2>Type Scale</h2>
+    <p style="font-family:'Playfair Display',serif; font-size:2.2rem; margin:8px 0;">Display serif — elegant authority</p>
+    <p style="font-family:'Playfair Display',serif; font-size:1.3rem; font-style:italic; margin:8px 0;">Italic subhead — conversational rhythm</p>
+    <p style="font-size:1rem; margin:8px 0;">Body sans — readable, neutral, generous</p>
+    <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a8175; margin:8px 0;">Caption — small, spaced, grey</p>
+</div>
+
+<footer class="showcase-footer">UI Direction Showcase · 3 / 10</footer>
+</body>
+</html>
