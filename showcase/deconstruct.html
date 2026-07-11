@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deconstructivism — UI Direction</title>
+<title>Deconstructivism — Korvia Design Direction</title>
 <style>
+
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 * { box-sizing: border-box; }
@@ -42,7 +43,7 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8d
 .swatch { width: 70px; height: 70px; border: 2px solid #111; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #111; color: #888; text-align: center; }
-
+        
 </style>
 </head>
 <body>
@@ -52,9 +53,21 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8d
   <a href="biophilic.html">Next →</a>
 </nav>
 
+
 <div class="wrap">
     <h1>Deconstructivism</h1>
-    <p class="desc">The grid is a suggestion, not a rule. Elements overlap, tilt, and slice across each other at odd angles.</p>
+    <p class="desc">Deconstructivism breaks the Korvia dashboard into overlapping shards so managers can compare kitchen load, floor plan, and QR traffic at once.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="overlap" style="margin-bottom:16px;height:160px;">
+        <div class="box" style="left:0;top:0;background:#fff;padding:16px;">Venue load</div>
+        <div class="box" style="left:60px;top:40px;background:#ff4d4d;color:#fff;padding:16px;">Orders 9</div>
+        <div class="box" style="left:130px;top:80px;background:#111;color:#fff;padding:16px;">QR 412</div>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="shard"></div>
+        <div class="slice" style="flex:1;min-width:160px;">Action: consolidate Table 4 + Table 6</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#f5f5f5;"><span>Grey</span></div>
@@ -71,7 +84,7 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8d
     <div class="slice">Skewed slice one.</div>
     <div class="slice">Skewed slice two.</div>
 </div>
-
-<footer class="showcase-footer">UI Direction Showcase · 18 / 30</footer>
+        
+<footer class="showcase-footer">Korvia Design Direction Showcase · 18 / 30</footer>
 </body>
 </html>

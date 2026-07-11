@@ -7,10 +7,11 @@ DIRECTIONS = [
         "id": "brutalist",
         "name": "Brutalist Raw",
         "tagline": "System fonts, thick borders, rectangles only, zero polish.",
-        "desc": "No radius, no gradients, no harmony. Type is huge, borders are weapons, and the grid is implied by brute force. The dopamine comes from contrast and raw structure.",
+        "desc": "Brutalist Raw makes Korvia's kitchen display impossible to ignore during a rush. Thick borders and screaming contrast turn ticket status into commands, not suggestions.",
         "palette": ["#000000", "#FFFFFF", "#FF0000"],
         "shapes": ["square", "rectangle", "rectangle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -46,12 +47,29 @@ h2 { font-size: 1rem; text-transform: uppercase; margin: 40px 0 16px; border-bot
     opacity: 0.08;
 }
 .showcase-footer { padding: 20px; border-top: 4px solid #000; text-align: center; font-size: 0.8rem; }
-""",
+        """,
         "content": """
+
 <div class="stripes"></div>
 <div class="wrap">
     <h1>Brutalist Raw</h1>
-    <p class="desc">No radius, no gradients, no harmony. Type is huge, borders are weapons, and the grid is implied by brute force.</p>
+    <p class="desc">Brutalist Raw makes Korvia's kitchen display impossible to ignore during a rush. Thick borders and screaming contrast turn ticket status into commands, not suggestions.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="shape rect" style="width:100%;height:auto;background:#fff;padding:18px;margin-bottom:16px;">
+        <strong>Masai Coffee House</strong><br>
+        Open tables 8 / 20 · QR scans today 312
+    </div>
+    <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="shape square" style="width:120px;height:120px;display:grid;place-items:center;">
+            <span style="font-size:1.4rem;font-weight:700;">14</span>
+        </div>
+        <div>
+            <button class="big-btn">Fire orders</button>
+            <button class="big-btn secondary" style="margin-left:8px;">QR setup</button>
+            <p style="margin-top:12px;">Live order #204 · 3 items · 12 min</p>
+        </div>
+    </div>
 
     <h2>Palette</h2>
     <div class="swatches">
@@ -79,16 +97,17 @@ h2 { font-size: 1rem; text-transform: uppercase; margin: 40px 0 16px; border-bot
     <button class="big-btn">Primary</button>
     <button class="big-btn secondary">Secondary</button>
 </div>
-"""
+        """
     },
     {
         "id": "swiss",
         "name": "Swiss Grid",
         "tagline": "Asymmetric grids, red accents, absolute order.",
-        "desc": "Helvetica discipline: flush left, ragged right, a single accent color, and negative space treated as a material.",
+        "desc": "Swiss Grid brings editorial order to the Korvia venue dashboard, separating revenue, open tables, and live orders into a scan-friendly hierarchy with one disciplined accent color.",
         "palette": ["#111111", "#F4F4F4", "#FF2500"],
         "shapes": ["square", "rectangle", "rectangle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -121,12 +140,33 @@ h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; marg
     opacity: 0.10;
 }
 .showcase-footer { padding: 24px 32px; background: #fff; border-top: 1px solid #ddd; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #666; }
-""",
+        """,
         "content": """
+
 <div class="squares"></div>
 <div class="wrap">
     <h1>Swiss Grid</h1>
-    <p class="desc">Helvetica discipline: flush left, ragged right, a single accent color, and negative space treated as a material.</p>
+    <p class="desc">Swiss Grid brings editorial order to the Korvia venue dashboard, separating revenue, open tables, and live orders into a scan-friendly hierarchy with one disciplined accent color.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="grid" style="margin-bottom:24px;">
+        <div class="cell black">
+            <h3 style="margin:0 0 8px;">Masai Coffee House</h3>
+            <p style="margin:0;">Open tables 8 / 20</p>
+        </div>
+        <div class="cell red">
+            <p style="font-size:2.4rem;font-weight:900;margin:0;">14</p>
+            <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;margin:8px 0 0;">Live orders</p>
+        </div>
+        <div class="cell">
+            <p style="margin:0;font-weight:700;">QR scans today</p>
+            <p style="font-size:1.8rem;font-weight:900;margin:8px 0 0;">312</p>
+        </div>
+        <div class="cell red">
+            <p style="margin:0;font-weight:700;">Action required</p>
+            <p style="margin:8px 0 0;">Fire dessert course · Table 12</p>
+        </div>
+    </div>
 
     <h2>Palette</h2>
     <div class="swatches">
@@ -151,16 +191,17 @@ h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; marg
         <p style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:#888;">Caption — metadata grey</p>
     </div>
 </div>
-"""
+        """
     },
     {
         "id": "editorial",
         "name": "Editorial Magazine",
         "tagline": "Serif headlines, columns, pull quotes, footnotes.",
-        "desc": "Magazine layout logic: big display type, multi-column body, generous margins, and a pull quote that interrupts the flow.",
+        "desc": "Editorial Magazine treats the Korvia menu like a feature story: generous whitespace, drop caps, and pull quotes turn each dish into a reason to order.",
         "palette": ["#2A2520", "#FAF8F3", "#8B0000"],
         "shapes": ["rectangle", "rectangle", "rectangle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -194,12 +235,26 @@ h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 40px 0 1
     opacity: 0.5;
 }
 .showcase-footer { padding: 30px 40px; border-top: 1px solid #d4cfc5; text-align: center; font-size: 0.75rem; color: #8a8175; }
-""",
+        """,
         "content": """
+
 <div class="lines"></div>
 <div class="wrap">
     <h1>Editorial Magazine</h1>
-    <p class="deck">Magazine layout logic: big display type, multi-column body, generous margins, and a pull quote that interrupts the flow.</p>
+    <p class="deck">Editorial Magazine treats the Korvia menu like a feature story: generous whitespace, drop caps, and pull quotes turn each dish into a reason to order.</p>
+
+    <h2>Korvia scenario</h2>
+    <p class="deck">The Serengeti Bistro — evening service preview</p>
+    <div class="columns" style="margin-bottom:24px;">
+        <div class="pull-quote">
+            Chef's tasting menu: 86 covers booked. First seating at 19:00.
+        </div>
+        <div>
+            <p style="margin:0 0 12px;"><strong>Live orders</strong> · 23 tickets firing</p>
+            <p style="margin:0 0 12px;"><strong>QR scans today</strong> · 198</p>
+            <p style="margin:0;"><strong>Staff on floor</strong> · 6 servers, 2 hosts</p>
+        </div>
+    </div>
 
     <h2>Palette</h2>
     <div class="swatches">
@@ -221,16 +276,17 @@ h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 40px 0 1
     <p style="font-size:1rem; margin:8px 0;">Body sans — readable, neutral, generous</p>
     <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#8a8175; margin:8px 0;">Caption — small, spaced, grey</p>
 </div>
-"""
+        """
     },
     {
         "id": "memphis",
         "name": "Memphis Pop",
         "tagline": "Squiggles, circles, triangles, pastel chaos.",
-        "desc": "The 80s are back: clashing pastels, bold black outlines, primitive geometry, and a composition that refuses to sit still.",
+        "desc": "Memphis Pop turns a Korvia order card into a playful, high-energy ticket that floor staff can read at a glance during peak service.",
         "palette": ["#F6D7FF", "#FFF6A3", "#A3FFF0", "#FFC4A3"],
         "shapes": ["circle", "triangle", "squiggle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -266,12 +322,34 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 0 0 24px; font-weight: 800; }
     opacity: 0.25;
 }
 .showcase-footer { padding: 20px; border-top: 4px solid #111; text-align: center; background: #fff; }
-""",
+        """,
         "content": """
+
 <div class="squiggle-bg"></div>
 <div class="wrap">
     <h1>Memphis Pop</h1>
-    <p class="desc">The 80s are back: clashing pastels, bold black outlines, primitive geometry, and a composition that refuses to sit still.</p>
+    <p class="desc">Memphis Pop turns a Korvia order card into a playful, high-energy ticket that floor staff can read at a glance during peak service.</p>
+
+    <h2>Korvia scenario</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;margin-bottom:24px;">
+        <div class="card">
+            <strong>Zanzibar Bites</strong><br>
+            Tables 14 / 28
+        </div>
+        <div class="card" style="background:#ff3d00;color:#fff;">
+            <strong>Live order #204</strong><br>
+            3 items · 12 min
+        </div>
+        <div class="card">
+            <strong>QR menu</strong><br>
+            142 scans today
+        </div>
+    </div>
+    <div class="shapes" style="margin-bottom:24px;">
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape squiggle"></div>
+    </div>
 
     <h2 style="margin-top:0;">Palette</h2>
     <div class="swatches">
@@ -293,16 +371,17 @@ h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 0 0 24px; font-weight: 800; }
     <div class="card"><h3 style="margin:0 0 8px;">Pop</h3><p style="margin:0; font-size:0.9rem;">Bold, rotated, unapologetic.</p></div>
     <div class="card" style="background:#fff6a3; transform:rotate(-3deg);"><h3 style="margin:0 0 8px;">Zig</h3><p style="margin:0; font-size:0.9rem;">No two cards align.</p></div>
 </div>
-"""
+        """
     },
     {
         "id": "bauhaus",
         "name": "Bauhaus Function",
         "tagline": "Circles, squares, triangles, primary colors.",
-        "desc": "Primary forms for primary functions. Red, yellow, and blue sit on a neutral ground while circles, squares, and triangles do all the talking.",
+        "desc": "Bauhaus Function maps Korvia's core hospitality jobs to primary forms: red for urgent orders, yellow for menus, and blue for QR status.",
         "palette": ["#E63946", "#FFCC00", "#1D3557"],
         "shapes": ["circle", "square", "triangle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -344,12 +423,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 8px; font-weight: 700; tex
     opacity: 0.12;
 }
 .showcase-footer { padding: 20px 28px; background: #111; color: #999; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
-""",
+        """,
         "content": """
+
 <div class="geo"></div>
 <div class="wrap">
     <h1>Bauhaus Function</h1>
-    <p class="desc">Primary forms for primary functions. Red, yellow, and blue sit on a neutral ground while circles, squares, and triangles do all the talking.</p>
+    <p class="desc">Bauhaus Function maps Korvia's core hospitality jobs to primary forms: red for urgent orders, yellow for menus, and blue for QR status.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="stage" style="margin-bottom:24px;">
+        <div class="module red"><h2 style="margin:0;">Orders</h2><div class="big">12</div></div>
+        <div class="module yellow"><h2 style="margin:0;">Menu</h2><div class="big">QR</div></div>
+        <div class="module blue"><h2 style="margin:0;">Tables</h2><div class="big">8</div></div>
+        <div class="module white"><h2 style="margin:0;">Staff</h2><div class="big">3</div></div>
+        <div class="module blue"><h2 style="margin:0;">Revenue</h2><div class="big">TZS</div></div>
+        <div class="module red"><h2 style="margin:0;">Alert</h2><div class="big">!</div></div>
+    </div>
 
     <h2>Palette</h2>
     <div class="swatches">
@@ -375,16 +465,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 8px; font-weight: 700; tex
         <div class="module red"><h2>Red</h2><div class="big">■</div></div>
     </div>
 </div>
-"""
+        """
     },
     {
         "id": "handdrawn",
         "name": "Hand-Drawn Sketch",
         "tagline": "Rough edges, paper texture, pencil marks.",
-        "desc": "Everything looks like it was sketched on a napkin: wavy underlines, dashed borders, handwritten type, and a yellow tape strip holding it together.",
+        "desc": "Hand-Drawn Sketch makes Korvia feel like the head chef's personal tickets: quick, human, and easy to annotate during a busy prep window.",
         "palette": ["#F7F2E6", "#3A3026", "#B45F06"],
         "shapes": ["circle", "blob", "rectangle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -421,12 +512,24 @@ h1 { font-family: 'Patrick Hand', cursive; font-size: clamp(2.5rem, 8vw, 5rem); 
     background-image: radial-gradient(#d4c5a9 1px, transparent 1px); background-size: 22px 22px; opacity: 0.25;
 }
 .showcase-footer { padding: 20px; border-top: 2px dashed #a89f91; text-align: center; color: #a89f91; }
-""",
+        """,
         "content": """
+
 <div class="paper"></div>
 <div class="wrap">
     <h1>Hand-Drawn Sketch</h1>
-    <p class="desc">Everything looks like it was sketched on a napkin: wavy underlines, dashed borders, handwritten type, and a yellow tape strip holding it together.</p>
+    <p class="desc">Hand-Drawn Sketch makes Korvia feel like the head chef's personal tickets: quick, human, and easy to annotate during a busy prep window.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="napkin" style="margin-bottom:16px;">
+        <div class="tape"></div>
+        <div class="row"><span>Venue</span><span>Kilimanjaro Rooftop</span></div>
+        <div class="row"><span>Open tables</span><span>6 / 18</span></div>
+        <div class="row"><span>Live order</span><span>#312 · 4 items</span></div>
+        <div class="row"><span>QR scans</span><span>89 today</span></div>
+    </div>
+    <button class="sketch-btn">Mark ready</button>
+    <button class="sketch-btn" style="background:#fffef8;">QR menu</button>
 
     <h2>Palette</h2>
     <div class="swatches">
@@ -446,16 +549,17 @@ h1 { font-family: 'Patrick Hand', cursive; font-size: clamp(2.5rem, 8vw, 5rem); 
     <button class="sketch-btn">Save sketch</button>
     <button class="sketch-btn" style="background:#fffef8;">Erase</button>
 </div>
-"""
+        """
     },
     {
         "id": "artdeco",
         "name": "Art Deco Luxe",
         "tagline": "Gold, black, stepped geometry, fan patterns.",
-        "desc": "Stepped forms, sunburst motifs, and gold on black. This direction trades utility for ceremony and turns every screen into a lobby.",
+        "desc": "Art Deco Luxe frames Korvia's fine-dining venues with gilded panels and diamond motifs, turning a reservation screen into part of the guest experience.",
         "palette": ["#050505", "#C5A059", "#F5E7C8"],
         "shapes": ["fan", "stepped-rectangle", "diamond"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Marcellus&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -493,12 +597,25 @@ h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 
 }
 .gold-btn:hover { background: #c5a059; color: #050505; }
 .showcase-footer { padding: 24px; border-top: 1px solid #c5a059; color: #8a7e63; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <div class="fan"></div>
     <h1>Art Deco Luxe</h1>
-    <p class="desc">Stepped forms, sunburst motifs, and gold on black. This direction trades utility for ceremony and turns every screen into a lobby.</p>
+    <p class="desc">Art Deco Luxe frames Korvia's fine-dining venues with gilded panels and diamond motifs, turning a reservation screen into part of the guest experience.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="panel">
+        <h2 style="margin:0 0 8px;">The Gilded Palm</h2>
+        <p style="margin:0;">Reservations tonight: 42 covers · VIP table 4</p>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <button class="gold-btn">Seat guests</button>
+        <button class="gold-btn">View menu</button>
+        <div class="diamond"></div>
+        <div class="step"></div>
+    </div>
 
     <h2 style="color:#c5a059; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.2em;">Palette</h2>
     <div class="swatches">
@@ -520,16 +637,17 @@ h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 
         <button class="gold-btn">Enter</button>
     </div>
 </div>
-"""
+        """
     },
     {
         "id": "scrapbook",
         "name": "Scrapbook Collage",
         "tagline": "Washi tape, polaroids, layered paper, soft dopamine.",
-        "desc": "Soft pastels, torn edges, polaroid frames, and yellow tape. A friendly, tactile collage that feels pinned up rather than rendered.",
+        "desc": "Scrapbook Collage lets Korvia venues paste together photos, polaroids, and washi-tape notes for a personality-rich events board.",
         "palette": ["#E6F0E8", "#E07050", "#FFB74D"],
         "shapes": ["polaroid", "tape-strip", "circle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -569,12 +687,32 @@ h1 { font-family: 'Gochi Hand', cursive; font-size: clamp(2.4rem, 7vw, 4.5rem); 
         radial-gradient(circle at 80% 70%, rgba(255,193,7,0.15) 100px, transparent 101px);
 }
 .showcase-footer { padding: 20px; text-align: center; color: #7a8a7e; }
-""",
+        """,
         "content": """
+
 <div class="cork"></div>
 <div class="wrap">
     <h1>Scrapbook Collage</h1>
-    <p class="desc">Soft pastels, torn edges, polaroid frames, and yellow tape. A friendly, tactile collage that feels pinned up rather than rendered.</p>
+    <p class="desc">Scrapbook Collage lets Korvia venues paste together photos, polaroids, and washi-tape notes for a personality-rich events board.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="collage" style="margin-bottom:24px;">
+        <div class="polaroid" style="position:relative;">
+            <div class="washi"></div>
+            <div class="img">📷</div>
+            <p style="margin:12px 0 0;text-align:center;">New menu shoot</p>
+        </div>
+        <div class="polaroid" style="position:relative;">
+            <div class="washi"></div>
+            <div class="img">🍹</div>
+            <p style="margin:12px 0 0;text-align:center;">Cocktail special</p>
+        </div>
+        <div class="polaroid" style="position:relative;">
+            <div class="washi"></div>
+            <div class="img">🎟️</div>
+            <p style="margin:12px 0 0;text-align:center;">Event booking</p>
+        </div>
+    </div>
 
     <h2>Palette</h2>
     <div class="swatches">
@@ -590,16 +728,17 @@ h1 { font-family: 'Gochi Hand', cursive; font-size: clamp(2.4rem, 7vw, 4.5rem); 
         <div class="polaroid"><div class="washi"></div><div class="img">📝</div><p>Hand note</p></div>
     </div>
 </div>
-"""
+        """
     },
     {
         "id": "japanese",
         "name": "Japanese Minimal",
         "tagline": "Space, ink, red seals, vertical rhythm.",
-        "desc": "Ma — the power of empty space. A single red seal, vertical text, and ink-wash restraint turn silence into structure.",
+        "desc": "Japanese Minimal gives Korvia the calm of a ryokan check-in: one seal, one vertical accent, and absolute clarity between occupied and empty space.",
         "palette": ["#F7F5F0", "#2B2B2B", "#B02A2A"],
         "shapes": ["circle", "vertical-line", "rectangle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -631,13 +770,24 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 300; margin: 0 0 24px; 
     background: radial-gradient(circle at 90% 10%, rgba(176,42,42,0.08) 0%, transparent 40%);
 }
 .showcase-footer { padding: 32px 48px; border-top: 1px solid #d9d5cc; text-align: center; color: #8c8c8c; font-size: 0.75rem; letter-spacing: 0.15em; }
-""",
+        """,
         "content": """
+
 <div class="ink"></div>
 <div class="wrap">
     <div class="vertical">間 · 2026</div>
     <h1>Japanese Minimal</h1>
-    <p class="desc">Ma — the power of empty space. A single red seal, vertical text, and ink-wash restraint turn silence into structure.</p>
+    <p class="desc">Japanese Minimal gives Korvia the calm of a ryokan check-in: one seal, one vertical accent, and absolute clarity between occupied and empty space.</p>
+
+    <h2>Korvia scenario</h2>
+    <div style="display:flex;align-items:flex-start;gap:24px;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="seal">K</div>
+        <div>
+            <div class="type-line" style="font-size:1.5rem;">Masao Sushi</div>
+            <div class="type-line">8 tables open · 6 live orders</div>
+            <div class="type-line" style="color:#8c8c8c;">QR scans today: 156</div>
+        </div>
+    </div>
 
     <h2 style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;">Palette</h2>
     <div class="swatches">
@@ -654,16 +804,17 @@ h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 300; margin: 0 0 24px; 
     <div class="type-line" style="font-size:1rem;">Body text floats with generous leading.</div>
     <div class="type-line" style="font-size:0.75rem; color:#8c8c8c;">Caption — small, spaced, grey</div>
 </div>
-"""
+        """
     },
     {
         "id": "terminal",
         "name": "Retro Terminal",
         "tagline": "Monospace green, scanlines, CRT glow.",
-        "desc": "A phosphor-green interface that feels like it boots from a 5.25-inch floppy. Scanlines, blinking cursor, and pure command-line romance.",
+        "desc": "Retro Terminal turns Korvia into a heads-down command center for back-of-house: logs, prompts, and a blinking cursor keep cooks in flow.",
         "palette": ["#050A05", "#33FF00", "#0F3D0F"],
         "shapes": ["rectangle", "cursor", "grid"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -697,12 +848,22 @@ h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 16px; font-weight: 400; }
     background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0,0,0,0.25) 3px);
 }
 .showcase-footer { padding: 14px 24px; border-top: 1px solid #33ff0033; background: #0a140a; color: #33ff0099; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="scanlines"></div>
 <div class="wrap">
     <h1>> RETRO_TERMINAL</h1>
-    <p class="desc">A phosphor-green interface that feels like it boots from a 5.25-inch floppy. Scanlines, blinking cursor, and pure command-line romance.</p>
+    <p class="desc">Retro Terminal turns Korvia into a heads-down command center for back-of-house: logs, prompts, and a blinking cursor keep cooks in flow.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="log" style="margin-bottom:24px;">
+        <p><span class="prompt">$</span> korvia --venue=savannah status</p>
+        <p>[OK] 7 tables occupied</p>
+        <p>[WARN] order #404 waiting 14m</p>
+        <p>[OK] QR menu served 312 guests</p>
+        <p><span class="prompt">$</span> fire_course table_12<span class="cursor">_</span></p>
+    </div>
 
     <h2 style="font-size:1rem; color:#33ff00cc;">Palette</h2>
     <div class="swatches">
@@ -726,17 +887,17 @@ h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 16px; font-weight: 400; }
         <p><span class="prompt">$</span> run_presentation<span class="cursor">_</span></p>
     </div>
 </div>
-"""
+        """
     },
-
     {
         "id": "organic",
         "name": "Organic Blob",
         "tagline": "Fluid shapes, earth tones, no sharp edges.",
-        "desc": "Everything breathes. Blobs replace boxes, earth tones replace primary colors, and the layout flows like water around stones.",
+        "desc": "Organic Blob softens Korvia's guest touchpoints with fluid shapes that feel welcoming, like a reservation card made of warm earth.",
         "palette": ["#E6DDD4", "#7A6A5A", "#C4A77D"],
         "shapes": ["blob", "oval", "wave"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -768,12 +929,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
     background: radial-gradient(circle at 20% 30%, rgba(196,167,125,0.2) 120px, transparent 121px);
 }
 .showcase-footer { padding: 24px 28px; background: #f3ece4; border-top: 1px solid #d1c4b6; text-align: center; color: #7a6a5a; }
-""",
+        """,
         "content": """
+
 <div class="organic"></div>
 <div class="wrap">
     <h1>Organic Blob</h1>
-    <p class="desc">Everything breathes. Blobs replace boxes, earth tones replace primary colors, and the layout flows like water.</p>
+    <p class="desc">Organic Blob softens Korvia's guest touchpoints with fluid shapes that feel welcoming, like a reservation card made of warm earth.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="blob" style="padding:24px;margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Safari Lodge</h3>
+        <p style="margin:0;">Check-ins: 18 / 24 · Dinner covers: 40</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:24px;">
+        <div class="oval" style="width:140px;">QR check-in</div>
+        <div class="wave" style="flex:1;min-width:120px;"></div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#e6ddd4;"><span>Sand</span></div>
@@ -785,16 +957,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
     <div class="oval" style="background:#c4a77d;">Oval two</div>
     <div class="wave"></div>
 </div>
-"""
+        """
     },
     {
         "id": "neobrutal",
         "name": "Neobrutalism",
         "tagline": "Bright colors, hard shadows, rounded but bold.",
-        "desc": "A friendlier brute: rounded corners meet thick black outlines and aggressive offset shadows. No gradients, just flat color clashes.",
+        "desc": "Neobrutalism gives Korvia chunky cards and loud shadows so hosts and managers never miss the next actionable order.",
         "palette": ["#FF6B6B", "#4ECDC4", "#FFE66D"],
         "shapes": ["rounded-rect", "star", "circle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -826,11 +999,24 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
 .swatch { width: 70px; height: 70px; border: 3px solid #111; border-radius: 12px; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; border-top: 4px solid #111; background: #ff6b6b; text-align: center; font-weight: 700; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Neobrutalism</h1>
-    <p class="desc">A friendlier brute: rounded corners meet thick black outlines and aggressive offset shadows.</p>
+    <p class="desc">Neobrutalism gives Korvia chunky cards and loud shadows so hosts and managers never miss the next actionable order.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="card2 coral" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Live order #55</h3>
+        <p style="margin:0;">2 items · 9 min · Table 7</p>
+    </div>
+    <div class="card2 mint" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Mara Kitchen</h3>
+        <p style="margin:0;">Tables 11 / 22 · Staff 4</p>
+    </div>
+    <button class="neo-btn" style="margin-bottom:16px;">Open QR menu</button>
+    <div class="star"></div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#ff6b6b;"><span>Coral</span></div>
@@ -843,16 +1029,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
     <button class="neo-btn">Click me</button>
     <button class="neo-btn" style="background:#ffe66d;">Or me</button>
 </div>
-"""
+        """
     },
     {
         "id": "clay",
         "name": "Claymorphism",
         "tagline": "Soft 3D pastels, puffy shapes, inner shadows.",
-        "desc": "Elements look like squeezable clay: soft pastel surfaces, rounded forms, and inset shadows that suggest thickness.",
+        "desc": "Claymorphism makes Korvia buttons and cards feel squeezable — ideal for tablet-based hosts tapping through reservations with gloved hands.",
         "palette": ["#FFE5EC", "#C1E1C1", "#B5DEFF"],
         "shapes": ["puffy-circle", "soft-rect", "sphere"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -882,11 +1069,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
 .swatch { width: 70px; height: 70px; border-radius: 24px; box-shadow: inset 4px 4px 8px rgba(255,255,255,0.6), inset -4px -4px 8px rgba(0,0,0,0.05); }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #e2e8f0; text-align: center; color: #718096; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Claymorphism</h1>
-    <p class="desc">Elements look like squeezable clay: soft pastel surfaces, rounded forms, and inset shadows that suggest thickness.</p>
+    <p class="desc">Claymorphism makes Korvia buttons and cards feel squeezable — ideal for tablet-based hosts tapping through reservations with gloved hands.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="clay-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Coastal Cafe host station</h3>
+        <p style="margin:0;">6 tables open · Next reservation 13:00</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="puffy" style="width:90px;height:90px;">QR</div>
+        <div class="puffy" style="width:90px;height:90px;background:#c1e1c1;">4</div>
+        <div class="clay-card green" style="margin:0;flex:1;min-width:160px;">Order #77 ready</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#ffe5ec;"><span>Pink</span></div>
@@ -900,16 +1099,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
     <div class="clay-card green">Soft green clay panel.</div>
     <div class="clay-card blue">Soft blue clay panel.</div>
 </div>
-"""
+        """
     },
     {
         "id": "cyberpunk",
         "name": "Cyberpunk Neon",
         "tagline": "Dark city, neon edges, sharp angles.",
-        "desc": "A night-mode interface sliced by cyan and magenta light. Sharp polygons, grid floors, and a permanent sense of rain.",
+        "desc": "Cyberpunk Neon turns Korvia's late-night bar mode into a glowing command deck where orders pulse and QR scans cut through the dark.",
         "palette": ["#0A0A12", "#FF00FF", "#00FFFF"],
         "shapes": ["triangle", "hexagon", "grid"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -942,12 +1142,27 @@ h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; font-weight: 700; le
     background: linear-gradient(to bottom, transparent 95%, #00ffff11 95%), linear-gradient(to right, transparent 95%, #00ffff11 95%); background-size: 40px 40px;
 }
 .showcase-footer { padding: 20px; background: #12121f; border-top: 1px solid #ff00ff; text-align: center; color: #ff00ff; }
-""",
+        """,
         "content": """
+
 <div class="grid-bg"></div>
 <div class="wrap">
     <h1>Cyberpunk Neon</h1>
-    <p class="desc">A night-mode interface sliced by cyan and magenta light. Sharp polygons and grid floors.</p>
+    <p class="desc">Cyberpunk Neon turns Korvia's late-night bar mode into a glowing command deck where orders pulse and QR scans cut through the dark.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="neon-box" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Neon Lounge</h3>
+        <p style="margin:0;">Open tabs: 23 · Live orders: 9</p>
+    </div>
+    <div class="neon-box" style="border-color:#ff00ff;box-shadow:0 0 12px #ff00ff33;margin-bottom:16px;">
+        <p style="margin:0;">Live order #99 · Cocktails ×4 · Table 15</p>
+    </div>
+    <div style="display:flex;gap:16px;margin-bottom:24px;">
+        <div class="tri"></div>
+        <div class="hex"></div>
+        <div class="hex" style="background:#ff00ff;"></div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#0a0a12;"><span style="color:#00ffff">Void</span></div>
@@ -960,16 +1175,17 @@ h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; font-weight: 700; le
     <div class="neon-box">Neon panel one — cyan edge glow.</div>
     <div class="neon-box" style="border-color:#ff00ff; box-shadow:0 0 12px #ff00ff33;">Neon panel two — magenta edge glow.</div>
 </div>
-"""
+        """
     },
     {
         "id": "steampunk",
         "name": "Steampunk Brass",
         "tagline": "Gears, gauges, copper, and rivets.",
-        "desc": "Victorian machinery meets digital interface: brass plates, cog motifs, riveted borders, and sepia warmth.",
+        "desc": "Steampunk Brass wraps Korvia's heritage hotel dashboard in riveted plates and gauges, making occupancy and service diagnostics feel tangible.",
         "palette": ["#3E2723", "#B87333", "#E6D5B8"],
         "shapes": ["gear", "rivet", "gauge"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Rye&family=Roboto+Slab:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1003,11 +1219,23 @@ h1 { font-family: 'Rye', cursive; font-size: clamp(2.2rem, 6vw, 4rem); margin: 0
 .swatch { width: 70px; height: 70px; border: 2px solid #b87333; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #c2b096; }
 .showcase-footer { padding: 20px; background: #281815; border-top: 4px solid #b87333; text-align: center; color: #b87333; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Steampunk Brass</h1>
-    <p class="desc">Victorian machinery meets digital interface: brass plates, cog motifs, riveted borders, and sepia warmth.</p>
+    <p class="desc">Steampunk Brass wraps Korvia's heritage hotel dashboard in riveted plates and gauges, making occupancy and service diagnostics feel tangible.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="plate" style="margin-bottom:16px;">
+        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+        <p style="margin:12px 0 0;font-weight:700;">Grand Hotel · Occupancy 78% · 41 guests checked in</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="gauge"></div>
+        <div class="gear"></div>
+        <p style="margin:0;">Steam pressure: optimal<br>QR scans today: 267</p>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#3e2723;"><span style="color:#e6d5b8">Leather</span></div>
@@ -1021,16 +1249,17 @@ h1 { font-family: 'Rye', cursive; font-size: clamp(2.2rem, 6vw, 4rem); margin: 0
         <p style="margin:12px 0 0; font-weight:700;">Riveted brass panel.</p>
     </div>
 </div>
-"""
+        """
     },
     {
         "id": "cottagecore",
         "name": "Cottagecore Floral",
         "tagline": "Soft florals, rounded script, gentle dopamine.",
-        "desc": "A UI that feels like a pressed-flower journal: soft colors, delicate patterns, rounded corners, and handwritten warmth.",
+        "desc": "Cottagecore Floral gives Korvia's farm-to-table venues a pressed-flower warmth that matches menus built on local ingredients.",
         "palette": ["#FAF6F0", "#E8B4B8", "#A8C686"],
         "shapes": ["flower", "rounded-rect", "leaf"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Dancing+Script:wght@600&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1067,12 +1296,24 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; 
         radial-gradient(circle at 90% 80%, rgba(168,198,134,0.2) 80px, transparent 81px);
 }
 .showcase-footer { padding: 20px; background: #f5ebe0; text-align: center; color: #8a7878; }
-""",
+        """,
         "content": """
+
 <div class="floral-bg"></div>
 <div class="wrap">
     <h1>Cottagecore Floral</h1>
-    <p class="desc">A UI that feels like a pressed-flower journal: soft colors, delicate patterns, rounded corners, and handwritten warmth.</p>
+    <p class="desc">Cottagecore Floral gives Korvia's farm-to-table venues a pressed-flower warmth that matches menus built on local ingredients.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="floral-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Green Valley Bistro</h3>
+        <p style="margin:0;">Today's special: pumpkin soup · 18 covers</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+        <div class="flower"></div>
+        <div class="leaf"></div>
+        <div class="floral-card" style="margin:0;flex:1;min-width:160px;">Order #12 · Table 5 · ready</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#faf6f0;"><span>Cream</span></div>
@@ -1085,16 +1326,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; 
     <div class="floral-card">A gentle card with rounded corners and a soft shadow.</div>
     <div class="floral-card" style="background:#f9f1f1;">Another petal-soft container.</div>
 </div>
-"""
+        """
     },
     {
         "id": "acid",
         "name": "Acid Rave",
         "tagline": "Neon green, chrome, warped geometry.",
-        "desc": "Loud, sticky, and slightly illegal. Chrome text, neon green edges, and shapes that look like they are melting.",
+        "desc": "Acid Rave keeps Korvia's festival and event pop-ups readable under strobe conditions with high-voltage boxes and dripping urgency.",
         "palette": ["#1A1A1A", "#CCFF00", "#9D00FF"],
         "shapes": ["wave", "drip", "chrome-circle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1127,11 +1369,23 @@ h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; -webkit-text-stroke:
 .swatch { width: 70px; height: 70px; border: 2px solid #ccff00; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #ccff00aa; }
 .showcase-footer { padding: 20px; background: #000; border-top: 2px solid #ccff00; text-align: center; color: #9d00ff; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Acid Rave</h1>
-    <p class="desc">Loud, sticky, and slightly illegal. Chrome text, neon green edges, and shapes that look like they are melting.</p>
+    <p class="desc">Acid Rave keeps Korvia's festival and event pop-ups readable under strobe conditions with high-voltage boxes and dripping urgency.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="acid-box" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Event: Nyege Nyege Popup</h3>
+        <p style="margin:0;">Queue: 31 · QR scans: 892 · Staff 8</p>
+    </div>
+    <div class="drip" style="margin-bottom:16px;"></div>
+    <div class="acid-box" style="margin-bottom:16px;">
+        <p style="margin:0;">Live order #666 · 2 combos · 6 min</p>
+    </div>
+    <div class="warp"></div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#1a1a1a;"><span style="color:#ccff00">Black</span></div>
@@ -1143,16 +1397,17 @@ h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 16px; -webkit-text-stroke:
     <div class="drip"></div>
     <div class="acid-box">Striped acid panel.</div>
 </div>
-"""
+        """
     },
     {
         "id": "deconstruct",
         "name": "Deconstructivism",
         "tagline": "Broken grid, diagonal slices, overlapping planes.",
-        "desc": "The grid is a suggestion, not a rule. Elements overlap, tilt, and slice across each other at odd angles.",
+        "desc": "Deconstructivism breaks the Korvia dashboard into overlapping shards so managers can compare kitchen load, floor plan, and QR traffic at once.",
         "palette": ["#F5F5F5", "#111111", "#FF4D4D"],
         "shapes": ["diagonal", "overlap", "shard"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1189,11 +1444,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8d
 .swatch { width: 70px; height: 70px; border: 2px solid #111; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #111; color: #888; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Deconstructivism</h1>
-    <p class="desc">The grid is a suggestion, not a rule. Elements overlap, tilt, and slice across each other at odd angles.</p>
+    <p class="desc">Deconstructivism breaks the Korvia dashboard into overlapping shards so managers can compare kitchen load, floor plan, and QR traffic at once.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="overlap" style="margin-bottom:16px;height:160px;">
+        <div class="box" style="left:0;top:0;background:#fff;padding:16px;">Venue load</div>
+        <div class="box" style="left:60px;top:40px;background:#ff4d4d;color:#fff;padding:16px;">Orders 9</div>
+        <div class="box" style="left:130px;top:80px;background:#111;color:#fff;padding:16px;">QR 412</div>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="shard"></div>
+        <div class="slice" style="flex:1;min-width:160px;">Action: consolidate Table 4 + Table 6</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#f5f5f5;"><span>Grey</span></div>
@@ -1210,16 +1477,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; transform: skewX(-8d
     <div class="slice">Skewed slice one.</div>
     <div class="slice">Skewed slice two.</div>
 </div>
-"""
+        """
     },
     {
         "id": "biophilic",
         "name": "Biophilic Nature",
         "tagline": "Leaf forms, earth tones, living lines.",
-        "desc": "Nature as interface: leaf silhouettes, branching lines, soil and moss colors, and shapes that grow rather than snap.",
+        "desc": "Biophilic Nature weaves Korvia's eco-lodge and farm venues into leaf, branch, and stone textures that echo their sustainability story.",
         "palette": ["#F4F1EA", "#4A5D23", "#D4A373"],
         "shapes": ["leaf", "branch", "pebble"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1255,12 +1523,26 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 600; }
     background: radial-gradient(circle at 80% 20%, rgba(74,93,35,0.08) 120px, transparent 121px);
 }
 .showcase-footer { padding: 20px; background: #e8e4da; text-align: center; color: #5e6b3a; }
-""",
+        """,
         "content": """
+
 <div class="nature-bg"></div>
 <div class="wrap">
     <h1>Biophilic Nature</h1>
-    <p class="desc">Nature as interface: leaf silhouettes, branching lines, soil and moss colors, and shapes that grow rather than snap.</p>
+    <p class="desc">Biophilic Nature weaves Korvia's eco-lodge and farm venues into leaf, branch, and stone textures that echo their sustainability story.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="nature-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Arusha Eco-Lodge</h3>
+        <p style="margin:0;">Guests checked in: 14 / 20 · Solar: 100%</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+        <div class="leaf"></div>
+        <div class="leaf two"></div>
+        <div class="branch" style="flex:1;min-width:80px;"></div>
+    </div>
+    <div class="nature-card" style="margin-bottom:16px;">Order #21 · Vegan set ×2 · Table 8</div>
+    <div class="pebble">QR</div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#f4f1ea;"><span>Stone</span></div>
@@ -1275,16 +1557,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 600; }
     <div class="branch" style="width:40%"></div>
     <div class="nature-card">A card shaped like a leaf's edge.</div>
 </div>
-"""
+        """
     },
     {
         "id": "constructivist",
         "name": "Constructivism",
         "tagline": "Red, black, diagonals, propaganda posters.",
-        "desc": "The visual language of revolutionary posters: red and black, diagonal text, photomontage rectangles, and urgent sans-serif.",
+        "desc": "Constructivism delivers Korvia's service updates like rally posters: skewed banners and bold wedges broadcast priorities across a noisy kitchen.",
         "palette": ["#D62828", "#111111", "#F4F1DE"],
         "shapes": ["diagonal-banner", "photomontage", "wedge"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1314,11 +1597,21 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; text-transform: uppe
 .swatch { width: 70px; height: 70px; border: 2px solid #111; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #111; color: #f4f1de; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Constructivism</h1>
-    <p class="desc">The visual language of revolutionary posters: red and black, diagonal text, photomontage rectangles, and urgent sans-serif.</p>
+    <p class="desc">Constructivism delivers Korvia's service updates like rally posters: skewed banners and bold wedges broadcast priorities across a noisy kitchen.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="banner" style="margin-bottom:16px;">Service alert: VIP party of 6 arriving 19:30</div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="photo" style="display:grid;place-items:center;color:#fff;font-weight:700;">QR</div>
+        <div class="wedge"></div>
+        <div class="wedge red"></div>
+        <div style="font-weight:700;">Live orders: 11 · Scans: 205</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#d62828;"><span style="color:#fff">Red</span></div>
@@ -1332,16 +1625,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; text-transform: uppe
     <div class="photo" style="background:#d62828;"></div>
     <div class="photo"></div>
 </div>
-"""
+        """
     },
     {
         "id": "psychedelic",
         "name": "Psychedelic 70s",
         "tagline": "Wavy patterns, warm colors, groovy type.",
-        "desc": "A lava-lamp interface: undulating borders, warm gradients avoided by using solid color bands, and bubble-letter headings.",
+        "desc": "Psychedelic 70s turns Korvia's happy-hour dashboard into a sunburst of color-coded bubbles, making promo items impossible to miss.",
         "palette": ["#FF9F1C", "#FFBF69", "#9B5DE5"],
         "shapes": ["wave", "bubble", "sunburst"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1372,11 +1666,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
 .swatch { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #3a0ca3; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #ff9f1c; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Psychedelic 70s</h1>
-    <p class="desc">A lava-lamp interface: undulating borders, warm color bands, and bubble-letter headings.</p>
+    <p class="desc">Psychedelic 70s turns Korvia's happy-hour dashboard into a sunburst of color-coded bubbles, making promo items impossible to miss.</p>
+
+    <h2>Korvia scenario</h2>
+    <div style="margin-bottom:16px;">
+        <div class="bubble">Sunset Combo · 30% off</div>
+        <div class="bubble" style="background:#ff9f1c;">Live orders: 18</div>
+        <div class="bubble" style="background:#00f5d4;color:#111;">QR scans: 124</div>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="sunburst"></div>
+        <div class="wavey" style="flex:1;min-width:120px;"></div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#ff9f1c;"><span>Orange</span></div>
@@ -1388,16 +1694,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
     <div class="bubble">Groovy</div>
     <div class="bubble" style="background:#ff9f1c; color:#3a0ca3;">Funky</div>
 </div>
-"""
+        """
     },
     {
         "id": "popart",
         "name": "Pop Art",
         "tagline": "Ben-Day dots, bold outlines, comic panels.",
-        "desc": "Roy Lichtenstein goes UI: primary colors, halftone dots, thick black outlines, and speech-bubble callouts.",
+        "desc": "Pop Art makes Korvia's menu items jump off the screen like comic panels, ideal for fast-casual counters where guests order from tablets.",
         "palette": ["#FFD400", "#FF3333", "#0066CC"],
         "shapes": ["speech-bubble", "dot-pattern", "starburst"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1434,11 +1741,23 @@ h1 { font-size: clamp(2.5rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.04
 .swatch { width: 70px; height: 70px; border: 3px solid #111; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #ffd400; border-top: 4px solid #111; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Pop Art</h1>
-    <p class="desc">Roy Lichtenstein goes UI: primary colors, halftone dots, thick black outlines, and speech-bubble callouts.</p>
+    <p class="desc">Pop Art makes Korvia's menu items jump off the screen like comic panels, ideal for fast-casual counters where guests order from tablets.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="comic-panel red" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Burger Blast</h3>
+        <p style="margin:0;">#1 combo · 24 sold today · TZS 18,000</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="speech" style="margin:0;">Scan QR to order!</div>
+        <div class="starburst"></div>
+        <div class="dots"></div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#ffd400;"><span>Yellow</span></div>
@@ -1451,16 +1770,17 @@ h1 { font-size: clamp(2.5rem, 7vw, 5rem); margin: 0 0 16px; letter-spacing: 0.04
     <div class="comic-panel">Comic panel one.</div>
     <div class="comic-panel red">Comic panel two.</div>
 </div>
-"""
+        """
     },
     {
         "id": "nordic",
         "name": "Nordic Minimal",
         "tagline": "Muted colors, soft curves, cozy utility.",
-        "desc": "Hygge in interface form: warm greys, dusty pastels, generous padding, and friendly rounded corners without the gloss.",
+        "desc": "Nordic Minimal keeps Korvia's front desk calm with soft cards, rounded pills, and quiet color that lets guest information breathe.",
         "palette": ["#F5F1ED", "#D4C5B9", "#A8B8A6"],
         "shapes": ["soft-rectangle", "rounded-pill", "circle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1491,11 +1811,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
 .swatch { width: 70px; height: 70px; border-radius: 16px; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #7a7a78; }
 .showcase-footer { padding: 20px; background: #e8e2db; text-align: center; color: #7a7a78; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Nordic Minimal</h1>
-    <p class="desc">Hygge in interface form: warm greys, dusty pastels, generous padding, and friendly rounded corners without the gloss.</p>
+    <p class="desc">Nordic Minimal keeps Korvia's front desk calm with soft cards, rounded pills, and quiet color that lets guest information breathe.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="nordic-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Nordic Lodge reception</h3>
+        <p style="margin:0;">Check-ins pending: 4 · Occupied: 16 / 20</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="pill" style="margin:0;">QR check-in</div>
+        <div class="soft-circle" style="margin:0;">12</div>
+        <div class="soft-circle" style="margin:0;background:#e8e0d8;">QR</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#f5f1ed;"><span>Wool</span></div>
@@ -1508,16 +1840,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
     <div class="pill" style="background:#d4c5b9; color:#4a4a48;">Calm</div>
     <div class="nordic-card">A soft, warm card with generous space.</div>
 </div>
-"""
+        """
     },
     {
         "id": "tropical",
         "name": "Tropical Vibes",
         "tagline": "Palm leaves, vivid color, organic shapes.",
-        "desc": "A vacation in interface form: saturated greens and corals, leaf silhouettes, and shapes with relaxed curves.",
+        "desc": "Tropical Vibes dresses Korvia's beach resort and rooftop pool menus in sun, arch, and palm shapes that feel like vacation from the first tap.",
         "palette": ["#06D6A0", "#FFD166", "#EF476F"],
         "shapes": ["palm-leaf", "arch", "sun"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1550,11 +1883,24 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 800; }
 .swatch { width: 70px; height: 70px; border-radius: 50%; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #06d6a0; color: #fff; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Tropical Vibes</h1>
-    <p class="desc">A vacation in interface form: saturated greens and corals, leaf silhouettes, and shapes with relaxed curves.</p>
+    <p class="desc">Tropical Vibes dresses Korvia's beach resort and rooftop pool menus in sun, arch, and palm shapes that feel like vacation from the first tap.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="tropic-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Beach Shack</h3>
+        <p style="margin:0;">Sunbeds: 9 / 16 reserved · Orders: 5</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap;">
+        <div class="sun"></div>
+        <div class="arch"></div>
+        <div class="palm"></div>
+    </div>
+    <div class="tropic-card">Order #10 · Coconut cocktails ×2 · Cabana 3</div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#06d6a0;"><span>Jade</span></div>
@@ -1566,16 +1912,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 800; }
     <div class="sun"></div>
     <div class="tropic-card">A bright card under the tropical sun.</div>
 </div>
-"""
+        """
     },
     {
         "id": "grunge",
         "name": "Grunge Distress",
         "tagline": "Torn paper, noise, rough edges.",
-        "desc": "An interface that looks like it has been photocopied and left in a pocket: rough borders, dust, scratches, and torn layers.",
+        "desc": "Grunge Distress fits Korvia's dive bar and live-music venues: torn cards, stains, and tape-ripped textures match the grit of a busy service.",
         "palette": ["#2B2B2B", "#8C8C8C", "#B33939"],
         "shapes": ["torn-rect", "scratch", "stain"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1608,12 +1955,24 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
 }
 .showcase-footer { padding: 20px; background: #1a1a1a; color: #666; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="grunge-bg"></div>
 <div class="wrap">
     <h1>Grunge Distress</h1>
-    <p class="desc">An interface that looks like it has been photocopied and left in a pocket: rough borders, dust, scratches, and torn layers.</p>
+    <p class="desc">Grunge Distress fits Korvia's dive bar and live-music venues: torn cards, stains, and tape-ripped textures match the grit of a busy service.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="torn" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Rock Bar — Setlist Night</h3>
+        <p style="margin:0;">Open tabs: 22 · Queue: 8 · Staff: 4</p>
+    </div>
+    <div class="tape-rip" style="margin-bottom:16px;"></div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="stain"></div>
+        <div class="torn" style="margin:0;flex:1;min-width:160px;">Live order #13 · Nachos ×3</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#2b2b2b;"><span style="color:#d4d4d4">Charcoal</span></div>
@@ -1626,16 +1985,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; }
     <div class="torn">Torn paper panel with rough edges.</div>
     <div class="torn" style="border-left-color:#8c8c8c;">Another distressed layer.</div>
 </div>
-"""
+        """
     },
     {
         "id": "futurist",
         "name": "Futurist Aero",
         "tagline": "Speed lines, silver, streamlined motion.",
-        "desc": "The optimism of early aviation design: metallic silver, aerodynamic curves, speed lines, and a sense of forward thrust.",
+        "desc": "Futurist Aero gives Korvia's high-end hotel and airport F&B kiosks a speed-driven, silver-sheeted interface that signals precision.",
         "palette": ["#C0C0C0", "#1E3A5F", "#E8E8E8"],
         "shapes": ["airfoil", "speed-line", "silver-circle"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1668,11 +2028,23 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; letter-spacing: 0.04
 .swatch { width: 70px; height: 70px; border: 2px solid #1e3a5f; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #1e3a5f; color: #c0c0c0; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Futurist Aero</h1>
-    <p class="desc">The optimism of early aviation design: metallic silver, aerodynamic curves, speed lines, and a sense of forward thrust.</p>
+    <p class="desc">Futurist Aero gives Korvia's high-end hotel and airport F&B kiosks a speed-driven, silver-sheeted interface that signals precision.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="aero-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Sky Lounge Kiosk</h3>
+        <p style="margin:0;">Boarding guests: 47 · Orders in window: 12</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+        <div class="airfoil"></div>
+        <div class="silver-circle" style="margin:0;">QR</div>
+    </div>
+    <div class="speed" style="margin-bottom:24px;"></div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#c0c0c0;"><span>Silver</span></div>
@@ -1686,16 +2058,17 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; letter-spacing: 0.04
     <div class="silver-circle" style="background:radial-gradient(circle at 30% 30%,#e8e8e8,#1e3a5f 50%,#0f1f33);"></div>
     <div class="aero-card">Streamlined card with an aerodynamic tail.</div>
 </div>
-"""
+        """
     },
     {
         "id": "rococo",
         "name": "Rococo Ornate",
         "tagline": "Pastel frames, gold flourishes, decorative excess.",
-        "desc": "The anti-minimal: ornate borders, scrollwork, pastel grounds, and gold accents that refuse to apologize for decoration.",
+        "desc": "Rococo Ornate frames Korvia's heritage tea rooms and wedding venues in gilded flourishes, turning bookings into invitations.",
         "palette": ["#FFF0F5", "#D4AF37", "#98D8C8"],
         "shapes": ["scroll-frame", "oval", "flourish"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1722,11 +2095,22 @@ h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 0 0 16px; font-style: italic
 .swatch { width: 70px; height: 70px; border: 2px solid #d4af37; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #8a6a6a; }
 .showcase-footer { padding: 20px; background: #f8e1e7; color: #8a6a6a; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Rococo Ornate</h1>
-    <p class="desc">The anti-minimal: ornate borders, scrollwork, pastel grounds, and gold accents that refuse to apologize for decoration.</p>
+    <p class="desc">Rococo Ornate frames Korvia's heritage tea rooms and wedding venues in gilded flourishes, turning bookings into invitations.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="ornate" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Tea Room · Wedding Booking</h3>
+        <p style="margin:0;">Covers: 80 · Menu confirmed · Deposit paid</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="oval2"></div>
+        <div class="flourish" style="flex:1;min-width:120px;"></div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#fff0f5;"><span>Blush</span></div>
@@ -1738,16 +2122,17 @@ h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); margin: 0 0 16px; font-style: italic
     <div class="oval2" style="background:#fff0f5;"></div>
     <div class="ornate">Ornate frame with corner fleurons.</div>
 </div>
-"""
+        """
     },
     {
         "id": "pixel",
         "name": "Pixel 8-bit",
         "tagline": "Blocky squares, limited palette, retro sprites.",
-        "desc": "Back to the grid: chunky pixels, square shapes, a tiny color set, and the charming imprecision of 8-bit hardware.",
+        "desc": "Pixel 8-bit gives Korvia a playful retro game aesthetic for family restaurants and arcade bars, making QR ordering feel like a power-up.",
         "palette": ["#000000", "#FF004D", "#00E436"],
         "shapes": ["pixel-square", "sprite", "block"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1780,11 +2165,24 @@ h1 { font-size: clamp(1.4rem, 4vw, 2.4rem); margin: 0 0 24px; line-height: 1.5; 
 .swatch { width: 64px; height: 64px; border: 4px solid #fff; }
 .swatch span { display: block; font-size: 0.55rem; padding-top: 72px; color: #aaa; }
 .showcase-footer { padding: 20px; background: #000; color: #888; text-align: center; font-size: 0.7rem; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Pixel 8-bit</h1>
-    <p class="desc">Back to the grid: chunky pixels, square shapes, a tiny color set, and the charming imprecision of 8-bit hardware.</p>
+    <p class="desc">Pixel 8-bit gives Korvia a playful retro game aesthetic for family restaurants and arcade bars, making QR ordering feel like a power-up.</p>
+
+    <h2>Korvia scenario</h2>
+    <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+        <div class="block">Venue</div>
+        <div class="block" style="background:#ff004d;">Order</div>
+        <div class="block" style="background:#ffcd00;">QR</div>
+    </div>
+    <button class="pixel-btn" style="margin-bottom:16px;">Start order</button>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="sprite"></div>
+        <p style="margin:0;">Arcade Bar · Live orders: 6 · High score: TZS 240k</p>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#000;"><span style="color:#fff">Black</span></div>
@@ -1798,16 +2196,17 @@ h1 { font-size: clamp(1.4rem, 4vw, 2.4rem); margin: 0 0 24px; line-height: 1.5; 
     <button class="pixel-btn">START</button>
     <button class="pixel-btn" style="background:#ff004d; color:#fff;">SELECT</button>
 </div>
-"""
+        """
     },
     {
         "id": "afrofuturism",
         "name": "Afrofuturism",
         "tagline": "Metallics, bold patterns, ancestral geometry.",
-        "desc": "A forward-facing vision rooted in pattern: copper and gold, mud-cloth grids, sunbursts, and geometric African motifs reimagined for screens.",
+        "desc": "Afrofuturism connects Korvia's Pan-African venues to a forward-looking visual lineage where sun motifs and earth grids honor the menu's roots.",
         "palette": ["#1A1A1A", "#B87333", "#F4E4BC"],
         "shapes": ["mud-cloth", "sunburst", "copper-arc"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;700&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1844,11 +2243,24 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 7vw, 5rem);
 .swatch { width: 70px; height: 70px; border: 2px solid #b87333; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #c2b58a; }
 .showcase-footer { padding: 20px; background: #111; color: #b87333; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Afrofuturism</h1>
-    <p class="desc">A forward-facing vision rooted in pattern: copper and gold, mud-cloth grids, sunbursts, and geometric African motifs reimagined for screens.</p>
+    <p class="desc">Afrofuturism connects Korvia's Pan-African venues to a forward-looking visual lineage where sun motifs and earth grids honor the menu's roots.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="afro-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Kilimanjaro Rooftop</h3>
+        <p style="margin:0;">Reservations: 34 · Walk-ins: 6 · Staff: 5</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="sun2"></div>
+        <div class="arc"></div>
+        <div class="mud"></div>
+        <div class="afro-card" style="margin:0;flex:1;min-width:160px;">Live order #7 · Injera platter ×2</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#1a1a1a;"><span style="color:#f4e4bc">Void</span></div>
@@ -1860,16 +2272,17 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem, 7vw, 5rem);
     <div class="arc"></div>
     <div class="afro-card">A panel bordered in copper, grounded in pattern.</div>
 </div>
-"""
+        """
     },
     {
         "id": "darkacademia",
         "name": "Dark Academia",
         "tagline": "Old paper, deep green, serifs, wax seals.",
-        "desc": "An interface that smells like a library: dark forest green, aged paper, classic serifs, and wax-seal accents.",
+        "desc": "Dark Academia gives Korvia's historic hotel and library cafes a scholarly ledger feel, with parchment panels and wax-seal confirmations.",
         "palette": ["#2C3E2D", "#D4C5A9", "#8B0000"],
         "shapes": ["seal", "book-spine", "oval-frame"],
         "css": """
+
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap');
 * { box-sizing: border-box; }
 body {
@@ -1902,11 +2315,24 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; 
 .swatch { width: 70px; height: 70px; border: 1px solid #4a5d3a; }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; color: #a89f7e; }
 .showcase-footer { padding: 20px; background: #1f2c1f; color: #a89f7e; text-align: center; }
-""",
+        """,
         "content": """
+
 <div class="wrap">
     <h1>Dark Academia</h1>
-    <p class="desc">An interface that smells like a library: dark forest green, aged paper, classic serifs, and wax-seal accents.</p>
+    <p class="desc">Dark Academia gives Korvia's historic hotel and library cafes a scholarly ledger feel, with parchment panels and wax-seal confirmations.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="parchment" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Old Library Hotel</h3>
+        <p style="margin:0;">Guests: 28 / 32 · Dinner service: 18:30 · Wine list: 44</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="seal2">✦</div>
+        <div class="oval-frame"></div>
+        <div class="spine"></div>
+        <div class="parchment" style="margin:0;flex:1;min-width:160px;">Confirmed: Table 9, party of 4</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#2c3e2d;"><span style="color:#d4c5a9">Forest</span></div>
@@ -1920,7 +2346,7 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-style: italic; 
         <p style="margin:0; font-size:1.15rem;">Aged parchment panel with classic serif type and an inset shadow.</p>
     </div>
 </div>
-"""
+        """
     }
 ]
 
@@ -1929,7 +2355,7 @@ BASE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>__TITLE__</title>
+<title>__TITLE__ — Korvia Design Direction</title>
 <style>
 __CSS__
 </style>
@@ -1941,7 +2367,7 @@ __CSS__
   <a href="__NEXT__.html">Next →</a>
 </nav>
 __CONTENT__
-<footer class="showcase-footer">UI Direction Showcase · __INDEX__ / __TOTAL__</footer>
+<footer class="showcase-footer">Korvia Design Direction Showcase · __INDEX__ / __TOTAL__</footer>
 </body>
 </html>
 """
@@ -1951,7 +2377,7 @@ INDEX = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Direction Showcase</title>
+<title>Korvia Design Direction Showcase</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 * { box-sizing: border-box; }
@@ -1978,8 +2404,8 @@ footer { padding: 32px; text-align: center; color: #78716c; font-size: 0.85rem; 
 </head>
 <body>
 <header>
-    <h1>UI Direction Showcase</h1>
-    <p class="lead">Human, non-AI interface directions — one per page.</p>
+    <h1>Korvia Design Direction Showcase</h1>
+    <p class="lead">Thirty human interface directions for Korvia — a QR-first hospitality operating system for East Africa.</p>
 </header>
 <main>
     <div class="grid">
@@ -2001,7 +2427,7 @@ def main():
         next_id = DIRECTIONS[(i + 1) % total]["id"]
         prev_id = DIRECTIONS[(i - 1) % total]["id"]
         html = BASE
-        html = html.replace("__TITLE__", f"{d['name']} — UI Direction")
+        html = html.replace("__TITLE__", f"{d['name']}")
         html = html.replace("__CSS__", d["css"])
         html = html.replace("__PREV__", prev_id)
         html = html.replace("__NEXT__", next_id)

@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claymorphism — UI Direction</title>
+<title>Claymorphism — Korvia Design Direction</title>
 <style>
+
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 * { box-sizing: border-box; }
@@ -35,7 +36,7 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
 .swatch { width: 70px; height: 70px; border-radius: 24px; box-shadow: inset 4px 4px 8px rgba(255,255,255,0.6), inset -4px -4px 8px rgba(0,0,0,0.05); }
 .swatch span { display: block; font-size: 0.65rem; padding-top: 80px; }
 .showcase-footer { padding: 20px; background: #e2e8f0; text-align: center; color: #718096; }
-
+        
 </style>
 </head>
 <body>
@@ -45,9 +46,21 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
   <a href="cyberpunk.html">Next →</a>
 </nav>
 
+
 <div class="wrap">
     <h1>Claymorphism</h1>
-    <p class="desc">Elements look like squeezable clay: soft pastel surfaces, rounded forms, and inset shadows that suggest thickness.</p>
+    <p class="desc">Claymorphism makes Korvia buttons and cards feel squeezable — ideal for tablet-based hosts tapping through reservations with gloved hands.</p>
+
+    <h2>Korvia scenario</h2>
+    <div class="clay-card" style="margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;">Coastal Cafe host station</h3>
+        <p style="margin:0;">6 tables open · Next reservation 13:00</p>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;flex-wrap:wrap;">
+        <div class="puffy" style="width:90px;height:90px;">QR</div>
+        <div class="puffy" style="width:90px;height:90px;background:#c1e1c1;">4</div>
+        <div class="clay-card green" style="margin:0;flex:1;min-width:160px;">Order #77 ready</div>
+    </div>
     <h2>Palette</h2>
     <div class="swatches">
         <div class="swatch" style="background:#ffe5ec;"><span>Pink</span></div>
@@ -61,7 +74,7 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; font-weight: 700; }
     <div class="clay-card green">Soft green clay panel.</div>
     <div class="clay-card blue">Soft blue clay panel.</div>
 </div>
-
-<footer class="showcase-footer">UI Direction Showcase · 13 / 30</footer>
+        
+<footer class="showcase-footer">Korvia Design Direction Showcase · 13 / 30</footer>
 </body>
 </html>
