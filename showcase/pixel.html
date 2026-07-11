@@ -49,35 +49,50 @@ h1 { font-size: clamp(1.4rem, 4vw, 2.4rem); margin: 0 0 24px; line-height: 1.5; 
   <a href="afrofuturism.html">Next →</a>
 </nav>
 
-
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
 <div class="wrap">
-    <h1>Korvia · Pixel 8-bit</h1>
-    <p class="desc">Blocky squares, limited palette, retro sprites.</p>
-
-    <h2>Korvia scenario</h2>
-    <div class="block" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
-    <div class="block" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
-
-    <h2>Value props</h2>
-    <div style="margin-bottom:16px;">
-        <div class="block" style="margin-bottom:8px;">QR menus without apps</div>
-        <div class="block" style="margin-bottom:8px;">Kitchen gets it instantly</div>
-        <div class="block" style="margin-bottom:8px;">Staff know what to serve</div>
-    </div>
-
-    <div class="block" style="padding:18px;margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
-
-    <div style="margin:24px 0;">
-        <a class="pixel-btn">Scan QR to order</a>
-        <a class="pixel-btn" style="opacity:0.85;">Open dashboard</a>
-    </div>
-
-    <h2>Direction accent</h2>
-    <div class="sprite"></div>
-    <div class="block"></div>
+<div style="text-align:right;margin-bottom:16px;"><button class="pixel-btn" style="">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="block" style="width:auto;height:auto;display:block;text-align:center;padding:20px;color:#000;">
+<div style="font-size:1.8rem;margin-bottom:8px;">👤</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p>
+</a>
+<a href="#restaurant" class="block" style="width:auto;height:auto;display:block;text-align:center;padding:20px;color:#000;">
+<div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p>
+</a>
+<a href="#hotel" class="block" style="width:auto;height:auto;display:block;text-align:center;padding:20px;color:#000;">
+<div style="font-size:1.8rem;margin-bottom:8px;">🏨</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p>
+</a>
+<a href="#events" class="block" style="width:auto;height:auto;display:block;text-align:center;padding:20px;color:#000;">
+<div style="font-size:1.8rem;margin-bottom:8px;">🎉</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p>
+</a>
+</div>
+<div style="margin:24px 0;">
+<a href="#" class="pixel-btn" style="">Scan QR to order</a>
+<a href="#" class="pixel-btn" style="margin-left:12px;">Open dashboard</a>
+</div>
+<h2>Direction accent</h2>
+<div class="sprite"></div><div class="block"></div>
 </div>
 
-        
 <footer class="showcase-footer">Korvia Design Direction Showcase · 28 / 30</footer>
 </body>
 </html>

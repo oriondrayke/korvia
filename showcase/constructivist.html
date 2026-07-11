@@ -46,35 +46,50 @@ h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0 0 16px; text-transform: uppe
   <a href="psychedelic.html">Next →</a>
 </nav>
 
-
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
 <div class="wrap">
-    <h1>Korvia · Constructivism</h1>
-    <p class="desc">Red, black, diagonals, propaganda posters.</p>
-
-    <h2>Korvia scenario</h2>
-    <div class="banner" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Safari Grill · Dar es Salaam</h3><p style="margin:0;">24 tables · 6 staff on shift</p></div>
-    <div class="banner" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Live order · Table 04</h3><p style="margin:0;">Pilau, Chipsi Mayai, 2x Soda · TSh 18,000</p></div>
-
-    <h2>Value props</h2>
-    <div style="margin-bottom:16px;">
-        <div class="wedge" style="margin-bottom:8px;">QR menus without apps</div>
-        <div class="wedge" style="margin-bottom:8px;">Kitchen gets it instantly</div>
-        <div class="wedge" style="margin-bottom:8px;">Staff know what to serve</div>
-    </div>
-
-    <div class="banner" style="margin-bottom:16px;"><h3 style="margin:0 0 8px;">Order up · Table 8 is ready</h3><p style="margin:0;">Chipsi Mayai, Kachumbari, Soda</p></div>
-
-    <div style="margin:24px 0;">
-        <button style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Scan QR to order</button>
-        <button style="display:inline-block;padding:12px 24px;background:transparent;color:#000;border:2px solid #000;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;">Open dashboard</button>
-    </div>
-
-    <h2>Direction accent</h2>
-    <div class="wedge"></div>
-    <div class="photo"></div>
+<div style="text-align:right;margin-bottom:16px;"><button style="display:inline-block;padding:10px 20px;border:2px solid currentColor;background:transparent;color:inherit;font:inherit;cursor:pointer;">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="photo" style="width:auto;height:auto;display:block;text-align:center;padding:24px;">
+<div style="font-size:1.8rem;margin-bottom:8px;">👤</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p>
+</a>
+<a href="#restaurant" class="photo" style="width:auto;height:auto;display:block;text-align:center;padding:24px;">
+<div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p>
+</a>
+<a href="#hotel" class="photo" style="width:auto;height:auto;display:block;text-align:center;padding:24px;">
+<div style="font-size:1.8rem;margin-bottom:8px;">🏨</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p>
+</a>
+<a href="#events" class="photo" style="width:auto;height:auto;display:block;text-align:center;padding:24px;">
+<div style="font-size:1.8rem;margin-bottom:8px;">🎉</div>
+<h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3>
+<div style="width:28px;height:3px;background:currentColor;margin:10px auto;opacity:.6;"></div>
+<p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p>
+</a>
+</div>
+<div style="margin:24px 0;">
+<a href="#" style="display:inline-block;padding:12px 24px;background:#000;color:#fff;border:none;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;text-decoration:none;">Scan QR to order</a>
+<a href="#" style="display:inline-block;padding:12px 24px;background:transparent;color:inherit;border:2px solid currentColor;font:inherit;cursor:pointer;margin-right:12px;margin-bottom:12px;text-decoration:none;">Open dashboard</a>
+</div>
+<h2>Direction accent</h2>
+<div class="banner">Korvia</div><div class="wedge"></div><div class="wedge red"></div>
 </div>
 
-        
 <footer class="showcase-footer">Korvia Design Direction Showcase · 20 / 30</footer>
 </body>
 </html>
