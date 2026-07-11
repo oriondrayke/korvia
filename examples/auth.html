@@ -6,98 +6,129 @@
     <title>Korvia — Account</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: var(--kv-font-sans);
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 48px 24px;
+        }
+        .corner-controls {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 150;
         }
         .auth-box {
             width: 100%;
             max-width: 420px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 1.25rem;
-            padding: 2rem;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 32px;
         }
         .auth-logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            border-radius: 1rem;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            font-weight: 800;
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--kv-accent);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 16px;
+            font-family: var(--kv-font-serif);
+            font-size: 1.5rem;
+            color: var(--kv-accent);
+            border-radius: var(--kv-radius);
         }
-        .auth-box h1 { text-align: center; font-size: 1.4rem; margin-bottom: 0.25rem; }
-        .auth-box .subtitle { text-align: center; opacity: 0.7; margin-bottom: 1.5rem; }
-        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .tab {
-            flex: 1;
-            padding: 0.75rem;
+        .auth-box h1 {
             text-align: center;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-weight: 500;
+            font-family: var(--kv-font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 6px;
         }
-        .tab.active { background: #f97316; border-color: #f97316; }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; font-size: 0.85rem; margin-bottom: 0.35rem; opacity: 0.9; }
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 0.5rem;
-            background: rgba(255,255,255,0.05);
-            color: white;
-            font-size: 1rem;
-        }
-        .form-group input::placeholder { color: rgba(255,255,255,0.4); }
-        .otp-row { display: flex; gap: 0.5rem; }
-        .otp-row input { flex: 1; }
-        .otp-row button {
-            padding: 0 1rem;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-        .auth-btn {
-            width: 100%;
-            background: #f97316;
-            color: white;
-            border: none;
-            padding: 0.85rem;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-        .back-link {
-            margin-top: 1.5rem;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
+        .auth-box .subtitle {
+            text-align: center;
+            color: var(--kv-ink-muted);
+            margin-bottom: 24px;
             font-size: 0.9rem;
         }
-        .back-link:hover { color: #f97316; }
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background: var(--kv-paper);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--kv-ink-muted);
+            transition: all 150ms ease;
+        }
+        .tab.active {
+            background: var(--kv-ink);
+            border-color: var(--kv-ink);
+            color: var(--kv-paper);
+        }
+        .form-group { margin-bottom: 16px; }
+        .otp-row { display: flex; gap: 8px; }
+        .otp-row input { flex: 1; }
+        .otp-row button {
+            padding: 0 14px;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule-strong);
+            color: var(--kv-ink);
+            border-radius: var(--kv-radius);
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 150ms ease;
+        }
+        .otp-row button:hover { border-color: var(--kv-ink); }
+        .auth-btn {
+            width: 100%;
+            margin-top: 8px;
+        }
+        .back-link {
+            margin-top: 24px;
+            color: var(--kv-ink-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 8px 14px;
+            border: 1px solid var(--kv-rule-strong);
+            border-radius: var(--kv-radius);
+            transition: all 150ms ease;
+        }
+        .back-link:hover {
+            color: var(--kv-ink);
+            border-color: var(--kv-ink);
+        }
         .hidden { display: none; }
     </style>
 </head>
-<body>
+<body class="kv-ruled-subtle">
+    <div class="corner-controls">
+        <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+            <div class="kv-theme-slider"></div>
+            <button class="kv-theme-option" data-value="light">Light</button>
+            <button class="kv-theme-option" data-value="dark">Dark</button>
+            <button class="kv-theme-option" data-value="auto">Auto</button>
+        </div>
+    </div>
+
     <div class="auth-box">
         <div class="auth-logo">K</div>
         <h1 id="portal-title"><span>Restaurant</span> Account</h1>
@@ -110,39 +141,40 @@
 
         <form id="auth-form" onsubmit="event.preventDefault(); handleSubmit();">
             <div class="form-group hidden" id="venue-group">
-                <label>Venue name</label>
-                <input type="text" id="venue-name" placeholder="e.g. Sunset Bistro">
+                <label class="kv-label">Venue name</label>
+                <input type="text" class="kv-input" id="venue-name" placeholder="e.g. Sunset Bistro">
             </div>
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" id="email" placeholder="you@venue.com" required>
+                <label class="kv-label">Email</label>
+                <input type="email" class="kv-input" id="email" placeholder="you@venue.com" required>
             </div>
             <div class="form-group hidden" id="username-group">
-                <label>Username</label>
-                <input type="text" id="username" placeholder="Choose a username">
+                <label class="kv-label">Username</label>
+                <input type="text" class="kv-input" id="username" placeholder="Choose a username">
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="password" placeholder="••••••••" required>
+                <label class="kv-label">Password</label>
+                <input type="password" class="kv-input" id="password" placeholder="••••••••" required>
             </div>
             <div class="form-group">
-                <label>OTP code</label>
+                <label class="kv-label">OTP code</label>
                 <div class="otp-row">
-                    <input type="text" id="otp" placeholder="123456" maxlength="6">
+                    <input type="text" class="kv-input" id="otp" placeholder="123456" maxlength="6">
                     <button type="button" onclick="sendOTP()">Send</button>
                 </div>
             </div>
-            <button type="submit" class="auth-btn" id="submit-btn">Log in</button>
+            <button type="submit" class="kv-button kv-button-accent auth-btn" id="submit-btn">Log in</button>
         </form>
     </div>
 
     <a href="../index.html" class="back-link">← Back to Korvia</a>
 
+    <script src="../korvia-ui.js"></script>
     <script>
         const params = new URLSearchParams(window.location.search);
         const portal = params.get('portal') || 'restaurant';
         const title = portal.charAt(0).toUpperCase() + portal.slice(1);
-        document.getElementById('portal-title').innerHTML = `<span>${title}</span> Account`;
+        document.getElementById('portal-title').innerHTML = `\u003cspan\u003e${title}\u003c/span\u003e Account`;
 
         let mode = 'login';
 

@@ -5,56 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt | Korvia</title>
     <link rel="stylesheet" href="../korvia.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        body { background: var(--kv-gray-50); }
-        .receipt-page { max-width: 500px; margin: 0 auto; padding: 1.5rem; }
+        body { background: var(--kv-paper); }
+        .receipt-page { max-width: 500px; margin: 0 auto; padding: 32px 24px; }
         .receipt-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            margin-bottom: 1rem;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 24px;
+            margin-bottom: 16px;
         }
-        .receipt-header { text-align: center; margin-bottom: 1.5rem; }
-        .receipt-header h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
-        .receipt-header p { color: var(--kv-gray-500); font-size: 0.9rem; }
+        .receipt-header { text-align: center; margin-bottom: 24px; }
+        .receipt-header h1 {
+            font-family: var(--kv-font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+        .receipt-header p { color: var(--kv-ink-muted); font-size: 0.9rem; }
         .success-badge {
             display: inline-block;
-            background: #dcfce7;
-            color: #166534;
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
-            font-size: 0.85rem;
+            background: var(--kv-success-soft);
+            color: var(--kv-success);
+            border: 1px solid var(--kv-success);
+            padding: 6px 14px;
+            border-radius: var(--kv-radius);
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
-        .receipt-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px dashed var(--kv-gray-200); }
-        .receipt-row.total { font-weight: 700; font-size: 1.1rem; border-top: 2px solid var(--kv-gray-800); border-bottom: none; margin-top: 0.5rem; padding-top: 0.75rem; }
-        .qr-box { text-align: center; padding: 1rem; }
-        .qr-box p { font-size: 0.85rem; color: var(--kv-gray-500); margin-top: 0.75rem; }
-        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .action-btn {
-            background: white;
-            border: 1px solid var(--kv-gray-200);
-            padding: 0.9rem;
-            border-radius: 0.75rem;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 500;
+        .receipt-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--kv-rule); }
+        .receipt-row.total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-top: 2px solid var(--kv-ink);
+            border-bottom: none;
+            margin-top: 8px;
+            padding-top: 12px;
         }
-        .action-btn.primary { background: #f97316; color: white; border-color: #f97316; }
-        .feedback-stars { display: flex; gap: 0.5rem; justify-content: center; font-size: 2rem; margin: 1rem 0; }
-        .star { cursor: pointer; opacity: 0.3; }
-        .star.active { opacity: 1; color: #f59e0b; }
-        textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--kv-gray-300); border-radius: 0.5rem; min-height: 80px; margin-top: 0.5rem; }
-        .submit-btn { width: 100%; background: var(--kv-gray-800); color: white; border: none; padding: 0.8rem; border-radius: 0.5rem; margin-top: 0.75rem; cursor: pointer; }
-        .tip-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
-        .tip-btn { border: 1px solid var(--kv-gray-300); background: white; padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; }
-        .tip-btn.active { background: #f97316; color: white; border-color: #f97316; }
-        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
+        .qr-box { text-align: center; padding: 16px; }
+        .qr-box p { font-size: 0.85rem; color: var(--kv-ink-muted); margin-top: 12px; }
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .feedback-stars { display: flex; gap: 8px; justify-content: center; font-size: 2rem; margin: 16px 0; }
+        .star { cursor: pointer; opacity: 0.3; color: var(--kv-warning); }
+        .star.active { opacity: 1; }
+        .tip-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: var(--kv-ink-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .back-link:hover { color: var(--kv-accent); }
     </style>
 </head>
-<body>
+<body class="kv-ruled-subtle">
     <div class="receipt-page">
         <a href="qr-menu.html" class="back-link">← Back to menu</a>
 
@@ -63,7 +75,7 @@
                 <div class="success-badge">Order placed</div>
                 <h1 id="venue-name">Sunset Bistro</h1>
                 <p id="spot-info">Table 12</p>
-                <p id="order-id" style="font-size:0.8rem;color:var(--kv-gray-400);"></p>
+                <p id="order-id" style="font-size:0.8rem;color:var(--kv-ink-muted);"></p>
             </div>
 
             <div id="items-list"></div>
@@ -92,17 +104,17 @@
         </div>
 
         <div class="receipt-card">
-            <h2 style="text-align:center;margin-bottom:0.5rem;">Tip your server</h2>
-            <p style="text-align:center;font-size:0.85rem;color:var(--kv-gray-500);margin-bottom:1rem;">100% goes to the staff who served you.</p>
+            <h2 style="text-align:center;margin-bottom:6px;">Tip your server</h2>
+            <p style="text-align:center;font-size:0.85rem;color:var(--kv-ink-muted);margin-bottom:16px;">100% goes to the staff who served you.</p>
             <div class="tip-btns">
-                <button class="tip-btn" onclick="addExtraTip(2)">$2</button>
-                <button class="tip-btn" onclick="addExtraTip(5)">$5</button>
-                <button class="tip-btn" onclick="addExtraTip(10)">$10</button>
+                <button class="kv-button kv-button-sm kv-button-secondary" onclick="addExtraTip(2)">$2</button>
+                <button class="kv-button kv-button-sm kv-button-secondary" onclick="addExtraTip(5)">$5</button>
+                <button class="kv-button kv-button-sm kv-button-secondary" onclick="addExtraTip(10)">$10</button>
             </div>
         </div>
 
         <div class="receipt-card">
-            <h2 style="text-align:center;margin-bottom:0.5rem;">How was your experience?</h2>
+            <h2 style="text-align:center;margin-bottom:6px;">How was your experience?</h2>
             <div class="feedback-stars">
                 <span class="star" onclick="setRating(1)">★</span>
                 <span class="star" onclick="setRating(2)">★</span>
@@ -110,17 +122,17 @@
                 <span class="star" onclick="setRating(4)">★</span>
                 <span class="star" onclick="setRating(5)">★</span>
             </div>
-            <textarea id="feedback-text" placeholder="Tell us what you liked or how we can improve..."></textarea>
-            <button class="submit-btn" onclick="submitFeedback()">Send feedback</button>
+            <textarea class="kv-textarea" id="feedback-text" placeholder="Tell us what you liked or how we can improve..."></textarea>
+            <button class="kv-button" style="width:100%;margin-top:12px;" onclick="submitFeedback()">Send feedback</button>
         </div>
 
         <div class="action-grid">
-            <button class="action-btn" onclick="downloadReceipt()">Download receipt</button>
-            <button class="action-btn primary" onclick="reorder()">Order again</button>
+            <button class="kv-button kv-button-secondary" onclick="downloadReceipt()">Download receipt</button>
+            <button class="kv-button kv-button-accent" onclick="reorder()">Order again</button>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="../korvia-ui.js"></script>
     <script>
         const params = new URLSearchParams(window.location.search);
         const orderId = params.get('order');
@@ -158,7 +170,7 @@
             text: window.location.href,
             width: 140,
             height: 140,
-            colorDark: '#0f172a',
+            colorDark: '#1c1917',
             colorLight: '#ffffff',
             correctLevel: QRCode.CorrectLevel.H
         });

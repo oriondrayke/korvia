@@ -5,29 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Korvia QR — Order & Pay Platform</title>
     <link rel="stylesheet" href="../korvia.css">
+    <style>
+        .hero-centered { text-align: center; padding: 80px 24px; border-bottom: 1px solid var(--kv-rule); }
+        .hero-centered h1 {
+            font-family: var(--kv-font-serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .hero-centered p { color: var(--kv-ink-muted); max-width: 560px; margin: 0 auto 24px; }
+        .kv-list { list-style: none; padding: 0; margin: 0; }
+        .kv-list li { padding: 6px 0; color: var(--kv-ink-muted); }
+        .kv-list li::before { content: '— '; color: var(--kv-accent); }
+    </style>
 </head>
-<body>
-    <header class="kv-header kv-surface-dark">
-        <nav class="kv-container kv-flex kv-flex-between kv-flex-center">
-            <div class="kv-logo">korvia QR.</div>
-            <ul class="kv-nav kv-flex">
+<body class="kv-ruled-subtle">
+    <header class="kv-header">
+        <div class="kv-container kv-header-inner">
+            <div class="kv-logo">
+                <span class="kv-logo-mark">K</span>
+                korvia QR.
+            </div>
+            <ul class="kv-nav">
                 <li><a href="#product">Product</a></li>
                 <li><a href="#flow">How it works</a></li>
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="qr-menu.html">Demo Menu</a></li>
             </ul>
-        </nav>
+            <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+                <div class="kv-theme-slider"></div>
+                <button class="kv-theme-option" data-value="light">Light</button>
+                <button class="kv-theme-option" data-value="dark">Dark</button>
+                <button class="kv-theme-option" data-value="auto">Auto</button>
+            </div>
+        </div>
     </header>
 
-    <section class="kv-hero kv-surface-dark">
-        <div class="kv-container kv-text-center">
-            <span class="kv-badge">For restaurants, hotels & events</span>
-            <h1 class="kv-display">One QR code. Less chaos. More sales.</h1>
-            <p class="kv-lead">Customers scan, order, and pay from their table. Staff focus on service. Owners track everything in real time.</p>
-            <div class="kv-flex kv-justify-center kv-gap-md kv-mt-lg">
-                <a href="qr-menu.html" class="kv-button kv-button-primary">Try customer demo</a>
-                <a href="qr-dashboard.html" class="kv-button kv-button-ghost">View manager dashboard</a>
-            </div>
+    <section class="hero-centered">
+        <span class="kv-badge">For restaurants, hotels & events</span>
+        <h1 class="kv-mt-md">One QR code. Less chaos. More sales.</h1>
+        <p>Customers scan, order, and pay from their table. Staff focus on service. Owners track everything in real time.</p>
+        <div class="kv-flex kv-justify-center kv-gap-md kv-mt-lg">
+            <a href="qr-menu.html" class="kv-button kv-button-accent">Try customer demo</a>
+            <a href="qr-dashboard.html" class="kv-button kv-button-secondary">View manager dashboard</a>
         </div>
     </section>
 
@@ -36,14 +56,17 @@
             <h2 class="kv-section-title">What Korvia QR does</h2>
             <div class="kv-grid kv-grid-3">
                 <div class="kv-card kv-text-center">
+                    <div class="kv-card-rule" style="margin:0 auto 16px;"></div>
                     <h3>📱 Customer scans</h3>
                     <p>Guests scan the QR code on their table or seat. No app download needed.</p>
                 </div>
                 <div class="kv-card kv-text-center">
+                    <div class="kv-card-rule" style="margin:0 auto 16px;"></div>
                     <h3>🍽️ Browse & order</h3>
                     <p>Full digital menu with photos, modifiers, and live availability.</p>
                 </div>
                 <div class="kv-card kv-text-center">
+                    <div class="kv-card-rule" style="margin:0 auto 16px;"></div>
                     <h3>💳 Pay instantly</h3>
                     <p>Mobile payment at the table. Split bills, tip, and receipt by email.</p>
                 </div>
@@ -51,7 +74,7 @@
         </div>
     </section>
 
-    <section id="flow" class="kv-section kv-surface-light">
+    <section id="flow" class="kv-section" style="background:var(--kv-card);">
         <div class="kv-container">
             <h2 class="kv-section-title">Three roles, one platform</h2>
             <div class="kv-grid kv-grid-3">
@@ -107,12 +130,12 @@
         </div>
     </section>
 
-    <footer class="kv-footer kv-surface-dark">
+    <footer class="kv-footer">
         <div class="kv-container kv-text-center">
-            <p>Korvia QR — live design system. Give design instructions to update this page.</p>
+            <p>Korvia QR — live design system.</p>
         </div>
     </footer>
 
-    <script src="../korvia.js"></script>
+    <script src="../korvia-ui.js"></script>
 </body>
 </html>

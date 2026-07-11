@@ -6,118 +6,145 @@
     <title>Manager Dashboard | Korvia</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        body { background: var(--kv-gray-50); }
-        .md-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 1.5rem 2rem;
+        body { background: var(--kv-paper); }
+        .md-main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+        .md-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .md-card h2 {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--kv-ink-muted);
+            margin-bottom: 8px;
         }
-        .md-header h1 { font-size: 1.4rem; }
-        .md-header p { opacity: 0.75; font-size: 0.9rem; }
-        .md-main { max-width: 1100px; margin: 1.5rem auto; padding: 0 1.5rem; }
-        .md-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-        .md-card { background: white; border-radius: 1rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .md-card h2 { font-size: 0.9rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; }
-        .md-card .number { font-size: 1.7rem; font-weight: 700; color: var(--kv-gray-900); }
-        .md-section { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .md-section h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+        .md-card .number {
+            font-family: var(--kv-font-serif);
+            font-size: 1.8rem;
+            color: var(--kv-ink);
+        }
+        .md-section { margin-bottom: 24px; }
+        .md-section h2 {
+            font-family: var(--kv-font-serif);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--kv-rule);
+        }
         .order-row {
             display: grid;
             grid-template-columns: 1fr auto auto auto;
-            gap: 1rem;
+            gap: 16px;
             align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--kv-gray-100);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--kv-rule);
         }
-        .status-pill {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 999px;
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-        .status-new { background: #dbeafe; color: #1e40af; }
-        .status-preparing { background: #fef3c7; color: #92400e; }
-        .status-ready { background: #dcfce7; color: #166534; }
-        .status-done { background: #f1f5f9; color: #475569; }
-        .table-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.75rem; }
+        .order-row:last-child { border-bottom: none; }
+        .table-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
         .table-card {
-            background: var(--kv-gray-100);
-            border-radius: 0.75rem;
-            padding: 1rem;
+            background: var(--kv-paper);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 16px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 150ms ease;
         }
-        .table-card.occupied { background: #fee2e2; }
-        .table-card.free { background: #dcfce7; }
-        .table-card.cleaning { background: #fef3c7; }
-        .table-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
-        .table-card p { font-size: 0.75rem; color: var(--kv-gray-600); margin: 0; }
-        .staff-row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--kv-gray-100); }
-        .alert { background: #fee2e2; color: #991b1b; padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 0.9rem; }
-        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
-        .back-link:hover { color: #f97316; }
-        .quick-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .quick-links a { background: #f97316; color: white; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 500; }
+        .table-card.occupied { background: var(--kv-danger-soft); border-color: var(--kv-danger); }
+        .table-card.free { background: var(--kv-success-soft); border-color: var(--kv-success); }
+        .table-card.cleaning { background: var(--kv-warning-soft); border-color: var(--kv-warning); }
+        .table-card h3 { font-size: 1rem; margin-bottom: 4px; }
+        .table-card p { font-size: 0.75rem; color: var(--kv-ink-muted); margin: 0; }
+        .staff-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--kv-rule);
+        }
+        .staff-row:last-child { border-bottom: none; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: var(--kv-ink-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .back-link:hover { color: var(--kv-accent); }
+        .quick-links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
     </style>
 </head>
-<body>
-    <header class="md-header">
-        <h1>Manager Dashboard</h1>
-        <p>Operations, staff, tables, and live orders.</p>
+<body class="kv-ruled-subtle">
+    <header class="kv-header">
+        <div class="kv-container kv-header-inner">
+            <div class="kv-logo">
+                <span class="kv-logo-mark">K</span>
+                Manager Dashboard
+            </div>
+            <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+                <div class="kv-theme-slider"></div>
+                <button class="kv-theme-option" data-value="light">Light</button>
+                <button class="kv-theme-option" data-value="dark">Dark</button>
+                <button class="kv-theme-option" data-value="auto">Auto</button>
+            </div>
+        </div>
     </header>
 
     <main class="md-main">
         <a href="../index.html" class="back-link">← Back to Korvia</a>
 
-        <div class="quick-links">
-            <a href="menu-editor.html">Menu Studio</a>
-            <a href="qr-generator.html">QR Generator</a>
-            <a href="feedback-dashboard.html">Feedback</a>
-            <a href="manager-approval.html">Staff Approvals</a>
+        <div class="kv-card" style="margin-bottom: 24px;">
+            <div class="quick-links">
+                <a href="menu-editor.html" class="kv-button kv-button-secondary">Menu Studio</a>
+                <a href="qr-generator.html" class="kv-button kv-button-secondary">QR Generator</a>
+                <a href="feedback-dashboard.html" class="kv-button kv-button-secondary">Feedback</a>
+                <a href="manager-approval.html" class="kv-button kv-button-secondary">Staff Approvals</a>
+            </div>
         </div>
 
         <div class="md-grid-4">
-            <div class="md-card">
+            <div class="kv-card md-card">
                 <h2>Active Orders</h2>
                 <div class="number" id="active-orders">0</div>
             </div>
-            <div class="md-card">
+            <div class="kv-card md-card">
                 <h2>Occupied Tables</h2>
                 <div class="number" id="occupied-tables">0</div>
             </div>
-            <div class="md-card">
+            <div class="kv-card md-card">
                 <h2>Staff on Duty</h2>
                 <div class="number" id="staff-duty">4</div>
             </div>
-            <div class="md-card">
+            <div class="kv-card md-card">
                 <h2>Today's Sales</h2>
                 <div class="number" id="today-sales">$0</div>
             </div>
         </div>
 
-        <div class="md-section">
+        <div class="kv-card md-section">
             <h2>Stock Alerts</h2>
             <div id="stock-alerts"></div>
         </div>
 
-        <div class="md-section">
+        <div class="kv-card md-section">
             <h2>Live Orders</h2>
             <div id="live-orders-list"></div>
         </div>
 
-        <div class="md-section">
+        <div class="kv-card md-section">
             <h2>Table Status</h2>
             <div class="table-grid" id="table-grid"></div>
         </div>
 
-        <div class="md-section">
+        <div class="kv-card md-section">
             <h2>Staff on Duty</h2>
             <div id="staff-list"></div>
         </div>
     </main>
 
+    <script src="../korvia-ui.js"></script>
     <script>
         const STORAGE_KEY = 'korvia_orders';
         const tables = Array.from({length: 12}, (_, i) => ({
@@ -149,21 +176,21 @@
             document.getElementById('staff-duty').textContent = session ? 1 : 0;
 
             document.getElementById('stock-alerts').innerHTML = `
-                <div class="alert">⚠️ Ribeye Steak running low — 3 portions left</div>
-                <div class="alert">⚠️ House Red Wine out of stock</div>
+                <div class="kv-alert kv-alert-danger" style="margin-bottom:8px;">⚠️ Ribeye Steak running low — 3 portions left</div>
+                <div class="kv-alert kv-alert-danger">⚠️ House Red Wine out of stock</div>
             `;
 
             document.getElementById('live-orders-list').innerHTML = active.length ? active.map(o => `
                 <div class="order-row">
                     <div>
                         <strong>${o.spotType === 'hotel' ? 'Room' : o.spotType === 'events' ? 'Stall' : 'Table'} ${o.spot}</strong>
-                        <p style="font-size:0.8rem;color:var(--kv-gray-500);margin:0;">${o.items.map(i => i.name).join(', ')}</p>
+                        <p style="font-size:0.8rem;color:var(--kv-ink-muted);margin:0;">${o.items.map(i => i.name).join(', ')}</p>
                     </div>
                     <span>$${o.total.toFixed(2)}</span>
-                    <span class="status-pill status-${o.status}">${o.status}</span>
-                    <button style="border:none;background:var(--kv-gray-200);padding:0.3rem 0.7rem;border-radius:0.4rem;cursor:pointer;" onclick="alert('Assign staff')">Assign</button>
+                    <span class="kv-badge kv-badge-accent">${o.status}</span>
+                    <button class="kv-button kv-button-sm kv-button-ghost" onclick="alert('Assign staff')">Assign</button>
                 </div>
-            `).join('') : '<p style="color:var(--kv-gray-500);">No active orders.</p>';
+            `).join('') : '<p style="color:var(--kv-ink-muted);">No active orders.</p>';
 
             document.getElementById('table-grid').innerHTML = tables.map(t => `
                 <div class="table-card ${t.status}" onclick="toggleTable(${t.id})">
@@ -178,7 +205,7 @@
                     <span><strong>${session.name}</strong> — ${session.role} • on duty</span>
                     <span>${session.venue}</span>
                 </div>
-            ` : '<p style="color:var(--kv-gray-500);">No staff currently on duty.</p>';
+            ` : '<p style="color:var(--kv-ink-muted);">No staff currently on duty.</p>';
         }
 
         function toggleTable(id) {

@@ -6,100 +6,123 @@
     <title>Kitchen Display | Korvia</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: var(--kv-font-sans);
-            background: #0f172a;
-            color: white;
-            min-height: 100vh;
-            padding: 1.5rem;
-        }
+        body { background: var(--kv-paper); }
+        .kd-main { max-width: 1200px; margin: 0 auto; padding: 24px; }
         .kd-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--kv-rule);
         }
-        .kd-header h1 { font-size: 1.5rem; }
-        .kd-stats { display: flex; gap: 1rem; }
-        .kd-stat { background: rgba(255,255,255,0.08); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; }
+        .kd-header h1 {
+            font-family: var(--kv-font-serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+        }
+        .kd-stats { display: flex; gap: 10px; }
+        .kd-stat {
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            padding: 8px 14px;
+            border-radius: var(--kv-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
         .kd-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
+            gap: 16px;
         }
         .ticket {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 1rem;
-            padding: 1.25rem;
-            border-left: 5px solid #f97316;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 20px;
+            border-left: 4px solid var(--kv-accent);
         }
-        .ticket.new { border-left-color: #3b82f6; }
-        .ticket.preparing { border-left-color: #f59e0b; }
-        .ticket.ready { border-left-color: #22c55e; }
+        .ticket.new { border-left-color: var(--kv-info); }
+        .ticket.preparing { border-left-color: var(--kv-warning); }
+        .ticket.ready { border-left-color: var(--kv-success); }
         .ticket-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 10px;
         }
         .ticket-id { font-weight: 700; }
-        .ticket-table { font-size: 0.85rem; opacity: 0.7; }
-        .ticket-time { font-size: 0.75rem; opacity: 0.5; margin-bottom: 1rem; }
-        .ticket-items { margin-bottom: 1rem; }
+        .ticket-table { font-size: 0.85rem; color: var(--kv-ink-muted); }
+        .ticket-time { font-size: 0.75rem; color: var(--kv-ink-muted); margin-bottom: 14px; }
+        .ticket-items { margin-bottom: 14px; }
         .ticket-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.35rem 0;
-            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--kv-rule);
             font-size: 0.95rem;
         }
+        .ticket-item:last-child { border-bottom: none; }
         .ticket-total {
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: #f97316;
+            margin-bottom: 14px;
+            color: var(--kv-accent);
         }
-        .ticket-actions {
-            display: flex;
-            gap: 0.5rem;
+        .ticket-actions { display: flex; gap: 8px; }
+        .ticket-actions button { flex: 1; }
+        .empty {
+            text-align: center;
+            padding: 4rem;
+            color: var(--kv-ink-muted);
+            border: 1px dashed var(--kv-rule);
+            border-radius: var(--kv-radius);
         }
-        .ticket-actions button {
-            flex: 1;
-            border: none;
-            padding: 0.6rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-        .btn-prep { background: #f59e0b; color: #422006; }
-        .btn-ready { background: #22c55e; color: #052e16; }
-        .btn-done { background: rgba(255,255,255,0.15); color: white; }
-        .empty { text-align: center; padding: 4rem; opacity: 0.5; }
         .back {
-            color: rgba(255,255,255,0.6);
+            color: var(--kv-ink-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
-        .back:hover { color: #f97316; }
+        .back:hover { color: var(--kv-accent); }
     </style>
 </head>
-<body>
-    <header class="kd-header">
-        <div>
-            <a href="../index.html" class="back">← Korvia</a>
-            <h1>Kitchen Display</h1>
-        </div>
-        <div class="kd-stats">
-            <div class="kd-stat">New: <span id="count-new">0</span></div>
-            <div class="kd-stat">Preparing: <span id="count-prep">0</span></div>
-            <div class="kd-stat">Ready: <span id="count-ready">0</span></div>
+<body class="kv-ruled-subtle">
+    <header class="kv-header">
+        <div class="kv-container kv-header-inner">
+            <div class="kv-logo">
+                <span class="kv-logo-mark">K</span>
+                Kitchen Display
+            </div>
+            <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+                <div class="kv-theme-slider"></div>
+                <button class="kv-theme-option" data-value="light">Light</button>
+                <button class="kv-theme-option" data-value="dark">Dark</button>
+                <button class="kv-theme-option" data-value="auto">Auto</button>
+            </div>
         </div>
     </header>
 
-    <main class="kd-grid" id="tickets"></main>
+    <main class="kd-main">
+        <div class="kd-header">
+            <div>
+                <a href="../index.html" class="back">← Korvia</a>
+                <h1>Kitchen Display</h1>
+            </div>
+            <div class="kd-stats">
+                <div class="kd-stat">New: <span id="count-new">0</span></div>
+                <div class="kd-stat">Preparing: <span id="count-prep">0</span></div>
+                <div class="kd-stat">Ready: <span id="count-ready">0</span></div>
+            </div>
+        </div>
 
+        <div class="kd-grid" id="tickets"></div>
+    </main>
+
+    <script src="../korvia-ui.js"></script>
     <script>
         const STORAGE_KEY = 'korvia_orders';
 
@@ -153,12 +176,12 @@
                         `).join('')}
                     </div>
                     <div class="ticket-total">Total: $${order.total.toFixed(2)}</div>
-                    ${order.servedBy ? `<div style="font-size:0.8rem;opacity:0.7;margin-bottom:0.5rem;">Served by ${order.servedBy}</div>` : ''}
-                    ${order.readyBy ? `<div style="font-size:0.8rem;opacity:0.7;margin-bottom:0.5rem;">Ready by ${order.readyBy}</div>` : ''}
+                    ${order.servedBy ? `<div style="font-size:0.8rem;color:var(--kv-ink-muted);margin-bottom:8px;">Served by ${order.servedBy}</div>` : ''}
+                    ${order.readyBy ? `<div style="font-size:0.8rem;color:var(--kv-ink-muted);margin-bottom:8px;">Ready by ${order.readyBy}</div>` : ''}
                     <div class="ticket-actions">
-                        ${order.status === 'new' ? `<button class="btn-prep" onclick="updateStatus('${order.id}', 'preparing')">Start preparing</button>` : ''}
-                        ${order.status === 'preparing' ? `<button class="btn-ready" onclick="updateStatus('${order.id}', 'ready')">Mark ready</button>` : ''}
-                        ${order.status === 'ready' ? `<button class="btn-done" onclick="updateStatus('${order.id}', 'done')">Served / Done</button>` : ''}
+                        ${order.status === 'new' ? `<button class="kv-button kv-button-sm" onclick="updateStatus('${order.id}', 'preparing')">Start preparing</button>` : ''}
+                        ${order.status === 'preparing' ? `<button class="kv-button kv-button-sm kv-button-accent" onclick="updateStatus('${order.id}', 'ready')">Mark ready</button>` : ''}
+                        ${order.status === 'ready' ? `<button class="kv-button kv-button-sm kv-button-secondary" onclick="updateStatus('${order.id}', 'done')">Served / Done</button>` : ''}
                     </div>
                 </article>
             `).join('');

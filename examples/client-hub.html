@@ -6,123 +6,156 @@
     <title>Client Hub | Korvia</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        body { background: var(--kv-gray-50); }
+        body { background: var(--kv-paper); }
         .hub-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 2rem;
             text-align: center;
+            padding: 56px 24px;
+            border-bottom: 1px solid var(--kv-rule);
         }
-        .hub-header h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
-        .hub-header p { opacity: 0.8; }
+        .hub-header h1 {
+            font-family: var(--kv-font-serif);
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        .hub-header p { color: var(--kv-ink-muted); margin-bottom: 24px; }
         .hub-search {
             max-width: 600px;
-            margin: 1.5rem auto 0;
+            margin: 0 auto;
             display: flex;
-            gap: 0.5rem;
+            gap: 8px;
         }
-        .hub-search input {
-            flex: 1;
-            padding: 0.85rem 1rem;
-            border: none;
-            border-radius: 999px;
-            font-size: 1rem;
-        }
-        .hub-search button {
-            background: #f97316;
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 999px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        .hub-search input { flex: 1; }
         .hub-filters {
             display: flex;
             justify-content: center;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
+            gap: 8px;
+            margin-top: 16px;
             flex-wrap: wrap;
         }
         .filter-btn {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            padding: 6px 14px;
+            border-radius: var(--kv-radius);
             cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--kv-ink-muted);
+            transition: all 150ms ease;
         }
-        .filter-btn.active { background: #f97316; border-color: #f97316; }
-        .hub-main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-        .section-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; }
+        .filter-btn.active {
+            background: var(--kv-ink);
+            border-color: var(--kv-ink);
+            color: var(--kv-paper);
+        }
+        .hub-main { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+        .section-title {
+            font-family: var(--kv-font-serif);
+            font-size: 1.35rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--kv-rule);
+        }
         .venue-card {
             display: flex;
-            gap: 1rem;
-            background: white;
-            border-radius: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            gap: 16px;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: border-color 200ms ease;
         }
+        .venue-card:hover { border-color: var(--kv-accent); }
         .venue-img {
             width: 90px;
             height: 90px;
-            border-radius: 0.75rem;
+            border-radius: var(--kv-radius);
             flex-shrink: 0;
-            background-size: cover;
+            background: var(--kv-accent-soft);
+            display: grid;
+            place-items: center;
+            font-size: 2rem;
         }
         .venue-info { flex: 1; }
-        .venue-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
-        .venue-info p { font-size: 0.85rem; color: var(--kv-gray-500); margin-bottom: 0.5rem; }
-        .venue-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .venue-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+        .venue-info p { font-size: 0.85rem; color: var(--kv-ink-muted); margin-bottom: 10px; }
+        .venue-tags { display: flex; gap: 6px; flex-wrap: wrap; }
         .venue-tag {
-            font-size: 0.75rem;
-            background: var(--kv-gray-100);
-            color: var(--kv-gray-600);
-            padding: 0.2rem 0.6rem;
-            border-radius: 999px;
+            font-size: 0.65rem;
+            background: var(--kv-paper);
+            color: var(--kv-ink-muted);
+            padding: 3px 8px;
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
         .venue-status {
             font-size: 0.75rem;
-            color: #16a34a;
+            color: var(--kv-success);
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 6px;
         }
         .venue-status::before {
             content: '';
-            width: 8px;
-            height: 8px;
-            background: #16a34a;
+            width: 7px;
+            height: 7px;
+            background: var(--kv-success);
             border-radius: 50%;
         }
         .map-placeholder {
-            background: #e2e8f0;
-            border-radius: 1rem;
+            background: var(--kv-card);
+            border: 1px dashed var(--kv-rule-strong);
+            border-radius: var(--kv-radius);
             height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--kv-gray-500);
-            margin-bottom: 2rem;
+            color: var(--kv-ink-muted);
+            margin-bottom: 32px;
         }
         .back-link {
             display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--kv-gray-600);
+            margin-bottom: 16px;
+            color: var(--kv-ink-muted);
             text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
-        .back-link:hover { color: #f97316; }
+        .back-link:hover { color: var(--kv-accent); }
     </style>
 </head>
-<body>
-    <header class="hub-header">
-        <h1>Client Hub</h1>
-        <p>Discover restaurants, hotels, and events powered by Korvia.</p>
+<body class="kv-ruled-subtle">
+    <header class="kv-header">
+        <div class="kv-container kv-header-inner">
+            <div class="kv-logo">
+                <span class="kv-logo-mark">K</span>
+                Client Hub
+            </div>
+            <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+                <div class="kv-theme-slider"></div>
+                <button class="kv-theme-option" data-value="light">Light</button>
+                <button class="kv-theme-option" data-value="dark">Dark</button>
+                <button class="kv-theme-option" data-value="auto">Auto</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="hub-header">
+        <h1>Discover Korvia venues</h1>
+        <p>Restaurants, hotels, and events powered by Korvia.</p>
         <div class="hub-search">
-            <input type="text" placeholder="Search venue, city, or cuisine...">
-            <button>Search</button>
+            <input type="text" class="kv-input" placeholder="Search venue, city, or cuisine...">
+            <button class="kv-button kv-button-accent">Search</button>
         </div>
         <div class="hub-filters">
             <button class="filter-btn active">All</button>
@@ -131,7 +164,7 @@
             <button class="filter-btn">Events</button>
             <button class="filter-btn">Near me</button>
         </div>
-    </header>
+    </div>
 
     <main class="hub-main">
         <a href="../index.html" class="back-link">← Back to Korvia</a>
@@ -141,7 +174,7 @@
         <h2 class="section-title">Featured venues</h2>
 
         <article class="venue-card">
-            <div class="venue-img" style="background: linear-gradient(135deg, #ff6b6b, #feca57);"></div>
+            <div class="venue-img">🍽️</div>
             <div class="venue-info">
                 <div class="venue-status">Open now</div>
                 <h3>Sunset Bistro</h3>
@@ -155,7 +188,7 @@
         </article>
 
         <article class="venue-card">
-            <div class="venue-img" style="background: linear-gradient(135deg, #5f27cd, #ff9ff3);"></div>
+            <div class="venue-img">🏨</div>
             <div class="venue-info">
                 <div class="venue-status">Open now</div>
                 <h3>Seacliff Hotel</h3>
@@ -169,7 +202,7 @@
         </article>
 
         <article class="venue-card">
-            <div class="venue-img" style="background: linear-gradient(135deg, #1dd1a1, #48dbfb);"></div>
+            <div class="venue-img">🎉</div>
             <div class="venue-info">
                 <div class="venue-status">Event today</div>
                 <h3>Mwenge Wedding Expo</h3>
@@ -182,5 +215,7 @@
             </div>
         </article>
     </main>
+
+    <script src="../korvia-ui.js"></script>
 </body>
 </html>

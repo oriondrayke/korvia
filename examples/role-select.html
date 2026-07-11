@@ -6,90 +6,124 @@
     <title>Korvia — Log in as who?</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: var(--kv-font-sans);
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 48px 24px;
         }
         .top {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 40px;
         }
         .top .logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            border-radius: 1rem;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            font-weight: 800;
+            width: 52px;
+            height: 52px;
+            border: 2px solid var(--kv-accent);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 16px;
+            font-family: var(--kv-font-serif);
+            font-size: 1.5rem;
+            color: var(--kv-accent);
+            border-radius: var(--kv-radius);
         }
         .top h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
+            font-family: var(--kv-font-serif);
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
         }
         .top h1 span {
-            color: #f97316;
+            color: var(--kv-accent);
+            font-style: italic;
         }
         .top p {
-            opacity: 0.7;
-            margin-top: 0.5rem;
+            color: var(--kv-ink-muted);
+            margin-top: 8px;
+            font-size: 0.95rem;
         }
         .roles {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
+            gap: 16px;
             width: 100%;
-            max-width: 700px;
+            max-width: 720px;
         }
         .role-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 1rem;
-            padding: 1.75rem 1rem;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 28px 20px;
             text-align: center;
             text-decoration: none;
-            color: white;
-            transition: all 0.25s ease;
-            cursor: pointer;
+            color: var(--kv-ink);
+            transition: border-color 200ms ease, transform 200ms ease;
         }
         .role-card:hover {
-            background: rgba(255, 255, 255, 0.14);
-            transform: translateY(-4px);
-            border-color: #f97316;
+            border-color: var(--kv-accent);
+            transform: translateY(-3px);
         }
         .role-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.8rem;
+            margin-bottom: 14px;
         }
         .role-card h2 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
+            font-family: var(--kv-font-serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 6px;
         }
         .role-card p {
             font-size: 0.8rem;
-            opacity: 0.6;
+            color: var(--kv-ink-muted);
+        }
+        .role-rule {
+            width: 24px;
+            height: 2px;
+            background: var(--kv-accent);
+            margin: 12px auto;
         }
         .back {
-            margin-top: 2rem;
-            color: rgba(255,255,255,0.6);
+            margin-top: 32px;
+            color: var(--kv-ink-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 8px 14px;
+            border: 1px solid var(--kv-rule-strong);
+            border-radius: var(--kv-radius);
+            transition: all 150ms ease;
         }
-        .back:hover { color: #f97316; }
+        .back:hover {
+            color: var(--kv-ink);
+            border-color: var(--kv-ink);
+        }
+        .corner-controls {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 150;
+        }
+        @media (max-width: 520px) {
+            .roles { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
-<body>
+<body class="kv-ruled-subtle">
+    <div class="corner-controls">
+        <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+            <div class="kv-theme-slider"></div>
+            <button class="kv-theme-option" data-value="light">Light</button>
+            <button class="kv-theme-option" data-value="dark">Dark</button>
+            <button class="kv-theme-option" data-value="auto">Auto</button>
+        </div>
+    </div>
+
     <div class="top">
         <div class="logo">K</div>
         <h1 id="portal-title"><span>Restaurant</span> Portal</h1>
@@ -100,21 +134,25 @@
         <a href="staff-login.html" class="role-card">
             <div class="role-icon">👨‍🍳</div>
             <h2>Staff / Kitchen</h2>
+            <div class="role-rule"></div>
             <p>Log in via staff hub</p>
         </a>
         <a href="staff-login.html" class="role-card">
             <div class="role-icon">🍽️</div>
             <h2>Waitress / Waiter</h2>
+            <div class="role-rule"></div>
             <p>Log in via staff hub</p>
         </a>
         <a href="manager-dashboard.html" class="role-card">
             <div class="role-icon">📋</div>
             <h2>Manager</h2>
+            <div class="role-rule"></div>
             <p>Operations dashboard</p>
         </a>
         <a href="owner-dashboard.html" class="role-card">
             <div class="role-icon">💼</div>
             <h2>Owner</h2>
+            <div class="role-rule"></div>
             <p>Analytics dashboard</p>
         </a>
     </div>
@@ -132,5 +170,6 @@
         const title = portal.charAt(0).toUpperCase() + portal.slice(1);
         document.getElementById('portal-title').innerHTML = `<span>${title}</span> Portal`;
     </script>
+    <script src="../korvia-ui.js"></script>
 </body>
 </html>

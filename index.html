@@ -6,125 +6,196 @@
     <title>Korvia — Karibu Tukuhudumie</title>
     <link rel="stylesheet" href="korvia.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: var(--kv-font-sans);
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .kv-landing {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 48px 24px;
         }
         .brand {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 48px;
         }
-        .brand-logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            border-radius: 1.25rem;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.3);
+        .brand-mark {
+            width: 64px;
+            height: 64px;
+            border: 2px solid var(--kv-accent);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 20px;
+            font-family: var(--kv-font-serif);
+            font-size: 2rem;
+            color: var(--kv-accent);
+            border-radius: var(--kv-radius);
         }
         .brand h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
+            font-family: var(--kv-font-serif);
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 12px;
         }
         .brand .tagline {
-            font-size: 1.25rem;
-            opacity: 0.85;
-            font-weight: 500;
+            font-size: 1.15rem;
+            color: var(--kv-ink-muted);
+            margin-bottom: 6px;
         }
         .brand .subtagline {
-            font-size: 0.95rem;
-            opacity: 0.6;
-            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--kv-ink-muted);
         }
         .portals {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
+            gap: 20px;
             width: 100%;
             max-width: 900px;
         }
         .portal-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 1.25rem;
-            padding: 2rem 1.5rem;
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 32px 24px;
             text-align: center;
             text-decoration: none;
-            color: white;
-            transition: all 0.25s ease;
+            color: var(--kv-ink);
+            transition: border-color 200ms ease, transform 200ms ease;
         }
         .portal-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-5px);
-            border-color: #f97316;
+            border-color: var(--kv-accent);
+            transform: translateY(-3px);
         }
         .portal-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 16px;
         }
         .portal-card h2 {
-            font-size: 1.35rem;
-            margin-bottom: 0.5rem;
+            font-family: var(--kv-font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 8px;
         }
         .portal-card p {
-            font-size: 0.875rem;
-            opacity: 0.65;
+            font-size: 0.85rem;
+            color: var(--kv-ink-muted);
+            line-height: 1.5;
         }
-        footer {
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            opacity: 0.5;
+        .portal-rule {
+            width: 28px;
+            height: 2px;
+            background: var(--kv-accent);
+            margin: 16px auto;
+        }
+        .landing-footer {
+            padding: 32px 24px;
             text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--kv-ink-muted);
+            border-top: 1px solid var(--kv-rule);
+        }
+        .corner-controls {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 150;
+        }
+        @media (max-width: 640px) {
+            .portals { grid-template-columns: 1fr; }
+            .corner-controls { top: auto; bottom: 16px; }
         }
     </style>
 </head>
-<body>
-    <div class="brand">
-        <div class="brand-logo">K</div>
-        <h1>Korvia</h1>
-        <p class="tagline">Karibu, tukuhudumie</p>
-        <p class="subtagline">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<body class="kv-ruled">
+    <div class="corner-controls">
+        <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+            <div class="kv-theme-slider" id="theme-slider"></div>
+            <button class="kv-theme-option" data-value="light">Light</button>
+            <button class="kv-theme-option" data-value="dark">Dark</button>
+            <button class="kv-theme-option" data-value="auto">Auto</button>
+        </div>
+        <button class="kv-options-toggle" id="kv-options-toggle" aria-label="Options">⚙</button>
     </div>
 
-    <div class="portals">
-        <a href="examples/client-hub.html" class="portal-card">
-            <div class="portal-icon">👤</div>
-            <h2>Client</h2>
-            <p>Discover restaurants, hotels, and events using Korvia.</p>
-        </a>
-        <a href="examples/auth.html?portal=restaurant" class="portal-card">
-            <div class="portal-icon">🍽️</div>
-            <h2>Restaurant</h2>
-            <p>QR menus, table ordering, and live kitchen display.</p>
-        </a>
-        <a href="examples/auth.html?portal=hotel" class="portal-card">
-            <div class="portal-icon">🏨</div>
-            <h2>Hotel</h2>
-            <p>Room service, amenities, and guest requests.</p>
-        </a>
-        <a href="examples/auth.html?portal=events" class="portal-card">
-            <div class="portal-icon">🎉</div>
-            <h2>Events</h2>
-            <p>Weddings, parties, and conference ordering.</p>
-        </a>
-    </div>
+    <main class="kv-landing">
+        <div class="brand">
+            <div class="brand-mark">K</div>
+            <h1>Korvia</h1>
+            <p class="tagline">Karibu, tukuhudumie</p>
+            <p class="subtagline">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 Korvia. QR-powered hospitality ecosystem.</p>
+        <div class="portals">
+            <a href="examples/client-hub.html" class="portal-card">
+                <div class="portal-icon">👤</div>
+                <h2>Client</h2>
+                <div class="portal-rule"></div>
+                <p>Discover restaurants, hotels, and events using Korvia.</p>
+            </a>
+            <a href="examples/auth.html?portal=restaurant" class="portal-card">
+                <div class="portal-icon">🍽️</div>
+                <h2>Restaurant</h2>
+                <div class="portal-rule"></div>
+                <p>QR menus, table ordering, and live kitchen display.</p>
+            </a>
+            <a href="examples/auth.html?portal=hotel" class="portal-card">
+                <div class="portal-icon">🏨</div>
+                <h2>Hotel</h2>
+                <div class="portal-rule"></div>
+                <p>Room service, amenities, and guest requests.</p>
+            </a>
+            <a href="examples/auth.html?portal=events" class="portal-card">
+                <div class="portal-icon">🎉</div>
+                <h2>Events</h2>
+                <div class="portal-rule"></div>
+                <p>Weddings, parties, and conference ordering.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer class="landing-footer">
+        &copy; 2026 Korvia · QR-powered hospitality ecosystem
     </footer>
+
+    <div class="kv-options-backdrop" id="kv-options-backdrop"></div>
+    <aside class="kv-options-panel" id="kv-options-panel">
+        <div class="kv-flex kv-flex-between kv-flex-center" style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--kv-rule);">
+            <h2 class="kv-title" style="font-size: 1.25rem;">Options</h2>
+            <button class="kv-options-toggle" id="kv-options-close">✕</button>
+        </div>
+        <div class="kv-flex kv-flex-col kv-gap-md">
+            <div>
+                <p class="kv-label">Density</p>
+                <div class="kv-flex kv-gap-sm">
+                    <button class="kv-button kv-button-sm kv-button-secondary">Compact</button>
+                    <button class="kv-button kv-button-sm">Comfortable</button>
+                </div>
+            </div>
+            <div>
+                <p class="kv-label">Language</p>
+                <select class="kv-select">
+                    <option>English</option>
+                    <option>Kiswahili</option>
+                </select>
+            </div>
+            <div class="kv-alert kv-alert-info" style="margin-top: 8px;">
+                These settings are visual-only in the prototype.
+            </div>
+        </div>
+    </aside>
+
+    <script src="korvia-ui.js"></script>
 </body>
 </html>

@@ -6,47 +6,75 @@
     <title>Feedback | Korvia</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
-        body { background: var(--kv-gray-50); }
-        .fd-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 1.5rem 2rem;
+        body { background: var(--kv-paper); }
+        .fd-main { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { text-align: center; }
+        .stat-card .number {
+            font-family: var(--kv-font-serif);
+            font-size: 2rem;
+            color: var(--kv-ink);
         }
-        .fd-header h1 { font-size: 1.4rem; }
-        .fd-header p { opacity: 0.75; font-size: 0.9rem; }
-        .fd-main { max-width: 900px; margin: 1.5rem auto; padding: 0 1.5rem; }
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-        .stat-card { background: white; border-radius: 1rem; padding: 1.25rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .stat-card .number { font-size: 2rem; font-weight: 700; }
-        .stat-card .label { font-size: 0.85rem; color: var(--kv-gray-500); }
-        .review-card { background: white; border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .review-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
-        .stars { color: #f59e0b; }
-        .review-text { color: var(--kv-gray-600); font-size: 0.95rem; }
-        .review-meta { font-size: 0.8rem; color: var(--kv-gray-400); margin-top: 0.5rem; }
-        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--kv-gray-600); text-decoration: none; }
-        .back-link:hover { color: #f97316; }
+        .stat-card .label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--kv-ink-muted);
+        }
+        .review-card {
+            background: var(--kv-card);
+            border: 1px solid var(--kv-rule);
+            border-radius: var(--kv-radius);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .stars { color: var(--kv-warning); }
+        .review-text { color: var(--kv-ink-muted); font-size: 0.95rem; }
+        .review-meta { font-size: 0.8rem; color: var(--kv-ink-muted); margin-top: 10px; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            color: var(--kv-ink-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .back-link:hover { color: var(--kv-accent); }
     </style>
 </head>
-<body>
-    <header class="fd-header">
-        <h1>Customer Feedback</h1>
-        <p>Reviews and ratings from QR orders.</p>
+<body class="kv-ruled-subtle">
+    <header class="kv-header">
+        <div class="kv-container kv-header-inner">
+            <div class="kv-logo">
+                <span class="kv-logo-mark">K</span>
+                Customer Feedback
+            </div>
+            <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+                <div class="kv-theme-slider"></div>
+                <button class="kv-theme-option" data-value="light">Light</button>
+                <button class="kv-theme-option" data-value="dark">Dark</button>
+                <button class="kv-theme-option" data-value="auto">Auto</button>
+            </div>
+        </div>
     </header>
 
     <main class="fd-main">
         <a href="../index.html" class="back-link">← Back to Korvia</a>
 
         <div class="stats">
-            <div class="stat-card">
+            <div class="kv-card stat-card">
                 <div class="number" id="avg-rating">0</div>
                 <div class="label">Average rating</div>
             </div>
-            <div class="stat-card">
+            <div class="kv-card stat-card">
                 <div class="number" id="total-reviews">0</div>
                 <div class="label">Reviews</div>
             </div>
-            <div class="stat-card">
+            <div class="kv-card stat-card">
                 <div class="number" id="total-tips">$0</div>
                 <div class="label">Tips received</div>
             </div>
@@ -55,6 +83,7 @@
         <div id="reviews-list"></div>
     </main>
 
+    <script src="../korvia-ui.js"></script>
     <script>
         const feedback = JSON.parse(localStorage.getItem('korvia_feedback') || '[]');
         const tips = JSON.parse(localStorage.getItem('korvia_tips') || '[]');
@@ -68,13 +97,13 @@
 
         const list = document.getElementById('reviews-list');
         if (feedback.length === 0) {
-            list.innerHTML = '<p style="color:var(--kv-gray-500);">No feedback yet. Customers can leave reviews from their receipt page.</p>';
+            list.innerHTML = '<p style="color:var(--kv-ink-muted);">No feedback yet. Customers can leave reviews from their receipt page.</p>';
         } else {
             list.innerHTML = feedback.slice().reverse().map(r => `
                 <div class="review-card">
                     <div class="review-header">
                         <span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
-                        <span style="font-size:0.8rem;color:var(--kv-gray-400);">${new Date(r.time).toLocaleString()}</span>
+                        <span style="font-size:0.8rem;color:var(--kv-ink-muted);">${new Date(r.time).toLocaleString()}</span>
                     </div>
                     <p class="review-text">${r.text || 'No written feedback.'}</p>
                     <p class="review-meta">Order ${r.orderId.slice(-6)} • ${r.venue}</p>

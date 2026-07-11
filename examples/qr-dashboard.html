@@ -6,67 +6,76 @@
     <title>Manager Dashboard | Korvia QR</title>
     <link rel="stylesheet" href="../korvia.css">
     <style>
+        body { background: var(--kv-paper); }
         .dashboard-layout {
             display: grid;
             grid-template-columns: 240px 1fr;
             min-height: 100vh;
         }
         .sidebar {
-            background: var(--kv-secondary);
-            color: var(--kv-white);
-            padding: var(--kv-space-lg);
+            background: var(--kv-card);
+            border-right: 1px solid var(--kv-rule);
+            padding: 24px;
         }
         .sidebar-logo {
-            font-size: var(--kv-text-xl);
-            font-weight: var(--kv-font-bold);
-            color: var(--kv-accent);
-            margin-bottom: var(--kv-space-xl);
+            font-family: var(--kv-font-serif);
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         .sidebar-nav {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: var(--kv-space-md);
+            gap: 4px;
+            padding: 0;
+            margin: 0;
         }
         .sidebar-nav a {
-            opacity: 0.8;
+            display: block;
+            padding: 8px 12px;
+            color: var(--kv-ink-muted);
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+            border-radius: var(--kv-radius);
+            transition: all 150ms ease;
         }
         .sidebar-nav a:hover {
-            opacity: 1;
-            color: var(--kv-accent);
+            color: var(--kv-ink);
+            border-color: var(--kv-rule);
+            background: var(--kv-paper);
         }
-        .main-content {
-            padding: var(--kv-space-xl);
-            background: var(--kv-gray-50);
-        }
+        .main-content { padding: 32px; }
         .page-title {
-            font-size: var(--kv-text-2xl);
-            font-weight: var(--kv-font-bold);
-            margin-bottom: var(--kv-space-xl);
+            font-family: var(--kv-font-serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 24px;
         }
         .order-row {
             display: grid;
             grid-template-columns: 1fr auto auto;
-            gap: var(--kv-space-md);
+            gap: 16px;
             align-items: center;
-            padding: var(--kv-space-md);
-            border-bottom: 1px solid var(--kv-gray-200);
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--kv-rule);
         }
-        .status {
-            padding: var(--kv-space-xs) var(--kv-space-sm);
-            border-radius: var(--kv-radius-full);
-            font-size: var(--kv-text-xs);
-            font-weight: var(--kv-font-semibold);
+        .order-row:last-child { border-bottom: none; }
+        @media (max-width: 768px) {
+            .dashboard-layout { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
         }
-        .status-new { background: #dbeafe; color: #1e40af; }
-        .status-preparing { background: #fef3c7; color: #92400e; }
-        .status-ready { background: #dcfce7; color: #166534; }
     </style>
 </head>
-<body>
+<body class="kv-ruled-subtle">
     <div class="dashboard-layout">
         <aside class="sidebar">
-            <div class="sidebar-logo">korvia QR.</div>
+            <div class="sidebar-logo">
+                <span class="kv-logo-mark">K</span>
+                korvia QR.
+            </div>
             <ul class="sidebar-nav">
                 <li><a href="#">Overview</a></li>
                 <li><a href="#">Live Orders</a></li>
@@ -101,14 +110,14 @@
             </div>
 
             <div class="kv-card">
-                <h2 class="kv-mb-lg">Live Orders</h2>
+                <h2 class="kv-mb-lg" style="font-family:var(--kv-font-serif);font-size:1.25rem;font-weight:400;">Live Orders</h2>
                 <div class="order-row">
                     <div>
                         <strong>Table 5</strong>
                         <p class="kv-text-sm kv-text-muted">2x Grilled Salmon, 1x Fresh Lemonade</p>
                     </div>
                     <span>$54</span>
-                    <span class="status status-new">New</span>
+                    <span class="kv-badge" style="border-color:var(--kv-info);color:var(--kv-info);background:var(--kv-info-soft);">New</span>
                 </div>
                 <div class="order-row">
                     <div>
@@ -116,7 +125,7 @@
                         <p class="kv-text-sm kv-text-muted">1x Ribeye Steak, 1x House Red Wine</p>
                     </div>
                     <span>$43</span>
-                    <span class="status status-preparing">Preparing</span>
+                    <span class="kv-badge" style="border-color:var(--kv-warning);color:var(--kv-warning);background:var(--kv-warning-soft);">Preparing</span>
                 </div>
                 <div class="order-row">
                     <div>
@@ -124,12 +133,12 @@
                         <p class="kv-text-sm kv-text-muted">1x Truffle Pasta, 1x Crispy Calamari</p>
                     </div>
                     <span>$34</span>
-                    <span class="status status-ready">Ready</span>
+                    <span class="kv-badge kv-badge-accent">Ready</span>
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="../korvia.js"></script>
+    <script src="../korvia-ui.js"></script>
 </body>
 </html>
