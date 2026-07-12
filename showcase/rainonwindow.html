@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rain on Window — Korvia Design Direction</title>
+<style>
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 3%), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.06) 0%, transparent 2%), radial-gradient(circle at 50% 80%, rgba(255,255,255,0.07) 0%, transparent 4%); pointer-events: none; z-index: -1; }
+.logo-square { position: fixed; top: 24px; left: 24px; width: 110px; height: 110px; background: rgba(30,41,59,0.9); color: #e2e8f0; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; text-align: center; border-left: 6px solid #5F9EA0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); z-index: 100; pointer-events: none; }
+.showcase-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px 18px 154px; background: rgba(15,23,42,0.8); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; }
+.showcase-nav a { color: #5F9EA0; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #94a3b8; margin-bottom: 40px; max-width: 560px; }
+.decay-card { background: rgba(30,41,59,0.85); padding: 28px; margin-bottom: 16px; position: relative; border-left: 6px solid #5F9EA0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); }
+.gold-btn { display: inline-block; padding: 14px 28px; background: #5F9EA0; color: #0f172a; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none; }
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #5F9EA0, #5F9EA0 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: rgba(30,41,59,0.85); display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #5F9EA0; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: rgba(15,23,42,0.8); color: #94a3b8; text-align: center; }
+.dopamine { width: 20px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); box-shadow: inset 0 -5px 5px rgba(255,255,255,0.2); display: inline-block; margin-right: 16px; }
+        
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="moonlight.html">← Prev</a>
+  <a href="index.html">Showcase · 96 / 105</a>
+  <a href="sunbeams.html">Next →</a>
+</nav>
+
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        
+<footer class="showcase-footer">Korvia Design Direction Showcase · 96 / 105</footer>
+</body>
+</html>
