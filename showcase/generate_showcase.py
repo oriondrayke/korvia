@@ -4087,7 +4087,11 @@ body {
     font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
     font-weight: 700; text-transform: uppercase; text-align: center;
     z-index: 100; pointer-events: none;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+.logo-square::after {
+    content: ""; position: absolute;
+    top: 10px; left: 10px; right: -10px; bottom: -10px;
+    background: rgba(0,0,0,0.35); z-index: -1;
 }
 .showcase-nav {
     display: flex; justify-content: space-between; align-items: center;
