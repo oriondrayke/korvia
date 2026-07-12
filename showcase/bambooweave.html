@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bamboo Weave — Korvia Design Direction</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: radial-gradient(circle at 80% 20%, #1e3a8a 0%, #0a0f1e 40%); color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+body::before { content: ""; position: fixed; top: 8%; right: 10%; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, #e2e8f0 40%, transparent 45%); box-shadow: 0 0 60px rgba(226,232,240,0.3); pointer-events: none; z-index: -1; }
+.logo-square { position: fixed; top: 24px; left: 24px; width: 110px; height: 110px; background: rgba(20,30,50,0.9); color: #f8fafc; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; text-align: center; border-left: 6px solid #C0C0C0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); z-index: 100; pointer-events: none; }
+.showcase-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px 18px 154px; background: rgba(10,15,30,0.8); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; }
+.showcase-nav a { color: #C0C0C0; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #cbd5e1; margin-bottom: 40px; max-width: 560px; }
+.decay-card { background: rgba(20,30,50,0.85); padding: 28px; margin-bottom: 16px; position: relative; border-left: 6px solid #C0C0C0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); }
+.gold-btn { display: inline-block; padding: 14px 28px; background: #C0C0C0; color: #0a0f1e; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none; }
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #C0C0C0, #C0C0C0 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: rgba(20,30,50,0.85); display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #C0C0C0; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: rgba(10,15,30,0.8); color: #94a3b8; text-align: center; }
+.dopamine { width: 60px; height: 60px; border-radius: 50%; box-shadow: inset -12px -5px 0 0 #C0C0C0; display: inline-block; margin-right: 16px; }
+.logo-mark svg { max-width: 380px; filter: drop-shadow(0 0 16px rgba(30,58,138,0.4)); }
+        
+</style>
+</head>
+<body>
+<nav class="showcase-nav">
+  <a href="icecrystal.html">← Prev</a>
+  <a href="index.html">Showcase · 213 / 218</a>
+  <a href="sailboat.html">Next →</a>
+</nav>
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+.logo-mark { text-align: center; margin: 0 0 12px; }
+.logo-mark svg { max-width: 360px; width: 100%; height: auto; filter: drop-shadow(0 0 18px rgba(192,192,192,0.35)); }
+.logo-tagline { font-family: 'Inter', sans-serif; font-size: clamp(0.95rem, 2.2vw, 1.25rem); letter-spacing: 0.18em; text-transform: uppercase; color: #cbd5e1; text-align: center; margin: 0 0 40px; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-mark"><svg viewBox="0 0 380 130" xmlns="http://www.w3.org/2000/svg" aria-label="Korvia bamboo weave wordmark">
+  <defs>
+    <clipPath id="bambootext">
+      <text x="190" y="84" font-family="Cinzel, serif" font-size="56" font-weight="700" text-anchor="middle" letter-spacing="0.1em">KORVIA</text>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#bambootext)">
+    <rect x="0" y="0" width="380" height="130" fill="#0A0F1E"/>
+    <rect x="30" y="35" width="320" height="12" fill="#C0C0C0"/>
+    <rect x="30" y="51" width="320" height="12" fill="#1E3A8A"/>
+    <rect x="30" y="67" width="320" height="12" fill="#C0C0C0"/>
+    <rect x="30" y="83" width="320" height="12" fill="#1E3A8A"/>
+    <line x1="60" y1="35" x2="60" y2="95" stroke="#0A0F1E" stroke-width="4"/>
+    <line x1="110" y1="35" x2="110" y2="95" stroke="#0A0F1E" stroke-width="4"/>
+    <line x1="160" y1="35" x2="160" y2="95" stroke="#0A0F1E" stroke-width="4"/>
+    <line x1="210" y1="35" x2="210" y2="95" stroke="#0A0F1E" stroke-width="4"/>
+    <line x1="260" y1="35" x2="260" y2="95" stroke="#0A0F1E" stroke-width="4"/>
+    <line x1="310" y1="35" x2="310" y2="95" stroke="#0A0F1E" stroke-width="4"/>
+  </g>
+  <text x="190" y="84" font-family="Cinzel, serif" font-size="56" font-weight="700" text-anchor="middle" letter-spacing="0.1em" fill="none" stroke="#C0C0C0" stroke-width="2">KORVIA</text>
+</svg></div>
+<p class="logo-tagline">Kitovu cha ukarimu</p>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Kitovu cha ukarimu</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+        
+<footer class="showcase-footer">Korvia Design Direction Showcase · 213 / 218</footer>
+</body>
+</html>
