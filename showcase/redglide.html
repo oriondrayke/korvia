@@ -15,24 +15,19 @@ body {
 }
 .track-rail {
     position: fixed; top: 0; left: 0; width: 120px; height: 100vh;
-    background: #1a1510; z-index: 100; overflow: hidden;
+    background: #1a1510; z-index: 100; pointer-events: none;
 }
 .track-line {
     position: absolute; top: 0; bottom: 0; width: 2px; background: #c5a059; opacity: 0.7;
 }
 .track-line.left { left: 20px; }
 .track-line.right { left: 98px; }
-.logo-train {
-    position: absolute; left: 21px; top: 0;
+.logo-square {
+    position: absolute; left: 21px; top: 88px;
     width: 76px; height: 76px; background: #e42718; color: #1a1510;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.02em;
     font-weight: 700; text-transform: uppercase; text-align: center;
-    animation: train 7s linear infinite;
-}
-@keyframes train {
-    0% { transform: translateY(-76px); }
-    100% { transform: translateY(calc(100vh + 76px)); }
 }
 .showcase-nav {
     display: flex; justify-content: space-between; align-items: center;
@@ -70,7 +65,7 @@ h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 
 .portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
 a { text-decoration: none; color: inherit; }
 </style>
-<div class="track-rail"><div class="track-line left"></div><div class="track-line right"></div><div class="logo-train">Korvia</div></div>
+<div class="track-rail"><div class="track-line left"></div><div class="track-line right"></div><div class="logo-square">Korvia</div></div>
 <div class="wrap">
 <div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
 <h1>Korvia</h1>
