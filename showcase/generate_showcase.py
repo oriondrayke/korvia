@@ -4081,19 +4081,21 @@ body {
     min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
 }
 .logo-square {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 76px; height: 76px; background: #e42718; color: #1a1510;
-    font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.02em;
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #e42718; color: #1a1510;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
     font-weight: 700; text-transform: uppercase; text-align: center;
-    vertical-align: middle; margin: 0 16px 16px 0;
+    z-index: 100; pointer-events: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 .showcase-nav {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 18px 24px; background: #120e0a;
+    padding: 18px 24px 18px 154px; background: #120e0a;
     font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
 }
 .showcase-nav a { color: #e42718; text-decoration: none; }
-.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
 h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
 .desc { color: #a89f7e; margin-bottom: 40px; max-width: 560px; }
 .decay-card {
@@ -4108,7 +4110,7 @@ h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 
 .grid-line { height: 1px; background: repeating-linear-gradient(90deg, #e42718, #e42718 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
 .peel { width: 100px; height: 100px; background: #201a12; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
 .peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #e42718; z-index: -1; opacity: 0.6; }
-.showcase-footer { padding: 20px; background: #120e0a; color: #6b5b3e; text-align: center; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #120e0a; color: #6b5b3e; text-align: center; }
         """,
         "content": """
 <style>
