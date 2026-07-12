@@ -1,215 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korvia — Karibu Tukuhudumie</title>
-    <link rel="stylesheet" href="korvia.css">
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .kv-landing {
-            flex: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 48px 24px 48px 154px;
-            width: 100%;
-        }
-        .corner-controls {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 150;
-        }
-        .brand { margin-bottom: 40px; }
-        .brand h1 {
-            font-family: var(--kv-font-serif);
-            font-size: clamp(2.8rem, 7vw, 5rem);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 12px;
-        }
-        .brand .tagline {
-            font-size: 1.15rem;
-            color: var(--kv-ink-muted);
-            margin-bottom: 6px;
-        }
-        .brand .subtagline {
-            font-size: 1rem;
-            color: var(--kv-ink-muted);
-            max-width: 560px;
-        }
-        .portals {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-        .portal-card {
-            background: var(--kv-card);
-            border: 1px solid var(--kv-rule);
-            border-left: 6px solid var(--kv-accent);
-            border-radius: var(--kv-radius);
-            padding: 28px 24px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--kv-ink);
-            clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
-            transition: border-color 200ms ease, transform 200ms ease;
-        }
-        .portal-card:hover {
-            border-color: var(--kv-rule-strong);
-            border-left-color: var(--kv-accent-hover);
-            transform: translateY(-3px);
-        }
-        .portal-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-        .portal-card h2 {
-            font-family: var(--kv-font-serif);
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
-        .portal-card p {
-            font-size: 0.85rem;
-            color: var(--kv-ink-muted);
-            line-height: 1.5;
-            margin: 0;
-        }
-        .portal-rule {
-            width: 28px;
-            height: 2px;
-            background: var(--kv-accent);
-            margin: 14px auto;
-        }
-        .landing-actions {
-            margin: 32px 0;
-        }
-        .landing-actions .kv-button {
-            margin-right: 12px;
-            margin-bottom: 12px;
-        }
-        .landing-footer {
-            padding: 24px 24px 24px 154px;
-            text-align: center;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--kv-ink-muted);
-            border-top: 1px solid var(--kv-rule);
-        }
-        .kv-options-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 250ms ease;
-            z-index: 199;
-        }
-        .kv-options-backdrop.open { opacity: 1; pointer-events: auto; }
-        @media (max-width: 640px) {
-            .kv-landing { padding: 140px 20px 40px 20px; }
-            .landing-footer { padding: 24px 20px; }
-            .portals { grid-template-columns: 1fr; }
-            .corner-controls { top: 145px; right: 16px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korvia — Karibu Tukuhudumie</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: radial-gradient(circle at 80% 20%, #1e3a8a 0%, #0a0f1e 40%); color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+body::before { content: ""; position: fixed; top: 8%; right: 10%; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, #e2e8f0 40%, transparent 45%); box-shadow: 0 0 60px rgba(226,232,240,0.3); pointer-events: none; z-index: -1; }
+.logo-square { position: fixed; top: 24px; left: 24px; width: 110px; height: 110px; background: rgba(20,30,50,0.9); color: #f8fafc; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; text-align: center; border-left: 6px solid #C0C0C0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); z-index: 100; pointer-events: none; }
+.top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 18px 24px 18px 154px; background: rgba(10,15,30,0.8); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; gap: 12px; }
+.top-bar button, .top-bar a { color: #C0C0C0; text-decoration: none; background: transparent; border: 1px solid rgba(192,192,192,0.35); padding: 8px 14px; cursor: pointer; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #cbd5e1; margin-bottom: 40px; max-width: 560px; }
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+.portal-grid a { text-decoration: none; color: inherit; }
+.decay-card { background: rgba(20,30,50,0.85); padding: 28px; margin-bottom: 16px; position: relative; border-left: 6px solid #C0C0C0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); transition: transform 200ms ease, border-color 200ms ease; }
+.decay-card:hover { transform: translateY(-3px); border-left-color: #e2e8f0; }
+.gold-btn { display: inline-block; padding: 14px 28px; background: #C0C0C0; color: #0a0f1e; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none; text-decoration: none; transition: background 200ms ease; }
+.gold-btn:hover { background: #e2e8f0; }
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #C0C0C0, #C0C0C0 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: rgba(20,30,50,0.85); display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #C0C0C0; z-index: -1; opacity: 0.6; }
+.landing-footer { padding: 20px 20px 20px 154px; background: rgba(10,15,30,0.8); color: #94a3b8; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.dopamine { width: 60px; height: 60px; border-radius: 50%; box-shadow: inset -12px -5px 0 0 #C0C0C0; display: inline-block; margin-right: 16px; }
+.options-panel {
+    position: fixed; top: 0; right: 0; width: 320px; max-width: 90vw; height: 100vh;
+    background: rgba(10,15,30,0.95); backdrop-filter: blur(12px); border-left: 1px solid rgba(192,192,192,0.25);
+    transform: translateX(100%); transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1); z-index: 200; padding: 24px; overflow-y: auto;
+}
+.options-panel.open { transform: translateX(0); }
+.options-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity 250ms ease; z-index: 199; }
+.options-backdrop.open { opacity: 1; pointer-events: auto; }
+@media (max-width: 640px) {
+    .logo-square { width: 80px; height: 80px; font-size: 0.8rem; }
+    .top-bar { padding-left: 110px; }
+    .wrap { padding: 32px 20px 32px 20px; }
+    .landing-footer { padding-left: 20px; }
+}
+</style>
 </head>
-<body class="kv-ruled">
-    <div class="kv-logo-square">Korvia</div>
+<body>
+<div class="logo-square">Korvia</div>
 
-    <div class="corner-controls">
-        <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
-            <div class="kv-theme-slider" id="theme-slider"></div>
-            <button class="kv-theme-option" data-value="light">Light</button>
-            <button class="kv-theme-option" data-value="dark">Dark</button>
-            <button class="kv-theme-option" data-value="auto">Auto</button>
-        </div>
-        <button class="kv-options-toggle" id="kv-options-toggle" aria-label="Options">⚙</button>
+<nav class="top-bar">
+  <a href="showcase/">Showcase</a>
+  <button id="options-open">Options</button>
+</nav>
+
+<div class="wrap">
+  <h1>Korvia</h1>
+  <p class="desc">Karibu, tukuhudumie</p>
+  <p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+  <h2 style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:#94a3b8;margin-bottom:16px;">Choose your portal</h2>
+  <div class="portal-grid">
+    <a href="examples/client-hub.html" class="decay-card" style="text-align:center;display:block;">
+      <div style="font-size:1.8rem;margin-bottom:8px;">👤</div>
+      <h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3>
+      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p>
+    </a>
+    <a href="examples/auth.html?portal=restaurant" class="decay-card" style="text-align:center;display:block;">
+      <div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div>
+      <h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3>
+      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p>
+    </a>
+    <a href="examples/auth.html?portal=hotel" class="decay-card" style="text-align:center;display:block;">
+      <div style="font-size:1.8rem;margin-bottom:8px;">🏨</div>
+      <h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3>
+      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p>
+    </a>
+    <a href="examples/auth.html?portal=events" class="decay-card" style="text-align:center;display:block;">
+      <div style="font-size:1.8rem;margin-bottom:8px;">🎉</div>
+      <h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3>
+      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p>
+    </a>
+  </div>
+  <div style="margin:24px 0;">
+    <a href="examples/qr-generator.html" class="gold-btn">Scan QR to order</a>
+    <a href="examples/auth.html?portal=restaurant" class="gold-btn" style="margin-left:12px;">Open dashboard</a>
+  </div>
+  <h2 style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:#94a3b8;margin-bottom:16px;">Moonlight accent</h2>
+  <div class="grid-line" style="width:80%"></div>
+  <div class="peel"></div>
+  <div class="dopamine"></div>
+</div>
+
+<footer class="landing-footer">&copy; 2026 Korvia · QR-powered hospitality ecosystem · Moonlight edition</footer>
+
+<div class="options-backdrop" id="options-backdrop"></div>
+<aside class="options-panel" id="options-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(192,192,192,0.25);">
+    <h2 style="font-family:'Cinzel',serif;font-size:1.25rem;margin:0;">Options</h2>
+    <button id="options-close" style="background:transparent;border:1px solid rgba(192,192,192,0.35);color:#f8fafc;padding:6px 12px;cursor:pointer;font-size:0.75rem;">✕</button>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div>
+      <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;margin-bottom:6px;">Density</p>
+      <div style="display:flex;gap:8px;">
+        <button style="background:transparent;border:1px solid rgba(192,192,192,0.35);color:#f8fafc;padding:7px 12px;font-size:0.65rem;font-weight:600;text-transform:uppercase;cursor:pointer;">Compact</button>
+        <button style="background:#C0C0C0;border:1px solid #C0C0C0;color:#0a0f1e;padding:7px 12px;font-size:0.65rem;font-weight:600;text-transform:uppercase;cursor:pointer;">Comfortable</button>
+      </div>
     </div>
+    <div>
+      <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;margin-bottom:6px;">Language</p>
+      <select style="width:100%;padding:10px 12px;background:rgba(20,30,50,0.85);border:1px solid rgba(192,192,192,0.35);color:#f8fafc;font-family:inherit;">
+        <option>English</option>
+        <option>Kiswahili</option>
+      </select>
+    </div>
+    <div style="padding:14px 18px;border:1px solid rgba(192,192,192,0.25);border-left:3px solid #C0C0C0;font-size:0.9rem;color:#cbd5e1;">
+      These settings are visual-only in the prototype.
+    </div>
+  </div>
+</aside>
 
-    <main class="kv-landing">
-        <div class="brand">
-            <h1>Korvia</h1>
-            <p class="tagline">Karibu, tukuhudumie</p>
-            <p class="subtagline">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
-        </div>
+<script>
+(function() {
+    const openBtn = document.getElementById('options-open');
+    const closeBtn = document.getElementById('options-close');
+    const panel = document.getElementById('options-panel');
+    const backdrop = document.getElementById('options-backdrop');
 
-        <h2 class="kv-headline" style="margin-bottom:16px;">Choose your portal</h2>
-        <div class="portals">
-            <a href="examples/client-hub.html" class="portal-card">
-                <div class="portal-icon">👤</div>
-                <h2>Client</h2>
-                <div class="portal-rule"></div>
-                <p>Discover restaurants, hotels, and events using Korvia.</p>
-            </a>
-            <a href="examples/auth.html?portal=restaurant" class="portal-card">
-                <div class="portal-icon">🍽️</div>
-                <h2>Restaurant</h2>
-                <div class="portal-rule"></div>
-                <p>QR menus, table ordering, and live kitchen display.</p>
-            </a>
-            <a href="examples/auth.html?portal=hotel" class="portal-card">
-                <div class="portal-icon">🏨</div>
-                <h2>Hotel</h2>
-                <div class="portal-rule"></div>
-                <p>Room service, amenities, and guest requests.</p>
-            </a>
-            <a href="examples/auth.html?portal=events" class="portal-card">
-                <div class="portal-icon">🎉</div>
-                <h2>Events</h2>
-                <div class="portal-rule"></div>
-                <p>Weddings, parties, and conference ordering.</p>
-            </a>
-        </div>
+    function set(opened) {
+        panel.classList.toggle('open', opened);
+        backdrop.classList.toggle('open', opened);
+    }
 
-        <div class="landing-actions">
-            <a href="examples/qr-generator.html" class="kv-button">Scan QR to order</a>
-            <a href="examples/auth.html?portal=restaurant" class="kv-button kv-button-secondary">Open dashboard</a>
-        </div>
-    </main>
-
-    <footer class="landing-footer">
-        &copy; 2026 Korvia · QR-powered hospitality ecosystem
-    </footer>
-
-    <div class="kv-options-backdrop" id="kv-options-backdrop"></div>
-    <aside class="kv-options-panel" id="kv-options-panel">
-        <div class="kv-flex kv-flex-between kv-flex-center" style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--kv-rule);">
-            <h2 class="kv-title" style="font-size: 1.25rem;">Options</h2>
-            <button class="kv-options-toggle" id="kv-options-close">✕</button>
-        </div>
-        <div class="kv-flex kv-flex-col kv-gap-md">
-            <div>
-                <p class="kv-label">Density</p>
-                <div class="kv-flex kv-gap-sm">
-                    <button class="kv-button kv-button-sm kv-button-secondary">Compact</button>
-                    <button class="kv-button kv-button-sm">Comfortable</button>
-                </div>
-            </div>
-            <div>
-                <p class="kv-label">Language</p>
-                <select class="kv-select">
-                    <option>English</option>
-                    <option>Kiswahili</option>
-                </select>
-            </div>
-            <div class="kv-alert kv-alert-info" style="margin-top: 8px;">
-                These settings are visual-only in the prototype.
-            </div>
-        </div>
-    </aside>
-
-    <script src="korvia-ui.js"></script>
+    if (openBtn) openBtn.addEventListener('click', () => set(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => set(false));
+    if (backdrop) backdrop.addEventListener('click', () => set(false));
+})();
+</script>
 </body>
 </html>
