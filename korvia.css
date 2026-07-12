@@ -1,81 +1,86 @@
 /* ============================================================
-   Korvia Design System — Human / Editorial Edition
-   Ruled rectangles, warm paper, no gradients, sliding options.
+   Korvia Design System — Moonlight Edition (Direction 95)
+   Cool silver moonlight on deep navy. Ruled rectangles, no gradients on UI.
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ── Theme Tokens ─────────────────────────────────────────── */
 :root {
-    --kv-paper: #fdfbf7;
-    --kv-ink: #1c1917;
-    --kv-ink-muted: #78716c;
-    --kv-rule: #e7e5e4;
-    --kv-rule-strong: #d6d3d1;
-    --kv-card: #ffffff;
-    --kv-accent: #b45309;
-    --kv-accent-hover: #92400e;
-    --kv-accent-soft: #fff7ed;
-    --kv-success: #15803d;
-    --kv-success-soft: #f0fdf4;
-    --kv-warning: #a16207;
-    --kv-warning-soft: #fefce8;
-    --kv-danger: #b91c1c;
-    --kv-danger-soft: #fef2f2;
-    --kv-info: #0369a1;
-    --kv-info-soft: #f0f9ff;
-    --kv-glass: rgba(253, 251, 247, 0.92);
-    --kv-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    /* Moonlight palette */
+    --kv-paper: #0a0f1e;
+    --kv-ink: #f8fafc;
+    --kv-ink-muted: #94a3b8;
+    --kv-rule: rgba(192, 192, 192, 0.22);
+    --kv-rule-strong: rgba(192, 192, 192, 0.38);
+    --kv-card: rgba(20, 30, 50, 0.85);
+    --kv-card-solid: #141e32;
+    --kv-accent: #c0c0c0;
+    --kv-accent-hover: #e2e8f0;
+    --kv-accent-soft: rgba(192, 192, 192, 0.12);
+    --kv-success: #4ade80;
+    --kv-success-soft: rgba(74, 222, 128, 0.12);
+    --kv-warning: #facc15;
+    --kv-warning-soft: rgba(250, 204, 21, 0.12);
+    --kv-danger: #f87171;
+    --kv-danger-soft: rgba(248, 113, 113, 0.12);
+    --kv-info: #38bdf8;
+    --kv-info-soft: rgba(56, 189, 248, 0.12);
+    --kv-glass: rgba(10, 15, 30, 0.92);
+    --kv-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     --kv-radius: 2px;
     --kv-radius-lg: 4px;
-    --kv-font-serif: 'DM Serif Display', Georgia, serif;
+    --kv-font-serif: 'Cinzel', Georgia, serif;
     --kv-font-sans: 'Inter', system-ui, sans-serif;
 }
 
 [data-theme="dark"] {
-    --kv-paper: #1c1917;
-    --kv-ink: #faf9f6;
-    --kv-ink-muted: #a8a29e;
-    --kv-rule: #44403c;
-    --kv-rule-strong: #57534e;
-    --kv-card: #292524;
-    --kv-accent: #f59e0b;
-    --kv-accent-hover: #fbbf24;
-    --kv-accent-soft: #451a03;
-    --kv-success: #4ade80;
-    --kv-success-soft: #14532d;
-    --kv-warning: #facc15;
-    --kv-warning-soft: #422006;
-    --kv-danger: #f87171;
-    --kv-danger-soft: #450a0a;
-    --kv-info: #38bdf8;
-    --kv-info-soft: #0c4a6e;
-    --kv-glass: rgba(28, 25, 23, 0.92);
-    --kv-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    /* Deeper moonlight for explicit dark */
+    --kv-paper: #050814;
+    --kv-ink: #f1f5f9;
+    --kv-ink-muted: #64748b;
+    --kv-rule: rgba(192, 192, 192, 0.15);
+    --kv-rule-strong: rgba(192, 192, 192, 0.28);
+    --kv-card: rgba(12, 20, 36, 0.92);
+    --kv-card-solid: #0c1424;
+    --kv-accent: #a1a1aa;
+    --kv-accent-hover: #d4d4d8;
+    --kv-accent-soft: rgba(192, 192, 192, 0.10);
+    --kv-success: #86efac;
+    --kv-success-soft: rgba(134, 239, 172, 0.10);
+    --kv-warning: #fde047;
+    --kv-warning-soft: rgba(253, 224, 71, 0.10);
+    --kv-danger: #fca5a5;
+    --kv-danger-soft: rgba(252, 165, 165, 0.10);
+    --kv-info: #7dd3fc;
+    --kv-info-soft: rgba(125, 211, 252, 0.10);
+    --kv-glass: rgba(5, 8, 20, 0.95);
+    --kv-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --kv-paper: #1c1917;
-        --kv-ink: #faf9f6;
-        --kv-ink-muted: #a8a29e;
-        --kv-rule: #44403c;
-        --kv-rule-strong: #57534e;
-        --kv-card: #292524;
-        --kv-accent: #f59e0b;
-        --kv-accent-hover: #fbbf24;
-        --kv-accent-soft: #451a03;
-        --kv-success: #4ade80;
-        --kv-success-soft: #14532d;
-        --kv-warning: #facc15;
-        --kv-warning-soft: #422006;
-        --kv-danger: #f87171;
-        --kv-danger-soft: #450a0a;
-        --kv-info: #38bdf8;
-        --kv-info-soft: #0c4a6e;
-        --kv-glass: rgba(28, 25, 23, 0.92);
-        --kv-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+        --kv-paper: #050814;
+        --kv-ink: #f1f5f9;
+        --kv-ink-muted: #64748b;
+        --kv-rule: rgba(192, 192, 192, 0.15);
+        --kv-rule-strong: rgba(192, 192, 192, 0.28);
+        --kv-card: rgba(12, 20, 36, 0.92);
+        --kv-card-solid: #0c1424;
+        --kv-accent: #a1a1aa;
+        --kv-accent-hover: #d4d4d8;
+        --kv-accent-soft: rgba(192, 192, 192, 0.10);
+        --kv-success: #86efac;
+        --kv-success-soft: rgba(134, 239, 172, 0.10);
+        --kv-warning: #fde047;
+        --kv-warning-soft: rgba(253, 224, 71, 0.10);
+        --kv-danger: #fca5a5;
+        --kv-danger-soft: rgba(252, 165, 165, 0.10);
+        --kv-info: #7dd3fc;
+        --kv-info-soft: rgba(125, 211, 252, 0.10);
+        --kv-glass: rgba(5, 8, 20, 0.95);
+        --kv-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
     }
 }
 
@@ -90,8 +95,25 @@ body {
     font-size: 15px;
     line-height: 1.55;
     color: var(--kv-ink);
-    background: var(--kv-paper);
+    background: radial-gradient(circle at 80% 20%, #1e3a8a 0%, #0a0f1e 40%);
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+/* Moon glow */
+body::before {
+    content: "";
+    position: fixed;
+    top: 8%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #e2e8f0 40%, transparent 45%);
+    box-shadow: 0 0 60px rgba(226, 232, 240, 0.3);
+    pointer-events: none;
+    z-index: -1;
 }
 
 h1, h2, h3, h4, h5, h6, p { margin: 0; }
@@ -111,8 +133,11 @@ button { font-family: inherit; }
 }
 
 .kv-ruled-subtle {
-    background-image: linear-gradient(to bottom, var(--kv-rule) 1px, transparent 1px);
-    background-size: 100% 32px;
+    background-image:
+        linear-gradient(to bottom, var(--kv-rule) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, #1e3a8a 0%, transparent 40%);
+    background-size: 100% 32px, 100% 100%;
+    background-attachment: scroll, fixed;
 }
 
 /* ── Animated ruled drift ─────────────────────────────────── */
@@ -124,33 +149,13 @@ button { font-family: inherit; }
     animation: kv-drift 24s linear infinite;
 }
 
-/* ── Subtle paper grain overlay ───────────────────────────── */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-}
-
-/* ── Dopamine backgrounds (editorial confetti / dots) ─────── */
+/* ── Dopamine backgrounds (moonlight stars / dots) ─────────── */
 .kv-bg-confetti {
     background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill-opacity='0.13'%3E%3Crect x='20' y='20' width='80' height='80' rx='2' fill='%23b45309'/%3E%3Crect x='150' y='40' width='90' height='55' rx='2' fill='%2315803d'/%3E%3Crect x='50' y='160' width='120' height='80' rx='2' fill='%230369a1'/%3E%3Crect x='190' y='180' width='50' height='60' rx='2' fill='%23a16207'/%3E%3C/g%3E%3C/svg%3E"),
+        radial-gradient(circle, rgba(226, 232, 240, 0.12) 1px, transparent 1px),
         linear-gradient(to right, var(--kv-rule) 1px, transparent 1px),
         linear-gradient(to bottom, var(--kv-rule) 1px, transparent 1px);
-    background-size: 260px 260px, 80px 80px, 80px 80px;
-}
-
-[data-theme="dark"] .kv-bg-confetti {
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill-opacity='0.11'%3E%3Crect x='20' y='20' width='80' height='80' rx='2' fill='%23f59e0b'/%3E%3Crect x='150' y='40' width='90' height='55' rx='2' fill='%234ade80'/%3E%3Crect x='50' y='160' width='120' height='80' rx='2' fill='%2338bdf8'/%3E%3Crect x='190' y='180' width='50' height='60' rx='2' fill='%23facc15'/%3E%3C/g%3E%3C/svg%3E"),
-        linear-gradient(to right, var(--kv-rule) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--kv-rule) 1px, transparent 1px);
-    background-size: 260px 260px, 80px 80px, 80px 80px;
+    background-size: 24px 24px, 80px 80px, 80px 80px;
 }
 
 .kv-bg-dots {
@@ -159,6 +164,30 @@ body::after {
         linear-gradient(to right, var(--kv-rule) 1px, transparent 1px),
         linear-gradient(to bottom, var(--kv-rule) 1px, transparent 1px);
     background-size: 24px 24px, 80px 80px, 80px 80px;
+}
+
+/* ── Logo Square (fixed Korvia mark) ──────────────────────── */
+.kv-logo-square {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    width: 110px;
+    height: 110px;
+    background: var(--kv-card);
+    color: var(--kv-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--kv-font-serif);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    border-left: 6px solid var(--kv-accent);
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100;
+    pointer-events: none;
 }
 
 /* ── Container ────────────────────────────────────────────── */
@@ -201,14 +230,15 @@ body::after {
 }
 
 .kv-logo-mark {
-    width: 28px;
-    height: 28px;
-    border: 1.5px solid var(--kv-accent);
+    width: 32px;
+    height: 32px;
+    background: var(--kv-card);
+    border-left: 3px solid var(--kv-accent);
     display: grid;
     place-items: center;
     font-size: 0.95rem;
     color: var(--kv-accent);
-    border-radius: var(--kv-radius);
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
 }
 
 .kv-nav {
@@ -296,6 +326,7 @@ body::after {
 .kv-card {
     background: var(--kv-card);
     border: 1px solid var(--kv-rule);
+    border-left: 3px solid var(--kv-accent);
     border-radius: var(--kv-radius);
     padding: 24px;
     transition: border-color 200ms ease, transform 200ms ease;
@@ -303,6 +334,7 @@ body::after {
 
 .kv-card:hover {
     border-color: var(--kv-rule-strong);
+    border-left-color: var(--kv-accent-hover);
     transform: translateY(-2px);
 }
 
@@ -337,24 +369,24 @@ body::after {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     cursor: pointer;
-    border: 1.5px solid var(--kv-ink);
-    background: var(--kv-ink);
+    border: 1.5px solid var(--kv-accent);
+    background: var(--kv-accent);
     color: var(--kv-paper);
     transition: all 150ms ease;
 }
 
 .kv-button:hover {
     background: transparent;
-    color: var(--kv-ink);
+    color: var(--kv-accent);
 }
 
 .kv-button-secondary {
     background: transparent;
-    color: var(--kv-ink);
+    color: var(--kv-accent);
 }
 
 .kv-button-secondary:hover {
-    background: var(--kv-ink);
+    background: var(--kv-accent);
     color: var(--kv-paper);
 }
 
@@ -432,6 +464,7 @@ body::after {
     border-left: 3px solid var(--kv-accent);
     border-radius: var(--kv-radius);
     font-size: 0.9rem;
+    background: var(--kv-card);
 }
 
 .kv-alert-success { background: var(--kv-success-soft); border-left-color: var(--kv-success); color: var(--kv-success); }
@@ -511,7 +544,7 @@ body::after {
 }
 
 .kv-theme-option.active {
-    color: var(--kv-ink);
+    color: var(--kv-paper);
 }
 
 .kv-theme-slider {
@@ -547,7 +580,7 @@ body::after {
 .kv-options-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.45);
     opacity: 0;
     pointer-events: none;
     transition: opacity 250ms ease;
@@ -612,5 +645,11 @@ body::after {
     .kv-section-header {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .kv-logo-square {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8rem;
     }
 }

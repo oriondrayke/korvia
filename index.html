@@ -13,33 +13,26 @@
         }
         .kv-landing {
             flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 24px 48px 154px;
+            width: 100%;
+        }
+        .corner-controls {
+            position: fixed;
+            top: 24px;
+            right: 24px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 48px 24px;
+            gap: 10px;
+            z-index: 150;
         }
-        .brand {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .brand-mark {
-            width: 64px;
-            height: 64px;
-            border: 2px solid var(--kv-accent);
-            display: grid;
-            place-items: center;
-            margin: 0 auto 20px;
-            font-family: var(--kv-font-serif);
-            font-size: 2rem;
-            color: var(--kv-accent);
-            border-radius: var(--kv-radius);
-        }
+        .brand { margin-bottom: 40px; }
         .brand h1 {
             font-family: var(--kv-font-serif);
-            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            font-size: clamp(2.8rem, 7vw, 5rem);
             font-weight: 400;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
             line-height: 1;
             margin-bottom: 12px;
         }
@@ -49,37 +42,40 @@
             margin-bottom: 6px;
         }
         .brand .subtagline {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--kv-ink-muted);
+            max-width: 560px;
         }
         .portals {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
         }
         .portal-card {
             background: var(--kv-card);
             border: 1px solid var(--kv-rule);
+            border-left: 6px solid var(--kv-accent);
             border-radius: var(--kv-radius);
-            padding: 32px 24px;
+            padding: 28px 24px;
             text-align: center;
             text-decoration: none;
             color: var(--kv-ink);
+            clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
             transition: border-color 200ms ease, transform 200ms ease;
         }
         .portal-card:hover {
-            border-color: var(--kv-accent);
+            border-color: var(--kv-rule-strong);
+            border-left-color: var(--kv-accent-hover);
             transform: translateY(-3px);
         }
         .portal-icon {
             font-size: 2rem;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         .portal-card h2 {
             font-family: var(--kv-font-serif);
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 400;
             margin-bottom: 8px;
         }
@@ -87,15 +83,23 @@
             font-size: 0.85rem;
             color: var(--kv-ink-muted);
             line-height: 1.5;
+            margin: 0;
         }
         .portal-rule {
             width: 28px;
             height: 2px;
             background: var(--kv-accent);
-            margin: 16px auto;
+            margin: 14px auto;
+        }
+        .landing-actions {
+            margin: 32px 0;
+        }
+        .landing-actions .kv-button {
+            margin-right: 12px;
+            margin-bottom: 12px;
         }
         .landing-footer {
-            padding: 32px 24px;
+            padding: 24px 24px 24px 154px;
             text-align: center;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -103,22 +107,27 @@
             color: var(--kv-ink-muted);
             border-top: 1px solid var(--kv-rule);
         }
-        .corner-controls {
+        .kv-options-backdrop {
             position: fixed;
-            top: 16px;
-            right: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 150;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 250ms ease;
+            z-index: 199;
         }
+        .kv-options-backdrop.open { opacity: 1; pointer-events: auto; }
         @media (max-width: 640px) {
+            .kv-landing { padding: 140px 20px 40px 20px; }
+            .landing-footer { padding: 24px 20px; }
             .portals { grid-template-columns: 1fr; }
-            .corner-controls { top: auto; bottom: 16px; }
+            .corner-controls { top: 145px; right: 16px; }
         }
     </style>
 </head>
-<body class="kv-ruled kv-bg-confetti">
+<body class="kv-ruled">
+    <div class="kv-logo-square">Korvia</div>
+
     <div class="corner-controls">
         <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
             <div class="kv-theme-slider" id="theme-slider"></div>
@@ -131,12 +140,12 @@
 
     <main class="kv-landing">
         <div class="brand">
-            <div class="brand-mark">K</div>
             <h1>Korvia</h1>
             <p class="tagline">Karibu, tukuhudumie</p>
             <p class="subtagline">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
         </div>
 
+        <h2 class="kv-headline" style="margin-bottom:16px;">Choose your portal</h2>
         <div class="portals">
             <a href="examples/client-hub.html" class="portal-card">
                 <div class="portal-icon">👤</div>
@@ -162,6 +171,11 @@
                 <div class="portal-rule"></div>
                 <p>Weddings, parties, and conference ordering.</p>
             </a>
+        </div>
+
+        <div class="landing-actions">
+            <a href="examples/qr-generator.html" class="kv-button">Scan QR to order</a>
+            <a href="examples/auth.html?portal=restaurant" class="kv-button kv-button-secondary">Open dashboard</a>
         </div>
     </main>
 
