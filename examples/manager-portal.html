@@ -42,6 +42,19 @@
         .form-group { margin-bottom: 16px; }
         .login-btn { width: 100%; margin-top: 8px; }
     </style>
+
+    <!-- Admin auth guard -->
+    <script>
+    (function() {
+        const allowed = ["manager"];
+        const session = JSON.parse(localStorage.getItem('korvia_admin_session') || 'null');
+        const currentRole = session && session.role;
+        if (!currentRole || !allowed.includes(currentRole)) {
+            window.location.replace('admin-login.html?role=manager');
+        }
+    })();
+    </script>
+
 </head>
 <body class="kv-ruled-subtle">
     <div class="corner-controls">

@@ -68,6 +68,19 @@
             .sidebar { display: none; }
         }
     </style>
+
+    <!-- Admin auth guard -->
+    <script>
+    (function() {
+        const allowed = ["manager", "owner"];
+        const session = JSON.parse(localStorage.getItem('korvia_admin_session') || 'null');
+        const currentRole = session && session.role;
+        if (!currentRole || !allowed.includes(currentRole)) {
+            window.location.replace('admin-login.html?role=manager');
+        }
+    })();
+    </script>
+
 </head>
 <body class="kv-ruled-subtle">
     <div class="dashboard-layout">

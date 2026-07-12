@@ -168,6 +168,19 @@
             margin-bottom: 24px;
         }
     </style>
+
+    <!-- Admin auth guard -->
+    <script>
+    (function() {
+        const allowed = ["owner"];
+        const session = JSON.parse(localStorage.getItem('korvia_admin_session') || 'null');
+        const currentRole = session && session.role;
+        if (!currentRole || !allowed.includes(currentRole)) {
+            window.location.replace('admin-login.html?role=owner');
+        }
+    })();
+    </script>
+
 </head>
 <body class="kv-ruled-subtle">
     <header class="kv-header">
@@ -176,11 +189,14 @@
                 <span class="kv-logo-mark">K</span>
                 Owner Dashboard
             </div>
-            <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
-                <div class="kv-theme-slider"></div>
-                <button class="kv-theme-option" data-value="light">Light</button>
-                <button class="kv-theme-option" data-value="dark">Dark</button>
-                <button class="kv-theme-option" data-value="auto">Auto</button>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="kv-button kv-button-sm kv-button-secondary" onclick="adminLogout()">Log out</button>
+                <div class="kv-theme-switch" id="kv-theme-switch" aria-label="Theme">
+                    <div class="kv-theme-slider"></div>
+                    <button class="kv-theme-option" data-value="light">Light</button>
+                    <button class="kv-theme-option" data-value="dark">Dark</button>
+                    <button class="kv-theme-option" data-value="auto">Auto</button>
+                </div>
             </div>
         </div>
     </header>
@@ -424,6 +440,11 @@
         function endShift() {
             localStorage.removeItem('korvia_staff_session');
             render();
+        }
+
+        function adminLogout() {
+            localStorage.removeItem('korvia_admin_session');
+            window.location.href = 'admin-login.html?role=owner';
         }
 
         render();
