@@ -4136,7 +4136,1192 @@ a { text-decoration: none; color: inherit; }
 <div class="grid-line" style="width:80%"></div><div class="peel"></div>
 </div>
 """
-    }
+    },
+    {
+        "id": "neonglitch",
+        "name": "Neon Glitch",
+        "tagline": "Black canvas split by cyan and magenta dopamine rails.",
+        "desc": "Neon Glitch takes the Direction 53 layout and pumps it with cyan voltage and magenta static.",
+        "palette": ['#050505', '#00F0FF', '#FF00AA'],
+        "shapes": ['logo-square', 'cyan-bar', 'magenta-dot'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #050505 0%, #0a0a12 100%);
+    color: #e6f7ff;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #0d0d14; color: #e6f7ff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #00F0FF;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #08080f;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #00F0FF; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #7aa7b5; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #0d0d14; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #00F0FF;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #00F0FF;
+    color: #000; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #00F0FF, #00F0FF 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #0d0d14; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #00F0FF; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #08080f; color: #7aa7b5; text-align: center; }
+.dopamine { width:120px;height:16px;background:linear-gradient(90deg,#00F0FF,#FF00AA);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "sunsetpop",
+        "name": "Sunset Pop",
+        "tagline": "Warm gradient dusk with tangerine energy.",
+        "desc": "Sunset Pop soaks the Direction 53 layout in tangerine, amber, and deep plum shadows.",
+        "palette": ['#2A1515', '#FF6B35', '#F7C548'],
+        "shapes": ['logo-square', 'orange-bar', 'gold-pill'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #2A1515 0%, #3D1E1E 100%);
+    color: #fff0e6;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #241313; color: #fff0e6;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #FF6B35;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #1f0f0f;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #FF6B35; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #c98d75; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #241313; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #FF6B35;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #FF6B35;
+    color: #1a0a05; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #FF6B35, #FF6B35 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #241313; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #FF6B35; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #1f0f0f; color: #c98d75; text-align: center; }
+.dopamine { width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#F7C548,#FF6B35);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "mintchoco",
+        "name": "Mint Choco",
+        "tagline": "Dark chocolate softened by electric mint.",
+        "desc": "Mint Choco pairs the Direction 53 grid with rich chocolate browns and a fresh mint accent.",
+        "palette": ['#1F1612', '#7FFFD4', '#5C4033'],
+        "shapes": ['logo-square', 'mint-stripe', 'choco-dot'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1F1612 0%, #2a1e18 100%);
+    color: #f0fff7;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #261c17; color: #f0fff7;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #7FFFD4;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #16100d;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #7FFFD4; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #8fb8a8; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #261c17; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #7FFFD4;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #7FFFD4;
+    color: #000; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #7FFFD4, #7FFFD4 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #261c17; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #7FFFD4; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #16100d; color: #8fb8a8; text-align: center; }
+.dopamine { width:100px;height:12px;background:repeating-linear-gradient(90deg,#7FFFD4,#7FFFD4 10px,transparent 10px,transparent 18px);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "lavenderhaze",
+        "name": "Lavender Haze",
+        "tagline": "Deep purple calm with a lavender spark.",
+        "desc": "Lavender Haze drapes the Direction 53 layout in midnight violet and soft lavender highlights.",
+        "palette": ['#1A1025', '#B18CFF', '#7C3AED'],
+        "shapes": ['logo-square', 'lavender-bar', 'haze-glow'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1A1025 0%, #241338 100%);
+    color: #f3e8ff;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #1e1229; color: #f3e8ff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #B18CFF;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #120a1a;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #B18CFF; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #9b8db5; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #1e1229; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #B18CFF;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #B18CFF;
+    color: #1a1025; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #B18CFF, #B18CFF 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #1e1229; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #B18CFF; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #120a1a; color: #9b8db5; text-align: center; }
+.dopamine { width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#B18CFF,#7C3AED);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "olivegold",
+        "name": "Olive Gold",
+        "tagline": "Military olive charged with gold voltage.",
+        "desc": "Olive Gold gives the Direction 53 layout an underground bunker feel with olive drab and antique gold.",
+        "palette": ['#1A1A10', '#B5BD68', '#D4AF37'],
+        "shapes": ['logo-square', 'olive-bar', 'gold-tick'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1A1A10 0%, #252516 100%);
+    color: #f4f3d9;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #202013; color: #f4f3d9;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #B5BD68;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #11110a;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #B5BD68; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #9ea36b; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #202013; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #B5BD68;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #B5BD68;
+    color: #1a1a10; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #B5BD68, #B5BD68 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #202013; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #B5BD68; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #11110a; color: #9ea36b; text-align: center; }
+.dopamine { width:90px;height:90px;background:repeating-linear-gradient(45deg,#B5BD68,#B5BD68 4px,#202013 4px,#202013 8px);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "berrycream",
+        "name": "Berry Cream",
+        "tagline": "Dark berry base with a cream swirl.",
+        "desc": "Berry Cream softens the Direction 53 layout with plum darkness, cream text, and a ripe berry accent.",
+        "palette": ['#1F0F1A', '#D81B60', '#FFF5E6'],
+        "shapes": ['logo-square', 'berry-bar', 'cream-pill'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1F0F1A 0%, #2a1522 100%);
+    color: #FFF5E6;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #241220; color: #FFF5E6;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #D81B60;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #150a12;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #D81B60; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #c9929e; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #241220; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #D81B60;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #D81B60;
+    color: #fff5e6; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #D81B60, #D81B60 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #241220; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #D81B60; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #150a12; color: #c9929e; text-align: center; }
+.dopamine { width:120px;height:14px;border-radius:7px;background:linear-gradient(90deg,#D81B60,#FFF5E6);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "tealdusk",
+        "name": "Teal Dusk",
+        "tagline": "Night dive into saturated teal.",
+        "desc": "Teal Dusk pulls the Direction 53 layout under deep water with dark teal depths and a bright surface accent.",
+        "palette": ['#0F1F1F', '#2DD4BF', '#115E59'],
+        "shapes": ['logo-square', 'teal-bar', 'dusk-wave'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0F1F1F 0%, #142b2b 100%);
+    color: #e6fffa;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #132525; color: #e6fffa;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #2DD4BF;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #0a1616;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #2DD4BF; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #6abfb5; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #132525; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #2DD4BF;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #2DD4BF;
+    color: #000; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #2DD4BF, #2DD4BF 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #132525; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #2DD4BF; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #0a1616; color: #6abfb5; text-align: center; }
+.dopamine { width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid #2DD4BF;display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "cobaltrush",
+        "name": "Cobalt Rush",
+        "tagline": "Midnight blue lit by cobalt lightning.",
+        "desc": "Cobalt Rush runs the Direction 53 layout through a deep-blue hour with electric cobalt edges.",
+        "palette": ['#0A1220', '#3B82F6', '#60A5FA'],
+        "shapes": ['logo-square', 'cobalt-bar', 'rush-bolt'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0A1220 0%, #0f1a2e 100%);
+    color: #e8f1ff;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #0d1626; color: #e8f1ff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #3B82F6;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #060c16;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #3B82F6; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #7ca1d8; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #0d1626; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #3B82F6;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #3B82F6;
+    color: #fff; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #3B82F6, #3B82F6 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #0d1626; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #3B82F6; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #060c16; color: #7ca1d8; text-align: center; }
+.dopamine { width:12px;height:80px;background:#3B82F6;box-shadow:0 0 12px #60A5FA;display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "rosewood",
+        "name": "Rosewood",
+        "tagline": "Polished dark wood with a rose highlight.",
+        "desc": "Rosewood warms the Direction 53 layout with dark rosewood grain tones and a dusty-rose accent.",
+        "palette": ['#2A1518', '#FF6F91', '#5C2A32'],
+        "shapes": ['logo-square', 'rose-bar', 'wood-dot'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #2A1518 0%, #351a1e 100%);
+    color: #fff0f3;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #30181c; color: #fff0f3;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #FF6F91;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #1e0f12;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #FF6F91; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #c98a97; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #30181c; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #FF6F91;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #FF6F91;
+    color: #2a1518; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #FF6F91, #FF6F91 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #30181c; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #FF6F91; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #1e0f12; color: #c98a97; text-align: center; }
+.dopamine { width:70px;height:70px;border-radius:50%;background:#FF6F91;opacity:.85;display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "limewire",
+        "name": "Lime Wire",
+        "tagline": "Dark forest floor wired with lime.",
+        "desc": "Lime Wire roots the Direction 53 layout in dark green soil and threads it with acid lime.",
+        "palette": ['#0F1A0F', '#84CC16', '#3F6212'],
+        "shapes": ['logo-square', 'lime-bar', 'wire-zig'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0F1A0F 0%, #152415 100%);
+    color: #f0ffe6;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #132113; color: #f0ffe6;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #84CC16;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #0a120a;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #84CC16; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #8fb86e; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #132113; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #84CC16;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #84CC16;
+    color: #0f1a0f; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #84CC16, #84CC16 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #132113; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #84CC16; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #0a120a; color: #8fb86e; text-align: center; }
+.dopamine { width:100px;height:8px;background:#84CC16;border-radius:4px;box-shadow:0 0 10px #84CC16;display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "coralreef",
+        "name": "Coral Reef",
+        "tagline": "Deep navy reef with living coral.",
+        "desc": "Coral Reef sinks the Direction 53 layout into deep navy water and lets coral accents glow.",
+        "palette": ['#0F172A', '#FF7F50', '#1E293B'],
+        "shapes": ['logo-square', 'coral-bar', 'reef-bubble'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0F172A 0%, #162033 100%);
+    color: #fff3ef;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #121b2e; color: #fff3ef;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #FF7F50;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #0a101f;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #FF7F50; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #c99a8a; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #121b2e; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #FF7F50;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #FF7F50;
+    color: #0f172a; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #FF7F50, #FF7F50 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #121b2e; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #FF7F50; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #0a101f; color: #c99a8a; text-align: center; }
+.dopamine { width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FF7F50,#c94f28);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "icebreaker",
+        "name": "Ice Breaker",
+        "tagline": "Near-black frost with an ice-blue crack.",
+        "desc": "Ice Breaker freezes the Direction 53 layout in near-black ice and fractures it with a cold blue accent.",
+        "palette": ['#111827', '#93C5FD', '#1E3A8A'],
+        "shapes": ['logo-square', 'ice-bar', 'frost-ring'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #111827 0%, #182435 100%);
+    color: #eff6ff;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #151d2b; color: #eff6ff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #93C5FD;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #0c111b;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #93C5FD; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #8ba6c7; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #151d2b; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #93C5FD;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #93C5FD;
+    color: #111827; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #93C5FD, #93C5FD 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #151d2b; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #93C5FD; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #0c111b; color: #8ba6c7; text-align: center; }
+.dopamine { width:90px;height:90px;border:2px solid #93C5FD;border-radius:50%;display:inline-block;margin-right:16px;position:relative; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "ambernight",
+        "name": "Amber Night",
+        "tagline": "Pitch black warmed by glowing amber.",
+        "desc": "Amber Night keeps the Direction 53 layout in pure darkness and lights it with molten amber.",
+        "palette": ['#1F140A', '#F59E0B', '#78350F'],
+        "shapes": ['logo-square', 'amber-bar', 'night-glow'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1F140A 0%, #2a1b0e 100%);
+    color: #fffbeb;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #24170c; color: #fffbeb;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #F59E0B;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #150d06;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #F59E0B; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #cfa876; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #24170c; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #F59E0B;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #F59E0B;
+    color: #1f140a; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #F59E0B, #F59E0B 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #24170c; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #F59E0B; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #150d06; color: #cfa876; text-align: center; }
+.dopamine { width:120px;height:14px;background:linear-gradient(90deg,#F59E0B,#78350F);border-radius:7px;display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "bubblegumgrunge",
+        "name": "Bubblegum Grunge",
+        "tagline": "Charcoal concrete splashed with bubblegum and cyan.",
+        "desc": "Bubblegum Grunge smears the Direction 53 layout with hot pink and cyan against dirty charcoal.",
+        "palette": ['#1F1A24', '#EC4899', '#22D3EE'],
+        "shapes": ['logo-square', 'pink-bar', 'cyan-splash'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1F1A24 0%, #28222e 100%);
+    color: #fff0f8;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #221d27; color: #fff0f8;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #EC4899;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #17131c;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #EC4899; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #c996b3; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #221d27; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #EC4899;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #EC4899;
+    color: #1f1a24; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #EC4899, #EC4899 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #221d27; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #EC4899; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #17131c; color: #c996b3; text-align: center; }
+.dopamine { width:80px;height:80px;background:linear-gradient(135deg,#EC4899,#22D3EE);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
+    {
+        "id": "forestfunk",
+        "name": "Forest Funk",
+        "tagline": "Dark forest floor with moss and earth sparks.",
+        "desc": "Forest Funk grounds the Direction 53 layout in dark forest green and accents it with moss and stone.",
+        "palette": ['#0F1F15', '#86EFAC', '#A8A29E'],
+        "shapes": ['logo-square', 'moss-bar', 'stone-dot'],
+        "css": """
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
+* { box-sizing: border-box; }
+body {
+    margin: 0; font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0F1F15 0%, #152a1d 100%);
+    color: #f0fdf4;
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+}
+.logo-square {
+    position: fixed; top: 24px; left: 24px;
+    width: 110px; height: 110px; background: #12241a; color: #f0fdf4;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em;
+    font-weight: 700; text-transform: uppercase; text-align: center;
+    border-left: 6px solid #86EFAC;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+    z-index: 100; pointer-events: none;
+}
+.showcase-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 24px 18px 154px; background: #0a160f;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
+}
+.showcase-nav a { color: #86EFAC; text-decoration: none; }
+.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
+h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
+.desc { color: #8fb89d; margin-bottom: 40px; max-width: 560px; }
+.decay-card {
+    background: #12241a; padding: 28px; margin-bottom: 16px;
+    position: relative; border-left: 6px solid #86EFAC;
+    clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%);
+}
+.gold-btn {
+    display: inline-block; padding: 14px 28px; background: #86EFAC;
+    color: #0f1f15; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none;
+}
+.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #86EFAC, #86EFAC 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
+.peel { width: 100px; height: 100px; background: #12241a; display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
+.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #86EFAC; z-index: -1; opacity: 0.6; }
+.showcase-footer { padding: 20px 20px 20px 154px; background: #0a160f; color: #8fb89d; text-align: center; }
+.dopamine { width:100px;height:14px;border-radius:7px;background:repeating-linear-gradient(90deg,#86EFAC,#86EFAC 8px,#A8A29E 8px,#A8A29E 16px);display:inline-block;margin-right:16px; }
+        
+        """,
+        "content": """
+
+<style>
+.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+a { text-decoration: none; color: inherit; }
+</style>
+<div class="logo-square">Korvia</div>
+<div class="wrap">
+<div style="text-align:right;margin-bottom:16px;"><button class="gold-btn">Options</button></div>
+<h1>Korvia</h1>
+<p class="desc">Karibu, tukuhudumie</p>
+<p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
+<h2>Choose your portal</h2>
+<div class="portal-grid">
+<a href="#client" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">👤</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p></a>
+<a href="#restaurant" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p></a>
+<a href="#hotel" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🏨</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p></a>
+<a href="#events" class="decay-card" style="text-align:center;display:block;"><div style="font-size:1.8rem;margin-bottom:8px;">🎉</div><h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3><p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p></a>
+</div>
+<div style="margin:24px 0;"><a href="#" class="gold-btn">Scan QR to order</a><a href="#" class="gold-btn" style="margin-left:12px;">Open dashboard</a></div>
+<h2>Direction accent</h2>
+<div class="grid-line" style="width:80%"></div><div class="peel"></div><div class="dopamine"></div>
+</div>
+
+        """
+    },
 ]
 
 BASE = """<!DOCTYPE html>
@@ -4194,7 +5379,7 @@ footer { padding: 32px; text-align: center; color: #78716c; font-size: 0.85rem; 
 <body>
 <header>
     <h1>Korvia Design Direction Showcase</h1>
-    <p class="lead">Fifty-three human interface directions for Korvia — a QR-first hospitality operating system for East Africa.</p>
+    <p class="lead">Sixty-eight human interface directions for Korvia — a QR-first hospitality operating system for East Africa.</p>
 </header>
 <main>
     <div class="grid">
