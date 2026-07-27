@@ -1,137 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Korvia — Karibu Tukuhudumie</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Cinzel:wght@400;700&display=swap');
-* { box-sizing: border-box; }
-body { margin: 0; font-family: 'Inter', sans-serif; background: radial-gradient(circle at 80% 20%, #1e3a8a 0%, #0a0f1e 40%); color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
-body::before { content: ""; position: fixed; top: 8%; right: 10%; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, #e2e8f0 40%, transparent 45%); box-shadow: 0 0 60px rgba(226,232,240,0.3); pointer-events: none; z-index: -1; }
-.logo-square { position: fixed; top: 24px; left: 24px; width: 110px; height: 110px; background: rgba(20,30,50,0.9); color: #f8fafc; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; text-align: center; border-left: 6px solid #C0C0C0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); z-index: 100; pointer-events: none; }
-.top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 18px 24px 18px 154px; background: rgba(10,15,30,0.8); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; gap: 12px; }
-.top-bar button, .top-bar a { color: #C0C0C0; text-decoration: none; background: transparent; border: 1px solid rgba(192,192,192,0.35); padding: 8px 14px; cursor: pointer; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-.wrap { flex: 1; max-width: 1000px; margin: 0 auto; padding: 48px 24px 48px 154px; width: 100%; }
-h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem, 7vw, 5rem); margin: 0 0 12px; }
-.desc { color: #cbd5e1; margin-bottom: 40px; max-width: 560px; }
-.portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
-.portal-grid a { text-decoration: none; color: inherit; }
-.decay-card { background: rgba(20,30,50,0.85); padding: 28px; margin-bottom: 16px; position: relative; border-left: 6px solid #C0C0C0; clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 2% 98%); transition: transform 200ms ease, border-color 200ms ease; }
-.decay-card:hover { transform: translateY(-3px); border-left-color: #e2e8f0; }
-.gold-btn { display: inline-block; padding: 14px 28px; background: #C0C0C0; color: #0a0f1e; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; cursor: pointer; border: none; text-decoration: none; transition: background 200ms ease; }
-.gold-btn:hover { background: #e2e8f0; }
-.grid-line { height: 1px; background: repeating-linear-gradient(90deg, #C0C0C0, #C0C0C0 20px, transparent 20px, transparent 30px); margin-bottom: 24px; }
-.peel { width: 100px; height: 100px; background: rgba(20,30,50,0.85); display: inline-block; margin-right: 16px; margin-bottom: 24px; position: relative; }
-.peel::after { content: ""; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid #C0C0C0; z-index: -1; opacity: 0.6; }
-.landing-footer { padding: 20px 20px 20px 154px; background: rgba(10,15,30,0.8); color: #94a3b8; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
-.dopamine { width: 60px; height: 60px; border-radius: 50%; box-shadow: inset -12px -5px 0 0 #C0C0C0; display: inline-block; margin-right: 16px; }
-.options-panel {
-    position: fixed; top: 0; right: 0; width: 320px; max-width: 90vw; height: 100vh;
-    background: rgba(10,15,30,0.95); backdrop-filter: blur(12px); border-left: 1px solid rgba(192,192,192,0.25);
-    transform: translateX(100%); transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1); z-index: 200; padding: 24px; overflow-y: auto;
-}
-.options-panel.open { transform: translateX(0); }
-.options-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none; transition: opacity 250ms ease; z-index: 199; }
-.options-backdrop.open { opacity: 1; pointer-events: auto; }
-@media (max-width: 640px) {
-    .logo-square { width: 80px; height: 80px; font-size: 0.8rem; }
-    .top-bar { padding-left: 110px; }
-    .wrap { padding: 32px 20px 32px 20px; }
-    .landing-footer { padding-left: 20px; }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Korvia Studio creates professional websites for schools, NGOs, healthcare, hospitality, institutions and businesses.">
+  <meta name="theme-color" content="#111b18">
+  <title>Korvia Studio — Websites shaped around your organisation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#13201c;--paper:#f7f4ed;--cream:#ebe5d8;--green:#173f34;--lime:#c8ef69;--orange:#ef784c;--line:rgba(19,32,28,.16);--muted:#62706a;--white:#fff;--shadow:0 24px 60px rgba(17,32,27,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.55}button,a{font:inherit}a{color:inherit}.shell{width:min(1180px,calc(100% - 40px));margin:auto}.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:.78rem;font-weight:700}.dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+    header{position:sticky;top:0;z-index:20;background:rgba(247,244,237,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{text-decoration:none;font-family:Manrope,sans-serif;font-size:1.16rem;font-weight:800;letter-spacing:-.04em}.brand span{color:var(--orange)}.navlinks{display:flex;align-items:center;gap:26px}.navlinks a{text-decoration:none;font-size:.86rem;font-weight:700}.nav-cta,.button{display:inline-flex;justify-content:center;align-items:center;gap:9px;border-radius:999px;text-decoration:none;font-weight:800;border:1px solid var(--ink);padding:13px 19px;transition:.2s ease}.nav-cta,.button.dark{background:var(--ink);color:white}.button.light{background:white}.button:hover,.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(19,32,28,.14)}
+    .hero{padding:76px 0 54px}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}.hero h1{font:800 clamp(3.2rem,7vw,6.7rem)/.94 Manrope,sans-serif;letter-spacing:-.075em;margin:22px 0 28px;max-width:820px}.hero h1 em{font-style:normal;color:var(--green);position:relative}.hero h1 em:after{content:"";position:absolute;left:3%;right:0;bottom:-5px;height:11px;background:var(--lime);z-index:-1;transform:rotate(-1deg)}.lead{font-size:1.16rem;color:var(--muted);max-width:660px;margin:0 0 30px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.micro{margin-top:22px;font-size:.82rem;color:var(--muted)}
+    .guide-card{background:var(--green);color:white;border-radius:30px;padding:34px;box-shadow:var(--shadow);position:relative;overflow:hidden}.guide-card:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:var(--lime);right:-105px;top:-95px;opacity:.9}.guide-card h2{font:700 1.65rem/1.15 Manrope,sans-serif;margin:12px 0 28px;max-width:360px;position:relative}.steps{display:grid;gap:12px;position:relative}.step{display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:14px}.step b{display:grid;place-items:center;width:38px;height:38px;background:var(--lime);color:var(--ink);border-radius:50%}.step strong{display:block;margin:1px 0 3px}.step small{color:#cbd8d3}.guide-note{margin-top:18px;color:#dce6e2;font-size:.8rem}
+    .trustbar{border-block:1px solid var(--line);padding:19px 0}.trustrow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.84rem;font-weight:700}.trustrow span:before{content:"✓";color:var(--green);margin-right:8px}
+    section{padding:92px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:36px}.section-head h2{font:800 clamp(2.2rem,5vw,4.2rem)/1 Manrope,sans-serif;letter-spacing:-.06em;margin:13px 0 0;max-width:720px}.section-head p{max-width:420px;color:var(--muted);margin:0}.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.sector{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.48);padding:26px;text-align:left;cursor:pointer;color:var(--ink);transition:.2s}.sector:hover,.sector.active{background:white;transform:translateY(-4px);box-shadow:0 18px 40px rgba(19,32,28,.08);border-color:var(--green)}.sector-icon{font-size:1.6rem}.sector h3{font:800 1.12rem Manrope,sans-serif;margin:22px 0 7px}.sector p{font-size:.86rem;color:var(--muted);margin:0}.sector-arrow{display:block;margin-top:22px;font-weight:800}
+    #designs{background:var(--cream)}.filter-line{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}.filter{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 14px;font-weight:700;cursor:pointer}.filter.active{background:var(--ink);color:white}.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.design-card{background:white;border-radius:24px;overflow:hidden;box-shadow:0 10px 28px rgba(19,32,28,.07);display:flex;flex-direction:column}.preview{height:220px;padding:20px;position:relative;overflow:hidden}.preview.one{background:#dce7f8}.preview.two{background:#dce8d2}.preview.three{background:#f1d4c7}.preview.four{background:#252d49}.preview.five{background:#f1e6bd}.preview.six{background:#d7d0ee}.browser{height:100%;background:white;border-radius:9px;box-shadow:0 13px 30px rgba(0,0,0,.14);overflow:hidden}.browser-top{height:22px;background:#f0f0ed;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:4px;padding-left:9px}.browser-top i{width:5px;height:5px;border-radius:50%;background:#c5c5c5}.mock{padding:14px}.mock-brand{font:800 .65rem Manrope,sans-serif}.mock-hero{height:70px;border-radius:6px;background:var(--green);margin:12px 0;display:flex;align-items:end;padding:9px;color:white;font:700 .8rem Manrope,sans-serif}.mock-lines{display:grid;grid-template-columns:1.2fr .8fr;gap:7px}.mock-lines span{height:32px;border-radius:5px;background:#eef0ec}.design-copy{padding:22px;display:flex;flex:1;flex-direction:column}.tag{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--orange)}.design-copy h3{font:800 1.22rem Manrope,sans-serif;margin:8px 0}.design-copy p{color:var(--muted);font-size:.87rem;margin:0 0 20px}.features{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}.features span{font-size:.68rem;background:var(--paper);border-radius:999px;padding:6px 9px}.card-actions{display:flex;gap:8px;padding:0 22px 22px}.card-actions a{flex:1;text-align:center;text-decoration:none;font-size:.78rem;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:10px}.card-actions a:last-child{background:var(--ink);color:white}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden}.process{background:var(--paper);padding:28px;min-height:230px}.process b{font:800 3rem Manrope,sans-serif;color:var(--orange)}.process h3{font:800 1rem Manrope,sans-serif;margin:28px 0 8px}.process p{font-size:.84rem;color:var(--muted);margin:0}.promise{margin-top:34px;background:var(--lime);border-radius:22px;padding:23px 28px;display:flex;justify-content:space-between;gap:24px;align-items:center}.promise strong{font:800 1.15rem Manrope,sans-serif}.promise span{font-size:.87rem}
+    .contact{padding-top:20px}.contact-box{background:var(--ink);color:white;border-radius:34px;padding:58px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;overflow:hidden}.contact-box:after{content:"";position:absolute;width:260px;height:260px;border:54px solid var(--orange);border-radius:50%;right:-130px;bottom:-130px;opacity:.65}.contact h2{font:800 clamp(2.6rem,5vw,5rem)/.98 Manrope,sans-serif;letter-spacing:-.065em;margin:14px 0 20px}.contact p{color:#bac7c2;max-width:590px}.contact-actions{display:grid;gap:12px;position:relative;z-index:2}.contact-actions a{display:flex;align-items:center;justify-content:space-between;background:white;color:var(--ink);text-decoration:none;border-radius:18px;padding:20px;font-weight:800}.contact-actions a:first-child{background:var(--lime)}.contact-actions small{display:block;font-weight:500;color:var(--muted)}footer{padding:34px 0}.foot{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:.82rem}.float-wa{position:fixed;right:18px;bottom:18px;z-index:25;width:58px;height:58px;border-radius:50%;background:#25d366;color:#081f11;display:grid;place-items:center;text-decoration:none;font-weight:900;box-shadow:0 14px 35px rgba(0,0,0,.22)}
+    @media(max-width:900px){.hero-grid,.contact-box{grid-template-columns:1fr}.sector-grid,.design-grid{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}.navlinks a:not(.nav-cta){display:none}}@media(max-width:600px){.shell{width:min(100% - 24px,1180px)}nav{height:68px}.hero{padding-top:48px}.hero h1{font-size:3.15rem}.guide-card{padding:24px}.sector-grid,.design-grid,.process-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:20px}.contact-box{padding:32px 24px}.promise,.foot{align-items:flex-start;flex-direction:column}.preview{height:190px}section{padding:70px 0}.nav-cta{padding:10px 13px;font-size:.75rem}}
+  </style>
 </head>
 <body>
-<div class="logo-square">Korvia</div>
+  <header><nav class="shell"><a class="brand" href="#top">Korvia <span>Studio</span></a><div class="navlinks"><a href="#sectors">Find your website</a><a href="#designs">View designs</a><a href="#process">How it works</a><a class="nav-cta" href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20website%20for%20my%20organisation." target="_blank" rel="noopener">Discuss on WhatsApp ↗</a></div></nav></header>
 
-<nav class="top-bar">
-  <a href="showcase/">Showcase</a>
-  <button id="options-open">Options</button>
-</nav>
+  <main id="top">
+    <section class="hero"><div class="shell hero-grid"><div><span class="pill"><i class="dot"></i> Websites for real organisations</span><h1>Your work deserves a website people can <em>trust.</em></h1><p class="lead">Explore website directions for your sector, choose what feels right, and let Korvia Studio shape it around your organisation. We prepare a free first demo before any further discussion.</p><div class="hero-actions"><a class="button dark" href="#sectors">Find my website direction ↓</a><a class="button light" href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20would%20like%20a%20free%20website%20demo." target="_blank" rel="noopener">Request a free demo</a></div><p class="micro">No obligation · Mobile-ready · Built around your organisation</p></div><aside class="guide-card"><span class="eyebrow">Your guided visit</span><h2>You do not need to know web design. Start with what your organisation does.</h2><div class="steps"><div class="step"><b>1</b><div><strong>Choose your sector</strong><small>School, NGO, healthcare, hospitality, institution or business.</small></div></div><div class="step"><b>2</b><div><strong>Explore visual directions</strong><small>See layouts, content ideas and features that fit your audience.</small></div></div><div class="step"><b>3</b><div><strong>Request your own demo</strong><small>We adapt your chosen direction using your name, mission and details.</small></div></div></div><p class="guide-note">Keep scrolling—we will guide you at every step.</p></aside></div></section>
 
-<div class="wrap">
-  <h1>Korvia</h1>
-  <p class="desc">Karibu, tukuhudumie</p>
-  <p style="margin:0 0 32px; font-size:1.05rem; opacity:.85; max-width:640px;">Welcome. Order, pay, and manage — all through one QR ecosystem.</p>
-  <h2 style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:#94a3b8;margin-bottom:16px;">Choose your portal</h2>
-  <div class="portal-grid">
-    <a href="examples/client-hub.html" class="decay-card" style="text-align:center;display:block;">
-      <div style="font-size:1.8rem;margin-bottom:8px;">👤</div>
-      <h3 style="margin:0 0 6px;font-size:1.15rem;">Client</h3>
-      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Discover restaurants, hotels, and events using Korvia.</p>
-    </a>
-    <a href="examples/auth.html?portal=restaurant" class="decay-card" style="text-align:center;display:block;">
-      <div style="font-size:1.8rem;margin-bottom:8px;">🍽️</div>
-      <h3 style="margin:0 0 6px;font-size:1.15rem;">Restaurant</h3>
-      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">QR menus, table ordering, and live kitchen display.</p>
-    </a>
-    <a href="examples/auth.html?portal=hotel" class="decay-card" style="text-align:center;display:block;">
-      <div style="font-size:1.8rem;margin-bottom:8px;">🏨</div>
-      <h3 style="margin:0 0 6px;font-size:1.15rem;">Hotel</h3>
-      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Room service, amenities, and guest requests.</p>
-    </a>
-    <a href="examples/auth.html?portal=events" class="decay-card" style="text-align:center;display:block;">
-      <div style="font-size:1.8rem;margin-bottom:8px;">🎉</div>
-      <h3 style="margin:0 0 6px;font-size:1.15rem;">Events</h3>
-      <p style="margin:0;font-size:.9rem;line-height:1.4;opacity:.9;">Weddings, parties, and conference ordering.</p>
-    </a>
-  </div>
-  <div style="margin:24px 0;">
-    <a href="examples/qr-generator.html" class="gold-btn">Scan QR to order</a>
-    <a href="examples/auth.html?portal=restaurant" class="gold-btn" style="margin-left:12px;">Open dashboard</a>
-  </div>
-  <h2 style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:#94a3b8;margin-bottom:16px;">Moonlight accent</h2>
-  <div class="grid-line" style="width:80%"></div>
-  <div class="peel"></div>
-  <div class="dopamine"></div>
-</div>
+    <div class="trustbar"><div class="shell trustrow"><span>Designed for phones first</span><span>Clear English or Kiswahili content</span><span>Your identity, not a generic template</span><span>Free initial demonstration</span></div></div>
 
-<footer class="landing-footer">&copy; 2026 Korvia · QR-powered hospitality ecosystem · Moonlight edition</footer>
+    <section id="sectors"><div class="shell"><div class="section-head"><div><span class="eyebrow">Step 1 · Choose your path</span><h2>What kind of organisation are you building for?</h2></div><p>Select the closest match. We will take you directly to design directions made for that audience.</p></div><div class="sector-grid">
+      <button class="sector" data-sector="school"><span class="sector-icon">✦</span><h3>Schools & education</h3><p>Admissions, academics, announcements, galleries and parent information.</p><span class="sector-arrow">View school directions →</span></button>
+      <button class="sector" data-sector="ngo"><span class="sector-icon">◎</span><h3>NGOs & donor organisations</h3><p>Mission, programmes, impact, reports, partnerships and donation journeys.</p><span class="sector-arrow">View NGO directions →</span></button>
+      <button class="sector" data-sector="health"><span class="sector-icon">＋</span><h3>Healthcare & pharmacies</h3><p>Services, practitioners, appointments, patient guidance and locations.</p><span class="sector-arrow">View healthcare directions →</span></button>
+      <button class="sector" data-sector="hospitality"><span class="sector-icon">⌂</span><h3>Hotels & hospitality</h3><p>Rooms, menus, experiences, bookings, events and guest information.</p><span class="sector-arrow">View hospitality directions →</span></button>
+      <button class="sector" data-sector="institution"><span class="sector-icon">▦</span><h3>Government & institutions</h3><p>Public services, notices, documents, leadership and citizen access.</p><span class="sector-arrow">View institution directions →</span></button>
+      <button class="sector" data-sector="business"><span class="sector-icon">↗</span><h3>Businesses & companies</h3><p>Capabilities, products, credibility, enquiries and company profiles.</p><span class="sector-arrow">View business directions →</span></button>
+    </div></div></section>
 
-<div class="options-backdrop" id="options-backdrop"></div>
-<aside class="options-panel" id="options-panel">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(192,192,192,0.25);">
-    <h2 style="font-family:'Cinzel',serif;font-size:1.25rem;margin:0;">Options</h2>
-    <button id="options-close" style="background:transparent;border:1px solid rgba(192,192,192,0.35);color:#f8fafc;padding:6px 12px;cursor:pointer;font-size:0.75rem;">✕</button>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:16px;">
-    <div>
-      <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;margin-bottom:6px;">Density</p>
-      <div style="display:flex;gap:8px;">
-        <button style="background:transparent;border:1px solid rgba(192,192,192,0.35);color:#f8fafc;padding:7px 12px;font-size:0.65rem;font-weight:600;text-transform:uppercase;cursor:pointer;">Compact</button>
-        <button style="background:#C0C0C0;border:1px solid #C0C0C0;color:#0a0f1e;padding:7px 12px;font-size:0.65rem;font-weight:600;text-transform:uppercase;cursor:pointer;">Comfortable</button>
-      </div>
-    </div>
-    <div>
-      <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;margin-bottom:6px;">Language</p>
-      <select style="width:100%;padding:10px 12px;background:rgba(20,30,50,0.85);border:1px solid rgba(192,192,192,0.35);color:#f8fafc;font-family:inherit;">
-        <option>English</option>
-        <option>Kiswahili</option>
-      </select>
-    </div>
-    <div style="padding:14px 18px;border:1px solid rgba(192,192,192,0.25);border-left:3px solid #C0C0C0;font-size:0.9rem;color:#cbd5e1;">
-      These settings are visual-only in the prototype.
-    </div>
-  </div>
-</aside>
+    <section id="designs"><div class="shell"><div class="section-head"><div><span class="eyebrow">Step 2 · Explore</span><h2>Choose a feeling, not a template.</h2></div><p>These directions demonstrate how your organisation could look online. Every final website is adapted to your own content.</p></div><div class="filter-line"><button class="filter active" data-filter="all">All directions</button><button class="filter" data-filter="school">Schools</button><button class="filter" data-filter="ngo">NGOs</button><button class="filter" data-filter="health">Healthcare</button><button class="filter" data-filter="hospitality">Hospitality</button><button class="filter" data-filter="institution">Institutions</button><button class="filter" data-filter="business">Businesses</button></div><div class="design-grid">
+      <article class="design-card" data-groups="school institution"><div class="preview one"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="mock"><div class="mock-brand">THE ACADEMY</div><div class="mock-hero">Learning with purpose.</div><div class="mock-lines"><span></span><span></span></div></div></div></div><div class="design-copy"><span class="tag">Education · Institutional</span><h3>Clear Academic</h3><p>Structured and reassuring for schools, colleges and public institutions.</p><div class="features"><span>Admissions</span><span>News</span><span>Documents</span></div></div><div class="card-actions"><a href="showcase/editorial.html" target="_blank">Open direction ↗</a><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20like%20the%20Clear%20Academic%20direction." target="_blank">Choose this</a></div></article>
+      <article class="design-card" data-groups="ngo health"><div class="preview two"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="mock"><div class="mock-brand">COMMUNITY FIRST</div><div class="mock-hero" style="background:#4a5d23">Impact that reaches people.</div><div class="mock-lines"><span></span><span></span></div></div></div></div><div class="design-copy"><span class="tag">NGO · Community</span><h3>Human Impact</h3><p>Warm, story-led presentation for programmes, communities and partners.</p><div class="features"><span>Impact</span><span>Programmes</span><span>Partners</span></div></div><div class="card-actions"><a href="showcase/biophilic.html" target="_blank">Open direction ↗</a><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20like%20the%20Human%20Impact%20direction." target="_blank">Choose this</a></div></article>
+      <article class="design-card" data-groups="health business"><div class="preview three"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="mock"><div class="mock-brand">CARE CENTRE</div><div class="mock-hero" style="background:#cf6642">Care made easier.</div><div class="mock-lines"><span></span><span></span></div></div></div></div><div class="design-copy"><span class="tag">Health · Professional</span><h3>Modern Care</h3><p>Calm, direct and accessible for clinics, hospitals and pharmacies.</p><div class="features"><span>Services</span><span>Appointments</span><span>Locations</span></div></div><div class="card-actions"><a href="showcase/bauhaus.html" target="_blank">Open direction ↗</a><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20like%20the%20Modern%20Care%20direction." target="_blank">Choose this</a></div></article>
+      <article class="design-card" data-groups="hospitality business"><div class="preview four"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="mock"><div class="mock-brand">THE RESIDENCE</div><div class="mock-hero" style="background:#252d49">Stay somewhere memorable.</div><div class="mock-lines"><span></span><span></span></div></div></div></div><div class="design-copy"><span class="tag">Hospitality · Premium</span><h3>Quiet Luxury</h3><p>Elegant presentation for hotels, guest houses, restaurants and events.</p><div class="features"><span>Rooms</span><span>Bookings</span><span>Gallery</span></div></div><div class="card-actions"><a href="showcase/artdeco.html" target="_blank">Open direction ↗</a><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20like%20the%20Quiet%20Luxury%20direction." target="_blank">Choose this</a></div></article>
+      <article class="design-card" data-groups="ngo institution school"><div class="preview five"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="mock"><div class="mock-brand">EAST AFRICA INITIATIVE</div><div class="mock-hero" style="background:#9b5f23">Rooted here. Ready for more.</div><div class="mock-lines"><span></span><span></span></div></div></div></div><div class="design-copy"><span class="tag">Regional · Cultural</span><h3>East African Voice</h3><p>Confident local character for organisations with community roots.</p><div class="features"><span>Identity</span><span>Stories</span><span>Outreach</span></div></div><div class="card-actions"><a href="showcase/africanpattern.html" target="_blank">Open direction ↗</a><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20like%20the%20East%20African%20Voice%20direction." target="_blank">Choose this</a></div></article>
+      <article class="design-card" data-groups="business institution hospitality"><div class="preview six"><div class="browser"><div class="browser-top"><i></i><i></i><i></i></div><div class="mock"><div class="mock-brand">FORWARD GROUP</div><div class="mock-hero" style="background:#5b4a87">Built for what comes next.</div><div class="mock-lines"><span></span><span></span></div></div></div></div><div class="design-copy"><span class="tag">Company · Contemporary</span><h3>Forward Business</h3><p>Distinctive and modern for companies, consultancies and growing teams.</p><div class="features"><span>Capabilities</span><span>Portfolio</span><span>Enquiries</span></div></div><div class="card-actions"><a href="showcase/glassmorphism.html" target="_blank">Open direction ↗</a><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20like%20the%20Forward%20Business%20direction." target="_blank">Choose this</a></div></article>
+    </div></div></section>
 
-<script>
-(function() {
-    const openBtn = document.getElementById('options-open');
-    const closeBtn = document.getElementById('options-close');
-    const panel = document.getElementById('options-panel');
-    const backdrop = document.getElementById('options-backdrop');
+    <section id="process"><div class="shell"><div class="section-head"><div><span class="eyebrow">Step 3 · Make it yours</span><h2>A clear path from idea to website.</h2></div><p>You do not commit to a finished project before seeing what we can create for you.</p></div><div class="process-grid"><div class="process"><b>01</b><h3>Tell us about your organisation</h3><p>Share your name, work, audience and the direction you liked.</p></div><div class="process"><b>02</b><h3>Receive a free first demo</h3><p>We create an initial presentation using your real identity and needs.</p></div><div class="process"><b>03</b><h3>Review it together</h3><p>You tell us what feels right and what should change.</p></div><div class="process"><b>04</b><h3>Discuss the way forward</h3><p>If you like it, we discuss completion, publishing and ongoing support.</p></div></div><div class="promise"><strong>First see the direction. Then decide whether to continue.</strong><span>Every organisation has different needs, so the right scope is discussed directly with you.</span></div></div></section>
 
-    function set(opened) {
-        panel.classList.toggle('open', opened);
-        backdrop.classList.toggle('open', opened);
-    }
+    <section class="contact" id="contact"><div class="shell"><div class="contact-box"><div><span class="eyebrow">Ready when you are</span><h2>Let us picture your organisation online.</h2><p>Send your organisation name and sector on WhatsApp. If you already found a direction you like, mention its name and we will continue from there.</p></div><div class="contact-actions"><a href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio%2C%20I%20would%20like%20to%20discuss%20a%20website%20for%20my%20organisation." target="_blank" rel="noopener"><span>Continue on WhatsApp<small>Fastest way to discuss your free demo</small></span><b>↗</b></a><a href="tel:+255682087992"><span>Call Korvia Studio<small>+255 682 087 992 · Tanzania</small></span><b>→</b></a></div></div></div></section>
+  </main>
 
-    if (openBtn) openBtn.addEventListener('click', () => set(true));
-    if (closeBtn) closeBtn.addEventListener('click', () => set(false));
-    if (backdrop) backdrop.addEventListener('click', () => set(false));
-})();
-</script>
+  <footer><div class="shell foot"><strong>Korvia Studio</strong><span>Professional websites shaped around real organisations.</span><span>© 2026</span></div></footer>
+  <a class="float-wa" href="https://wa.me/255682087992?text=Hello%20Korvia%20Studio" target="_blank" rel="noopener" aria-label="Contact Korvia Studio on WhatsApp">WA</a>
+  <script>
+    const cards=[...document.querySelectorAll('.design-card')];
+    const filters=[...document.querySelectorAll('.filter')];
+    function show(group){cards.forEach(card=>{const groups=card.dataset.groups.split(' ');card.hidden=group!=='all'&&!groups.includes(group)});filters.forEach(btn=>btn.classList.toggle('active',btn.dataset.filter===group));document.querySelector('#designs').scrollIntoView({behavior:'smooth'})}
+    filters.forEach(btn=>btn.addEventListener('click',()=>show(btn.dataset.filter)));
+    document.querySelectorAll('.sector').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.sector').forEach(x=>x.classList.remove('active'));btn.classList.add('active');show(btn.dataset.sector)}));
+  </script>
 </body>
 </html>
