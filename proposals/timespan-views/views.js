@@ -1,56 +1,65 @@
 const concepts = [
-  ['01','North Sea Modern','northsea'], ['02','Highland Editorial','editorial'],
-  ['03','Civic Commons','civic'], ['04','Archive Ledger','ledger'],
-  ['05','Gallery Quiet','gallery'], ['06','River Signal','river'],
-  ['07','Field Notes','field'], ['08','Modernist Museum','modernist'],
-  ['09','Kinship','kinship'], ['10','Northern Light','northern'],
-  ['11','Public Programme','programme-view'], ['12','Stone & Sea','stone'],
-  ['13','Living Archive','living'], ['14','Highland Signal','signal'],
-  ['15','Open Institution','open']
+  {name:'Editorial Front', type:'editorial', html:`
+    <header class="ed-head"><b>TIMESPAN</b><span>Helmsdale · Scotland</span><nav>Programme　Museum　Archive　Visit</nav><button>Support us</button></header>
+    <div class="ed-date">THE CULTURAL COMMONS <span>SPRING / SUMMER 2026</span></div>
+    <main class="ed-grid"><section class="ed-lead"><p>THE BIG STORY</p><h1>Land, labour<br>&amp; who gets<br>to belong.</h1><div class="art crop"></div><h2>As Long As It Yields</h2><span>José García Oliva · 29 March—12 July</span></section>
+    <section class="ed-column"><article><b>19—21 JUN</b><h3>Summer Solstice Festival</h3><p>Three days of talks, workshops, performance and collective thought.</p></article><article><b>COMMUNITY</b><h3>People’s Mobile Archive</h3><p>Taking collections, memories and conversation into homes across the parish.</p></article><article class="ed-quote">“A meeting place between our past, present and possible futures.”</article></section>
+    <aside class="ed-aside"><div class="open"><b>OPEN TODAY</b><strong>10—5</strong><span>Museum £5<br>Gallery free</span></div><h3>Inside this season</h3><ol><li>What’s on</li><li>Digital collection</li><li>Community card</li><li>Plan a visit</li><li>River Café</li></ol><div class="art coin"></div></aside></main>`},
+
+  {name:'Programme Calendar', type:'calendar', html:`
+    <header class="cal-head"><b>TIMESPAN / WHAT’S ON</b><nav>Museum　Archive　Visit　Shop</nav><button>CALENDAR ↓</button></header>
+    <section class="cal-intro"><p>PROGRAMME 2026</p><h1>Make time<br>for culture.</h1><div><button>Today</button><button>This week</button><button>Exhibitions</button><button>Community</button></div></section>
+    <main class="cal-board"><aside><b>JUNE</b><ol><li>MON　15</li><li>TUE　16</li><li>WED　17</li><li>THU　18</li><li class="selected">FRI　19</li><li>SAT　20</li><li>SUN　21</li></ol></aside><section class="cal-days"><div class="day-label">FRIDAY 19 JUNE</div><article class="cal-event yellow"><time>10:00</time><div><span>EXHIBITION</span><h2>As Long As It Yields</h2><p>José García Oliva · Gallery</p></div><b>FREE →</b></article><article class="cal-event blue"><time>14:00</time><div><span>WORKSHOP</span><h2>Land, labour and rural futures</h2><p>Summer Solstice Festival · Workshop space</p></div><b>BOOK →</b></article><article class="cal-event pink"><time>19:30</time><div><span>PERFORMANCE</span><h2>Gathering at the river</h2><p>Outdoor programme · All welcome</p></div><b>FREE →</b></article></section><aside class="cal-ticket"><span>YOUR DAY</span><strong>0</strong><p>events saved</p><button>Plan my visit</button></aside></main>`},
+
+  {name:'Archive Search', type:'archive', html:`
+    <header class="ar-head"><b>TIMESPAN ARCHIVE</b><nav>Search　Browse stories　Listen　Research visit</nav><a>Back to Timespan ↗</a></header>
+    <main class="ar-main"><section class="ar-search"><p>11,000 digital photographs · 1,500 original records · oral histories</p><h1>What are you<br>looking for?</h1><label><input value="fishing, land, family…" aria-label="Search the archive"><button>SEARCH</button></label><div class="chips">Popular:　Highland Clearances　Gold Rush　Crofting　Herring fishing</div></section>
+    <section class="ar-results"><header><b>EXPLORE THE COLLECTION</b><span>View: GRID　☷</span></header><div class="archive-grid"><article><div class="photo fisher"></div><b>PHOTOGRAPH · c.1930</b><h2>Seine-net fishing at Helmsdale</h2></article><article><div class="photo paper"></div><b>DOCUMENT · 1813</b><h2>Kildonan estate rental</h2></article><article><div class="photo voice"></div><b>ORAL HISTORY · 42 MIN</b><h2>Memories of the herring season</h2></article><article><div class="photo object"></div><b>OBJECT · MUSEUM</b><h2>Flaughter spade</h2></article></div></section></main>`},
+
+  {name:'Immersive Exhibition', type:'immersive', html:`
+    <nav class="im-nav"><b>TIMESPAN</b><span>EXHIBITION 01 / 04</span><button>MENU ＋</button></nav>
+    <main class="im-stage"><div class="im-land"><i></i><i></i><i></i></div><div class="im-title"><p>JOSÉ GARCÍA OLIVA</p><h1>AS LONG<br>AS IT<br>YIELDS</h1><span>29.03—12.07.2026</span></div><aside><p>A new body of work examining agricultural labour, land exploitation and systems of deferred responsibility.</p><a>Enter exhibition ↓</a></aside><div class="im-index"><span>SCROLL TO EXPLORE</span><b>01</b><i></i><span>05</span></div></main>`},
+
+  {name:'Civic Service Portal', type:'portal', html:`
+    <header class="po-head"><b>TIMESPAN</b><label>Search Timespan <span>⌕</span></label><button>☰ MENU</button></header>
+    <main class="po-main"><section class="po-welcome"><div><p>HELLO, HELMSDALE</p><h1>What would you<br>like to do?</h1></div><aside><b>OPEN TODAY 10:00—17:00</b><span>Dunrobin Street · KW8 6JA</span></aside></section>
+    <section class="task-grid"><a class="lime"><b>01</b><h2>Find an event</h2><span>Talks, films, exhibitions →</span></a><a class="blue"><b>02</b><h2>Plan a visit</h2><span>Access, travel, admission →</span></a><a class="cream"><b>03</b><h2>Explore history</h2><span>Museum and digital archive →</span></a><a class="orange"><b>04</b><h2>Book or buy</h2><span>Tickets, shop and café →</span></a><a class="navy"><b>05</b><h2>Join in</h2><span>Community card and projects →</span></a><a class="pink"><b>06</b><h2>Support Timespan</h2><span>Donate or become a partner →</span></a></section></main>`},
+
+  {name:'Collection Constellation', type:'constellation', html:`
+    <header class="co-head"><b>TIMESPAN</b><p>AN INSTITUTION OF THE COMMONS</p><button>Explore index ☰</button></header>
+    <main class="co-space"><svg viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true"><path d="M130 480 Q310 90 500 330 T870 150"/><path d="M80 190 Q380 560 650 130 T930 480"/></svg><button class="node n1"><i></i><b>LAND</b><span>Clearances &amp; crofting</span></button><button class="node n2"><i></i><b>SEA</b><span>Fishing &amp; migration</span></button><button class="node n3"><i></i><b>LABOUR</b><span>Work &amp; extraction</span></button><button class="node n4"><i></i><b>MEMORY</b><span>People’s Mobile Archive</span></button><button class="node n5"><i></i><b>FUTURES</b><span>Art &amp; commoning</span></button><div class="co-centre"><span>BEGIN ANYWHERE</span><h1>Everything<br>is connected.</h1><p>Follow a theme through objects, voices, exhibitions and research.</p></div><aside>58.12°N / 3.66°W<br>HELMSDALE</aside></main>`},
+
+  {name:'Visit Planner', type:'planner', html:`
+    <header class="pl-head"><b>TIMESPAN</b><nav>Discover　What’s on　Museum　Archive</nav><button>MY DAY (0)</button></header>
+    <main class="pl-layout"><section class="pl-map"><div class="river"></div><div class="building"><b>TIMESPAN</b><i>Gallery</i><i>Museum</i><i>Café</i><i>Garden</i></div><span class="station">● HELMSDALE STATION<br>5 MIN WALK</span><span class="road">A9 / NORTH COAST 500 →</span></section><section class="pl-panel"><p>PLAN YOUR VISIT</p><h1>A whole day<br>beside the river.</h1><div class="status"><b>OPEN TODAY</b><strong>10:00—17:00</strong></div><details open><summary>Choose your interests</summary><div class="choice"><button>Local history</button><button>Contemporary art</button><button>Family</button><button>Research</button></div></details><details><summary>Travel &amp; accessibility</summary></details><details><summary>Admission &amp; booking</summary></details><button class="build">BUILD MY ITINERARY →</button></section></main>`},
+
+  {name:'Museum Timeline', type:'timeline', html:`
+    <header class="tl-head"><b>TIMESPAN</b><span>MUSEUM OF HELMSDALE</span><button>VISIT INFO</button></header><main class="tl-main"><section class="tl-intro"><p>A JOURNEY UP THE STRATH</p><h1>Stories shaped<br>by land and sea.</h1><span>Drag to travel through time →</span></section><section class="tl-track"><i></i><article class="year y1"><b>1200</b><div class="relic stone-r"></div><h2>The Borrobol Stone</h2></article><article class="year y2"><b>1813</b><div class="relic house-r"></div><h2>The Kildonan Clearances</h2></article><article class="year y3"><b>1869</b><div class="relic gold-r"></div><h2>The Sutherland Gold Rush</h2></article><article class="year y4"><b>1930</b><div class="relic net-r"></div><h2>Herring, river and sea</h2></article><article class="year y5"><b>NOW</b><div class="relic future-r"></div><h2>Whose Highlands?</h2></article></section></main>`},
+
+  {name:'Community Noticeboard', type:'noticeboard', html:`
+    <header class="nb-head"><b>TIMESPAN</b><span>THE HELMSDALE NOTICEBOARD</span><button>POST / SUBSCRIBE</button></header><main class="nb-wall"><article class="note manifesto"><small>OUR COMMONS</small><h1>Culture belongs<br>to everyone.</h1><p>Come in. Take part. Share what you know.</p></article><article class="note card"><b>COMMUNITY CARD</b><h2>Free for local residents</h2><p>Museum access · Café discount · Seasonal shop offers</p><button>GET YOURS</button></article><article class="note event-note"><b>19—21 JUNE</b><h2>Summer<br>Solstice</h2><p>Talks / food / performance / making</p></article><article class="note library"><b>YOUTH LIBRARY</b><strong>350+</strong><span>books for ages 3—17</span><p>Tuesdays &amp; Thursdays · 2—5pm</p></article><article class="note cafe"><div class="cup">☕</div><h2>Meet at the River Café</h2><p>Open with Timespan</p></article><article class="note archive-note"><b>PEOPLE’S MOBILE ARCHIVE</b><h2>We bring the collection to you.</h2><a>Invite the archive →</a></article></main>`},
+
+  {name:'Shop & Support', type:'commerce', html:`
+    <header class="sh-head"><b>TIMESPAN</b><nav>NEW　BOOKS　MADE LOCALLY　PRINTS　GIFTS</nav><button>BAG (0)</button></header><section class="sh-marquee">EVERY PURCHASE SUPPORTS ART, HERITAGE &amp; COMMUNITY IN HELMSDALE　↗</section><main class="sh-main"><section class="sh-feature"><div class="product hero-product"><span>TIMESPAN<br>EDITIONS</span></div><div><p>FEATURED PUBLICATION</p><h1>People<br>and the Sea</h1><p>Contemporary poetry and archival photographs of herring gutters, seine-net queens and fishermen.</p><strong>£18.00</strong><button>ADD TO BAG</button></div></section><section class="sh-products"><header><h2>Made here. Shared everywhere.</h2><a>SHOP ALL →</a></header><div><article><div class="product bowl"></div><b>LOCAL MAKER</b><h3>Ash wood bowl</h3><span>£54</span></article><article><div class="product book"></div><b>TIMESPAN BOOKS</b><h3>Helmsdale Memories</h3><span>£9.99</span></article><article><div class="product print"></div><b>ARTIST EDITION</b><h3>Heritage Manifesto print</h3><span>£20</span></article></div></section></main>`},
+
+  {name:'Research Journal', type:'journal', html:`
+    <header class="jo-head"><b>TIMESPAN / FIELD JOURNAL</b><nav>ESSAYS　RESEARCH　CONVERSATIONS　AUDIO</nav><span>ISSUE 06</span></header><main class="jo-main"><section class="jo-cover"><p>FIELD NOTE 06 — RURAL FUTURES</p><h1>There is no<br>empty land.</h1><div class="jo-image"></div><footer><b>Words from Helmsdale and beyond</b><span>12 contributions · 84 min read</span></footer></section><section class="jo-list"><article><span>01　ESSAY</span><h2>Against the picturesque</h2><p>Land, extraction and the image of the Highlands.</p><b>18 MIN →</b></article><article><span>02　CONVERSATION</span><h2>Knowledge held in common</h2><p>Community archives as living civic infrastructure.</p><b>12 MIN →</b></article><article><span>03　AUDIO</span><h2>People and the sea</h2><p>Voices from the collection. Listen with transcript.</p><b>42 MIN →</b></article><button>VIEW ALL RESEARCH</button></section></main>`},
+
+  {name:'Programme Stream', type:'stream', html:`
+    <header class="st-head"><b>TS</b><nav>Everything　Art　Heritage　Community　Research</nav><button>SEARCH</button></header><main class="st-main"><aside><h1>Timespan</h1><p>Live from Helmsdale</p><div class="live"><i></i> OPEN NOW</div><ul><li>Visit</li><li>Tickets</li><li>Shop</li><li>Donate</li></ul></aside><section class="feed"><article class="feed-hero"><div class="feed-art"></div><div><span>NOW SHOWING</span><h2>As Long As It Yields</h2><p>José García Oliva</p><button>DETAILS + TICKETS</button></div></article><article><time>19 JUN<br>10:00</time><div><b>SUMMER SOLSTICE</b><h3>Festival opening and shared meal</h3></div><span>BOOK →</span></article><article><time>EVERY<br>THU</time><div><b>YOUTH LIBRARY</b><h3>Open shelves for ages 3—17</h3></div><span>FREE →</span></article><article><time>ONLINE<br>NOW</time><div><b>DIGITAL COLLECTION</b><h3>Real Rights: explore the exhibition</h3></div><span>OPEN →</span></article></section><aside class="st-right"><b>WEATHER</b><strong>12°</strong><span>Light rain</span><hr><b>NEXT TRAIN</b><strong>14:32</strong><span>from Inverness</span></aside></main>`},
+
+  {name:'Accessible Calm', type:'calm', html:`
+    <header class="ac-head"><a class="skip">Skip to content</a><b>Timespan</b><nav>What’s on　Museum &amp; archive　Visit us　About</nav><button>Accessibility　◐</button></header><main class="ac-main"><section class="ac-hero"><p>MUSEUM AND CULTURAL CENTRE · HELMSDALE</p><h1>Welcome to Timespan.</h1><p>Explore local history, contemporary art, research and community life. We are beside the River Helmsdale in the Scottish Highlands.</p><div><button>Plan your visit</button><button>See what’s on</button></div></section><section class="ac-alert"><b>Today</b><span>Open 10am–5pm</span><span>Gallery and archive: free</span><span>Museum: £5 adult</span></section><section class="ac-cards"><article><span>01</span><h2>Visit Timespan</h2><p>Opening hours, admission, directions and detailed access information.</p><a>Visitor information →</a></article><article><span>02</span><h2>What’s on</h2><p>Exhibitions, workshops, films, talks and community gatherings.</p><a>View programme →</a></article><article><span>03</span><h2>Explore from home</h2><p>Search photographs, objects, oral histories and research.</p><a>Digital collection →</a></article></section></main>`},
+
+  {name:'Highland Field Guide', type:'guide', html:`
+    <header class="gu-head"><b>TIMESPAN</b><span>FIELD GUIDE № 58°N</span><button>INDEX</button></header><main class="gu-main"><section class="gu-map"><div class="contours"></div><span class="pin p1">01</span><span class="pin p2">02</span><span class="pin p3">03</span><span class="pin p4">04</span><h1>HELMSDALE<br>RIVER → SEA</h1></section><section class="gu-index"><p>EXPLORE A PLACE THROUGH ITS STORIES</p><h2>Four routes<br>through Timespan</h2><ol><li><b>01</b><div><h3>Land &amp; Clearances</h3><span>Museum route · 45 min</span></div><i>↗</i></li><li><b>02</b><div><h3>River &amp; Fishing</h3><span>Collection trail · 30 min</span></div><i>↗</i></li><li><b>03</b><div><h3>Art &amp; Extraction</h3><span>Gallery route · 40 min</span></div><i>↗</i></li><li><b>04</b><div><h3>Gardens &amp; Geology</h3><span>Outdoor route · 25 min</span></div><i>↗</i></li></ol><button>DOWNLOAD FIELD GUIDE</button></section></main>`},
+
+  {name:'Open Institution Dashboard', type:'dashboard', html:`
+    <header class="da-head"><b>TIMESPAN</b><p>OPEN INSTITUTION DASHBOARD</p><button>MENU</button></header><main class="da-main"><section class="da-title"><div><p>THURSDAY · HELMSDALE</p><h1>Timespan,<br>right now.</h1></div><div class="clock">11:42<span>OPEN UNTIL 17:00</span></div></section><section class="metric-grid"><article class="wide"><b>HAPPENING NEXT</b><h2>Summer Solstice Festival</h2><p>19—21 June · talks, workshops, performance</p><button>EXPLORE PROGRAMME</button></article><article class="stat green"><strong>11,000</strong><span>digitised community photographs</span></article><article class="stat coral"><strong>350+</strong><span>books in the Youth Library</span></article><article class="action"><b>PLAN</b><h3>Your visit</h3><span>Travel · access · admission →</span></article><article class="action"><b>EXPLORE</b><h3>The collection</h3><span>Objects · voices · documents →</span></article><article class="action"><b>JOIN</b><h3>The commons</h3><span>Card · volunteer · support →</span></article><article class="status"><i></i><b>ALL SERVICES ONLINE</b><span>Website · ticketing · shop · archive</span></article></section></main>`}
 ];
 
-const stage = document.querySelector('#stage');
-const template = document.querySelector('#site-template');
-const menu = document.querySelector('#menu');
-const counter = document.querySelector('#counter');
-const menuButton = document.querySelector('#viewMenu');
-let current = Math.max(0, Math.min(concepts.length - 1, Number(location.hash.replace('#view-','')) - 1 || 0));
-
-concepts.forEach(([number,name,slug], index) => {
-  const panel = template.content.firstElementChild.cloneNode(true);
-  panel.classList.add(slug);
-  panel.dataset.index = index;
-  panel.querySelector('.concept-tag b').textContent = `VIEW ${number}`;
-  panel.querySelector('.concept-tag span').textContent = name;
-  stage.append(panel);
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.innerHTML = `<b>${number}</b><span>${name}</span>`;
-  button.addEventListener('click', () => show(index));
-  menu.append(button);
-});
-
-function show(index, updateHash = true) {
-  current = (index + concepts.length) % concepts.length;
-  document.querySelectorAll('.site-view').forEach((view, i) => view.classList.toggle('active', i === current));
-  [...menu.children].forEach((button, i) => button.classList.toggle('active', i === current));
-  counter.textContent = `${concepts[current][0]} / 15`;
-  menu.classList.remove('open');
-  menuButton.setAttribute('aria-expanded','false');
-  if (updateHash) history.replaceState(null,'',`#view-${current + 1}`);
-  stage.scrollTo({top:0,behavior:'instant'});
-  document.title = `${concepts[current][1]} — Timespan Display Views`;
-}
-
-document.querySelector('#previous').addEventListener('click', () => show(current - 1));
-document.querySelector('#next').addEventListener('click', () => show(current + 1));
-menuButton.addEventListener('click', () => {
-  const open = menu.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(open));
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'ArrowRight') show(current + 1);
-  if (event.key === 'ArrowLeft') show(current - 1);
-  if (event.key === 'Escape') menu.classList.remove('open');
-});
-show(current, false);
+const stage=document.querySelector('#stage'),menu=document.querySelector('#menu'),counter=document.querySelector('#counter'),menuButton=document.querySelector('#viewMenu');
+let current=Math.max(0,Math.min(14,Number(location.hash.replace('#view-',''))-1||0));
+concepts.forEach((concept,index)=>{const panel=document.createElement('article');panel.className=`view ${concept.type}`;panel.innerHTML=`<div class="view-id"><b>${String(index+1).padStart(2,'0')}</b><span>${concept.name}</span></div>${concept.html}`;stage.append(panel);const button=document.createElement('button');button.type='button';button.innerHTML=`<b>${String(index+1).padStart(2,'0')}</b><span>${concept.name}</span>`;button.onclick=()=>show(index);menu.append(button)});
+function show(index,hash=true){current=(index+15)%15;document.querySelectorAll('.view').forEach((view,i)=>view.classList.toggle('active',i===current));[...menu.children].forEach((button,i)=>button.classList.toggle('active',i===current));counter.textContent=`${String(current+1).padStart(2,'0')} / 15`;menu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');if(hash)history.replaceState(null,'',`#view-${current+1}`);stage.scrollTo({top:0,behavior:'instant'});document.title=`${concepts[current].name} — Timespan Display Views`}
+document.querySelector('#previous').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);menuButton.onclick=()=>{const open=menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open))};document.addEventListener('keydown',event=>{if(event.key==='ArrowRight')show(current+1);if(event.key==='ArrowLeft')show(current-1);if(event.key==='Escape')menu.classList.remove('open')});show(current,false);
