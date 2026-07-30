@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Fifteen rendered interface views prepared as a visual discussion aid for Timespan.">
+  <title>Timespan — 15 Display Views</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,600&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&family=Libre+Franklin:wght@400;600;800&family=Manrope:wght@400;500;700&family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="viewer-bar">
+    <a class="viewer-brand" href="../../">KORVIA <span>× TIMESPAN</span></a>
+    <div class="viewer-note">Rendered display studies · not final design</div>
+    <div class="viewer-controls">
+      <button id="previous" type="button" aria-label="Previous view">←</button>
+      <button id="viewMenu" type="button" aria-expanded="false"><span id="counter">01 / 15</span> Views</button>
+      <button id="next" type="button" aria-label="Next view">→</button>
+    </div>
+  </header>
+
+  <nav id="menu" class="view-menu" aria-label="Choose a display view"></nav>
+  <main id="stage" tabindex="-1"></main>
+
+  <template id="site-template">
+    <article class="site-view">
+      <div class="concept-tag"><b></b><span></span></div>
+      <header class="site-nav">
+        <a class="wordmark" href="#">TIMESPAN</a>
+        <nav aria-label="Concept navigation">
+          <a href="#programme">What’s on</a><a href="#museum">Museum</a><a href="#archive">Archive</a><a href="#visit">Visit</a><a href="#shop">Shop</a>
+        </nav>
+        <a class="support" href="#support">Support us</a>
+      </header>
+
+      <section class="hero">
+        <div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><b>58.12° N<br>3.66° W</b></div>
+        <div class="hero-copy">
+          <p class="eyebrow">Museum · Contemporary art · Archive · Helmsdale</p>
+          <h1>An institution<br>of the <em>commons.</em></h1>
+          <p class="dek">Local history, global conversations and collective learning at the meeting point of land, river and sea.</p>
+          <div class="actions"><a href="#programme">Explore the programme</a><a href="#visit">Plan your visit</a></div>
+        </div>
+        <aside class="open-card"><small>Today at Timespan</small><strong>Open 10:00–17:00</strong><span>Dunrobin Street, Helmsdale</span></aside>
+      </section>
+
+      <section id="programme" class="programme">
+        <div class="section-head"><p>Now &amp; next</p><h2>What’s happening</h2><a href="#">View full programme →</a></div>
+        <div class="event-grid">
+          <article class="event event-a"><div class="event-image"><span>EXHIBITION</span></div><p>28 Mar—12 Jul 2026</p><h3>As Long As It Yields</h3><span>José García Oliva</span></article>
+          <article class="event event-b"><div class="event-image"><span>FESTIVAL</span></div><p>19—21 Jun 2026</p><h3>Summer Solstice</h3><span>Talks, workshops and performance</span></article>
+          <article class="event event-c"><div class="event-image"><span>ARCHIVE</span></div><p>Throughout 2026</p><h3>People’s Mobile Archive</h3><span>Collections in the community</span></article>
+        </div>
+      </section>
+
+      <section class="story-band">
+        <div><p>From the collection</p><h2>History lives when it is shared.</h2></div>
+        <p>Explore photographs, documents, oral histories and objects connecting the Highland Clearances, fishing, crofting, land and community life.</p>
+        <a href="#archive">Search the digital collection</a>
+      </section>
+
+      <section id="visit" class="visit">
+        <div class="visit-copy"><p>Make a day of it</p><h2>Visit Timespan</h2><p>Museum, gallery, archive, River Café, shop and gardens beside the River Helmsdale.</p><a href="#">Travel and accessibility →</a></div>
+        <div class="visit-grid"><div><b>Opening</b><span>Daily<br>10:00–17:00</span></div><div><b>Admission</b><span>Gallery, archive,<br>café &amp; gardens free</span></div><div><b>Getting here</b><span>5 minutes from<br>Helmsdale station</span></div></div>
+      </section>
+
+      <footer><strong>TIMESPAN</strong><p>Dunrobin Street · Helmsdale · KW8 6JA</p><p>enquiries@timespan.org.uk · +44 (0) 1431 821327</p></footer>
+    </article>
+  </template>
+
+  <script src="views.js"></script>
+</body>
+</html>
