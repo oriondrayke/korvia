@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="OCFP Resource Hub architecture demonstration by Edward Mathew Mkingule.">
+  <title>OCFP Resource Hub — Architecture Demonstration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#resources">Skip to resources</a>
+  <div class="demo-note"><b>ARCHITECTURE DEMONSTRATION</b><span>Public OCFP content · Not a final design or commissioned engagement</span><a href="../../timespan-views/">View Timespan architecture study ↗</a></div>
+  <header class="site-header">
+    <a class="brand" href="#"><span>OCFP</span><b>Ontario College of<br>Family Physicians</b></a>
+    <nav aria-label="Primary navigation"><a href="#resources">Practice supports</a><a href="#learning">Continuing education</a><a href="#advocacy">Policy &amp; advocacy</a><a href="#about">About</a></nav>
+    <div class="header-actions"><button id="contrast" type="button" aria-label="Toggle high contrast">◐</button><button type="button">Search</button></div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">RESOURCE HUB</p><h1>Practical knowledge<br>for family medicine.</h1><p class="lead">Find clinical tools, accredited learning, practice supports and evidence—organized around the work Ontario family physicians do every day.</p></div>
+      <aside><span>Built for</span><button data-audience="all">All physicians</button><button data-audience="early-career">Early career</button><button data-audience="rural">Rural practice</button><button data-audience="leaders">Physician leaders</button></aside>
+    </section>
+
+    <section id="resources" class="resource-shell">
+      <div class="search-panel">
+        <label for="query">What do you need?</label>
+        <div class="search-box"><input id="query" type="search" placeholder="Search tools, topics and programmes…"><button type="button" id="searchButton">Search</button></div>
+        <div class="suggested"><span>Popular:</span><button data-query="mental health">Mental health</button><button data-query="Mainpro">Mainpro+</button><button data-query="practice">Practice management</button></div>
+      </div>
+      <div class="hub-layout">
+        <aside class="filters" aria-label="Resource filters">
+          <div class="filter-head"><b>FILTERS</b><button id="clear" type="button">Clear all</button></div>
+          <fieldset><legend>Content type</legend><label><input type="checkbox" value="tool"> Clinical tool</label><label><input type="checkbox" value="course"> Course / webinar</label><label><input type="checkbox" value="guide"> Guide</label><label><input type="checkbox" value="community"> Community</label></fieldset>
+          <fieldset><legend>Topic</legend><label><input type="checkbox" value="wellbeing"> Physician wellbeing</label><label><input type="checkbox" value="mental-health"> Mental health</label><label><input type="checkbox" value="leadership"> Leadership</label><label><input type="checkbox" value="practice"> Practice management</label></fieldset>
+          <fieldset><legend>Format</legend><label><input type="checkbox" value="webpage"> Accessible webpage</label><label><input type="checkbox" value="video"> Video + transcript</label><label><input type="checkbox" value="download"> Download</label></fieldset>
+        </aside>
+
+        <section class="results" aria-live="polite">
+          <header><div><p>RESOURCE HUB</p><h2><span id="resultCount">8</span> resources</h2></div><label>Sort <select><option>Most relevant</option><option>Newest</option><option>Title</option></select></label></header>
+          <div id="resourceGrid" class="resource-grid">
+            <article data-tags="tool mental-health webpage early-career"><div class="card-meta"><b>CLINICAL TOOL</b><span>8 min</span></div><h3>Supporting children’s mental health in primary care</h3><p>Practical assessment pathways and family-facing resources.</p><footer><span>Mental health</span><a href="#">Open resource →</a></footer></article>
+            <article data-tags="course wellbeing video all"><div class="card-meta"><b>ON-DEMAND LEARNING</b><span>60 min</span></div><h3>Practising Well: responding to complex patient needs</h3><p>Recorded session, key takeaways and accessible transcript.</p><footer><span>Physician wellbeing</span><a href="#">Watch session →</a></footer></article>
+            <article data-tags="guide practice webpage rural"><div class="card-meta"><b>PRACTICE GUIDE</b><span>12 min</span></div><h3>Changing the Way We Work</h3><p>Tools for sustainable practice organization and team workflows.</p><footer><span>Practice management</span><a href="#">Read guide →</a></footer></article>
+            <article data-tags="course leadership video leaders"><div class="card-meta"><b>LEADERSHIP ACADEMY</b><span>Series</span></div><h3>Family physician leadership development</h3><p>Learning pathway for physicians leading change across Ontario.</p><footer><span>Leadership</span><a href="#">Explore programme →</a></footer></article>
+            <article data-tags="community wellbeing webpage early-career"><div class="card-meta"><b>MENTORSHIP</b><span>Ongoing</span></div><h3>Peer Connect</h3><p>Connect with colleagues for practical and professional support.</p><footer><span>Community</span><a href="#">Find out more →</a></footer></article>
+            <article data-tags="guide practice download all"><div class="card-meta"><b>CERTIFICATION</b><span>Updated</span></div><h3>Understanding Mainpro+ requirements</h3><p>A clear pathway to certification information and external services.</p><footer><span>Professional development</span><a href="#">View pathway →</a></footer></article>
+            <article data-tags="tool practice webpage rural"><div class="card-meta"><b>KNOWLEDGE TRANSLATION</b><span>5 min</span></div><h3>Clinical and practice resources for rural care</h3><p>Evidence and tools filtered for rural and remote contexts.</p><footer><span>Rural practice</span><a href="#">Open collection →</a></footer></article>
+            <article data-tags="course mental-health video all"><div class="card-meta"><b>WEBINAR</b><span>45 min</span></div><h3>Children’s Mental Health workshop library</h3><p>Upcoming sessions and self-guided recordings in one pathway.</p><footer><span>Mental health</span><a href="#">Browse sessions →</a></footer></article>
+          </div>
+          <div id="empty" class="empty" hidden><h3>No exact matches</h3><p>Remove a filter or try a broader term.</p><button type="button">Clear filters</button></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="governance">
+      <div><p class="eyebrow">CONTENT GOVERNANCE</p><h2>Every resource has<br>a useful life.</h2></div>
+      <ol><li><b>01</b><span>Owner and review date required at publication</span></li><li><b>02</b><span>Automated reminders before content expires</span></li><li><b>03</b><span>Staff review, renew, archive or redirect</span></li><li><b>04</b><span>Accessible webpage prioritized over PDF-first publishing</span></li></ol>
+    </section>
+  </main>
+  <footer class="site-footer"><b>OCFP</b><p>Architecture demonstration prepared by Edward Mathew Mkingule<br>Independent lead developer · Dar es Salaam, Tanzania</p><a href="https://oriondrayke.github.io/portfolio/">Portfolio ↗</a></footer>
+  <script src="app.js"></script>
+</body>
+</html>
