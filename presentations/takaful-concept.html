@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Takaful Insurance of Africa · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0f1f1a;
+      --paper:#faf8f2;
+      --cream:#f3efe4;
+      --forest:#0b3d2e;
+      --teal:#1f6f6e;
+      --gold:#c9a227;
+      --sage:#8aa39d;
+      --line:#e2ded3;
+      --text:#1f2937;
+      --muted:#5d6b7d;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.65}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--ink);color:var(--cream);font-size:.72rem;padding:10px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:var(--gold)}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:22px 24px;border-bottom:1px solid var(--line);
+      background:rgba(250,248,242,.96);position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(6px);
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.15rem;color:var(--ink)}
+    .logo-mark{
+      width:34px;height:34px;border:2px solid var(--teal);transform:rotate(45deg);
+      display:grid;place-items:center;position:relative;flex:none;
+    }
+    .logo-mark::after{
+      content:'';width:12px;height:12px;border-radius:50%;background:var(--gold);
+    }
+    nav{display:flex;gap:32px;font-size:.88rem;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;position:relative}
+    nav a::after{
+      content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--teal);transition:width .25s;
+    }
+    nav a:hover{color:var(--forest)}
+    nav a:hover::after{width:100%}
+
+    .hero{
+      display:grid;grid-template-columns:1.05fr 1fr;gap:0;min-height:calc(100vh - 140px);
+      border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+    }
+    .hero-copy{padding:80px 24px 80px 8vw;display:flex;flex-direction:column;justify-content:center;background:var(--paper);position:relative;z-index:2}
+    .hero-copy::before{
+      content:'';position:absolute;right:-60px;top:10%;width:120px;height:120px;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M60 0L70 50L120 60L70 70L60 120L50 70L0 60L50 50Z' fill='%231f6f6e' fill-opacity='0.06'/%3E%3C/svg%3E") no-repeat center;
+      z-index:-1;
+    }
+    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);margin-bottom:22px}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5.4rem);line-height:1.02;letter-spacing:-.03em;color:var(--ink);margin-bottom:28px}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:14px 28px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--forest);color:#fff}
+    .btn-primary:hover{background:var(--teal)}
+    .btn-secondary{border:1px solid var(--line);color:var(--ink);background:#fff}
+
+    .hero-media{position:relative;overflow:hidden;min-height:520px}
+    .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .hero-caption{
+      position:absolute;bottom:28px;left:28px;right:28px;
+      background:rgba(255,255,255,.92);padding:16px 20px;border-radius:4px;
+      font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);
+      backdrop-filter:blur(6px);
+    }
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+    .section-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+    .section-head p{color:var(--muted);max-width:440px}
+    .kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin-bottom:14px}
+
+    .about-grid{
+      display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:start;
+    }
+    .about-grid .lead{font-family:'Cormorant Garamond',serif;font-size:1.55rem;line-height:1.35;color:var(--ink);margin-bottom:24px}
+    .about-grid p{color:var(--muted);margin-bottom:18px}
+    .values{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .value{
+      background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px;
+      transition:transform .2s,border-color .2s;
+    }
+    .value:hover{transform:translateY(-3px);border-color:var(--sage)}
+    .value h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:6px;color:var(--forest)}
+    .value p{font-size:.85rem;color:var(--muted);line-height:1.5}
+
+    .products-section{
+      background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      position:relative;
+    }
+    .products-section::before{
+      content:'';position:absolute;inset:0;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0L48 32L80 40L48 48L40 80L32 48L0 40L32 32Z' fill='%230b3d2e' fill-opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events:none;
+    }
+    .products-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:1;
+    }
+    .product-card{
+      background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px;
+      transition:transform .2s,border-color .2s,box-shadow .2s;
+    }
+    .product-card:hover{transform:translateY(-5px);border-color:var(--teal);box-shadow:0 18px 40px rgba(15,31,26,.08)}
+    .product-card .icon{
+      width:38px;height:38px;border-radius:50%;background:var(--paper);border:1px solid var(--line);
+      display:grid;place-items:center;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--teal);font-weight:500;
+    }
+    .product-card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:10px;color:var(--ink)}
+    .product-card p{font-size:.88rem;color:var(--muted);line-height:1.55}
+
+    .feature{
+      display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:100px 24px;max-width:1200px;margin:0 auto;
+    }
+    .feature .media{position:relative;border-radius:4px;overflow:hidden;min-height:460px;background:var(--forest)}
+    .feature .media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.92}
+    .feature .text{padding-left:20px}
+    .feature h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.08;margin-bottom:22px}
+    .feature p{color:var(--muted);margin-bottom:18px}
+    .feature-list{margin-top:28px;padding-top:28px;border-top:1px solid var(--line);display:flex;gap:40px;flex-wrap:wrap}
+    .feature-item{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted)}
+    .feature-item strong{display:block;font-family:'Inter',sans-serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px;font-weight:600}
+
+    .cta{
+      background:var(--forest);color:#fff;text-align:center;padding:110px 24px;position:relative;overflow:hidden;
+    }
+    .cta::before{
+      content:'';position:absolute;inset:0;
+      background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z' fill='%23ffffff' fill-opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none;
+    }
+    .cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.6rem);margin-bottom:18px;position:relative}
+    .cta p{color:var(--sage);max-width:560px;margin:0 auto 34px;position:relative}
+    .cta a{display:inline-block;padding:16px 36px;background:var(--gold);color:var(--ink);text-decoration:none;border-radius:4px;font-weight:700;position:relative;transition:transform .15s}
+    .cta a:hover{transform:translateY(-2px)}
+
+    footer{padding:50px 24px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);background:var(--paper)}
+    footer a{color:var(--teal);text-decoration:none}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease-out,transform .6s ease-out}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-media{min-height:380px}
+      .about-grid{grid-template-columns:1fr}
+      .values{grid-template-columns:1fr}
+      .products-grid{grid-template-columns:repeat(2,1fr)}
+      .feature{grid-template-columns:1fr;gap:40px}
+      .feature .text{padding-left:0}
+      .feature .media{min-height:340px}
+      .section-head{display:block}
+      nav{gap:18px;font-size:.82rem}
+    }
+    @media(max-width:620px){
+      .products-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.4rem}
+      .hero-copy{padding:60px 24px}
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared independently by Korvia Studio from publicly available information. Not the Takaful Insurance of Africa live website.</span>
+  </div>
+
+  <header>
+    <div class="logo"><div class="logo-mark"></div>Takaful Insurance of Africa</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#values">Values</a>
+      <a href="#products">Products</a>
+      <a href="#livestock">Livestock Takaful</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Kenya · Shariah-Compliant Insurance</div>
+      <h1>Insurance built on <em>shared responsibility.</em></h1>
+      <p>Takaful Insurance of Africa is Kenya's pioneering Shariah-compliant insurer. Since 2008, we have offered ethical cover that protects people, property and livelihoods without interest-based contracts.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#products">Explore covers</a>
+        <a class="btn btn-secondary" href="#contact">Talk to us</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=85" alt="Two people shaking hands in agreement">
+      <div class="hero-caption">Concept imagery · Takaful is founded on mutual cooperation, transparency and trust.</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">About us</div>
+        <h2>Pioneering ethical insurance in Kenya.</h2>
+      </div>
+      <p>Founded in 2008 and operational from 2011, Takaful Insurance of Africa Limited provides insurance solutions consistent with Islamic finance principles.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p class="lead">We replace conventional risk transfer with a model of shared responsibility: members contribute to a common pool that is managed transparently and used to support one another in times of loss.</p>
+        <p>Our work spans motor, medical, family, fire and perils, burglary, goods in transit, corporate covers and index-based livestock takaful. Every product is designed to deliver real protection while avoiding interest, uncertainty and prohibited investments.</p>
+        <p>Headquartered in Kenya, we serve individuals, families, SMEs and institutions looking for finance-compliant risk management backed by professionalism and care.</p>
+      </div>
+      <div class="values" id="values">
+        <div class="value">
+          <h3>Ethical Insurance</h3>
+          <p>Products structured to meet Shariah requirements and the highest standards of fairness.</p>
+        </div>
+        <div class="value">
+          <h3>Shared Responsibility</h3>
+          <p>Members support one another through a collective pool rather than transferring risk for profit.</p>
+        </div>
+        <div class="value">
+          <h3>Transparency</h3>
+          <p>Clear contributions, clear terms and clear governance from quote to claim.</p>
+        </div>
+        <div class="value">
+          <h3>Community &amp; Mutual Protection</h3>
+          <p>Cover designed to protect livelihoods, families and businesses across Kenya.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="products-section" id="products">
+    <section>
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">What we cover</div>
+          <h2>Protection for every part of life.</h2>
+        </div>
+        <p>Our product range is built around the risks Kenyan individuals, families and organisations actually face.</p>
+      </div>
+      <div class="products-grid reveal">
+        <div class="product-card">
+          <div class="icon">01</div>
+          <h3>Motor Takaful</h3>
+          <p>Comprehensive and third-party cover for private, commercial and fleet vehicles.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">02</div>
+          <h3>Medical Takaful</h3>
+          <p>Health protection for individuals, families and employee groups.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">03</div>
+          <h3>Family Takaful</h3>
+          <p>Long-term savings and protection plans to secure your family's future.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">04</div>
+          <h3>Fire &amp; Perils</h3>
+          <p>Building and contents cover against fire, natural perils and allied risks.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">05</div>
+          <h3>Burglary</h3>
+          <p>Protection for business and residential assets against theft and break-in.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">06</div>
+          <h3>Goods in Transit</h3>
+          <p>Marine and inland transit cover for cargo moving by road, sea or air.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">07</div>
+          <h3>Corporate Covers</h3>
+          <p>Tailored risk solutions for institutions, NGOs and private enterprises.</p>
+        </div>
+        <div class="product-card">
+          <div class="icon">08</div>
+          <h3>Index-Based Livestock Takaful</h3>
+          <p>Innovative, climate-smart protection for pastoralist communities against drought-related livestock losses.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="feature" id="livestock">
+    <div class="media reveal">
+      <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1200&q=85" alt="Cattle in pasture at sunset">
+    </div>
+    <div class="text reveal">
+      <div class="kicker">Index-Based Livestock Takaful</div>
+      <h2>Protecting pastoralist livelihoods against drought.</h2>
+      <p>Our Index-Based Livestock Takaful (IBLT) product is designed for arid and semi-arid lands. Instead of waiting for individual loss assessments, payouts are triggered by satellite-based vegetation indices that reflect drought conditions in a given area.</p>
+      <p>This approach makes cover faster, more transparent and more affordable for pastoralist communities who depend on livestock for their income and food security.</p>
+      <div class="feature-list">
+        <div class="feature-item"><strong>Climate-smart</strong>Satellite-index triggered</div>
+        <div class="feature-item"><strong>Community-first</strong>Pastoralist livelihoods</div>
+        <div class="feature-item"><strong>Shariah-compliant</strong>Ethical pooling model</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="contact" class="cta">
+    <h2 class="reveal">Talk to us about ethical cover.</h2>
+    <p class="reveal">This concept shows one possible direction for Takaful Insurance of Africa's digital presence. A full build can integrate product quoting, claims guidance, branch information and Shariah governance content.</p>
+    <a class="reveal" href="mailto:TalkToUs@takafulafrica.co.ke">Email Takaful Insurance of Africa</a>
+  </section>
+
+  <footer>
+    <div><strong>Takaful Insurance of Africa</strong> · Presentation concept by <a href="../index.html">Korvia Studio</a></div>
+    <div style="margin-top:8px">Concept informed by publicly available Takaful Insurance of Africa information. Imagery is illustrative.</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Kenya Vision 2030 Delivery Secretariat · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0f1216;
+      --paper:#f6f5f2;
+      --green:#1e6f4e;
+      --green-light:#e8f2ed;
+      --red:#b83a2b;
+      --red-light:#f7e8e6;
+      --black:#0a0a0a;
+      --metal:#8b939c;
+      --line:#dadad6;
+      --text:#1d2228;
+      --muted:#5a626a;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.65}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--ink);color:#fff;font-size:.72rem;padding:10px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:#90bfa8}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:22px 24px;border-bottom:1px solid var(--line);
+      background:#fff;position:sticky;top:0;z-index:50;
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:var(--ink)}
+    .logo-mark{width:36px;height:36px;border-radius:50%;position:relative;background:var(--green);overflow:hidden;border:2px solid var(--ink)}
+    .logo-mark::before{content:'';position:absolute;top:0;left:0;right:0;height:33%;background:var(--black)}
+    .logo-mark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:33%;background:var(--red)}
+    nav{display:flex;gap:32px;font-size:.88rem;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+
+    .hero{
+      display:grid;grid-template-columns:1.1fr 1fr;gap:0;min-height:calc(100vh - 140px);
+      border-bottom:1px solid var(--line);
+    }
+    .hero-copy{padding:80px 24px 80px 8vw;display:flex;flex-direction:column;justify-content:center;background:#fff}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin-bottom:22px}
+    .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,5.5vw,5rem);line-height:.98;letter-spacing:-.04em;color:var(--ink);margin-bottom:28px}
+    .hero h1 em{font-style:normal;color:var(--green)}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:530px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:14px 28px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+    .btn-primary{background:var(--green);color:#fff}
+    .btn-secondary{border:1px solid var(--line);color:var(--ink)}
+
+    .hero-media{position:relative;overflow:hidden;min-height:500px;background:#0f1216}
+    .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.92}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,22,.25),rgba(15,18,22,.55))}
+    .hero-caption{
+      position:absolute;bottom:28px;left:28px;right:28px;
+      background:rgba(255,255,255,.94);padding:16px 20px;border-radius:4px;
+      font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);
+      backdrop-filter:blur(6px)
+    }
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+    .section-head h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.03em}
+    .section-head p{color:var(--muted);max-width:440px}
+    .kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);margin-bottom:14px}
+
+    .pillars{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff;
+    }
+    .pillar{padding:40px 30px;border-right:1px solid var(--line);transition:background .2s}
+    .pillar:last-child{border-right:0}
+    .pillar:hover{background:#fafaf8}
+    .pillar-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:700;color:#fff}
+    .pillar:nth-child(1) .pillar-icon{background:var(--green)}
+    .pillar:nth-child(2) .pillar-icon{background:var(--red)}
+    .pillar:nth-child(3) .pillar-icon{background:var(--black)}
+    .pillar h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;margin-bottom:12px}
+    .pillar p{font-size:.92rem;color:var(--muted)}
+
+    .timeline{position:relative}
+    .timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:1px;background:var(--line)}
+    .timeline-item{display:grid;grid-template-columns:70px 1fr;gap:30px;margin-bottom:38px;position:relative}
+    .timeline-dot{width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;font-family:'IBM Plex Mono',monospace;font-size:.65rem;font-weight:700;color:var(--green)}
+    .timeline-year{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--red);margin-bottom:6px}
+    .timeline-item h4{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;margin-bottom:6px}
+    .timeline-item p{font-size:.92rem;color:var(--muted)}
+
+    .programme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .programme-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:36px;transition:transform .2s,border-color .2s}
+    .programme-card:hover{transform:translateY(-4px);border-color:var(--green)}
+    .programme-card .num{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--metal);margin-bottom:18px}
+    .programme-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;margin-bottom:12px}
+    .programme-card p{font-size:.92rem;color:var(--muted)}
+
+    .feature{
+      display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:100px 24px;max-width:1200px;margin:0 auto;
+    }
+    .feature .text{padding-right:40px}
+    .feature h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin-bottom:22px}
+    .feature p{color:var(--muted);margin-bottom:18px}
+    .stat-list{display:flex;gap:40px;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+    .stat{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted)}
+    .stat strong{display:block;font-family:'Inter',sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:4px}
+    .feature .media{position:relative;border-radius:4px;overflow:hidden;min-height:420px;background:var(--ink)}
+    .feature .media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.9}
+    .blueprint-grid{
+      position:absolute;inset:0;background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+      background-size:40px 40px;
+      pointer-events:none;
+    }
+
+    .cta{background:var(--ink);color:#fff;text-align:center;padding:110px 24px}
+    .cta h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.5rem);margin-bottom:18px}
+    .cta p{color:var(--metal);max-width:560px;margin:0 auto 34px}
+    .cta a{display:inline-block;padding:16px 36px;background:#fff;color:var(--ink);text-decoration:none;border-radius:4px;font-weight:700}
+
+    footer{padding:50px 24px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+    footer a{color:var(--green);text-decoration:none}
+
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-media{min-height:400px}
+      .pillars{grid-template-columns:1fr}
+      .pillar{border-right:0;border-bottom:1px solid var(--line)}
+      .pillar:last-child{border-bottom:0}
+      .programme-grid{grid-template-columns:1fr}
+      .feature{grid-template-columns:1fr;gap:40px}
+      .feature .text{padding-right:0}
+      .section-head{display:block}
+      nav{gap:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared independently by Korvia Studio from publicly available information. Not the Vision 2030 Delivery Secretariat's live website.</span>
+  </div>
+
+  <header>
+    <div class="logo"><div class="logo-mark"></div>Kenya Vision 2030</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#pillars">Pillars</a>
+      <a href="#journey">Journey</a>
+      <a href="#programmes">Programmes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Semi-Autonomous Government Agency · Est. 2009</div>
+      <h1>A national blueprint, <em>delivered in stages.</em></h1>
+      <p>Kenya Vision 2030 is the country's long-term development agenda to transform it into a newly industrialising, upper-middle-income nation with a high quality of life for all Kenyans.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#programmes">Explore delivery work</a>
+        <a class="btn btn-secondary" href="#contact">Contact the Secretariat</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&w=1600&q=85" alt="Nairobi skyline at dusk">
+      <div class="hero-overlay"></div>
+      <div class="hero-caption">Concept imagery · Nairobi, Kenya's capital and economic engine.</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Our mandate</div>
+        <h2>Coordinate the blueprint. Track progress. Deliver results.</h2>
+      </div>
+      <p>The Vision 2030 Delivery Secretariat drives implementation through flagship projects, Medium-Term Plans, monitoring and evaluation, public-private partnerships, and knowledge-sharing across government and industry.</p>
+    </div>
+  </section>
+
+  <section id="pillars" style="max-width:100%;padding-left:8vw;padding-right:8vw">
+    <div class="kicker">Three pillars, one goal</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">E</div>
+        <h3>Economic & Macro</h3>
+        <p>Building a competitive, prosperous economy through flagship infrastructure, manufacturing, tourism, agriculture, financial services and trade.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">S</div>
+        <h3>Social Pillar</h3>
+        <p>Investing in education, health, housing, water and sanitation, and social protection to create a just and cohesive society.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">P</div>
+        <h3>Political Pillar</h3>
+        <p>Strengthening governance, rule of law, public-service delivery, security and devolution for all Kenyans.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="section-head">
+      <div>
+        <div class="kicker">From blueprint to reality</div>
+        <h2>The delivery journey.</h2>
+      </div>
+      <p>Vision 2030 unfolds through successive Medium-Term Plans, each translating high-level goals into concrete programmes, projects and measurable indicators.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">01</div>
+        <div>
+          <div class="timeline-year">2008</div>
+          <h4>Vision 2030 Launched</h4>
+          <p>Kenya's long-term development blueprint is unveiled, built on three pillars and the foundations of infrastructure, energy, ICT and governance.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">02</div>
+        <div>
+          <div class="timeline-year">2009</div>
+          <h4>Delivery Secretariat Established</h4>
+          <p>The Vision 2030 Delivery Secretariat is created as a SAGA to spearhead and coordinate national implementation.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">03</div>
+        <div>
+          <div class="timeline-year">2008–2022</div>
+          <h4>First Three Medium-Term Plans</h4>
+          <p>MTP I, II and III translate the blueprint into actionable priorities, flagship projects and sector outcomes.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">04</div>
+        <div>
+          <div class="timeline-year">2023–2027</div>
+          <h4> MTP IV: Bottom-Up Economic Transformation</h4>
+          <p>The fourth Medium-Term Plan focuses on economic turnaround, job creation and inclusive growth through value chains.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programmes">
+    <div class="section-head">
+      <div>
+        <div class="kicker">How delivery happens</div>
+        <h2>Programmes that move the plan forward.</h2>
+      </div>
+      <p>The Secretariat's work spans coordination, communication, monitoring and partnership building to keep flagship projects on track.</p>
+    </div>
+    <div class="programme-grid">
+      <div class="programme-card">
+        <div class="num">01</div>
+        <h3>Flagship Projects</h3>
+        <p>Identifying, prioritising and tracking high-impact national projects across economic, social and political sectors.</p>
+      </div>
+      <div class="programme-card">
+        <div class="num">02</div>
+        <h3>Monitoring & Evaluation</h3>
+        <p>Measuring progress against Medium-Term Plan indicators and producing public reports on implementation status.</p>
+      </div>
+      <div class="programme-card">
+        <div class="num">03</div>
+        <h3>Public-Private Partnerships</h3>
+        <p>Bringing together government, private sector and development partners to finance and deliver strategic initiatives.</p>
+      </div>
+      <div class="programme-card">
+        <div class="num">04</div>
+        <h3>Communication & Marketing</h3>
+        <p>Building public awareness of Vision 2030, celebrating milestones and keeping citizens informed about national priorities.</p>
+      </div>
+      <div class="programme-card">
+        <div class="num">05</div>
+        <h3>Knowledge Sharing</h3>
+        <p>Workshops, forums and capacity-building events that spread implementation lessons across ministries and counties.</p>
+      </div>
+      <div class="programme-card">
+        <div class="num">06</div>
+        <h3>Medium-Term Planning</h3>
+        <p>Coordinating the design and review of successive MTPs to keep the 2030 agenda focused, funded and achievable.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="feature" id="impact">
+    <div class="text">
+      <div class="kicker">Foundations of transformation</div>
+      <h2>Infrastructure, ICT, energy and governance under every outcome.</h2>
+      <p>Long-term development depends on reliable foundations. The Vision 2030 agenda links flagship projects in transport, energy, water, ICT and public-service reform to the three national pillars.</p>
+      <p>This concept section would visualise live project data, county-level progress and sector scorecards in a clean, editorial interface.</p>
+      <div class="stat-list">
+        <div class="stat"><strong>2008</strong>Blueprint launched</div>
+        <div class="stat"><strong>47</strong>Counties reached</div>
+        <div class="stat"><strong>2030</strong>Target year</div>
+      </div>
+    </div>
+    <div class="media">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85" alt="Construction and infrastructure development">
+      <div class="blueprint-grid"></div>
+    </div>
+  </div>
+
+  <section id="contact" class="cta">
+    <h2>Build the full Vision 2030 digital experience.</h2>
+    <p>This concept is a starting direction. The full website can integrate verified programmes, MTP reports, project dashboards, county data and the Secretariat's publishing workflow.</p>
+    <a href="mailto:info@vision2030.go.ke">Contact the Delivery Secretariat</a>
+  </section>
+
+  <footer>
+    <div><strong>Kenya Vision 2030 Delivery Secretariat</strong> · Presentation concept by <a href="../index.html">Korvia Studio</a></div>
+    <div style="margin-top:8px">Concept informed by publicly available information. Imagery is illustrative.</div>
+  </footer>
+
+  <script>
+    // Simple scroll reveal for sections and cards
+    const reveal = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(reveal, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('section, .feature, .programme-card, .pillar, .timeline-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .55s ease, transform .55s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
