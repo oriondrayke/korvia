@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>FSD Kenya · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0a2540;
+      --navy-deep:#051525;
+      --teal:#0d7377;
+      --teal-light:#e6f4f1;
+      --growth:#2e7d32;
+      --gold:#c9a227;
+      --gold-light:#fbf6e6;
+      --paper:#ffffff;
+      --ink:#1a1a1a;
+      --text:#2d2d2d;
+      --muted:#5c5c5c;
+      --line:#e2e8f0;
+      --warm:#f6f4ef;
+      --shadow:rgba(10,37,64,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--warm);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--navy-deep);color:#fff;font-size:.72rem;padding:11px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:#7dd3fc}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 24px;border-bottom:1px solid var(--line);
+      background:var(--paper);position:sticky;top:0;z-index:50;
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--navy)}
+    .logo-mark{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--navy) 45%,var(--teal) 100%);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:0 4px 12px var(--shadow)}
+    .logo-mark svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    nav{display:flex;gap:28px;font-size:.88rem;font-weight:500;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;transition:color .2s}
+    nav a:hover{color:var(--navy)}
+    .nav-cta{background:var(--teal);color:#fff;padding:9px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.82rem}
+    .nav-cta:hover{background:#095c5f;color:#fff}
+
+    .hero{
+      position:relative;overflow:hidden;
+      min-height:calc(100vh - 120px);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,#0a4f52 100%);
+      color:#fff;
+    }
+    .hero-pattern{
+      position:absolute;inset:0;opacity:.07;
+      background-image:
+        radial-gradient(circle at 25% 25%,#fff 2px,transparent 2px),
+        radial-gradient(circle at 75% 65%,#fff 1.5px,transparent 1.5px),
+        linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+      background-size:140px 140px,200px 200px,80px 80px;
+    }
+    .hero-inner{position:relative;z-index:2;max-width:1200px;padding:80px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:#7dd3fc;margin-bottom:22px}
+    .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5.5vw,5rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:26px}
+    .hero h1 em{font-style:italic;color:#a7f3d0}
+    .hero p{font-size:1.15rem;color:rgba(255,255,255,.85);max-width:520px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:15px 30px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--gold);color:var(--navy-deep)}
+    .btn-primary:hover{box-shadow:0 12px 28px rgba(201,162,39,.25)}
+    .btn-secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+    .stat-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:26px;backdrop-filter:blur(8px)}
+    .stat-card strong{display:block;font-family:'DM Serif Display',serif;font-size:2.2rem;line-height:1;color:#fff;margin-bottom:6px}
+    .stat-card span{font-size:.82rem;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.06em}
+
+    section{padding:90px 24px}
+    .container{max-width:1140px;margin:0 auto}
+    .section-head{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;margin-bottom:54px;align-items:start}
+    .section-head h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3rem);color:var(--navy);line-height:1.1}
+    .section-head h2 em{font-style:italic;color:var(--teal)}
+    .section-head p{color:var(--muted);font-size:1.05rem}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);margin-bottom:14px}
+
+    .about{background:var(--paper)}
+    .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .about-card{padding:32px;border:1px solid var(--line);border-radius:12px;background:var(--warm)}
+    .about-card h3{font-size:1.05rem;color:var(--navy);margin-bottom:10px}
+    .about-card p{font-size:.92rem;color:var(--muted)}
+    .about-card .icon{width:44px;height:44px;border-radius:10px;background:var(--teal-light);display:grid;place-items:center;margin-bottom:18px}
+    .about-card .icon svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+    .programmes{background:var(--navy);color:#fff}
+    .programmes .section-head h2{color:#fff}
+    .programmes .section-head p{color:rgba(255,255,255,.7)}
+    .programmes .eyebrow{color:#7dd3fc}
+    .prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .prog-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:30px;transition:transform .2s,background .2s}
+    .prog-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.1)}
+    .prog-card h3{font-size:1.15rem;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+    .prog-card h3 span{width:32px;height:32px;border-radius:8px;background:var(--teal);display:grid;place-items:center;font-size:.8rem;font-family:'IBM Plex Mono',monospace}
+    .prog-card p{font-size:.92rem;color:rgba(255,255,255,.75)}
+
+    .research{background:var(--teal-light)}
+    .pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .pub-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+    .pub-card .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);font-weight:700;margin-bottom:12px}
+    .pub-card h3{font-size:1.05rem;color:var(--navy);margin-bottom:10px;line-height:1.3}
+    .pub-card p{font-size:.88rem;color:var(--muted);margin-bottom:18px}
+    .pub-card a{color:var(--teal);font-weight:600;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+
+    .impact{background:var(--gold-light)}
+    .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+    .impact-card{background:#fff;border:1px solid #ede8d4;border-radius:12px;padding:30px 18px}
+    .impact-card strong{display:block;font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--navy);margin-bottom:6px}
+    .impact-card span{font-size:.82rem;color:var(--muted)}
+
+    .partners{background:#fff}
+    .partner-logos{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center}
+    .partner-logos span{display:inline-flex;align-items:center;gap:10px;background:var(--warm);border:1px solid var(--line);border-radius:8px;padding:12px 22px;font-size:.85rem;font-weight:600;color:var(--muted)}
+
+    .cta{background:linear-gradient(135deg,var(--navy-deep),var(--navy));color:#fff;text-align:center}
+    .cta h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:18px}
+    .cta p{max-width:640px;margin:0 auto 32px;color:rgba(255,255,255,.8);font-size:1.1rem}
+    .cta .btn-primary{background:var(--gold);color:var(--navy-deep)}
+
+    footer{background:var(--navy-deep);color:rgba(255,255,255,.6);padding:50px 24px 30px;font-size:.85rem}
+    .footer-grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+    .footer-grid h4{color:#fff;font-size:.95rem;margin-bottom:16px}
+    .footer-grid p{line-height:1.7}
+    .footer-grid a{color:#7dd3fc;text-decoration:none}
+    .footer-grid a:hover{text-decoration:underline}
+    .footer-bottom{max-width:1140px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    @media(max-width:900px){
+      .hero-inner,.section-head{grid-template-columns:1fr}
+      .about-grid,.pub-grid{grid-template-columns:1fr}
+      .prog-grid,.impact-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared by Korvia Studio for FSD Kenya's 2026–2029 supplier prequalification. Not an official site.</span>
+  </div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M6 6l12 12M18 6L6 18"/></svg>
+      </div>
+      FSD Kenya
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#programmes">Programmes</a>
+      <a href="#research">Research</a>
+      <a href="#impact">Impact</a>
+      <a href="#partners">Partners</a>
+      <a class="nav-cta" href="#contact">Work with us</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Making markets work for the poor</div>
+        <h1>Deepening financial markets for <em>every Kenyan</em></h1>
+        <p>Since 2005, FSD Kenya has worked to build inclusive, competitive financial markets that improve lives, grow enterprises and strengthen the real economy.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#programmes">Explore our work</a>
+          <a class="btn btn-secondary" href="#contact">Partner with us</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card"><strong>20+</strong><span>Years of market building</span></div>
+        <div class="stat-card"><strong>6M+</strong><span>Low-income people reached</span></div>
+        <div class="stat-card"><strong>83%</strong><span>Adult financial inclusion</span></div>
+        <div class="stat-card"><strong>50+</strong><span>Research publications yearly</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Who we are</div>
+          <h2>A trusted catalyst for <em>inclusive finance</em></h2>
+        </div>
+        <p>We use the Making Markets Work for the Poor (M4P) approach to identify systemic constraints, partner with public and private actors, and test solutions that can scale across Kenya.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3>Long-term perspective</h3>
+          <p>Market change takes time. We stay with complex problems long enough to move from pilots to policy.</p>
+        </div>
+        <div class="about-card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>People at the centre</h3>
+          <p>Women, micro-entrepreneurs, rural households and youth are the focus of every programme we design.</p>
+        </div>
+        <div class="about-card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg></div>
+          <h3>Evidence-led change</h3>
+          <p>From FinAccess national surveys to county-level diagnostics, we put data at the heart of decision-making.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="programmes" id="programmes">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Programmes</div>
+          <h2>Where we focus our energy</h2>
+        </div>
+        <p>Our current work spans six interconnected areas that together shape a more inclusive financial system.</p>
+      </div>
+      <div class="prog-grid">
+        <div class="prog-card">
+          <h3><span>01</span> Digital finance</h3>
+          <p>Expanding safe, affordable digital payment rails and responsible agent networks for households and small businesses.</p>
+        </div>
+        <div class="prog-card">
+          <h3><span>02</span> Credit markets</h3>
+          <p>Improving access to productive credit for MSEs, farmers and women through better data, guarantees and market infrastructure.</p>
+        </div>
+        <div class="prog-card">
+          <h3><span>03</span> Climate & green finance</h3>
+          <p>Developing financing mechanisms that help households and enterprises adapt to climate risk and invest in green livelihoods.</p>
+        </div>
+        <div class="prog-card">
+          <h3><span>04</span> Women & financial inclusion</h3>
+          <p>Closing the persistent gender gap in access, usage and control of financial services across Kenya.</p>
+        </div>
+        <div class="prog-card">
+          <h3><span>05</span> Housing & land</h3>
+          <p>Unlocking housing finance, tenure security and construction ecosystems for low and middle-income families.</p>
+        </div>
+        <div class="prog-card">
+          <h3><span>06</span> Real economy</h3>
+          <p>Strengthening market systems in agriculture, trade and MSME growth so finance flows to productive activity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="research" id="research">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Research & insights</div>
+          <h2>Knowledge that shapes <em>markets and policy</em></h2>
+        </div>
+        <p>FSD Kenya is one of the region's most respected sources of financial-sector research. A redesigned site should make that knowledge easy to find, share and act on.</p>
+      </div>
+      <div class="pub-grid">
+        <div class="pub-card">
+          <div class="tag">FinAccess</div>
+          <h3>FinAccess Household Survey 2024</h3>
+          <p>National dashboard tracking access, usage, quality and welfare outcomes across Kenyan households.</p>
+          <a href="#">Read report →</a>
+        </div>
+        <div class="pub-card">
+          <div class="tag">Climate</div>
+          <h3>Climate risk and agricultural finance</h3>
+          <p>How insurance, savings and credit products can build resilience for smallholder farmers.</p>
+          <a href="#">Read report →</a>
+        </div>
+        <div class="pub-card">
+          <div class="tag">Women</div>
+          <h3>Women's economic empowerment</h3>
+          <p>Evidence on barriers to women's financial inclusion and what works to overcome them.</p>
+          <a href="#">Read report →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact" id="impact">
+    <div class="container">
+      <div class="section-head" style="text-align:center;grid-template-columns:1fr">
+        <div>
+          <div class="eyebrow">Impact</div>
+          <h2>What market building looks like at scale</h2>
+        </div>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card"><strong>83%</strong><span>Adult financial inclusion</span></div>
+        <div class="impact-card"><strong>38%</strong><span>Adults with formal savings</span></div>
+        <div class="impact-card"><strong>31M+</strong><span>Mobile money accounts</span></div>
+        <div class="impact-card"><strong>6M+</strong><span>MSMEs supported by market work</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners" id="partners">
+    <div class="container">
+      <div class="section-head" style="text-align:center;grid-template-columns:1fr">
+        <div>
+          <div class="eyebrow">Partners</div>
+          <h2>Funders and collaborators</h2>
+        </div>
+      </div>
+      <div class="partner-logos">
+        <span>UK International Development</span>
+        <span>Sida</span>
+        <span>IFAD</span>
+        <span>Bill & Melinda Gates Foundation</span>
+        <span>Central Bank of Kenya</span>
+        <span>Financial Sector Regulators</span>
+        <span>County Governments</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Ready to deepen the next chapter?</h2>
+      <p>This concept shows how FSD Kenya's digital home could feel as credible, modern and inclusive as the markets it helps build.</p>
+      <a class="btn btn-primary" href="mailto:tenders@fsdkenya.org">Request the full proposal</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>FSD Kenya</h4>
+        <p>Financial Sector Deepening Kenya works to develop inclusive financial markets that improve the lives of low-income households and enterprises.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:tenders@fsdkenya.org">tenders@fsdkenya.org</a><br>Web: <a href="https://www.fsdkenya.org/">fsdkenya.org</a></p>
+      </div>
+      <div>
+        <h4>Concept by</h4>
+        <p>Korvia Studio<br>Dar es Salaam, Tanzania<br><a href="mailto:hello@korvia.studio">hello@korvia.studio</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FSD Kenya concept demonstration. All real organisational facts remain property of FSD Kenya.</span>
+      <span>Built by hand, not generated by an AI web builder.</span>
+    </div>
+  </footer>
+</body>
+</html>
