@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>1000 Friends of Oregon · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --forest:#1b4332;
+      --forest-deep:#081c15;
+      --meadow:#2d6a4f;
+      --sage:#74c69d;
+      --earth:#8b5e3c;
+      --stone:#f4f1ea;
+      --paper:#ffffff;
+      --ink:#1a1a1a;
+      --text:#2d2d2d;
+      --muted:#5c5c5c;
+      --line:#e0dcd3;
+      --action:#bc4749;
+      --shadow:rgba(27,67,50,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--stone);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--forest-deep);color:#fff;font-size:.72rem;padding:11px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:var(--sage)}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 24px;border-bottom:1px solid var(--line);
+      background:var(--paper);position:sticky;top:0;z-index:50;
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--forest)}
+    .logo-mark{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--forest) 45%,var(--meadow) 100%);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:0 4px 12px var(--shadow)}
+    .logo-mark svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    nav{display:flex;gap:28px;font-size:.88rem;font-weight:500;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;transition:color .2s}
+    nav a:hover{color:var(--forest)}
+    .nav-cta{background:var(--action);color:#fff;padding:9px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.82rem}
+    .nav-cta:hover{background:#a13d3f;color:#fff}
+
+    .hero{
+      position:relative;overflow:hidden;
+      min-height:calc(100vh - 120px);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--forest-deep) 0%,var(--forest) 60%,#143d2f 100%);
+      color:#fff;
+    }
+    .hero-pattern{
+      position:absolute;inset:0;opacity:.06;
+      background-image:linear-gradient(90deg,#fff 1px,transparent 1px),linear-gradient(#fff 1px,transparent 1px);
+      background-size:80px 80px;
+    }
+    .hero-inner{position:relative;z-index:2;max-width:1200px;padding:80px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--sage);margin-bottom:22px}
+    .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5.5vw,5rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:26px}
+    .hero h1 em{font-style:italic;color:#a7f3d0}
+    .hero p{font-size:1.15rem;color:rgba(255,255,255,.85);max-width:520px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:15px 30px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--action);color:#fff}
+    .btn-primary:hover{box-shadow:0 12px 28px rgba(188,71,73,.25)}
+    .btn-secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff}
+    .hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:32px;backdrop-filter:blur(8px)}
+    .hero-card h3{font-size:1.1rem;margin-bottom:14px;color:#fff}
+    .hero-card ul{list-style:none;display:grid;gap:10px}
+    .hero-card li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:rgba(255,255,255,.85)}
+    .hero-card li svg{flex-shrink:0;width:18px;height:18px;stroke:var(--sage);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px;flex-wrap:wrap}
+    .section-head h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.02em;color:var(--forest)}
+    .section-head p{color:var(--muted);max-width:480px}
+    .kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--action);margin-bottom:14px}
+
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about-text p{margin-bottom:20px;color:var(--muted);font-size:1.05rem}
+    .about-highlight{background:#e8f5ee;border-left:4px solid var(--meadow);padding:24px;border-radius:0 8px 8px 0}
+    .about-highlight strong{display:block;color:var(--forest);font-size:1.1rem;margin-bottom:8px}
+    .about-visual{position:relative;border-radius:16px;overflow:hidden;min-height:420px;background:linear-gradient(135deg,var(--forest) 0%,var(--meadow) 100%);display:grid;place-items:center;padding:40px}
+    .about-visual svg{width:220px;height:220px;opacity:.9}
+
+    .diagnosis-section{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .diagnosis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .diagnosis-card{padding:32px;background:var(--stone);border-radius:12px;border-top:4px solid var(--action)}
+    .diagnosis-card h3{font-size:1.1rem;font-weight:700;color:var(--forest);margin-bottom:10px}
+    .diagnosis-card p{font-size:.92rem;color:var(--muted)}
+
+    .nav-demo{background:var(--forest);color:#fff;padding:60px 24px;border-radius:16px;margin-bottom:40px}
+    .nav-demo h3{font-family:'DM Serif Display',serif;font-size:1.8rem;margin-bottom:24px}
+    .nav-demo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+    .nav-demo-col h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);margin-bottom:12px}
+    .nav-demo-col ul{list-style:none;display:grid;gap:8px}
+    .nav-demo-col li{font-size:.88rem;color:rgba(255,255,255,.85)}
+
+    .programmes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .programme-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:28px;transition:transform .2s,box-shadow .2s}
+    .programme-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px var(--shadow)}
+    .programme-icon{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;margin-bottom:18px;background:#e8f5ee;color:var(--meadow)}
+    .programme-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .programme-card h3{font-size:1.05rem;font-weight:700;color:var(--forest);margin-bottom:8px}
+    .programme-card p{font-size:.88rem;color:var(--muted)}
+
+    .feature-strip{background:linear-gradient(135deg,var(--forest) 0%,var(--forest-deep) 100%);color:#fff;padding:80px 24px}
+    .feature-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .feature-strip h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px}
+    .feature-strip p{color:rgba(255,255,255,.85);margin-bottom:28px;font-size:1.05rem}
+    .feature-list{display:grid;gap:16px}
+    .feature-item{display:flex;gap:14px;align-items:flex-start}
+    .feature-item svg{flex-shrink:0;width:22px;height:22px;stroke:var(--sage);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+    .feature-item span{color:rgba(255,255,255,.9);font-size:.95rem}
+
+    .stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .story-card{background:var(--paper);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+    .story-image{height:200px;background:#d9d3c9;position:relative;overflow:hidden}
+    .story-image img{width:100%;height:100%;object-fit:cover}
+    .story-badge{position:absolute;top:14px;left:14px;background:var(--action);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:5px 10px;border-radius:4px}
+    .story-body{padding:24px}
+    .story-body h3{font-size:1.05rem;font-weight:700;color:var(--forest);margin-bottom:8px}
+    .story-body p{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+    .story-body a{color:var(--action);font-weight:600;font-size:.85rem;text-decoration:none}
+
+    .action-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .action-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:30px;text-align:center}
+    .action-icon{width:52px;height:52px;border-radius:50%;background:#e8f5ee;color:var(--meadow);display:grid;place-items:center;margin:0 auto 16px}
+    .action-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .action-card h3{font-size:1.05rem;font-weight:700;color:var(--forest);margin-bottom:8px}
+    .action-card p{font-size:.88rem;color:var(--muted)}
+
+    .cta-section{background:linear-gradient(135deg,var(--meadow) 0%,var(--forest) 100%);color:#fff;padding:100px 24px;text-align:center}
+    .cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:18px}
+    .cta-section p{font-size:1.1rem;color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 32px}
+    .cta-section .btn-primary{background:#fff;color:var(--forest)}
+    .cta-section .btn-primary:hover{box-shadow:0 12px 28px rgba(0,0,0,.2)}
+
+    footer{background:var(--forest-deep);color:rgba(255,255,255,.7);padding:60px 24px 30px}
+    .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px}
+    .footer-brand .logo{color:#fff;margin-bottom:16px}
+    .footer-brand p{font-size:.88rem;line-height:1.7}
+    footer h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+    footer ul{list-style:none;display:grid;gap:10px}
+    footer a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.88rem}
+    footer a:hover{color:#fff}
+    .footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:.78rem;color:rgba(255,255,255,.5)}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .hero-inner,.about-grid,.feature-strip-inner,.footer-inner{grid-template-columns:1fr}
+      .diagnosis-grid,.stories-grid,.action-cards,.nav-demo-grid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared by Korvia Studio for 1000 Friends of Oregon website redesign RFP · Not the live site</span>
+  </div>
+
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+      </div>
+      <span>1000 Friends</span>
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#issues">Issues</a>
+      <a href="#action">Take Action</a>
+      <a href="#stories">Stories</a>
+      <a href="#contact" class="nav-cta">Donate</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Founded 1974 by Governor Tom McCall</div>
+        <h1>Oregon is worth fighting for. <em>Your website should fight harder.</em></h1>
+        <p>A clearer, faster, more action-oriented digital home for 1000 Friends of Oregon — turning decades of land-use leadership into immediate supporter engagement.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Join the fight</a>
+          <a href="#issues" class="btn btn-secondary">Explore the issues</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>This concept fixes the core RFP pain points</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Flat navigation so nothing is buried three levels deep</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Dynamic news that surfaces automatically on issue pages</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Donation + action alerts wired to Stripe, Salesforce and Soapbox</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Built-in search and SEO readiness from day one</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-grid reveal">
+    <div class="about-text">
+      <div class="kicker">Who we are</div>
+      <h2>50 years of defending Oregon’s land use system</h2>
+      <p>1000 Friends of Oregon was founded in 1974 by Governor Tom McCall and attorney Henry Richmond to protect Senate Bill 100 — the law that created Oregon’s iconic statewide land use planning system.</p>
+      <p>Today the organisation works in all 36 Oregon counties, promoting healthy working lands, great communities, shared prosperity and a strong democracy.</p>
+      <div class="about-highlight">
+        <strong>Why the redesign matters</strong>
+        The current Drupal site, built in 2017, buries essential information in nested menus and limits multimedia storytelling. This concept turns the site into an advocacy engine: every page leads to action.
+      </div>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="90" stroke="white" stroke-width="1.5" opacity="0.3"/>
+        <path d="M100 30v140M30 100h140" stroke="white" stroke-width="2" opacity="0.4"/>
+        <circle cx="100" cy="100" r="25" fill="white" opacity="0.9"/>
+        <path d="M100 130c16.57 0 30-13.43 30-30s-13.43-30-30-30" stroke="white" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M100 70c-16.57 0-30 13.43-30 30s13.43 30 30 30" stroke="white" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <path d="M70 150l30-20 30 20v20H70v-20z" fill="white" opacity="0.8"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="diagnosis-section">
+    <div class="section-head reveal" style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <div>
+        <div class="kicker">Diagnosis</div>
+        <h2>Turning your current site limits into wins</h2>
+      </div>
+      <p>Based on the RFP and a review of the current site, this concept directly addresses the biggest blockers to supporter engagement.</p>
+    </div>
+    <div class="diagnosis-grid reveal" style="max-width:1200px;margin:60px auto 0;padding:0 24px">
+      <div class="diagnosis-card">
+        <h3>1. Buried information</h3>
+        <p>Complex nesting hides programme pages and reports. The new architecture uses clear topic hubs and a persistent “Take Action” path.</p>
+      </div>
+      <div class="diagnosis-card">
+        <h3>2. Static programme pages</h3>
+        <p>News, reports and updates live separately from the issues they belong to. The concept auto-links fresh content to relevant issue pages.</p>
+      </div>
+      <div class="diagnosis-card">
+        <h3>3. Weak action funnel</h3>
+        <p>Donors and advocates drop off when the next step is unclear. Every major page ends with donate, sign-up or contact actions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="issues" class="reveal">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Issues</div>
+        <h2>Every issue, a clear doorway</h2>
+      </div>
+      <p>Instead of forcing visitors through nested menus, each priority area becomes a hub with latest news, actions, reports and ways to engage.</p>
+    </div>
+
+    <div class="nav-demo">
+      <h3>Proposed topic hub structure</h3>
+      <div class="nav-demo-grid">
+        <div class="nav-demo-col">
+          <h4>Housing</h4>
+          <ul>
+            <li>Housing Solutions Center</li>
+            <li>Affordability tools</li>
+            <li>Goal 10 resources</li>
+          </ul>
+        </div>
+        <div class="nav-demo-col">
+          <h4>Working Lands</h4>
+          <ul>
+            <li>Farms & forests</li>
+            <li>FAAC network</li>
+            <li>Wildfire resilience</li>
+          </ul>
+        </div>
+        <div class="nav-demo-col">
+          <h4>Climate & Energy</h4>
+          <ul>
+            <li>Clean energy siting</li>
+            <li>Data center reform</li>
+            <li>Transportation</li>
+          </ul>
+        </div>
+        <div class="nav-demo-col">
+          <h4>Communities</h4>
+          <ul>
+            <li>Urban growth</li>
+            <li>LULI leadership</li>
+            <li>Get involved</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="programmes-grid">
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-9a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v9"/></svg></div>
+        <h3>Housing Solutions Center</h3>
+        <p>Win-win housing solutions for affordability, fairness, accessibility and land stewardship.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/><path d="M12 6l-6 12h12L12 6z"/></svg></div>
+        <h3>Working Lands</h3>
+        <p>Protecting Oregon’s farms, forests and ranches through policy, legal advocacy and the FAAC network.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Climate & Energy</h3>
+        <p>Reducing emissions, supporting clean energy and mitigating wildfire risk across the state.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>Leadership & Education</h3>
+        <p>The Land Use Leadership Initiative trains the next generation of Oregon land-use advocates.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <h3>Legal & Policy</h3>
+        <p>Tracking legislation, testifying on bills and defending Oregon’s land use laws in court.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Data Center Reform Fund</h3>
+        <p>Supporting legal advocacy and community oversight of data centre expansion.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-strip">
+    <div class="feature-strip-inner reveal">
+      <div>
+        <h2>Built for advocacy, discovery and trust</h2>
+        <p>Every feature is chosen to help 1000 Friends turn website visitors into donors, advocates and informed citizens.</p>
+        <div class="feature-list">
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>WCAG 2.1 / 2.2 accessible design and readable typography</span></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Robust site search so reports and testimony are easy to find</span></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Dynamic content: news and reports auto-appear on relevant issue pages</span></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Donation, newsletter and advocacy forms connected to your tools</span></div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Search-engine ready: sitemap, indexing setup and performance optimisation</span></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px">
+        <div class="kicker" style="color:var(--sage)">Integrations</div>
+        <ul style="list-style:none;display:grid;gap:12px;color:rgba(255,255,255,.9);font-size:.9rem">
+          <li>Stripe + Salesforce (donations)</li>
+          <li>Mailchimp (newsletter)</li>
+          <li>Soapbox (action alerts & forms)</li>
+          <li>Google Analytics & Search Console</li>
+          <li>Events calendar</li>
+          <li>Multilingual-ready structure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories" class="reveal">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Stories & reports</div>
+        <h2>Impact that stays findable</h2>
+      </div>
+      <p>Reports, testimony, annual reports and blog posts are tagged by issue so they surface where supporters are already reading.</p>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-image"><span class="story-badge">Legislative recap</span><img src="https://picsum.photos/seed/1000friends-capitol/600/400" alt="Concept image: Oregon capitol"></div>
+        <div class="story-body">
+          <h3>2026 legislative recap</h3>
+          <p>How 1000 Friends and allies defended farm and forest lands while advancing housing affordability.</p>
+          <a href="#">Read the recap →</a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-image"><span class="story-badge">Housing</span><img src="https://picsum.photos/seed/1000friends-housing/600/400" alt="Concept image: housing"></div>
+        <div class="story-body">
+          <h3>Housing at the edge</h3>
+          <p>Why sprawl development increases climate risk and inequality — and what the alternatives look like.</p>
+          <a href="#">Read the analysis →</a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-image"><span class="story-badge">Annual report</span><img src="https://picsum.photos/seed/1000friends-annual/600/400" alt="Concept image: annual report"></div>
+        <div class="story-body">
+          <h3>Oregon is worth fighting for</h3>
+          <p>The 2025 annual report celebrates what communities achieve when they organise and advocate together.</p>
+          <a href="#">Download PDF →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="action" class="reveal">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Take action</div>
+        <h2>Every visit becomes a next step</h2>
+      </div>
+      <p>The concept turns passive readers into donors, subscribers and advocates with clear, low-friction pathways.</p>
+    </div>
+    <div class="action-cards">
+      <div class="action-card">
+        <div class="action-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3>Donate</h3>
+        <p>One-time or recurring gifts through Stripe, recorded in Salesforce for seamless donor stewardship.</p>
+      </div>
+      <div class="action-card">
+        <div class="action-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <h3>Subscribe</h3>
+        <p>Mailchimp sign-up forms on every hub, plus issue-specific alert lists for engaged advocates.</p>
+      </div>
+      <div class="action-card">
+        <div class="action-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg></div>
+        <h3>Act</h3>
+        <p>Soapbox-powered petitions, testimony guides and legislator lookup for timely campaigns.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <div class="reveal">
+      <h2>Join 1000 Friends</h2>
+      <p>Help protect Oregon’s farms, forests, waters and communities for the next 50 years.</p>
+      <a href="#" class="btn btn-primary">Donate today</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div>
+          <span>1000 Friends of Oregon</span>
+        </div>
+        <p>Promoting healthy working lands, great communities, shared prosperity and a strong democracy with and for all Oregonians since 1974.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">Our story</a></li>
+          <li><a href="#issues">Issues</a></li>
+          <li><a href="#stories">News & reports</a></li>
+          <li><a href="#action">Take action</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@friends.org">info@friends.org</a></li>
+          <li><a href="tel:5034971000">(503) 497-1000</a></li>
+          <li>Portland, Oregon</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-inner footer-bottom">
+      Unofficial concept prepared by Korvia Studio for the 1000 Friends of Oregon website redesign RFP. All images are concept placeholders. Not the live website.
+    </div>
+  </footer>
+
+  <script>
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
