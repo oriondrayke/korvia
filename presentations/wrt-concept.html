@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Westcountry Rivers Trust · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --river:#1a3c34;
+      --river-deep:#122b25;
+      --water:#3a7ca5;
+      --water-light:#e8f4f8;
+      --leaf:#5a8f6e;
+      --earth:#8b6f4e;
+      --sand:#f5f0e8;
+      --paper:#ffffff;
+      --ink:#1f2924;
+      --text:#2a3631;
+      --muted:#5d6b66;
+      --line:#d8e0d8;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--sand);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--river-deep);color:#fff;font-size:.72rem;padding:11px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:var(--leaf)}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 24px;border-bottom:1px solid var(--line);
+      background:var(--paper);position:sticky;top:0;z-index:50;
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--river)}
+    .logo-mark{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--water) 35%,var(--leaf) 100%);position:relative;overflow:hidden;display:grid;place-items:center}
+    .logo-mark svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    nav{display:flex;gap:32px;font-size:.88rem;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;transition:color .2s}
+    nav a:hover{color:var(--river)}
+
+    .hero{
+      display:grid;grid-template-columns:1.1fr 1fr;gap:0;
+      min-height:calc(100vh - 132px);border-bottom:1px solid var(--line);
+    }
+    .hero-copy{padding:80px 24px 80px 8vw;display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--earth);margin-bottom:22px}
+    .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5.5vw,5rem);line-height:1.05;letter-spacing:-.02em;color:var(--river);margin-bottom:26px}
+    .hero h1 em{font-style:italic;color:var(--water)}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:14px 28px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--river);color:#fff}
+    .btn-primary:hover{box-shadow:0 10px 24px rgba(26,60,52,.18)}
+    .btn-secondary{border:1px solid var(--line);color:var(--river)}
+
+    .hero-media{position:relative;overflow:hidden;min-height:500px;background:var(--river-deep)}
+    .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .hero-caption{
+      position:absolute;bottom:28px;left:28px;right:28px;
+      background:rgba(255,255,255,.94);padding:16px 20px;border-radius:4px;
+      font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);
+      backdrop-filter:blur(6px)
+    }
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+    .section-head h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.02em;color:var(--river)}
+    .section-head p{color:var(--muted);max-width:440px}
+    .kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--earth);margin-bottom:14px}
+
+    .why-feature{
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);
+    }
+    .why-wrap{max-width:1200px;margin:0 auto;padding:100px 24px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+    .why-text h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.08;margin-bottom:22px;color:var(--river)}
+    .why-text p{color:var(--muted);margin-bottom:18px}
+    .why-text p.lead{font-size:1.2rem;color:var(--text);line-height:1.7}
+    .why-media{position:relative;border-radius:4px;overflow:hidden;min-height:440px;background:var(--river-deep)}
+    .why-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .fact-list{display:flex;gap:40px;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+    .fact{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted)}
+    .fact strong{display:block;font-family:'Inter',sans-serif;font-size:1.2rem;color:var(--river);margin-bottom:4px}
+
+    .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .focus-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:36px;transition:transform .2s,border-color .2s,box-shadow .2s}
+    .focus-card:hover{transform:translateY(-4px);border-color:var(--leaf);box-shadow:0 16px 40px rgba(26,60,52,.08)}
+    .focus-card .num{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--leaf);margin-bottom:18px}
+    .focus-card h3{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:12px;color:var(--river)}
+    .focus-card p{font-size:.92rem;color:var(--muted)}
+
+    .audience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .audience-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:28px;text-align:center;transition:transform .2s,border-color .2s}
+    .audience-card:hover{transform:translateY(-3px);border-color:var(--water)}
+    .audience-card .icon{width:44px;height:44px;margin:0 auto 16px;border-radius:50%;background:var(--water-light);display:grid;place-items:center}
+    .audience-card .icon svg{width:22px;height:22px;fill:none;stroke:var(--water);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .audience-card h3{font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:8px;color:var(--river)}
+    .audience-card p{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+    .website-direction{
+      background:var(--water-light);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    }
+    .website-direction section{padding-top:100px;padding-bottom:100px}
+    .direction-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .direction-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:32px;display:flex;gap:20px;transition:transform .2s,border-color .2s,box-shadow .2s}
+    .direction-card:hover{transform:translateY(-4px);border-color:var(--water);box-shadow:0 16px 40px rgba(58,124,165,.1)}
+    .direction-card .num{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--water);flex-shrink:0;width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%}
+    .direction-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:10px;color:var(--river)}
+    .direction-card p{font-size:.9rem;color:var(--muted)}
+
+    .accessibility-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .accessibility-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:36px;transition:transform .2s,border-color .2s}
+    .accessibility-card:hover{transform:translateY(-3px);border-color:var(--leaf)}
+    .accessibility-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:12px;color:var(--river)}
+    .accessibility-card p{font-size:.9rem;color:var(--muted)}
+    .accessibility-card .check{width:28px;height:28px;border-radius:50%;background:var(--leaf);display:grid;place-items:center;margin-bottom:18px}
+    .accessibility-card .check svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+    .timeline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+    .timeline section{padding-top:100px;padding-bottom:100px}
+    .timeline-list{position:relative;padding-left:32px}
+    .timeline-list::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:var(--line)}
+    .timeline-item{position:relative;margin-bottom:42px}
+    .timeline-item:last-child{margin-bottom:0}
+    .timeline-item::before{content:'';position:absolute;left:-28px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--leaf);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--line)}
+    .timeline-phase{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--earth);margin-bottom:8px}
+    .timeline-item h3{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--river);margin-bottom:10px}
+    .timeline-item p{font-size:.92rem;color:var(--muted);max-width:680px}
+
+    .cta{background:var(--river);color:#fff;text-align:center;padding:110px 24px}
+    .cta h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.5rem);margin-bottom:18px}
+    .cta p{color:rgba(255,255,255,.78);max-width:560px;margin:0 auto 34px}
+    .cta a{display:inline-block;padding:16px 36px;background:#fff;color:var(--river);text-decoration:none;border-radius:4px;font-weight:700}
+    .cta .contact-detail{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:rgba(255,255,255,.65)}
+
+    footer{padding:50px 24px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);background:var(--paper)}
+    footer a{color:var(--water);text-decoration:none}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease-out,transform .65s ease-out}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-media{min-height:400px}
+      .why-wrap{grid-template-columns:1fr;gap:40px}
+      .why-media{min-height:340px}
+      .focus-grid{grid-template-columns:1fr}
+      .audience-grid{grid-template-columns:repeat(2,1fr)}
+      .direction-grid{grid-template-columns:1fr}
+      .accessibility-grid{grid-template-columns:1fr}
+      .section-head{display:block}
+      .fact-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    }
+    @media(max-width:560px){
+      nav{gap:18px;font-size:.8rem}
+      .audience-grid{grid-template-columns:1fr}
+      .fact-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared independently by Korvia Studio from publicly available information. Not the Westcountry Rivers Trust live website.</span>
+  </div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c4-2 5-6 9-6s4 6 8 4"/><path d="M4 18c3-1 5-5 8-5s5 5 9 3"/></svg>
+      </div>
+      Westcountry Rivers Trust
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#audience">Audience</a>
+      <a href="#brand">Brand</a>
+      <a href="#website">Website</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Independent rivers charity · Established 1994</div>
+      <h1>A website that makes people <em>love rivers enough to act.</em></h1>
+      <p>The Westcountry Rivers Trust protects and restores the rivers, streams and estuaries of the West Country. A new digital presence can turn public affection for local water into donations, volunteering, pledges and long-term support.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-secondary" href="#about">Why this matters</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1600&q=85" alt="A river winding through green West Country countryside">
+      <div class="hero-caption">Concept imagery · Rivers are the thread that connects wildlife, farming, communities and recreation across the West Country.</div>
+    </div>
+  </section>
+
+  <div class="why-feature" id="about">
+    <div class="why-wrap reveal">
+      <div class="why-text">
+        <div class="kicker">Why this project matters</div>
+        <h2>From project-funded charity to publicly supported movement.</h2>
+        <p class="lead">WRT's next chapter depends on deepening relationships with individuals, businesses and communities who care about rivers. The website needs to convert that care into action.</p>
+        <p>This concept responds to the strategic shift toward public fundraising: growing individual giving, building corporate partnerships, developing legacy giving, and making volunteering and event participation easy to join.</p>
+        <p>The design must feel as credible to a major funder or landowner as it does welcoming to a first-time donor, a wild swimmer, or a family wanting to volunteer on a Saturday.</p>
+        <div class="fact-list">
+          <div class="fact"><strong>1994</strong>Year established</div>
+          <div class="fact"><strong>1135007</strong>Charity number</div>
+          <div class="fact"><strong>06545646</strong>Company number</div>
+          <div class="fact"><strong>wrt.org.uk</strong>Owned domain</div>
+        </div>
+      </div>
+      <div class="why-media">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1200&q=85" alt="Lush green river valley">
+      </div>
+    </div>
+  </div>
+
+  <section id="audience">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Audience &amp; journeys</div>
+        <h2>Designed for everyone who depends on rivers.</h2>
+      </div>
+      <p>Each visitor arrives with a different need. The site should guide them quickly to the right action without losing the emotional connection that brings them there.</p>
+    </div>
+    <div class="audience-grid reveal">
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Public &amp; local communities</h3>
+        <p>Discover what is happening on local rivers and find simple ways to get involved.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Individual donors</h3>
+        <p>Give once, monthly, in memory or through a legacy, with clear impact and trust signals.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Volunteers</h3>
+        <p>Sign up for river clean-ups, citizen science days, habitat work and local group events.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Anglers</h3>
+        <p>Access fishery work, catchment reports, habitat improvements and club partnership information.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <h3>Swimmers &amp; outdoor users</h3>
+        <p>Find water quality updates, safety guidance and ways to protect the places they love.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>Businesses</h3>
+        <p>Explore corporate partnership, sponsorship, water stewardship and environmental reporting routes.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Funders &amp; landowners</h3>
+        <p>Review evidence, download reports and understand WRT's delivery track record across catchments.</p>
+      </div>
+      <div class="audience-card">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Rivers Trust network</h3>
+        <p>Connect with wider policy, research and campaigning activity across the UK rivers movement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="brand" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:100%">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Brand &amp; story</div>
+          <h2>Turning science and stewardship into feeling.</h2>
+        </div>
+        <p>WRT's identity should balance rigorous catchment science with the emotional pull of living water: the sound, the wildlife, the memories, the future.</p>
+      </div>
+      <div class="focus-grid reveal">
+        <div class="focus-card">
+          <div class="num">01</div>
+          <h3>Strapline &amp; story</h3>
+          <p>A clear, memorable promise that connects local rivers to everyday life. The story is not only about what WRT does, but why it matters to the people who live, work and play in the West Country.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">02</div>
+          <h3>Tone of voice</h3>
+          <p>Warm, knowledgeable and quietly determined. Authoritative enough for funders and farmers; accessible enough for families and first-time visitors. Avoids doom in favour of agency.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">03</div>
+          <h3>Visual identity</h3>
+          <p>River greens, water blues and earthy tones. Photography led by real West Country landscapes, wildlife, volunteers and water. Typography that feels crafted and outdoorsy, not corporate.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">04</div>
+          <h3>Emotive storytelling</h3>
+          <p>Case studies, before-and-after catchment work, seasonal diaries and volunteer voices. Each story should end with a specific action: donate, volunteer, pledge, share, attend.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">05</div>
+          <h3>Trust &amp; credibility</h3>
+          <p>Charity and company numbers, membership of the Rivers Trust network, annual reports and partnership logos displayed clearly without cluttering the emotional experience.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">06</div>
+          <h3>Place-based belonging</h3>
+          <p>The West Country is the stage. Maps, catchment pages and local event listings help visitors recognise their own river and feel part of a shared regional effort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="website-direction" id="website">
+    <section>
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Website direction</div>
+          <h2>Built to turn care into action.</h2>
+        </div>
+        <p>The platform should connect content, community and conversion, integrating the tools WRT already uses or is considering.</p>
+      </div>
+      <div class="direction-grid reveal">
+        <div class="direction-card">
+          <div class="num">01</div>
+          <div>
+            <h3>Donation pathway</h3>
+            <p>Clear one-off, monthly, in-memory and major-giving routes with impact framing and secure payment handling. Donor journeys should be short, trustworthy and mobile-first.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">02</div>
+          <div>
+            <h3>Event sign-up</h3>
+            <p>Browseable calendar for volunteer days, guided river walks, talks and fundraising events. Simple registration with automated reminders and capacity management.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">03</div>
+          <div>
+            <h3>Volunteering</h3>
+            <p>Role listings, skill-matching forms and group pages for citizen science, habitat work and local river groups. Progress tracking keeps volunteers engaged.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">04</div>
+          <div>
+            <h3>Beacon CRM forms</h3>
+            <p>Embedded enquiry, donation and mailing-list forms connected to Beacon, so supporter data flows cleanly into one source of truth for fundraising and stewardship.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">05</div>
+          <div>
+            <h3>ArcGIS maps</h3>
+            <p>Interactive catchment and project maps that show where work is happening, what it involves and how visitors can get involved in their own area.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">06</div>
+          <div>
+            <h3>Breathe HR jobs</h3>
+            <p>Live vacancies fed from Breathe HR, with clear role pages, application instructions and working-at-WRT content to attract mission-driven candidates.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">07</div>
+          <div>
+            <h3>Reports archive</h3>
+            <p>Searchable, filterable library of annual reports, catchment plans, scientific papers, policy responses and project summaries for funders, researchers and the public.</p>
+          </div>
+        </div>
+        <div class="direction-card">
+          <div class="num">08</div>
+          <div>
+            <h3>Content &amp; campaigns</h3>
+            <p>Flexible page builder for campaigns, appeals and seasonal moments, with social sharing, email capture and clear calls to action throughout.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="accessibility">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Accessibility &amp; responsibility</div>
+        <h2>Built fairly, hosted lightly.</h2>
+      </div>
+      <p>A rivers charity should practise what it preaches: inclusion, transparency and care for environmental impact.</p>
+    </div>
+    <div class="accessibility-grid reveal">
+      <div class="accessibility-card">
+        <div class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>WCAG 2.1 AA</h3>
+        <p>Colour contrast, keyboard navigation, screen-reader landmarks, readable focus states and alt text for every image. Tested with real users and assistive technology.</p>
+      </div>
+      <div class="accessibility-card">
+        <div class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>GDPR &amp; PECR</h3>
+        <p>Clear consent for mailing lists and cookies, easy opt-out, lawful basis for processing supporter data, and privacy-by-default form design.</p>
+      </div>
+      <div class="accessibility-card">
+        <div class="check"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Low-carbon hosting</h3>
+        <p>Lightweight code, compressed images, green-powered hosting and minimal third-party scripts. The site's footprint should reflect WRT's environmental values.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="timeline" id="approach">
+    <section>
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Timeline / approach</div>
+          <h2>From discovery to handover.</h2>
+        </div>
+        <p>A phased delivery that respects WRT's expertise, involves the team early, and leaves the charity confident running the new site.</p>
+      </div>
+      <div class="timeline-list reveal">
+        <div class="timeline-item">
+          <div class="timeline-phase">Phase 01</div>
+          <h3>Discovery</h3>
+          <p>Stakeholder interviews, audience research, content audit, analytics review, competitor and peer benchmarking, and mapping of existing tools and integrations.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-phase">Phase 02</div>
+          <h3>Design</h3>
+          <p>Brand direction, information architecture, wireframes, visual designs for key templates, prototyping and accessibility review with WRT feedback at each stage.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-phase">Phase 03</div>
+          <h3>Build</h3>
+          <p>Frontend and CMS development, integration of Beacon, Breathe HR and ArcGIS, donation and event functionality, and performance optimisation.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-phase">Phase 04</div>
+          <h3>Content migration</h3>
+          <p>Structured migration of existing reports, pages, news and media into the new system, with redirects, metadata and search engine considerations preserved.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-phase">Phase 05</div>
+          <h3>Training &amp; handover</h3>
+          <p>Editor training, documentation, launch support and a post-launch care period so the WRT team can publish, fundraise and campaign with confidence.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="contact" class="cta">
+    <h2 class="reveal">Let's talk about the next WRT website.</h2>
+    <p class="reveal">This concept is a starting direction. A full build can integrate verified content, supporter journeys, live maps, event and donation flows, and WRT's publishing workflow.</p>
+    <a class="reveal" href="mailto:sarahshaw@wrt.org.uk">Email Sarah Shaw</a>
+    <div class="contact-detail reveal">Sarah Shaw · Head of Philanthropy · sarahshaw@wrt.org.uk</div>
+  </section>
+
+  <footer>
+    <div><strong>Westcountry Rivers Trust</strong> · Presentation concept by <a href="../index.html">Korvia Studio</a></div>
+    <div style="margin-top:8px">Concept informed by publicly available WRT information. Charity no. 1135007 · Company no. 06545646 · wrt.org.uk · Member of the Rivers Trust network.</div>
+  </footer>
+
+  <script>
+    (function(){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+  </script>
+</body>
+</html>

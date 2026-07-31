@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Senior Services of Southeastern Virginia · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --deep-blue:#1e4a6e;
+      --mid-blue:#3a7ca5;
+      --soft-blue:#e8f1f7;
+      --warm-cream:#fbf8f3;
+      --warm-neutral:#f3ede3;
+      --warm-taupe:#d8cfc2;
+      --terracotta:#c27a4e;
+      --sage:#5a7d6b;
+      --ink:#2a2a2a;
+      --text:#3d3d3d;
+      --muted:#5f6b7a;
+      --line:#e3dcd1;
+      --white:#ffffff;
+      --focus:#e08940;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;
+      background:var(--warm-cream);
+      color:var(--text);
+      line-height:1.65;
+      font-size:18px;
+    }
+    img{max-width:100%;display:block}
+    a{color:var(--deep-blue)}
+    a:hover{color:var(--mid-blue)}
+    :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+
+    .concept-banner{
+      background:var(--deep-blue);color:var(--white);font-size:.78rem;
+      padding:12px 24px;display:flex;gap:14px;align-items:center;
+      letter-spacing:.01em;line-height:1.45;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:#ffd9b3}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 24px;border-bottom:1px solid var(--line);
+      background:var(--white);position:sticky;top:0;z-index:50;
+      box-shadow:0 1px 3px rgba(30,74,110,.06);
+    }
+    .logo{display:flex;align-items:center;gap:14px;font-family:'Merriweather',Georgia,serif;font-weight:700;font-size:1.15rem;color:var(--deep-blue);text-decoration:none}
+    .logo-mark{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--mid-blue) 45%,var(--terracotta) 100%);display:flex;align-items:center;justify-content:center;position:relative}
+    .logo-mark::before{content:'';width:18px;height:18px;border-radius:50%;background:var(--white)}
+    .logo-mark::after{content:'';position:absolute;width:8px;height:8px;border-radius:50%;background:var(--sage);top:8px;right:9px}
+    nav{display:flex;gap:28px;font-size:.95rem;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;padding:6px 2px;border-bottom:2px solid transparent}
+    nav a:hover{color:var(--deep-blue);border-bottom-color:var(--terracotta)}
+
+    .hero{
+      display:grid;grid-template-columns:1.05fr 1fr;gap:0;
+      min-height:calc(100vh - 130px);border-bottom:1px solid var(--line);
+      background:var(--white);
+    }
+    .hero-copy{padding:80px 24px 80px 8vw;display:flex;flex-direction:column;justify-content:center}
+    .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--terracotta);font-weight:700;margin-bottom:22px}
+    .hero h1{font-family:'Merriweather',Georgia,serif;font-size:clamp(2.4rem,4.6vw,4.2rem);line-height:1.15;color:var(--deep-blue);margin-bottom:26px;font-weight:700}
+    .hero h1 em{font-style:normal;color:var(--sage)}
+    .hero p{font-size:1.25rem;color:var(--muted);max-width:560px;margin-bottom:38px;line-height:1.6}
+    .hero-actions{display:flex;gap:18px;flex-wrap:wrap}
+    .btn{padding:16px 30px;border-radius:6px;text-decoration:none;font-weight:700;font-size:1rem;transition:transform .15s,background .2s;border:2px solid transparent;display:inline-block}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--deep-blue);color:var(--white)}
+    .btn-primary:hover{background:#173b59;color:var(--white)}
+    .btn-secondary{border-color:var(--deep-blue);color:var(--deep-blue);background:var(--white)}
+    .btn-secondary:hover{background:var(--soft-blue);color:var(--deep-blue)}
+
+    .hero-media{position:relative;overflow:hidden;min-height:520px;background:var(--warm-neutral)}
+    .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .hero-caption{
+      position:absolute;bottom:28px;left:28px;right:28px;
+      background:rgba(255,255,255,.95);padding:16px 20px;border-radius:6px;
+      font-size:.82rem;color:var(--muted);line-height:1.45;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:56px}
+    .section-head h2{font-family:'Merriweather',Georgia,serif;font-size:clamp(2rem,3.6vw,3rem);line-height:1.2;color:var(--deep-blue)}
+    .section-head p{color:var(--muted);max-width:480px;font-size:1.05rem}
+    .kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--terracotta);font-weight:700;margin-bottom:14px}
+
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .service-card{
+      background:var(--white);border:1px solid var(--line);border-radius:10px;
+      padding:34px 30px;transition:transform .2s,border-color .2s,box-shadow .2s;
+    }
+    .service-card:hover{transform:translateY(-4px);border-color:var(--mid-blue);box-shadow:0 10px 28px rgba(30,74,110,.08)}
+    .service-icon{width:48px;height:48px;border-radius:10px;background:var(--soft-blue);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.4rem}
+    .service-card h3{font-family:'Merriweather',Georgia,serif;font-size:1.25rem;margin-bottom:12px;color:var(--deep-blue)}
+    .service-card p{font-size:.98rem;color:var(--muted);line-height:1.55}
+    .disclaimer{
+      grid-column:1/-1;background:var(--warm-neutral);border-left:4px solid var(--terracotta);
+      padding:18px 22px;border-radius:6px;font-size:.95rem;color:var(--muted);margin-top:8px;
+    }
+
+    .pathway-band{background:var(--soft-blue);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .pathway-band .inner{max-width:1200px;margin:0 auto;padding:100px 24px}
+    .pathway-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .pathway h3{font-family:'Merriweather',Georgia,serif;font-size:1.6rem;color:var(--deep-blue);margin-bottom:18px}
+    .pathway p{color:var(--muted);margin-bottom:22px;font-size:1.05rem}
+    .pathway ul{list-style:none}
+    .pathway li{padding:10px 0 10px 32px;position:relative;color:var(--text);font-size:1.02rem;border-bottom:1px solid rgba(30,74,110,.1)}
+    .pathway li::before{content:'✓';position:absolute;left:0;color:var(--sage);font-weight:700}
+
+    .feature-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:40px}
+    .feature-split .text{padding-right:30px}
+    .feature-split h3{font-family:'Merriweather',Georgia,serif;font-size:1.7rem;color:var(--deep-blue);margin-bottom:18px}
+    .feature-split p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+    .feature-split .media{position:relative;border-radius:10px;overflow:hidden;min-height:380px;background:var(--warm-neutral)}
+    .feature-split .media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .feature-split .caption{
+      position:absolute;bottom:20px;left:20px;right:20px;
+      background:rgba(255,255,255,.95);padding:12px 16px;border-radius:6px;font-size:.78rem;color:var(--muted);
+    }
+
+    .access-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:50px}
+    .access-card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:28px;text-align:center}
+    .access-card .circle{width:56px;height:56px;border-radius:50%;background:var(--soft-blue);color:var(--deep-blue);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.3rem;font-weight:700}
+    .access-card h4{font-family:'Merriweather',Georgia,serif;font-size:1.1rem;color:var(--deep-blue);margin-bottom:8px}
+    .access-card p{font-size:.92rem;color:var(--muted);line-height:1.5}
+
+    .stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px}
+    .story-card{background:var(--white);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+    .story-card .thumb{position:relative;height:200px;background:var(--warm-neutral);overflow:hidden}
+    .story-card .thumb img{width:100%;height:100%;object-fit:cover}
+    .story-card .thumb .label{position:absolute;top:14px;left:14px;background:var(--deep-blue);color:var(--white);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;padding:6px 12px;border-radius:4px}
+    .story-card .body{padding:26px;flex:1;display:flex;flex-direction:column}
+    .story-card .date{font-size:.82rem;color:var(--terracotta);font-weight:600;margin-bottom:10px}
+    .story-card h4{font-family:'Merriweather',Georgia,serif;font-size:1.15rem;color:var(--deep-blue);margin-bottom:12px;line-height:1.35}
+    .story-card p{font-size:.95rem;color:var(--muted);line-height:1.55;flex:1}
+
+    .hosting-band{background:var(--deep-blue);color:var(--white)}
+    .hosting-band .inner{max-width:1200px;margin:0 auto;padding:100px 24px}
+    .hosting-band h2{font-family:'Merriweather',Georgia,serif;font-size:clamp(1.9rem,3.4vw,2.8rem);margin-bottom:18px}
+    .hosting-band p{color:#d4e3ef;max-width:680px;margin-bottom:34px;font-size:1.1rem}
+    .hosting-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .hosting-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:28px}
+    .hosting-card h4{font-family:'Merriweather',Georgia,serif;font-size:1.15rem;margin-bottom:10px}
+    .hosting-card p{font-size:.95rem;color:#d4e3ef;line-height:1.55}
+
+    .cta{background:var(--sage);color:var(--white);text-align:center;padding:110px 24px}
+    .cta h2{font-family:'Merriweather',Georgia,serif;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:20px}
+    .cta p{color:#e7efe9;max-width:620px;margin:0 auto 18px;font-size:1.15rem}
+    .cta .contact-block{margin:34px auto 0;max-width:520px;background:rgba(255,255,255,.12);border-radius:10px;padding:28px}
+    .cta .contact-block a{color:var(--white);font-weight:700;text-decoration:none;font-size:1.25rem}
+    .cta .contact-block a:hover{text-decoration:underline}
+    .cta .contact-block .phone{font-size:1.1rem;color:#e7efe9;margin-top:8px}
+    .cta .btn-cta{display:inline-block;margin-top:28px;padding:16px 36px;background:var(--white);color:var(--sage);text-decoration:none;border-radius:6px;font-weight:700}
+    .cta .btn-cta:hover{background:var(--warm-cream);color:var(--sage)}
+
+    footer{padding:52px 24px;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);background:var(--white)}
+    footer a{color:var(--deep-blue);text-decoration:none}
+    footer a:hover{text-decoration:underline}
+    footer .address{color:var(--text);margin-top:12px;font-weight:500}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease-out,transform .6s ease-out}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-media{min-height:380px}
+      .hero-copy{padding:60px 24px}
+      .service-grid,.stories-grid,.hosting-grid,.access-grid{grid-template-columns:1fr}
+      .pathway-grid{grid-template-columns:1fr;gap:48px}
+      .feature-split{grid-template-columns:1fr;gap:40px}
+      .feature-split .text{padding-right:0}
+      .section-head{display:block}
+      .section-head p{margin-top:14px}
+      nav{gap:18px;font-size:.9rem}
+    }
+    @media(max-width:640px){
+      body{font-size:17px}
+      .logo{font-size:1rem}
+      .logo-mark{width:34px;height:34px}
+      .logo-mark::before{width:15px;height:15px}
+      .logo-mark::after{width:6px;height:6px;top:7px;right:8px}
+      nav{display:none}
+      .hero h1{font-size:2rem}
+      .hero p{font-size:1.1rem}
+      .btn{padding:14px 24px;font-size:.95rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared independently by Korvia Studio from publicly available information. Not the Senior Services of Southeastern Virginia live website.</span>
+  </div>
+
+  <header>
+    <a class="logo" href="#top">
+      <div class="logo-mark"></div>
+      Senior Services of Southeastern Virginia
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#families">For Families</a>
+      <a href="#professionals">For Professionals</a>
+      <a href="#accessibility">Accessibility</a>
+      <a href="#stories">Stories</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow">Nonprofit · Southeastern Virginia</div>
+      <h1>Making aging services easier to find, understand, and <em>access.</em></h1>
+      <p>A warm, clear online home for older adults, caregivers, and families across southeastern Virginia — with pathways to support, answers, and human help.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#services">Explore services</a>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1600&q=85" alt="Older adult and caregiver sharing a warm moment outdoors">
+      <div class="hero-caption">Concept imagery · A welcoming, human-first design for older adults and caregivers.</div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Services at a glance</div>
+        <h2>Support shaped around everyday needs.</h2>
+      </div>
+      <p>Illustrative concept directions for how the organization's programs could be organized online — not a verified service list.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🏠</div>
+        <h3>In-Home Care Connections</h3>
+        <p>Concept direction for helping older adults find trusted in-home assistance with daily tasks, wellness checks, and independent living support.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🤝</div>
+        <h3>Caregiver Support</h3>
+        <p>Concept direction for respite resources, support groups, and guidance for family members caring for aging loved ones.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🍽️</div>
+        <h3>Nutrition & Meals on Wheels</h3>
+        <p>Concept direction for meal delivery, congregate dining, and nutrition education that helps seniors stay healthy and connected.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚐</div>
+        <h3>Transportation Assistance</h3>
+        <p>Concept direction for reliable, senior-friendly rides to appointments, errands, and community activities.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📋</div>
+        <h3>Insurance Counseling</h3>
+        <p>Concept direction for unbiased guidance on Medicare, prescription plans, and benefits navigation.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🙌</div>
+        <h3>Volunteer Opportunities</h3>
+        <p>Concept direction for community members who want to give time, companionship, and practical help to local seniors.</p>
+      </div>
+      <div class="disclaimer reveal">
+        These service descriptions are illustrative concept directions only. For the verified, current list of programs and eligibility, visitors would be directed to Senior Services of Southeastern Virginia's official channels.
+      </div>
+    </div>
+  </section>
+
+  <div class="pathway-band" id="families">
+    <div class="inner">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">For families & caregivers</div>
+          <h2>Clear pathways when you need help.</h2>
+        </div>
+        <p>A concept for a website that respects how stressful it can feel to search for support — with plain language, next steps, and easy ways to reach a person.</p>
+      </div>
+      <div class="pathway-grid">
+        <div class="pathway reveal">
+          <h3>What this section could include</h3>
+          <p>Simple intake guides, frequently asked questions, eligibility checklists, and a prominent phone number and email for personal assistance.</p>
+          <ul>
+            <li>Step-by-step "How do I get started?" guide</li>
+            <li>FAQs about services, costs, and eligibility</li>
+            <li>Downloadable resource sheets</li>
+            <li>Contact form with a quick response promise</li>
+            <li>Caregiver-specific support page</li>
+          </ul>
+        </div>
+        <div class="pathway reveal">
+          <h3>Designed for reassurance</h3>
+          <p>Large text, calm colors, and straightforward navigation so visitors of any comfort level with technology can find what they need without overwhelm.</p>
+          <ul>
+            <li>Prominent phone number on every page</li>
+            <li>Plain-language service descriptions</li>
+            <li>Print-friendly pages for sharing</li>
+            <li>Clear calls to action with human follow-up</li>
+            <li>Mobile-friendly for families on the go</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="professionals">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">For professionals & partners</div>
+        <h2>Tools for the people who help.</h2>
+      </div>
+      <p>Concept directions for referral pathways, training resources, and partner engagement.</p>
+    </div>
+    <div class="feature-split">
+      <div class="text reveal">
+        <h3>Referrals, training, and volunteer coordination</h3>
+        <p>A professionals' hub could make it easy for social workers, healthcare providers, and community partners to refer clients, access training materials, and stay current on program updates.</p>
+        <p>A volunteer portal concept could offer online applications, background-check scheduling, shift sign-ups, and stories from current volunteers — lowering the barrier for people who want to help.</p>
+        <a class="btn btn-secondary" href="#contact">Discuss partner tools</a>
+      </div>
+      <div class="media reveal">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=1200&q=85" alt="Community professionals meeting together">
+        <div class="caption">Concept imagery · A partner portal could streamline referrals and volunteer coordination.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="accessibility">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Accessibility-first design</div>
+        <h2>Built to be easy for everyone.</h2>
+      </div>
+      <p>Older adults and caregivers deserve a website that meets them where they are — with readability, contrast, and simplicity at the center.</p>
+    </div>
+    <div class="access-grid">
+      <div class="access-card reveal">
+        <div class="circle">Aa</div>
+        <h4>Large, legible type</h4>
+        <p>Generous font sizes, comfortable line spacing, and clear headings help every visitor read with ease.</p>
+      </div>
+      <div class="access-card reveal">
+        <div class="circle">◐</div>
+        <h4>High contrast</h4>
+        <p>Strong color contrast between text and backgrounds supports vision differences and outdoor screen use.</p>
+      </div>
+      <div class="access-card reveal">
+        <div class="circle">≡</div>
+        <h4>Simple navigation</h4>
+        <p>Fewer menu levels, descriptive labels, and persistent contact links make the site predictable and calm.</p>
+      </div>
+      <div class="access-card reveal">
+        <div class="circle">✓</div>
+        <h4>WCAG focus</h4>
+        <p>Keyboard-friendly layouts, visible focus indicators, and screen-reader considerations throughout.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">News / events / stories</div>
+        <h2>Community, shared out loud.</h2>
+      </div>
+      <p>A concept for keeping the community informed and inspired — with events, updates, and human-centered stories.</p>
+    </div>
+    <div class="stories-grid">
+      <article class="story-card reveal">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=800&q=80" alt="Seniors gathered for a community meal">
+          <span class="label">Event concept</span>
+        </div>
+        <div class="body">
+          <div class="date">Upcoming event concept</div>
+          <h4>Community Nutrition & Wellness Morning</h4>
+          <p>A concept for an in-person gathering with nutrition tips, blood pressure checks, and a chance to connect with neighbors.</p>
+        </div>
+      </article>
+      <article class="story-card reveal">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Caregiver and older adult smiling together">
+          <span class="label">Story concept</span>
+        </div>
+        <div class="body">
+          <div class="date">Community story concept</div>
+          <h4>When Caregiving Feels Less Alone</h4>
+          <p>A concept story about how peer support and local resources can lighten the load for family caregivers.</p>
+        </div>
+      </article>
+      <article class="story-card reveal">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=800&q=80" alt="Volunteers helping in the community">
+          <span class="label">Volunteer concept</span>
+        </div>
+        <div class="body">
+          <div class="date">Volunteer spotlight concept</div>
+          <h4>A Ride to the Doctor, and a Friendly Chat</h4>
+          <p>A concept volunteer spotlight showing how a simple drive can become a meaningful moment of connection.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="hosting-band" id="hosting">
+    <div class="inner">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Optional hosting & maintenance</div>
+          <h2>Reliable, secure, easy to update.</h2>
+        </div>
+        <p>A concept for ongoing website care so staff can focus on serving the community, not troubleshooting technology.</p>
+      </div>
+      <div class="hosting-grid">
+        <div class="hosting-card reveal">
+          <h4>Reliable hosting</h4>
+          <p>Fast, stable hosting with uptime monitoring and regular backups, so the site is there when people need it.</p>
+        </div>
+        <div class="hosting-card reveal">
+          <h4>Security & updates</h4>
+          <p>SSL, security patches, and software updates handled behind the scenes to protect visitor data.</p>
+        </div>
+        <div class="hosting-card reveal">
+          <h4>Easy content updates</h4>
+          <p>A friendly editing workflow so staff can update events, news, and resources without touching code.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="cta" id="contact">
+    <div class="reveal">
+      <h2>Let's build a website that serves your community.</h2>
+      <p>This concept is a starting direction. The full site can integrate verified programs, real stories, event calendars, donation pathways, and the organization's own voice.</p>
+      <div class="contact-block">
+        <a href="mailto:jconstantineau@ssseva.org">jconstantineau@ssseva.org</a>
+        <div class="phone">Phone placeholder · (000) 000-0000</div>
+      </div>
+      <a class="btn-cta" href="mailto:jconstantineau@ssseva.org">Start a conversation</a>
+    </div>
+  </section>
+
+  <footer>
+    <div><strong>Senior Services of Southeastern Virginia</strong> · Presentation concept by <a href="../index.html">Korvia Studio</a></div>
+    <div class="address">2551 Eltham Ave. Ste Q, Norfolk, VA 23513</div>
+    <div style="margin-top:10px">Concept informed by publicly available information. Imagery is illustrative.</div>
+  </footer>
+
+  <script>
+    (function(){
+      const reveals = document.querySelectorAll('.reveal');
+      if(!reveals.length) return;
+      const observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+      reveals.forEach(function(el){observer.observe(el);});
+    })();
+  </script>
+</body>
+</html>

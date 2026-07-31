@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Missouri Technology Corporation · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#07152b;
+      --navy-soft:#0f2242;
+      --electric:#2b7fff;
+      --gold:#c9a227;
+      --gold-soft:#e8d9a8;
+      --paper:#f7f8fa;
+      --white:#ffffff;
+      --text:#111827;
+      --muted:#5d6b82;
+      --line:#dbe2ea;
+      --success:#0d9f6e;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.6}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--navy);color:#fff;font-size:.72rem;padding:12px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:var(--gold-soft)}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 24px;border-bottom:1px solid var(--line);
+      background:rgba(255,255,255,.98);position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(8px)
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:var(--navy)}
+    .logo-mark{
+      width:36px;height:36px;border-radius:8px;
+      background:linear-gradient(135deg,var(--navy) 55%,var(--electric) 100%);
+      position:relative;display:flex;align-items:center;justify-content:center
+    }
+    .logo-mark::after{
+      content:'';width:18px;height:18px;
+      border:2px solid var(--gold);border-radius:2px;transform:rotate(45deg)
+    }
+    nav{display:flex;gap:30px;font-size:.88rem;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--navy)}
+
+    .hero{
+      display:grid;grid-template-columns:1.1fr 1fr;gap:0;min-height:calc(100vh - 140px);
+      border-bottom:1px solid var(--line);
+    }
+    .hero-copy{padding:80px 24px 80px 8vw;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
+    .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--electric);margin-bottom:22px}
+    .hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,5.5vw,5.2rem);line-height:.98;letter-spacing:-.04em;color:var(--navy);margin-bottom:28px}
+    .hero h1 em{font-style:normal;color:var(--gold)}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:540px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:14px 28px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--navy);color:#fff}
+    .btn-primary:hover{box-shadow:0 8px 24px rgba(7,21,43,.25)}
+    .btn-secondary{border:1px solid var(--line);color:var(--navy)}
+    .btn-gold{background:var(--gold);color:var(--navy)}
+
+    .hero-media{position:relative;overflow:hidden;min-height:520px}
+    .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+    .hero-caption{
+      position:absolute;bottom:28px;left:28px;right:28px;
+      background:rgba(7,21,43,.9);padding:16px 20px;border-radius:4px;
+      font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--gold-soft);
+      backdrop-filter:blur(6px)
+    }
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px}
+    .section-head h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.03em;color:var(--navy)}
+    .section-head p{color:var(--muted);max-width:440px}
+    .kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--electric);margin-bottom:14px}
+
+    .fact-strip{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px
+    }
+    .fact{
+      background:var(--white);border:1px solid var(--line);border-radius:4px;padding:32px;
+      border-top:3px solid var(--gold);transition:transform .2s,border-color .2s
+    }
+    .fact:hover{transform:translateY(-4px);border-color:var(--electric)}
+    .fact strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.8rem;color:var(--navy);margin-bottom:8px}
+    .fact span{font-size:.92rem;color:var(--muted)}
+
+    .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .focus-card{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:36px;transition:transform .2s,border-color .2s;position:relative;overflow:hidden}
+    .focus-card:hover{transform:translateY(-4px);border-color:var(--electric)}
+    .focus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--electric),var(--gold))}
+    .focus-card .num{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);margin-bottom:18px}
+    .focus-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;margin-bottom:12px;color:var(--navy)}
+    .focus-card p{font-size:.92rem;color:var(--muted)}
+    .focus-card ul{margin-top:16px;padding-left:18px;font-size:.88rem;color:var(--muted)}
+    .focus-card li{margin-bottom:8px}
+
+    .split-feature{
+      display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:100px 24px;max-width:1200px;margin:0 auto;
+    }
+    .split-feature .text{padding-right:40px}
+    .split-feature.reverse .text{order:2;padding-right:0;padding-left:40px}
+    .split-feature.reverse .media{order:1}
+    .split-feature h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin-bottom:22px;color:var(--navy)}
+    .split-feature p{color:var(--muted);margin-bottom:18px}
+    .split-feature .media{position:relative;border-radius:4px;overflow:hidden;min-height:420px;background:var(--navy)}
+    .split-feature .media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.9}
+    .media-caption{
+      position:absolute;bottom:20px;left:20px;right:20px;
+      background:rgba(255,255,255,.94);padding:12px 16px;border-radius:4px;
+      font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted)
+    }
+
+    .timeline{
+      position:relative;padding-left:24px
+    }
+    .timeline::before{
+      content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)
+    }
+    .timeline-step{position:relative;margin-bottom:36px;padding-left:32px}
+    .timeline-step:last-child{margin-bottom:0}
+    .timeline-step::before{
+      content:'';position:absolute;left:-25px;top:6px;width:14px;height:14px;
+      border-radius:50%;background:var(--white);border:3px solid var(--electric)
+    }
+    .timeline-step strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.1rem;color:var(--navy);margin-bottom:6px}
+    .timeline-step p{font-size:.9rem;color:var(--muted)}
+
+    .data-viz{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px
+    }
+    .viz-bar{
+      background:var(--white);border:1px solid var(--line);border-radius:4px;padding:20px;text-align:center
+    }
+    .viz-bar .bar{
+      height:120px;display:flex;align-items:end;justify-content:center;gap:6px;margin-bottom:16px
+    }
+    .viz-bar .bar span{
+      width:18px;background:linear-gradient(180deg,var(--electric),var(--navy-soft));border-radius:2px
+    }
+    .viz-bar .label{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--muted)}
+
+    .cta{
+      background:var(--navy);color:#fff;text-align:center;padding:110px 24px;position:relative;overflow:hidden
+    }
+    .cta::before{
+      content:'';position:absolute;inset:0;background:
+        radial-gradient(circle at 20% 20%,rgba(43,127,255,.12) 0,transparent 40%),
+        radial-gradient(circle at 80% 80%,rgba(201,162,39,.1) 0,transparent 40%);
+    }
+    .cta h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.5rem);margin-bottom:18px;position:relative}
+    .cta p{color:#9fb1c9;max-width:560px;margin:0 auto 34px;position:relative}
+    .cta a{display:inline-block;padding:16px 36px;background:var(--gold);color:var(--navy);text-decoration:none;border-radius:4px;font-weight:700;position:relative}
+
+    footer{padding:50px 24px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);background:var(--white)}
+    footer a{color:var(--electric);text-decoration:none}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .hero-media{min-height:400px}
+      .fact-strip{grid-template-columns:1fr}
+      .focus-grid{grid-template-columns:1fr}
+      .split-feature{grid-template-columns:1fr;gap:40px}
+      .split-feature .text{padding-right:0}
+      .split-feature.reverse .text{padding-left:0}
+      .split-feature.reverse .text,.split-feature.reverse .media{order:unset}
+      .section-head{display:block}
+      .data-viz{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:520px){
+      nav{display:none}
+      .data-viz{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared independently by Korvia Studio from publicly available information. Not the Missouri Technology Corporation live website.</span>
+  </div>
+
+  <header>
+    <div class="logo"><div class="logo-mark"></div>Missouri Technology Corporation</div>
+    <nav>
+      <a href="#brand">Brand</a>
+      <a href="#digital">Digital</a>
+      <a href="#programs">Programs</a>
+      <a href="#accessibility">Access</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Public-Private Partnership · Missouri Innovation</div>
+      <h1>Fueling Missouri's <em>innovation economy.</em></h1>
+      <p>MTC connects entrepreneurs, investors and programs to promote entrepreneurship and foster the growth of new and emerging high-tech companies across the State of Missouri.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#programs">Explore programs</a>
+        <a class="btn btn-secondary" href="#contact">Contact MTC</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85" alt="Modern tech workspace">
+      <div class="hero-caption">Concept imagery · A modern digital presence for Missouri's entrepreneurship ecosystem.</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">About MTC</div>
+        <h2>Created by the Missouri General Assembly. Governed by a 15-member Board.</h2>
+      </div>
+      <p>The Missouri Technology Corporation is a public-private partnership created by the Missouri General Assembly, led by a 15-member Board, and dedicated to growing the state's high-tech economy.</p>
+    </div>
+    <div class="fact-strip reveal">
+      <div class="fact"><strong>Created</strong><span>by the Missouri General Assembly as a public-private partnership.</span></div>
+      <div class="fact"><strong>15</strong><span>member Board of Directors guiding strategy and investment priorities.</span></div>
+      <div class="fact"><strong>Mission</strong><span>to promote entrepreneurship and foster growth of new and emerging high-tech companies.</span></div>
+    </div>
+  </section>
+
+  <section id="brand" style="background:var(--white);max-width:100%">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Brand refresh direction</div>
+          <h2>A visual identity built for trust, momentum and scale.</h2>
+        </div>
+        <p>A modern MTC brand system would signal institutional credibility while feeling as ambitious as the companies it supports.</p>
+      </div>
+      <div class="focus-grid reveal">
+        <div class="focus-card">
+          <div class="num">01</div>
+          <h3>Logo system</h3>
+          <p>A refined mark that balances Missouri heritage with forward motion — primary lockup, stacked variant, icon-only mark and clear-space rules.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">02</div>
+          <h3>Color & typography</h3>
+          <p>Deep navy anchors institutional trust. Electric blue signals tech momentum. Warm gold adds optimism and highlights strategic priorities.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">03</div>
+          <h3>Brand standards</h3>
+          <p>Usage guidelines for print, digital, presentations and partner co-branding — ensuring consistency across every MTC touchpoint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="split-feature" id="digital">
+    <div class="text reveal">
+      <div class="kicker">Website & digital experience</div>
+      <h2>A platform that makes MTC's work discoverable, useful and measurable.</h2>
+      <p>The new MTC website would move beyond a static brochure into a living resource for entrepreneurs, investors, researchers and policymakers.</p>
+      <p>Built on a modern CMS, the experience would feature a searchable grant award database, grantee profiles, program showcases, interactive timelines and a portfolio directory.</p>
+      <p>Data visualizations would bring MTC's impact to life — clear, credible and always tied to publicly available information.</p>
+    </div>
+    <div class="media reveal">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85" alt="Data dashboard concept">
+      <div class="media-caption">Concept imagery · Grant database, dashboards and program finder as core digital tools.</div>
+    </div>
+  </div>
+
+  <section id="programs">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Programs & impact</div>
+        <h2>Connecting capital, talent and ambition across Missouri.</h2>
+      </div>
+      <p>MTC's digital platform would make it easy to understand how to engage, apply and benefit from its entrepreneurship and investment programs.</p>
+    </div>
+    <div class="focus-grid reveal">
+      <div class="focus-card">
+        <div class="num">01</div>
+        <h3>Entrepreneurship support</h3>
+        <p>Resources for founders from idea to scale: accelerators, mentorship, networking and access to statewide innovation infrastructure.</p>
+      </div>
+      <div class="focus-card">
+        <div class="num">02</div>
+        <h3>Investment programs</h3>
+        <p>Transparent overview of funding mechanisms, eligibility criteria, application processes and portfolio performance for investors and companies.</p>
+      </div>
+      <div class="focus-card">
+        <div class="num">03</div>
+        <h3>Strategic priorities</h3>
+        <p>Clear communication of MTC's focus areas, board direction and public-private priorities that guide program design and capital deployment.</p>
+      </div>
+    </div>
+    <div class="data-viz reveal">
+      <div class="viz-bar">
+        <div class="bar"><span style="height:45%"></span><span style="height:70%"></span><span style="height:55%"></span></div>
+        <div class="label">Concept · Program engagement</div>
+      </div>
+      <div class="viz-bar">
+        <div class="bar"><span style="height:60%"></span><span style="height:85%"></span><span style="height:75%"></span></div>
+        <div class="label">Concept · Grant activity</div>
+      </div>
+      <div class="viz-bar">
+        <div class="bar"><span style="height:35%"></span><span style="height:50%"></span><span style="height:90%"></span></div>
+        <div class="label">Concept · Portfolio growth</div>
+      </div>
+      <div class="viz-bar">
+        <div class="bar"><span style="height:80%"></span><span style="height:65%"></span><span style="height:95%"></span></div>
+        <div class="label">Concept · Regional reach</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="split-feature reverse" id="accessibility">
+    <div class="text reveal">
+      <div class="kicker">Accessibility & performance</div>
+      <h2>Built to serve every Missourian, on any device.</h2>
+      <p>A public institution's website must be fast, accessible and secure. The proposed MTC platform would meet WCAG 2.1 AA standards and follow ADA compliance best practices.</p>
+      <p>SEO-ready architecture, readable typography, keyboard navigation and scalable hosting would ensure the site remains reliable during funding announcements, application windows and media attention.</p>
+    </div>
+    <div class="media reveal">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85" alt="Collaborative team">
+      <div class="media-caption">Concept imagery · Inclusive design and fast performance for every visitor.</div>
+    </div>
+  </div>
+
+  <section id="approach" style="background:var(--white);max-width:100%">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Approach & timeline</div>
+          <h2>A disciplined process from discovery to launch.</h2>
+        </div>
+        <p>Korvia Studio would work closely with MTC stakeholders to deliver a brand and website ready for launch, with training and support built in.</p>
+      </div>
+      <div class="focus-grid reveal">
+        <div class="focus-card">
+          <div class="num">01</div>
+          <h3>Discovery</h3>
+          <p>Stakeholder interviews, content audit, competitive review, accessibility baseline and technical planning.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">02</div>
+          <h3>Design</h3>
+          <p>Brand concepts, wireframes, visual design system, responsive prototypes and content modeling.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">03</div>
+          <h3>Build</h3>
+          <p>CMS setup, component library, grant database, program pages, data visualizations and accessibility testing.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">04</div>
+          <h3>Training & launch</h3>
+          <p>Editor training, content population, quality assurance, launch support and performance monitoring.</p>
+        </div>
+        <div class="focus-card">
+          <div class="num">05</div>
+          <h3>Maintenance</h3>
+          <p>Ongoing updates, security patches, hosting management, analytics review and continuous improvement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <h2 class="reveal">Let's build the next MTC digital experience.</h2>
+    <p class="reveal">This concept is a starting direction. The full website and brand system can be developed around verified MTC content, programs and stakeholder workflows.</p>
+    <a class="reveal" href="mailto:mtcrfp@missouritechnology.com">Email mtcrfp@missouritechnology.com</a>
+  </section>
+
+  <footer>
+    <div><strong>Missouri Technology Corporation</strong> · Presentation concept by <a href="../index.html">Korvia Studio</a></div>
+    <div style="margin-top:8px">Concept informed by publicly available MTC information. Website: <a href="https://www.missouritechnology.com">www.missouritechnology.com</a> · Contact: <a href="mailto:mtcrfp@missouritechnology.com">mtcrfp@missouritechnology.com</a></div>
+    <div style="margin-top:8px">Imagery is illustrative.</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
