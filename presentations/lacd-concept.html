@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Liberia Agency for Community Development (LACD) · Unofficial concept by Korvia Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --liberty:#002868;
+      --liberty-deep:#001a45;
+      --valor:#bf0a30;
+      --unity:#ffffff;
+      --growth:#1a5f3f;
+      --growth-light:#e8f5ee;
+      --earth:#7c5e3d;
+      --sand:#f7f4ef;
+      --paper:#ffffff;
+      --ink:#1a1a1a;
+      --text:#2d2d2d;
+      --muted:#5c5c5c;
+      --line:#e2ddd4;
+      --shadow:rgba(0,40,104,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--sand);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+
+    .concept-banner{
+      background:var(--liberty-deep);color:#fff;font-size:.72rem;padding:11px 24px;
+      display:flex;gap:12px;align-items:center;letter-spacing:.02em;
+    }
+    .concept-banner strong{text-transform:uppercase;letter-spacing:.08em;color:#8ecae6}
+
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 24px;border-bottom:1px solid var(--line);
+      background:var(--paper);position:sticky;top:0;z-index:50;
+    }
+    .logo{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--liberty)}
+    .logo-mark{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--liberty) 45%,var(--growth) 100%);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:0 4px 12px var(--shadow)}
+    .logo-mark svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    nav{display:flex;gap:28px;font-size:.88rem;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;transition:color .2s}
+    nav a:hover{color:var(--liberty)}
+    .nav-cta{background:var(--valor);color:#fff;padding:8px 16px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.82rem}
+    .nav-cta:hover{background:#a00929;color:#fff}
+
+    .hero{
+      position:relative;overflow:hidden;
+      min-height:calc(100vh - 120px);
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--liberty-deep) 0%,var(--liberty) 60%,#0d3b2e 100%);
+      color:#fff;
+    }
+    .hero-pattern{
+      position:absolute;inset:0;opacity:.08;
+      background-image:radial-gradient(circle at 20% 30%,#fff 2px,transparent 2px),
+        radial-gradient(circle at 70% 60%,#fff 1.5px,transparent 1.5px),
+        radial-gradient(circle at 40% 80%,#fff 1px,transparent 1px);
+      background-size:120px 120px,180px 180px,90px 90px;
+    }
+    .hero-inner{position:relative;z-index:2;max-width:1200px;padding:80px 24px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:#8ecae6;margin-bottom:22px}
+    .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5.5vw,5rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:26px}
+    .hero h1 em{font-style:italic;color:#90e0a8}
+    .hero p{font-size:1.15rem;color:rgba(255,255,255,.85);max-width:520px;margin-bottom:38px}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{padding:15px 30px;border-radius:4px;text-decoration:none;font-weight:600;font-size:.92rem;transition:transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--valor);color:#fff}
+    .btn-primary:hover{box-shadow:0 12px 28px rgba(191,10,48,.25)}
+    .btn-secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff}
+    .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+    .stat-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:26px;backdrop-filter:blur(8px)}
+    .stat-card strong{display:block;font-family:'DM Serif Display',serif;font-size:2.2rem;line-height:1;color:#fff;margin-bottom:6px}
+    .stat-card span{font-size:.82rem;color:rgba(255,255,255,.75)}
+
+    section{padding:100px 24px;max-width:1200px;margin:0 auto}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:60px;flex-wrap:wrap}
+    .section-head h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.02em;color:var(--liberty)}
+    .section-head p{color:var(--muted);max-width:480px}
+    .kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--valor);margin-bottom:14px}
+
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about-text p{margin-bottom:20px;color:var(--muted);font-size:1.05rem}
+    .about-highlight{background:var(--growth-light);border-left:4px solid var(--growth);padding:24px;border-radius:0 8px 8px 0}
+    .about-highlight strong{display:block;color:var(--growth);font-size:1.1rem;margin-bottom:8px}
+    .about-visual{position:relative;border-radius:16px;overflow:hidden;min-height:420px;background:linear-gradient(135deg,var(--liberty) 0%,var(--growth) 100%);display:grid;place-items:center;padding:40px}
+    .about-visual svg{width:200px;height:200px;opacity:.9}
+
+    .programmes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .programme-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:28px;transition:transform .2s,box-shadow .2s}
+    .programme-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px var(--shadow)}
+    .programme-icon{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;margin-bottom:18px;background:var(--growth-light);color:var(--growth)}
+    .programme-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .programme-card h3{font-size:1.05rem;font-weight:700;color:var(--liberty);margin-bottom:8px}
+    .programme-card p{font-size:.88rem;color:var(--muted)}
+
+    .weakness-section{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .weakness-section .section-head h2{color:var(--ink)}
+    .weakness-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .weakness-card{padding:32px;background:var(--sand);border-radius:12px;border-top:4px solid var(--valor)}
+    .weakness-card h3{font-size:1.1rem;font-weight:700;color:var(--liberty);margin-bottom:10px}
+    .weakness-card p{font-size:.92rem;color:var(--muted)}
+
+    .impact-strip{background:linear-gradient(135deg,var(--liberty) 0%,var(--liberty-deep) 100%);color:#fff;padding:80px 24px}
+    .impact-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .impact-strip h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px}
+    .impact-strip p{color:rgba(255,255,255,.85);margin-bottom:28px;font-size:1.05rem}
+    .impact-list{display:grid;gap:16px}
+    .impact-item{display:flex;gap:14px;align-items:flex-start}
+    .impact-item svg{flex-shrink:0;width:22px;height:22px;stroke:#90e0a8;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+    .impact-item span{color:rgba(255,255,255,.9);font-size:.95rem}
+
+    .stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .story-card{background:var(--paper);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+    .story-image{height:200px;background:#d9d3c9;position:relative;overflow:hidden}
+    .story-image img{width:100%;height:100%;object-fit:cover}
+    .story-badge{position:absolute;top:14px;left:14px;background:var(--valor);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:5px 10px;border-radius:4px}
+    .story-body{padding:24px}
+    .story-body h3{font-size:1.05rem;font-weight:700;color:var(--liberty);margin-bottom:8px}
+    .story-body p{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+    .story-body a{color:var(--valor);font-weight:600;font-size:.85rem;text-decoration:none}
+
+    .transparency-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+    .transparency-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:32px;display:flex;gap:20px;align-items:flex-start}
+    .transparency-icon{width:52px;height:52px;border-radius:12px;background:var(--growth-light);color:var(--growth);display:grid;place-items:center;flex-shrink:0}
+    .transparency-icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .transparency-card h3{font-size:1.1rem;font-weight:700;color:var(--liberty);margin-bottom:6px}
+    .transparency-card p{font-size:.9rem;color:var(--muted)}
+
+    .cta-section{background:linear-gradient(135deg,var(--growth) 0%,var(--liberty) 100%);color:#fff;padding:100px 24px;text-align:center}
+    .cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:18px}
+    .cta-section p{font-size:1.1rem;color:rgba(255,255,255,.85);max-width:620px;margin:0 auto 32px}
+    .cta-section .btn-primary{background:#fff;color:var(--liberty)}
+    .cta-section .btn-primary:hover{box-shadow:0 12px 28px rgba(0,0,0,.2)}
+
+    footer{background:var(--liberty-deep);color:rgba(255,255,255,.7);padding:60px 24px 30px}
+    .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px}
+    .footer-brand .logo{color:#fff;margin-bottom:16px}
+    .footer-brand p{font-size:.88rem;line-height:1.7}
+    footer h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+    footer ul{list-style:none;display:grid;gap:10px}
+    footer a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.88rem}
+    footer a:hover{color:#fff}
+    .footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:.78rem;color:rgba(255,255,255,.5)}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .hero-inner,.about-grid,.impact-strip-inner,.footer-inner{grid-template-columns:1fr}
+      .hero-stats{max-width:460px}
+      .weakness-grid,.stories-grid,.transparency-grid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="concept-banner">
+    <strong>Unofficial concept</strong>
+    <span>Prepared by Korvia Studio for LACD RFQ LACD/RFQ/2026/007 · Not the live site</span>
+  </div>
+
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <span>LACD</span>
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#programmes">Programmes</a>
+      <a href="#impact">Impact</a>
+      <a href="#stories">Stories</a>
+      <a href="#transparency">Transparency</a>
+      <a href="#contact" class="nav-cta">Partner with us</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Liberia Agency for Community Development · Est. 2013</div>
+        <h1>Building resilient Liberian communities <em>from the ground up.</em></h1>
+        <p>A modern digital home for LACD — turning years of field work into visible, shareable, donor-ready impact across agriculture, climate resilience, education, health, women’s empowerment and clean energy.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Support our work</a>
+          <a href="#programmes" class="btn btn-secondary">Explore programmes</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card"><strong>10</strong><span>Focus areas spanning livelihoods, governance and inclusion</span></div>
+        <div class="stat-card"><strong>15</strong><span>Counties reached through community-led initiatives</span></div>
+        <div class="stat-card"><strong>12+</strong><span>Years of grassroots development experience</span></div>
+        <div class="stat-card"><strong>1</strong><span>Unified platform to tell the story</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-grid reveal">
+    <div class="about-text">
+      <div class="kicker">Who we are</div>
+      <h2>A Liberian NGO with national reach and community roots</h2>
+      <p>Founded in 2013 and based in Monrovia, the Liberia Agency for Community Development (LACD) works to improve the lives of vulnerable communities through sustainable, locally owned programmes.</p>
+      <p>Our work spans sustainable agriculture, food security, climate resilience, education, health and nutrition, women’s empowerment, youth development, governance, clean energy and economic inclusion.</p>
+      <div class="about-highlight">
+        <strong>Why this website matters now</strong>
+        After more than a decade of programme delivery, LACD needs a digital presence that matches the scale of its impact — one that donors, partners, government and communities can trust, navigate and act on.
+      </div>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="90" stroke="white" stroke-width="1.5" opacity="0.3"/>
+        <circle cx="100" cy="100" r="60" stroke="white" stroke-width="1.5" opacity="0.3"/>
+        <path d="M100 40v30M100 130v30M40 100h30M130 100h30" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="100" cy="100" r="12" fill="white"/>
+        <path d="M100 70l-15 25h30l-15-25z" fill="white" opacity="0.9"/>
+        <path d="M100 130l15-25h-30l15 25z" fill="white" opacity="0.6"/>
+      </svg>
+    </div>
+  </section>
+
+  <section id="programmes" class="reveal">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Programmes</div>
+        <h2>Every programme, clearly told</h2>
+      </div>
+      <p>Instead of burying impact in nested pages, each focus area gets its own pathway — with outcomes, resources, news and ways to engage.</p>
+    </div>
+    <div class="programmes-grid">
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/><path d="M12 6l-6 12h12L12 6z"/></svg></div>
+        <h3>Sustainable Agriculture</h3>
+        <p>Climate-smart farming, cooperatives and value-chain support for smallholder farmers.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Food Security</h3>
+        <p>Community kitchens, school feeding linkages and nutrition-sensitive food systems.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><path d="M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+        <h3>Climate Resilience</h3>
+        <p>Adaptation planning, reforestation, clean cookstoves and disaster preparedness.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <h3>Education</h3>
+        <p>Scholarships, literacy, vocational training and school infrastructure support.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Health & Nutrition</h3>
+        <p>Maternal health, WASH, immunisation campaigns and nutrition counselling.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Women’s Empowerment</h3>
+        <p>Leadership, savings groups, gender-based violence prevention and economic rights.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <h3>Youth Development</h3>
+        <p>Skills training, entrepreneurship, civic engagement and mentorship networks.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div>
+        <h3>Governance</h3>
+        <p>Community participation, accountability, rights awareness and policy dialogue.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+        <h3>Clean Energy</h3>
+        <p>Solar access, community solar dryers, efficient stoves and green livelihoods.</p>
+      </div>
+      <div class="programme-card">
+        <div class="programme-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Economic Inclusion</h3>
+        <p>Microfinance, market linkages, job placement and inclusive enterprise growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="weakness-section">
+    <div class="section-head reveal" style="max-width:1200px;margin:0 auto;padding:0 24px">
+      <div>
+        <div class="kicker">Diagnosis</div>
+        <h2>Turning three critical gaps into strengths</h2>
+      </div>
+      <p>Based on LACD’s own tender objective and the wider NGO landscape, this concept directly addresses the organisation’s biggest digital weaknesses.</p>
+    </div>
+    <div class="weakness-grid reveal" style="max-width:1200px;margin:60px auto 0;padding:0 24px">
+      <div class="weakness-card">
+        <h3>1. Institutional invisibility</h3>
+        <p>LACD has almost no searchable web presence. Donors and partners cannot verify credibility, review past work or understand geographic reach. The new site becomes the single source of truth.</p>
+      </div>
+      <div class="weakness-card">
+        <h3>2. Disconnected achievements</h3>
+        <p>Years of programme results live in reports, photos and memories. The concept turns these into tagged, searchable stories that auto-link to programme pages, funders and media.</p>
+      </div>
+      <div class="weakness-card">
+        <h3>3. Weak donor journey</h3>
+        <p>Without a donation page, newsletter funnel or clear calls to action, interested supporters drop off. The concept builds a supporter pathway from first visit to recurring donor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact-strip">
+    <div class="impact-strip-inner reveal">
+      <div>
+        <h2>Designed to win trust and funding</h2>
+        <p>Every design decision is built around the people LACD serves and the stakeholders it must convince: donors, government, partners and communities.</p>
+        <div class="impact-list">
+          <div class="impact-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Mobile-first design: most Liberian users browse on phones</span></div>
+          <div class="impact-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Fast loading even on slower networks through lightweight code</span></div>
+          <div class="impact-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>CMS training so staff update news, reports and galleries without developers</span></div>
+          <div class="impact-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>SSL, backups, anti-spam and analytics as standard</span></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px">
+        <div class="kicker" style="color:#8ecae6">Proposed site map</div>
+        <ul style="list-style:none;display:grid;gap:10px;color:rgba(255,255,255,.9);font-size:.9rem">
+          <li>Home · About LACD · Vision, Mission & Values</li>
+          <li>Strategic Plan · Programmes · Projects</li>
+          <li>News & Updates · Success Stories · Publications</li>
+          <li>Procurement Opportunities · Careers · Gallery</li>
+          <li>Partners & Donors · Contact · Donation Page</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories" class="reveal">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Success stories</div>
+        <h2>Impact that speaks for itself</h2>
+      </div>
+      <p>Each story card links to a programme, a location, a partner and a downloadable report — turning narrative into evidence.</p>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-image"><span class="story-badge">Agriculture</span><img src="https://picsum.photos/seed/lacd-farm/600/400" alt="Concept image: farming"></div>
+        <div class="story-body">
+          <h3>Cooperative yields triple in Nimba County</h3>
+          <p>A climate-smart rice cooperative supported by LACD reports stronger harvests and better market access.</p>
+          <a href="#">Read the story →</a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-image"><span class="story-badge">Women</span><img src="https://picsum.photos/seed/lacd-women/600/400" alt="Concept image: women's group"></div>
+        <div class="story-body">
+          <h3>Savings groups unlock women’s businesses</h3>
+          <p>Village savings and loan associations help women start small enterprises and claim economic agency.</p>
+          <a href="#">Read the story →</a>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-image"><span class="story-badge">Energy</span><img src="https://picsum.photos/seed/lacd-solar/600/400" alt="Concept image: solar energy"></div>
+        <div class="story-body">
+          <h3>Solar dryers cut post-harvest losses</h3>
+          <p>Clean-energy drying equipment preserves produce, raises incomes and reduces waste in rural communities.</p>
+          <a href="#">Read the story →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="transparency" class="reveal">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Transparency</div>
+        <h2>Built for accountability</h2>
+      </div>
+      <p>Donors, government and auditors need easy access to documents, procurement notices and organisational information.</p>
+    </div>
+    <div class="transparency-grid">
+      <div class="transparency-card">
+        <div class="transparency-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <div><h3>Publications & reports</h3><p>Annual reports, strategic plans and programme evaluations organised by year and theme, with one-click PDF downloads.</p></div>
+      </div>
+      <div class="transparency-card">
+        <div class="transparency-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h3>Procurement opportunities</h3><p>A live feed of open RFQs, supplier requirements and closing dates so vendors never miss a chance to work with LACD.</p></div>
+      </div>
+      <div class="transparency-card">
+        <div class="transparency-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div><h3>Partners & donors</h3><p>Dedicated pages showing who funds and partners with LACD, with logos, contribution summaries and joint project highlights.</p></div>
+      </div>
+      <div class="transparency-card">
+        <div class="transparency-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div><h3>Careers</h3><p>Open positions, internships and volunteer opportunities with clear application instructions and contact details.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <div class="reveal">
+      <h2>Partner with LACD</h2>
+      <p>Whether you are a donor, a volunteer, a government partner or a community member, the new LACD website makes it easy to connect, contribute and collaborate.</p>
+      <a href="mailto:lacommunitydevelopment1@gmail.com" class="btn btn-primary">Get in touch</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div>
+          <span>Liberia Agency for Community Development</span>
+        </div>
+        <p>A registered Liberian non-governmental organisation established in 2013, working to improve the livelihoods of vulnerable communities across Liberia.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About LACD</a></li>
+          <li><a href="#programmes">Programmes</a></li>
+          <li><a href="#stories">Success Stories</a></li>
+          <li><a href="#transparency">Publications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:lacommunitydevelopment1@gmail.com">lacommunitydevelopment1@gmail.com</a></li>
+          <li><a href="mailto:emmanuelpaye1978@gmail.com">emmanuelpaye1978@gmail.com</a></li>
+          <li>Monrovia, Liberia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-inner footer-bottom">
+      Unofficial concept prepared by Korvia Studio for RFQ LACD/RFQ/2026/007. All images are concept placeholders. Not the live LACD website.
+    </div>
+  </footer>
+
+  <script>
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
