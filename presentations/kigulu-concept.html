@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="An independent homepage concept for Kigulu Cultural Museum in Iganga, Uganda.">
+  <title>Kigulu Cultural Museum · Independent website concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --royal:#401c3f;
+      --royal-deep:#1d0c22;
+      --gold:#e4b64c;
+      --red:#b54a39;
+      --indigo:#314a6e;
+      --cream:#f5efe1;
+      --paper:#fffaf0;
+      --ink:#211a20;
+      --muted:#665e63;
+      --line:rgba(33,26,32,.17);
+      --serif:'Libre Caslon Display',Georgia,serif;
+      --sans:'Archivo',system-ui,sans-serif;
+      --mono:'DM Mono',monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    button{font:inherit}
+    .skip{position:absolute;left:-9999px;top:12px;padding:10px 14px;background:#fff;color:#000;z-index:999}
+    .skip:focus{left:12px}
+
+    .concept-bar{background:var(--gold);color:var(--royal-deep);min-height:35px;padding:8px 22px;display:flex;justify-content:center;align-items:center;gap:12px;text-align:center;font:500 .64rem/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+    .concept-bar strong{padding:3px 8px;background:var(--royal-deep);color:#fff;border-radius:2px}
+    header{height:84px;background:rgba(245,239,225,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,70px);position:sticky;top:0;z-index:80}
+    .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--royal-deep)}
+    .brand-mark{width:47px;height:47px;display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:3px;padding:7px;border:1px solid var(--royal);border-radius:50%}
+    .brand-mark i{display:block;background:var(--royal);border-radius:99px 99px 3px 3px}
+    .brand-mark i:nth-child(1){height:18px}.brand-mark i:nth-child(2){height:25px}.brand-mark i:nth-child(3){height:31px}.brand-mark i:nth-child(4){height:23px}.brand-mark i:nth-child(5){height:15px}
+    .brand-copy{font:400 1.04rem/1.05 var(--serif);max-width:175px}
+    nav{display:flex;align-items:center;gap:clamp(18px,2.5vw,34px)}
+    nav a{text-decoration:none;font-size:.73rem;font-weight:700;letter-spacing:.075em;text-transform:uppercase}
+    .nav-cta{background:var(--royal);color:#fff;padding:11px 17px;border-radius:2px}
+    .menu-button{display:none;background:none;border:0;color:var(--royal);padding:8px;cursor:pointer}
+    .menu-button svg{width:27px;height:27px;stroke:currentColor}
+
+    .hero{min-height:calc(100svh - 119px);display:grid;grid-template-columns:1.05fr .95fr;background:var(--royal-deep);color:#fff;overflow:hidden;position:relative}
+    .hero-copy{padding:clamp(76px,8vw,125px) clamp(24px,6vw,95px);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:3}
+    .eyebrow{font:500 .69rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:25px}
+    .eyebrow:before{content:"";width:42px;height:1px;background:currentColor}
+    h1,h2,h3,p{margin-top:0}
+    h1{font:400 clamp(3.8rem,7.8vw,8.2rem)/.84 var(--serif);letter-spacing:-.055em;margin-bottom:30px;max-width:780px}
+    h1 span{display:block;color:var(--gold);font-style:italic;padding-left:.6em}
+    .hero-copy>p{font-size:clamp(1rem,1.35vw,1.18rem);color:rgba(255,255,255,.72);max-width:585px;margin-bottom:36px}
+    .buttons{display:flex;gap:13px;flex-wrap:wrap}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;padding:14px 20px;border-radius:2px;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:transform .2s,background .2s}
+    .button:hover{transform:translateY(-2px)}
+    .button-primary{background:var(--gold);color:var(--royal-deep)}
+    .button-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+    .button svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+    .hero-image{position:relative;min-height:640px;background:#5b3a3d;overflow:hidden}
+    .hero-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.76) contrast(1.04)}
+    .hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--royal-deep),transparent 26%),linear-gradient(0deg,rgba(29,12,34,.8),transparent 55%)}
+    .chiefdom-tag{position:absolute;z-index:3;right:24px;top:30px;writing-mode:vertical-rl;font:500 .62rem var(--mono);letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+    .photo-note{position:absolute;z-index:4;left:33px;bottom:29px;max-width:330px;font:400 .68rem/1.55 var(--mono);color:rgba(255,255,255,.78)}
+    .photo-note strong{color:#fff;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:5px}
+    .rhythm-mark{position:absolute;z-index:3;left:15%;top:7%;width:280px;height:280px;border:1px solid rgba(255,255,255,.28);border-radius:50%;display:flex;justify-content:center;align-items:end;gap:13px;padding:50px}
+    .rhythm-mark i{width:22px;background:rgba(228,182,76,.92);border-radius:50% 50% 3px 3px;transform-origin:bottom;animation:pulse 2.4s ease-in-out infinite}
+    .rhythm-mark i:nth-child(1){height:70px}.rhythm-mark i:nth-child(2){height:116px;animation-delay:.15s}.rhythm-mark i:nth-child(3){height:155px;animation-delay:.3s}.rhythm-mark i:nth-child(4){height:105px;animation-delay:.45s}.rhythm-mark i:nth-child(5){height:62px;animation-delay:.6s}
+    @keyframes pulse{0%,100%{transform:scaleY(.94);opacity:.72}50%{transform:scaleY(1.06);opacity:1}}
+
+    .number-strip{display:grid;grid-template-columns:repeat(3,1fr);background:var(--gold);color:var(--royal-deep)}
+    .number-item{padding:24px clamp(20px,4vw,58px);border-right:1px solid rgba(29,12,34,.22);display:flex;gap:16px;align-items:center}
+    .number-item:last-child{border-right:0}
+    .number-item strong{font:400 2.5rem/1 var(--serif)}
+    .number-item span{font:500 .62rem/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+
+    .section{max-width:1280px;margin:0 auto;padding:clamp(82px,10vw,150px) clamp(22px,5vw,72px)}
+    .label{font:500 .67rem var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--red);margin-bottom:17px}
+    .title{font:400 clamp(2.8rem,5.2vw,5.6rem)/.94 var(--serif);letter-spacing:-.045em;color:var(--royal-deep);margin-bottom:24px}
+    .lead{font-size:clamp(1rem,1.5vw,1.23rem);color:var(--muted);max-width:680px}
+
+    .origin{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(46px,8vw,115px);align-items:start}
+    .origin-card{background:var(--royal);color:#fff;padding:clamp(42px,5vw,70px);position:relative;overflow:hidden;min-height:470px}
+    .origin-card:before{content:"";position:absolute;width:400px;height:400px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-170px;bottom:-190px;box-shadow:0 0 0 65px rgba(255,255,255,.03),0 0 0 130px rgba(255,255,255,.02)}
+    .origin-card .label{color:var(--gold)}
+    .origin-card h3{font:400 clamp(2.2rem,4vw,4rem)/1 var(--serif);margin-bottom:26px;position:relative}
+    .origin-card p{color:rgba(255,255,255,.7);position:relative}
+    .origin-copy{padding-top:26px}
+    .origin-copy .title{max-width:600px}
+    .origin-copy p{color:var(--muted);font-size:1.02rem;max-width:600px}
+    .route{margin-top:34px;padding-top:23px;border-top:1px solid var(--line);display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:start}
+    .route svg{width:24px;height:24px;stroke:var(--red);fill:none}
+    .route strong{font:500 1.05rem var(--serif);display:block;color:var(--royal);margin-bottom:4px}
+    .route span{font-size:.73rem;color:var(--muted)}
+
+    .bigwala{background:var(--royal-deep);color:#fff;position:relative;overflow:hidden}
+    .bigwala-inner{max-width:1280px;margin:auto;padding:clamp(95px,11vw,165px) clamp(22px,5vw,72px);display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(50px,8vw,110px);align-items:center}
+    .bigwala .label{color:var(--gold)}.bigwala .title{color:#fff}
+    .bigwala-copy p{color:rgba(255,255,255,.7);max-width:560px}
+    .heritage-badge{display:inline-flex;margin-top:27px;border:1px solid rgba(255,255,255,.22);padding:10px 13px;gap:10px;align-items:center;font:500 .61rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#eacb83}
+    .heritage-badge i{width:8px;height:8px;background:var(--red);border-radius:50%;box-shadow:0 0 0 5px rgba(181,74,57,.2)}
+    .sound-stage{height:550px;display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,26px);position:relative}
+    .sound-stage:before,.sound-stage:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%}
+    .sound-stage:before{width:480px;height:480px}.sound-stage:after{width:330px;height:330px}
+    .voice{width:clamp(44px,6vw,78px);position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;animation:voice 2.5s ease-in-out infinite}
+    .voice:nth-child(2){animation-delay:.2s}.voice:nth-child(3){animation-delay:.4s}.voice:nth-child(4){animation-delay:.6s}.voice:nth-child(5){animation-delay:.8s}
+    .voice-body{width:100%;height:clamp(180px,29vw,330px);background:linear-gradient(90deg,#cf9439,var(--gold),#9b602a);clip-path:polygon(35% 0,65% 0,70% 69%,95% 84%,84% 100%,16% 100%,5% 84%,30% 69%)}
+    .voice:nth-child(2) .voice-body{height:260px}.voice:nth-child(3) .voice-body{height:380px}.voice:nth-child(4) .voice-body{height:300px}.voice:nth-child(5) .voice-body{height:220px}
+    .voice span{font:500 .56rem var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:14px;color:rgba(255,255,255,.5)}
+    @keyframes voice{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+    .bigwala-note{font:400 .67rem/1.6 var(--mono);color:rgba(255,255,255,.5);border-left:2px solid var(--gold);padding-left:15px;margin-top:30px}
+
+    .collection-head{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:end;margin-bottom:58px}
+    .collection-head .lead{justify-self:end}
+    .gallery{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:440px 440px;gap:18px}
+    .gallery-card{position:relative;overflow:hidden;color:#fff;padding:30px;display:flex;align-items:flex-end;background:var(--royal);min-height:0}
+    .gallery-card:first-child{grid-row:1/3}
+    .gallery-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.76);transition:transform .7s ease}
+    .gallery-card:hover img{transform:scale(1.035)}
+    .gallery-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(29,12,34,.9),transparent 62%)}
+    .gallery-copy{position:relative;z-index:2}
+    .gallery-copy small{font:500 .58rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+    .gallery-copy h3{font:400 clamp(2rem,3.5vw,3.5rem)/1 var(--serif);margin:9px 0}
+    .gallery-copy p{font-size:.75rem;color:rgba(255,255,255,.7);max-width:430px;margin:0}
+
+    .classroom{background:var(--paper);display:grid;grid-template-columns:1fr 1fr;min-height:760px}
+    .classroom-image{position:relative;min-height:560px;overflow:hidden;background:var(--indigo)}
+    .classroom-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.68) contrast(1.03)}
+    .classroom-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(29,12,34,.45),transparent 60%)}
+    .classroom-stamp{position:absolute;left:34px;bottom:34px;background:var(--gold);color:var(--royal-deep);width:145px;height:145px;border-radius:50%;display:grid;place-items:center;text-align:center;font:500 .64rem/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase;transform:rotate(-8deg)}
+    .classroom-copy{padding:clamp(65px,8vw,120px);display:flex;flex-direction:column;justify-content:center}
+    .classroom-copy .title{max-width:660px}
+    .classroom-copy p{color:var(--muted);max-width:600px}
+    .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:31px}
+    .learn-item{padding:18px 14px;border-top:1px solid var(--line)}
+    .learn-item strong{font:400 1.15rem var(--serif);display:block;color:var(--royal);margin-bottom:5px}
+    .learn-item span{font-size:.71rem;color:var(--muted)}
+
+    .archive{background:var(--indigo);color:#fff}
+    .archive-inner{max-width:1280px;margin:auto;padding:clamp(90px,11vw,160px) clamp(22px,5vw,72px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(50px,8vw,110px);align-items:center}
+    .archive .label{color:#f1c66a}.archive .title{color:#fff}.archive p{color:rgba(255,255,255,.72);max-width:630px}
+    .record-stack{position:relative;min-height:490px;display:grid;place-items:center}
+    .record{position:absolute;width:min(100%,420px);background:var(--cream);color:var(--ink);padding:25px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
+    .record:nth-child(1){transform:rotate(-7deg) translate(-35px,-35px)}.record:nth-child(2){transform:rotate(5deg) translate(28px,15px)}.record:nth-child(3){transform:rotate(-1deg) translate(0,66px)}
+    .record-top{font:500 .57rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--red);padding-bottom:13px;border-bottom:1px solid var(--line)}
+    .record h3{font:400 1.65rem var(--serif);margin:17px 0 8px;color:var(--royal)}
+    .record p{font-size:.67rem!important;line-height:1.5;color:var(--muted)!important;margin:0}
+    .archive-note{border-left:2px solid var(--gold);padding-left:18px;margin-top:30px;font:400 .68rem/1.65 var(--mono);color:rgba(255,255,255,.6)}
+
+    .visit{background:var(--royal-deep);color:#fff;padding:clamp(88px,11vw,160px) clamp(22px,5vw,72px);position:relative;overflow:hidden}
+    .visit:before{content:"KIGULU";position:absolute;bottom:-.28em;left:-.03em;font:400 clamp(7rem,20vw,20rem)/1 var(--serif);color:rgba(255,255,255,.025);letter-spacing:-.07em}
+    .visit-inner{max-width:1140px;margin:auto;display:grid;grid-template-columns:1fr .9fr;gap:80px;position:relative}
+    .visit .label{color:var(--gold)}.visit .title{color:#fff}.visit-intro{color:rgba(255,255,255,.68);max-width:520px}
+    .contact-list{display:grid;align-content:center}
+    .contact{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14);text-decoration:none}
+    .contact small{display:block;font:500 .58rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .contact strong{font:400 clamp(1.03rem,2vw,1.4rem) var(--serif)}
+    .contact svg{width:25px;height:25px;stroke:rgba(255,255,255,.6);fill:none;transition:transform .2s}
+    .contact:hover svg{transform:translate(4px,-4px)}
+
+    footer{background:#100612;color:rgba(255,255,255,.55);padding:55px clamp(22px,5vw,72px) 27px}
+    .footer-main{max-width:1280px;margin:auto;display:flex;justify-content:space-between;gap:50px;align-items:flex-start}
+    footer .brand{color:#fff}.footer-note{max-width:600px;text-align:right;font:400 .61rem/1.65 var(--mono)}
+    .credits{max-width:1280px;margin:35px auto 0;border-top:1px solid rgba(255,255,255,.11);padding-top:22px;display:flex;justify-content:space-between;gap:28px;font:400 .57rem/1.65 var(--mono)}
+    .credits a{color:#e7bd61}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s,transform .75s}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:980px){
+      .hero,.origin,.bigwala-inner,.archive-inner,.visit-inner{grid-template-columns:1fr}.hero-copy{min-height:650px}.hero-image{min-height:650px}
+      .collection-head{grid-template-columns:1fr}.collection-head .lead{justify-self:start}.classroom{grid-template-columns:1fr}.classroom-image{min-height:680px}.record-stack{min-height:540px}
+    }
+    @media(max-width:720px){
+      .concept-bar span{display:none}.concept-bar{font-size:.56rem}header{height:70px}.brand-mark{width:41px;height:41px}.brand-copy{font-size:.91rem}
+      .menu-button{display:block}nav{position:fixed;inset:105px 0 0;background:var(--cream);display:none;flex-direction:column;justify-content:center;gap:30px}nav.open{display:flex}nav a{font-size:1rem}
+      h1{font-size:clamp(3.6rem,18vw,5.8rem)}.hero-copy{min-height:610px}.hero-image{min-height:570px}.rhythm-mark{width:240px;height:240px;left:8%}
+      .number-strip{grid-template-columns:1fr}.number-item{border-right:0;border-bottom:1px solid rgba(29,12,34,.22)}
+      .sound-stage{height:460px}.sound-stage:before{width:360px;height:360px}.sound-stage:after{width:250px;height:250px}.voice:nth-child(3) .voice-body{height:290px}
+      .gallery{grid-template-columns:1fr;grid-template-rows:none}.gallery-card,.gallery-card:first-child{grid-row:auto;min-height:490px}.classroom-image{min-height:520px}.classroom-copy{padding:72px 24px}.learn-grid{grid-template-columns:1fr}
+      .record{width:88%}.record:nth-child(1){transform:rotate(-5deg) translate(-15px,-30px)}.record:nth-child(2){transform:rotate(4deg) translate(12px,18px)}
+      .visit-inner{gap:40px}.contact strong{word-break:break-word}.footer-main,.credits{flex-direction:column}.footer-note{text-align:left}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="concept-bar"><strong>Independent concept</strong><span>Prepared as a design proposal · Not the official Kigulu Cultural Museum website</span></div>
+  <header>
+    <a class="brand" href="#top" aria-label="Kigulu Cultural Museum concept home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="brand-copy">Kigulu Cultural Museum</span>
+    </a>
+    <button class="menu-button" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+    <nav aria-label="Main navigation">
+      <a href="#story">Our story</a><a href="#bigwala">Bigwala</a><a href="#collection">Collection</a><a href="#learning">Learning</a><a class="nav-cta" href="#visit">Plan a visit</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow">Iganga · Busoga · Uganda</div>
+        <h1>The kingdom speaks <span>in many voices.</span></h1>
+        <p>Enter a living home for Kigulu heritage—where royal memory, everyday knowledge, music and the questions of a new generation meet.</p>
+        <div class="buttons"><a class="button button-primary" href="#bigwala">Hear the Bigwala story <svg viewBox="0 0 24 24"><path d="M5 12h13M14 7l5 5-5 5"/></svg></a><a class="button button-ghost" href="#visit">Plan a visit</a></div>
+      </div>
+      <div class="hero-image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Exterior_of_Kigulu_Cultural_Museum.jpg/1920px-Exterior_of_Kigulu_Cultural_Museum.jpg" alt="Exterior of Kigulu Cultural Museum in Iganga">
+        <div class="rhythm-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="chiefdom-tag">One of Busoga’s eleven chiefdoms</div>
+        <div class="photo-note"><strong>A house carrying history</strong>The museum occupies a historic building formerly associated with the Chief of Kigulu.</div>
+      </div>
+    </section>
+
+    <div class="number-strip">
+      <div class="number-item"><strong>11</strong><span>chiefdoms within<br>Busoga Kingdom</span></div>
+      <div class="number-item"><strong>5+</strong><span>gourd trumpets form<br>a Bigwala ensemble</span></div>
+      <div class="number-item"><strong>2012</strong><span>Bigwala inscribed for<br>urgent safeguarding</span></div>
+    </div>
+
+    <section class="section origin" id="story">
+      <div class="origin-card reveal">
+        <div class="label">01 · A museum of place</div>
+        <h3>Not simply inside Kigulu. Made from Kigulu.</h3>
+        <p>The royal family and community created a home where Basoga heritage could be encountered through the objects, skills and knowledge of the Kigulu Chiefdom.</p>
+      </div>
+      <div class="origin-copy reveal">
+        <div class="label">The historic residence</div>
+        <h2 class="title">A chief’s house becomes a classroom.</h2>
+        <p>Kigulu Cultural Museum is housed in a historic building once used by the Chief of Kigulu. Its setting gives every visit another layer: the building itself belongs to the story being preserved.</p>
+        <p>Inside, royal regalia sits alongside musical instruments, household tools, indigenous foods and medicines, farming knowledge, craft, belief and social life.</p>
+        <div class="route"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2"/></svg><div><strong>Bulubandi · Nakigo Road · Iganga Municipality</strong><span>Contact the museum before travelling to confirm visiting arrangements.</span></div></div>
+      </div>
+    </section>
+
+    <section class="bigwala" id="bigwala">
+      <div class="bigwala-inner">
+        <div class="bigwala-copy reveal">
+          <div class="label">02 · Living heritage</div>
+          <h2 class="title">Five trumpets. One moving melody.</h2>
+          <p>Bigwala is the gourd-trumpet music and dance of the Basoga. Five or more monotone trumpets pass the melody from player to player—a musical conversation traditionally associated with royal ceremonies and now also performed on social occasions.</p>
+          <p>Its place on UNESCO’s List of Intangible Cultural Heritage in Need of Urgent Safeguarding makes transmission especially important. A future website can help introduce the form, connect learners to approved recordings and centre the voices of practitioners.</p>
+          <div class="heritage-badge"><i></i> UNESCO urgent safeguarding list · 2012</div>
+          <div class="bigwala-note">The animated forms are a graphic interpretation of interlocking voices, not a reconstruction of museum instruments or a substitute for a live performance.</div>
+        </div>
+        <div class="sound-stage reveal" aria-label="Abstract illustration of five interlocking Bigwala trumpet voices">
+          <div class="voice"><div class="voice-body"></div><span>Voice 01</span></div><div class="voice"><div class="voice-body"></div><span>Voice 02</span></div><div class="voice"><div class="voice-body"></div><span>Voice 03</span></div><div class="voice"><div class="voice-body"></div><span>Voice 04</span></div><div class="voice"><div class="voice-body"></div><span>Voice 05</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="collection-head reveal">
+        <div><div class="label">03 · The collection</div><h2 class="title">Power, rhythm and everyday intelligence.</h2></div>
+        <p class="lead">The collection can be explored not as isolated objects, but through the social worlds that made them meaningful: leadership, music, food, work, medicine, worship and home.</p>
+      </div>
+      <div class="gallery">
+        <article class="gallery-card reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Regalia_for_Kigulu_chiefdom_of_Busoga_Kingdom_at_Kigulu_Cultural_Museum.jpg/1920px-Regalia_for_Kigulu_chiefdom_of_Busoga_Kingdom_at_Kigulu_Cultural_Museum.jpg" alt="Royal regalia displayed at Kigulu Cultural Museum"><div class="gallery-copy"><small>Collection path · Leadership</small><h3>Royal regalia</h3><p>Objects of authority open a wider story about the Kigulu Chiefdom, responsibility, succession and belonging within Busoga.</p></div></article>
+        <article class="gallery-card reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Music_Instruments_at_Kigulu_Cultural_Museum.jpg/1920px-Music_Instruments_at_Kigulu_Cultural_Museum.jpg" alt="Musical instruments displayed at Kigulu Cultural Museum"><div class="gallery-copy"><small>Collection path · Sound</small><h3>Musical instruments</h3><p>Music preserves knowledge through breath, rhythm, movement and the relationship between performers.</p></div></article>
+        <article class="gallery-card reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Interior_of_library_at_Kigulu_Cultural_Museum.jpg/1920px-Interior_of_library_at_Kigulu_Cultural_Museum.jpg" alt="Interior of the library at Kigulu Cultural Museum"><div class="gallery-copy"><small>Collection path · Research</small><h3>The library</h3><p>A bridge between material heritage, written records, researchers and new questions from young learners.</p></div></article>
+      </div>
+    </section>
+
+    <section class="classroom" id="learning">
+      <div class="classroom-image reveal"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Interior_of_library_at_Kigulu_Cultural_Museum.jpg/1920px-Interior_of_library_at_Kigulu_Cultural_Museum.jpg" alt="Books and study materials inside Kigulu Cultural Museum library"><div class="classroom-stamp">Touch history<br>Ask questions<br>Carry it on</div></div>
+      <div class="classroom-copy reveal">
+        <div class="label">04 · Museum as classroom</div>
+        <h2 class="title">Move learning beyond the textbook.</h2>
+        <p>Community museums allow students to examine objects, compare oral accounts, practise games, discuss changing customs and meet people who hold specialised knowledge.</p>
+        <p>A school-facing website could turn a visit into a complete learning journey—from preparation materials for teachers to follow-up activities and student research prompts.</p>
+        <div class="learn-grid"><div class="learn-item"><strong>Before the visit</strong><span>Teacher notes, themes and booking questions.</span></div><div class="learn-item"><strong>At the museum</strong><span>Guided observation and object-based enquiry.</span></div><div class="learn-item"><strong>After the visit</strong><span>Classroom activities and reflection prompts.</span></div><div class="learn-item"><strong>For researchers</strong><span>A clear route for collection and archive enquiries.</span></div></div>
+      </div>
+    </section>
+
+    <section class="archive" id="archive">
+      <div class="archive-inner">
+        <div class="reveal">
+          <div class="label">05 · Digital heritage</div>
+          <h2 class="title">Give each story a lasting address.</h2>
+          <p>Kigulu Cultural Museum’s connection to Africa PID Alliance’s cultural-heritage work points toward a deeper digital future: records that can remain discoverable, attributed and linked without separating objects from their cultural context.</p>
+          <p>A practical first version could join collection records, school resources, approved oral histories, research requests and museum updates in one low-maintenance platform.</p>
+          <div class="archive-note">Digital access is not automatic public access. The museum and community determine what may be recorded, who may see it and how knowledge holders are credited.</div>
+        </div>
+        <div class="record-stack reveal" aria-label="Illustration of linked digital heritage records">
+          <article class="record"><div class="record-top">KCM / Record 001</div><h3>Royal heritage</h3><p>Object record · provenance · approved interpretation · related people and place</p></article>
+          <article class="record"><div class="record-top">KCM / Record 002</div><h3>Living sound</h3><p>Performance context · knowledge holder · cultural protocol · linked media</p></article>
+          <article class="record"><div class="record-top">KCM / Record 003</div><h3>Everyday knowledge</h3><p>Food · medicine · farming · craft · community attribution · learning resource</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="visit-inner">
+        <div class="reveal"><div class="label">Visit &amp; connect</div><h2 class="title">History lives better with visitors.</h2><p class="visit-intro">Kigulu Cultural Museum is in Iganga Municipality in Eastern Uganda. Contact the museum directly to confirm visiting arrangements, organise a school group or make a research enquiry.</p></div>
+        <div class="contact-list reveal">
+          <a class="contact" href="mailto:kitaulwa@gmail.com"><span><small>Email the museum</small><strong>kitaulwa@gmail.com</strong></span><svg viewBox="0 0 24 24"><path d="M5 19L19 5M9 5h10v10"/></svg></a>
+          <a class="contact" href="tel:+256782822462"><span><small>Call / WhatsApp</small><strong>+256 782 822 462</strong></span><svg viewBox="0 0 24 24"><path d="M5 19L19 5M9 5h10v10"/></svg></a>
+          <div class="contact"><span><small>Location</small><strong>Bulubandi · Nakigo Road · Iganga</strong></span><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2"/></svg></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="brand-copy">Kigulu Cultural Museum</span></a><div class="footer-note">Independent website concept prepared from publicly available information. It is not endorsed by, affiliated with or operated by Kigulu Cultural Museum. Cultural interpretation, collection details and visitor information remain subject to the museum’s review.</div></div>
+    <div class="credits"><span>Concept design by Korvia Studio · Kampala, Uganda</span><span>Photography: <a href="https://commons.wikimedia.org/wiki/User:KigenyiIbra" target="_blank" rel="noopener">KigenyiIbra</a>, via Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/Category:Kigulu_Cultural_Museum" target="_blank" rel="noopener">view exact source files</a></span></div>
+  </footer>
+
+  <script>
+    const menuButton=document.querySelector('.menu-button');const navigation=document.querySelector('nav');
+    menuButton.addEventListener('click',()=>{const open=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');document.body.classList.toggle('menu-open',open)});
+    navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}));
+    if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.11});document.querySelectorAll('.reveal').forEach(element=>observer.observe(element))}else{document.querySelectorAll('.reveal').forEach(element=>element.classList.add('visible'))}
+  </script>
+</body>
+</html>
