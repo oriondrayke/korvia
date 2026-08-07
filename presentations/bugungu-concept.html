@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="An independent homepage concept for Bugungu Heritage and Information Centre in Buliisa, Uganda.">
+  <title>Bugungu Heritage &amp; Information Centre · Independent concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --lake:#073d46;
+      --lake-dark:#03282f;
+      --lake-light:#2f7d83;
+      --sun:#e7a83e;
+      --clay:#a84d32;
+      --reed:#708c61;
+      --paper:#f3ecdc;
+      --cream:#fffaf0;
+      --ink:#18312d;
+      --muted:#5f6964;
+      --line:rgba(24,49,45,.18);
+      --display:'Newsreader',Georgia,serif;
+      --body:'Manrope',system-ui,sans-serif;
+      --mono:'DM Mono',monospace;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit}
+    img{display:block;max-width:100%}
+    button{font:inherit}
+    .skip{position:absolute;left:-9999px;top:10px;background:#fff;color:#000;padding:10px 14px;z-index:1000}
+    .skip:focus{left:10px}
+
+    .concept-note{background:#e7a83e;color:#182e2b;padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:12px;text-align:center;font:500 .67rem/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+    .concept-note strong{background:var(--lake-dark);color:#fff5dc;padding:3px 8px;border-radius:99px;white-space:nowrap}
+
+    header{height:82px;background:rgba(255,250,240,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,64px);position:sticky;top:0;z-index:90}
+    .brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--lake-dark)}
+    .brand-mark{width:48px;height:48px;border-radius:50%;position:relative;border:1px solid var(--lake);overflow:hidden;background:var(--sun)}
+    .brand-mark:before,.brand-mark:after{content:"";position:absolute;left:-7px;width:62px;height:18px;border:2px solid var(--lake);border-radius:50%}
+    .brand-mark:before{bottom:4px}.brand-mark:after{bottom:13px}
+    .brand-copy{font:500 1.04rem/1.05 var(--display);letter-spacing:-.01em;max-width:180px}
+    nav{display:flex;align-items:center;gap:clamp(18px,2.5vw,34px)}
+    nav a{text-decoration:none;font-size:.77rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;position:relative}
+    nav a:not(.nav-cta):after{content:"";height:1px;background:var(--clay);position:absolute;left:0;right:100%;bottom:-5px;transition:right .2s}
+    nav a:hover:after{right:0}
+    .nav-cta{padding:11px 17px;background:var(--lake);color:#fff;border-radius:100px}
+    .menu-button{display:none;background:none;border:0;padding:8px;color:var(--lake);cursor:pointer}
+    .menu-button svg{width:28px;height:28px;stroke:currentColor}
+
+    .hero{min-height:calc(100svh - 117px);background:var(--lake-dark);color:#fff9ed;position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(390px,.94fr)}
+    .hero-copy{padding:clamp(72px,8vw,126px) clamp(24px,6vw,96px);position:relative;z-index:4;display:flex;flex-direction:column;justify-content:center}
+    .eyebrow{display:flex;align-items:center;gap:12px;font:500 .72rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:#e9bf73;margin-bottom:26px}
+    .eyebrow:before{content:"";width:48px;height:1px;background:currentColor}
+    h1,h2,h3,p{margin-top:0}
+    h1{font:400 clamp(3.65rem,7.2vw,7.65rem)/.84 var(--display);letter-spacing:-.055em;margin-bottom:30px;max-width:800px}
+    h1 em{font-weight:400;color:var(--sun)}
+    .hero-copy>p{font-size:clamp(1rem,1.4vw,1.22rem);color:rgba(255,249,237,.75);max-width:615px;margin-bottom:36px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;border-radius:100px;padding:14px 21px;font-size:.79rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:transform .2s,background .2s,color .2s}
+    .button:hover{transform:translateY(-2px)}
+    .button-primary{background:var(--sun);color:var(--lake-dark)}
+    .button-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+    .button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8}
+    .hero-visual{min-height:600px;position:relative;overflow:hidden;background:#9f7959}
+    .hero-visual img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04)}
+    .hero-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--lake-dark) 0%,transparent 25%),linear-gradient(0deg,rgba(3,40,47,.78) 0%,transparent 58%)}
+    .photo-caption{position:absolute;z-index:4;left:34px;bottom:32px;max-width:330px;font:400 .7rem/1.55 var(--mono);letter-spacing:.03em;color:rgba(255,255,255,.8)}
+    .photo-caption strong{color:#fff;text-transform:uppercase;display:block;margin-bottom:4px}
+    .wind-orbit{position:absolute;z-index:3;width:min(42vw,600px);height:min(42vw,600px);left:-10%;top:5%;border:1px solid rgba(255,255,255,.35);border-radius:50%;animation:turn 35s linear infinite}
+    .wind-orbit:before,.wind-orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.25);border-radius:50%}
+    .wind-orbit:before{inset:13%}.wind-orbit:after{inset:29%}
+    .wind-orbit span{width:9px;height:9px;border-radius:50%;background:var(--sun);position:absolute;top:9%;left:21%;box-shadow:0 0 0 7px rgba(231,168,62,.2)}
+    .side-label{position:absolute;right:18px;top:50%;z-index:5;writing-mode:vertical-rl;transform:rotate(180deg);font:500 .65rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+    @keyframes turn{to{transform:rotate(360deg)}}
+
+    .ticker{background:var(--sun);color:var(--lake-dark);overflow:hidden;border-bottom:1px solid rgba(0,0,0,.15)}
+    .ticker-track{display:flex;width:max-content;animation:marquee 35s linear infinite}
+    .ticker span{padding:15px 28px;font:500 .69rem/1 var(--mono);text-transform:uppercase;letter-spacing:.11em;white-space:nowrap}
+    .ticker span:after{content:"✦";margin-left:56px;color:var(--clay)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    .section{max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,150px) clamp(22px,5vw,74px)}
+    .section-label{font:500 .7rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:18px}
+    .section-title{font:400 clamp(2.8rem,5vw,5.2rem)/.95 var(--display);letter-spacing:-.045em;color:var(--lake-dark);margin-bottom:24px}
+    .lead{font-size:clamp(1rem,1.5vw,1.22rem);color:var(--muted);max-width:650px}
+
+    .intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(45px,8vw,110px);align-items:start}
+    .intro .section-title{position:sticky;top:130px}
+    .intro-copy{font:400 clamp(1.28rem,2.2vw,1.85rem)/1.45 var(--display);color:#344b47}
+    .intro-copy p:first-child:first-letter{font-size:4.8rem;float:left;line-height:.75;margin:13px 10px 0 0;color:var(--clay)}
+    .fact-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:50px}
+    .fact{padding:24px 18px 0 0;border-right:1px solid var(--line);margin-right:18px}
+    .fact:last-child{border-right:0}
+    .fact strong{font:500 clamp(1.65rem,3vw,2.75rem)/1 var(--display);display:block;color:var(--lake);margin-bottom:8px}
+    .fact span{font-size:.68rem;line-height:1.4;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+
+    .wind-section{background:var(--lake);color:#fffaf0;position:relative;overflow:hidden}
+    .wind-inner{max-width:1280px;margin:0 auto;padding:clamp(90px,11vw,155px) clamp(22px,5vw,74px);display:grid;grid-template-columns:.82fr 1.18fr;gap:70px;align-items:center;position:relative;z-index:2}
+    .wind-section .section-label{color:#efc270}.wind-section .section-title{color:#fffaf0}
+    .wind-copy p{color:rgba(255,250,240,.74);max-width:540px}
+    .respect-note{border-left:2px solid var(--sun);padding:10px 0 10px 18px;margin-top:30px;font:400 .72rem/1.65 var(--mono);color:rgba(255,250,240,.68)}
+    .wind-map{aspect-ratio:1;position:relative;display:grid;place-items:center}
+    .wind-map svg{width:100%;height:100%;overflow:visible}
+    .wind-line{fill:none;stroke:#eac680;stroke-width:1.2;stroke-linecap:round;stroke-dasharray:8 10;animation:flow 18s linear infinite}
+    .wind-line:nth-child(2){animation-duration:14s}.wind-line:nth-child(3){animation-duration:22s}.wind-line:nth-child(4){animation-duration:12s}
+    .lake-shape{fill:rgba(3,40,47,.8);stroke:rgba(255,255,255,.35);stroke-width:1}
+    .map-center{position:absolute;width:160px;height:160px;border:1px solid rgba(255,255,255,.24);border-radius:50%;display:grid;place-items:center;text-align:center;font:500 .65rem/1.45 var(--mono);text-transform:uppercase;letter-spacing:.09em;color:#fff}
+    .map-center:before{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.12);border-radius:50%}
+    @keyframes flow{to{stroke-dashoffset:-180}}
+
+    .collection-head{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:end;margin-bottom:56px}
+    .collection-head .lead{justify-self:end}
+    .artefact-grid{display:grid;grid-template-columns:1.35fr .65fr .65fr;gap:18px}
+    .artefact{min-height:430px;padding:28px;position:relative;overflow:hidden;background:#decaaa;display:flex;align-items:flex-end;color:#fff;border-radius:2px}
+    .artefact:first-child{grid-row:span 2;min-height:878px}
+    .artefact:nth-child(4){grid-column:2 / 4}
+    .artefact img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:saturate(.75)}
+    .artefact:hover img{transform:scale(1.035)}
+    .artefact:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,40,47,.94),rgba(3,40,47,.04) 67%)}
+    .artefact-body{position:relative;z-index:2}
+    .artefact-number{font:500 .65rem var(--mono);letter-spacing:.12em;color:#edc67e;margin-bottom:11px}
+    .artefact h3{font:400 clamp(1.75rem,2.7vw,3rem)/1 var(--display);letter-spacing:-.03em;margin-bottom:9px}
+    .artefact p{font-size:.79rem;line-height:1.55;color:rgba(255,255,255,.74);max-width:440px;margin-bottom:0}
+    .pattern-card{background:var(--clay);position:absolute;inset:0}
+    .pattern-card:before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 0 100%,transparent 0 20px,rgba(255,235,195,.16) 21px 23px);background-size:85px 85px}
+    .artefact:nth-child(3) .pattern-card{background:var(--reed)}
+    .artefact:nth-child(4) .pattern-card{background:var(--lake-light)}
+
+    .troupe{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;min-height:720px}
+    .troupe-image{position:relative;overflow:hidden;min-height:520px;background:var(--clay)}
+    .troupe-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.72) sepia(.1)}
+    .troupe-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,40,47,.45),transparent 60%)}
+    .troupe-seal{position:absolute;right:34px;top:34px;z-index:2;width:140px;height:140px;background:var(--sun);color:var(--lake-dark);border-radius:50%;display:grid;place-items:center;text-align:center;font:500 .69rem/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase;animation:turn 28s linear infinite}
+    .troupe-seal span{animation:turn 28s linear infinite reverse}
+    .troupe-copy{padding:clamp(65px,8vw,120px);display:flex;flex-direction:column;justify-content:center}
+    .troupe-copy blockquote{font:italic 400 clamp(2rem,3.5vw,3.7rem)/1.08 var(--display);letter-spacing:-.035em;margin:10px 0 30px;color:var(--lake-dark)}
+    .troupe-copy p{color:var(--muted);max-width:600px}
+    .performer-count{display:flex;align-items:center;gap:18px;margin-top:35px;padding-top:30px;border-top:1px solid var(--line)}
+    .performer-count strong{font:500 3.7rem/1 var(--display);color:var(--clay)}
+    .performer-count span{font:500 .72rem/1.5 var(--mono);text-transform:uppercase;letter-spacing:.08em;max-width:180px}
+
+    .digital{background:var(--paper)}
+    .digital-grid{display:grid;grid-template-columns:.76fr 1.24fr;gap:clamp(45px,8vw,110px);align-items:center}
+    .archive-window{background:var(--lake-dark);color:#fff;border-radius:2px;padding:18px;box-shadow:18px 18px 0 var(--sun);transform:rotate(-1.2deg)}
+    .window-bar{display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:14px;font:400 .62rem var(--mono);letter-spacing:.07em;color:rgba(255,255,255,.5)}
+    .window-bar i{width:7px;height:7px;border-radius:50%;background:var(--clay)}
+    .window-bar i:nth-child(2){background:var(--sun)}.window-bar i:nth-child(3){background:var(--reed)}
+    .archive-list{list-style:none;padding:20px 0 4px;margin:0}
+    .archive-list li{display:grid;grid-template-columns:32px 1fr auto;gap:15px;align-items:center;padding:15px 8px;border-bottom:1px solid rgba(255,255,255,.1);font:.69rem var(--mono);color:rgba(255,255,255,.76)}
+    .archive-list svg{width:22px;height:22px;stroke:var(--sun);fill:none}
+    .archive-list span:last-child{font-size:.55rem;color:rgba(255,255,255,.35);text-transform:uppercase}
+    .digital-copy .section-title{max-width:700px}
+    .digital-copy .lead{margin-bottom:26px}
+    .principles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:38px}
+    .principle{border-top:1px solid var(--line);padding:17px 10px 0 0}
+    .principle strong{font:500 1.15rem var(--display);display:block;color:var(--lake);margin-bottom:5px}
+    .principle span{font-size:.73rem;color:var(--muted)}
+
+    .visit-wrap{background:var(--lake-dark);color:#fffaf0;padding:clamp(82px,10vw,145px) clamp(22px,5vw,74px);position:relative;overflow:hidden}
+    .visit-wrap:before{content:"";position:absolute;width:700px;height:700px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-240px;top:-250px;box-shadow:0 0 0 80px rgba(255,255,255,.025),0 0 0 160px rgba(255,255,255,.018)}
+    .visit-inner{max-width:1140px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr .9fr;gap:80px}
+    .visit-wrap .section-label{color:var(--sun)}.visit-wrap .section-title{color:#fffaf0}
+    .visit-intro{font-size:1.05rem;color:rgba(255,255,255,.68);max-width:500px}
+    .contact-stack{display:grid;gap:16px;align-content:center}
+    .contact-card{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:21px 0;border-bottom:1px solid rgba(255,255,255,.14);text-decoration:none}
+    .contact-card small{display:block;font:500 .61rem var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--sun);margin-bottom:6px}
+    .contact-card strong{font:400 clamp(1rem,1.8vw,1.35rem) var(--display)}
+    .contact-card svg{width:26px;height:26px;stroke:rgba(255,255,255,.6);fill:none;transition:transform .2s}
+    .contact-card:hover svg{transform:translate(4px,-4px)}
+
+    footer{background:#021c21;color:rgba(255,255,255,.55);padding:56px clamp(22px,5vw,74px) 26px}
+    .footer-main{max-width:1280px;margin:auto;display:flex;justify-content:space-between;gap:50px;align-items:flex-start}
+    footer .brand{color:#fff}.footer-note{font:.64rem/1.65 var(--mono);max-width:570px;text-align:right}
+    .credits{max-width:1280px;margin:38px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font:.58rem/1.7 var(--mono);display:flex;gap:30px;justify-content:space-between}
+    .credits a{color:#e7b75e}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}.hero-copy{min-height:650px}.hero-visual{min-height:62vw}.wind-orbit{width:75vw;height:75vw}
+      .intro,.wind-inner,.digital-grid,.visit-inner{grid-template-columns:1fr}.intro .section-title{position:static}.collection-head{grid-template-columns:1fr}.collection-head .lead{justify-self:start}
+      .artefact-grid{grid-template-columns:1fr 1fr}.artefact:first-child{grid-row:auto;grid-column:1/3;min-height:620px}.artefact:nth-child(4){grid-column:1/3}
+      .troupe{grid-template-columns:1fr}.troupe-image{min-height:650px}
+    }
+    @media(max-width:720px){
+      .concept-note{font-size:.56rem;padding:8px 12px}.concept-note span{display:none}
+      header{height:70px}.brand-mark{width:42px;height:42px}.brand-copy{font-size:.92rem}
+      .menu-button{display:block}nav{position:fixed;inset:105px 0 0;background:var(--cream);display:none;flex-direction:column;justify-content:center;gap:30px}nav.open{display:flex}nav a{font-size:1rem}
+      .hero-copy{padding-top:70px;min-height:620px}.hero-visual{min-height:570px}.side-label{display:none}
+      h1{font-size:clamp(3.55rem,18vw,5.7rem)}
+      .fact-row{grid-template-columns:1fr}.fact{border-right:0;border-bottom:1px solid var(--line);padding:20px 0;margin:0}.fact:last-child{border-bottom:0}
+      .wind-inner{gap:35px}.wind-map{margin:10px 0}.map-center{width:125px;height:125px;font-size:.56rem}
+      .artefact-grid{grid-template-columns:1fr}.artefact,.artefact:first-child,.artefact:nth-child(4){grid-column:auto;min-height:470px}
+      .troupe-image{min-height:500px}.troupe-seal{width:110px;height:110px;font-size:.57rem}.troupe-copy{padding:70px 24px}
+      .digital-grid{gap:70px}.archive-window{box-shadow:10px 10px 0 var(--sun)}.principles{grid-template-columns:1fr}
+      .visit-inner{gap:35px}.contact-card{align-items:flex-start}.contact-card strong{word-break:break-word}
+      .footer-main,.credits{flex-direction:column}.footer-note{text-align:left}.credits{gap:12px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="concept-note"><strong>Independent concept</strong><span>Prepared as a design proposal · This is not the official Bugungu Heritage and Information Centre website</span></div>
+
+  <header>
+    <a class="brand" href="#top" aria-label="Bugungu Heritage and Information Centre concept home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy">Bugungu Heritage &amp; Information Centre</span>
+    </a>
+    <button class="menu-button" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+    <nav aria-label="Main navigation">
+      <a href="#story">Our story</a>
+      <a href="#wind">Living archive</a>
+      <a href="#collection">Collection</a>
+      <a href="#troupe">Cultural troupe</a>
+      <a class="nav-cta" href="#visit">Plan a visit</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow">Buliisa · Western Uganda</div>
+        <h1>Where the <em>wind</em> remembers.</h1>
+        <p>A living home for Bagungu heritage—keeping the knowledge held in objects, songs, landscapes and generations present for the future.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#wind">Follow the wind story <svg viewBox="0 0 24 24"><path d="M5 12h13M14 7l5 5-5 5"/></svg></a>
+          <a class="button button-ghost" href="#visit">Plan a visit</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Artefacts_at_Bugungu_Heritage_and_Information_Centre_in_Bulisa_District.jpg/1920px-Artefacts_at_Bugungu_Heritage_and_Information_Centre_in_Bulisa_District.jpg" alt="Artefacts displayed at Bugungu Heritage and Information Centre">
+        <div class="wind-orbit" aria-hidden="true"><span></span></div>
+        <div class="photo-caption"><strong>Inside the centre</strong>Objects become points of entry into Bagungu memory, skill and daily life.</div>
+        <div class="side-label">Heritage held by community</div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track">
+      <span>Wind as compass</span><span>Objects as memory</span><span>Songs as archive</span><span>Knowledge across generations</span>
+      <span>Wind as compass</span><span>Objects as memory</span><span>Songs as archive</span><span>Knowledge across generations</span>
+    </div></div>
+
+    <section class="section intro reveal" id="story">
+      <div>
+        <div class="section-label">01 · A community museum</div>
+        <h2 class="section-title">Heritage is not behind glass. It is alive.</h2>
+      </div>
+      <div>
+        <div class="intro-copy">
+          <p>Bugungu Heritage and Information Centre preserves and shares the cultural heritage of the Bagungu people in Buliisa District—from household tools and fishing knowledge to music, theatre and the wisdom carried in the surrounding landscape.</p>
+          <p>This concept imagines a digital doorway: a place where a young person, a school, a visitor or a research partner can first encounter that living story.</p>
+        </div>
+        <div class="fact-row">
+          <div class="fact"><strong>25</strong><span>performers in the Bugungu Cultural Troupe</span></div>
+          <div class="fact"><strong>2022</strong><span>community wind knowledge documented as Mpeehu za Bugungu</span></div>
+          <div class="fact"><strong>5 yrs</strong><span>digital-preservation partnership announced in 2024</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wind-section" id="wind">
+      <div class="wind-inner">
+        <div class="wind-copy reveal">
+          <div class="section-label">02 · Mpeehu za Bugungu</div>
+          <h2 class="section-title">Read the wind. Read the land.</h2>
+          <p>The Mpeehu za Bugungu wind map grew from a community effort to document indigenous knowledge of winds. Around Lake Mwitazinge—also known as Lake Albert—the wind is more than weather: it has helped inform fishing, navigation, farming, herding and ways of living with the natural world.</p>
+          <p>A future digital archive could introduce this story while the Centre and knowledge holders decide which details may be shared, how they should be interpreted and in whose voice.</p>
+          <div class="respect-note">Concept principle: community authority comes first. This visual is an interpretation of moving air—not a reproduction of the Centre’s wind map or restricted knowledge.</div>
+        </div>
+        <div class="wind-map reveal" aria-label="Abstract animated illustration of winds moving around Lake Albert">
+          <svg viewBox="0 0 600 600" role="img">
+            <title>Abstract wind paths flowing around a lake form</title>
+            <path class="lake-shape" d="M343 61c-44 39-51 91-40 142 10 44 3 84-26 124-38 53-39 103-7 153 23 36 18 79-5 112 81-31 137-75 153-139 12-46-15-86-13-130 2-36 32-74 25-120-9-57-39-109-87-142z"/>
+            <path class="wind-line" d="M28 153c83-73 180-77 255-19 58 45 115 43 204-18"/>
+            <path class="wind-line" d="M83 481c80 45 153 24 190-40 38-66 119-84 239-50"/>
+            <path class="wind-line" d="M74 270c94-47 168-28 221 33 68 77 144 82 243 18"/>
+            <path class="wind-line" d="M141 41c-35 96-10 167 71 209 79 41 98 108 72 199-14 48-3 87 33 118"/>
+            <circle cx="75" cy="269" r="4" fill="#e7a83e"/><circle cx="488" cy="117" r="4" fill="#e7a83e"/><circle cx="141" cy="41" r="4" fill="#e7a83e"/>
+          </svg>
+          <div class="map-center">Lake<br>Mwitazinge<br><small>Lake Albert</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="collection-head reveal">
+        <div><div class="section-label">03 · Collection pathways</div><h2 class="section-title">Four objects. Four stories waiting to open.</h2></div>
+        <p class="lead">Instead of an inventory, the collection can be explored through the work, food, waters and relationships that gave each object meaning.</p>
+      </div>
+      <div class="artefact-grid">
+        <article class="artefact reveal">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Artefacts_at_Bugungu_Heritage_and_Information_Centre_in_Bulisa_District.jpg/1920px-Artefacts_at_Bugungu_Heritage_and_Information_Centre_in_Bulisa_District.jpg" alt="A group of historical objects at Bugungu Heritage and Information Centre">
+          <div class="artefact-body"><div class="artefact-number">OBJECT PATH · 01</div><h3>Mutogoolo</h3><p>A traditional granary: an invitation to explore food storage, cultivation, household knowledge and continuity.</p></div>
+        </article>
+        <article class="artefact reveal"><div class="pattern-card"></div><div class="artefact-body"><div class="artefact-number">OBJECT PATH · 02</div><h3>Lwoho</h3><p>A wooden plate connecting material craft with the everyday rituals of preparing and sharing food.</p></div></article>
+        <article class="artefact reveal"><div class="pattern-card"></div><div class="artefact-body"><div class="artefact-number">OBJECT PATH · 03</div><h3>Kiddeku</h3><p>A calabash whose form opens stories about vessels, use, making and domestic life.</p></div></article>
+        <article class="artefact reveal"><div class="pattern-card"></div><div class="artefact-body"><div class="artefact-number">OBJECT PATH · 04</div><h3>Kipindo kya Ngugu</h3><p>A hippo spear that belongs within a larger history of the lake, subsistence and changing relations between people and wildlife.</p></div></article>
+      </div>
+    </section>
+
+    <section class="troupe" id="troupe">
+      <div class="troupe-image reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Oware_in_Buliisa_district_in_mid_western_Uganda.jpg/1920px-Oware_in_Buliisa_district_in_mid_western_Uganda.jpg" alt="People gathered around a traditional oware board in Buliisa District">
+        <div class="troupe-seal"><span>Culture moves<br>when people<br>carry it</span></div>
+      </div>
+      <div class="troupe-copy reveal">
+        <div class="section-label">04 · Bugungu Cultural Troupe</div>
+        <blockquote>“An archive can also dance, sing and speak.”</blockquote>
+        <p>The Centre’s cultural troupe brings together women, girls and men to sustain Bagungu culture through music and theatre. Performances also become a way to reach communities with education and shared concerns.</p>
+        <p>A dedicated programme page could introduce the troupe, document performances—with permission—and make it easier for schools, festivals and partners to connect.</p>
+        <div class="performer-count"><strong>25</strong><span>people carrying culture through performance</span></div>
+      </div>
+    </section>
+
+    <section class="section digital" id="archive">
+      <div class="digital-grid">
+        <div class="archive-window reveal" aria-label="Illustration of a digital heritage archive">
+          <div class="window-bar"><i></i><i></i><i></i><span>BUGUNGU / LIVING-ARCHIVE</span></div>
+          <ul class="archive-list">
+            <li><svg viewBox="0 0 24 24"><path d="M4 19V5l8-3 8 3v14l-8 3-8-3zM12 2v20"/></svg><span>Wind knowledge</span><span>Community held</span></li>
+            <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><span>Collection stories</span><span>Object records</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M4 18V6m5 9V9m5 8V7m5 13V4"/></svg><span>Oral histories</span><span>With consent</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 19c4-6 10-6 14 0M12 3v11M8 7l4-4 4 4"/></svg><span>Music &amp; performance</span><span>Intergenerational</span></li>
+          </ul>
+        </div>
+        <div class="digital-copy reveal">
+          <div class="section-label">05 · A lasting digital home</div>
+          <h2 class="section-title">Preservation with a pulse.</h2>
+          <p class="lead">The Centre’s five-year digital-preservation partnership with Africa PID Alliance points toward more than a brochure website: a durable, searchable home for community knowledge.</p>
+          <p>Built carefully, the platform could connect collection records, oral histories, learning materials and programme updates—while recognising ownership, permissions and the cultural context around every item.</p>
+          <div class="principles">
+            <div class="principle"><strong>Community controlled</strong><span>Publishing and access rules shaped by knowledge holders.</span></div>
+            <div class="principle"><strong>Built to last</strong><span>Stable records and identifiers for long-term discovery.</span></div>
+            <div class="principle"><strong>Easy to contribute</strong><span>A practical workflow for a small museum team.</span></div>
+            <div class="principle"><strong>Useful to learn from</strong><span>Stories designed for local youth, schools and visitors.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit-wrap" id="visit">
+      <div class="visit-inner">
+        <div class="reveal">
+          <div class="section-label">Visit &amp; connect</div>
+          <h2 class="section-title">Come closer to the story.</h2>
+          <p class="visit-intro">Bugungu Heritage and Information Centre is based in Buliisa District in Western Uganda. Contact the Centre directly to arrange a visit, school experience, cultural programme or research conversation.</p>
+        </div>
+        <div class="contact-stack reveal">
+          <a class="contact-card" href="mailto:bugunguheritage@gmail.com"><span><small>Email the Centre</small><strong>bugunguheritage@gmail.com</strong></span><svg viewBox="0 0 24 24"><path d="M5 19L19 5M9 5h10v10"/></svg></a>
+          <a class="contact-card" href="tel:+256775548263"><span><small>Call / WhatsApp</small><strong>+256 775 548 263</strong></span><svg viewBox="0 0 24 24"><path d="M5 19L19 5M9 5h10v10"/></svg></a>
+          <div class="contact-card"><span><small>Location</small><strong>Buliisa District · Western Uganda</strong></span><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2"/></svg></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span class="brand-copy">Bugungu Heritage &amp; Information Centre</span></a>
+      <div class="footer-note">Independent website concept prepared from publicly available information. It is not endorsed by, affiliated with or operated by Bugungu Heritage and Information Centre. All cultural language, collection interpretation and visitor details remain subject to the Centre’s review.</div>
+    </div>
+    <div class="credits">
+      <span>Concept design by Korvia Studio · Dar es Salaam</span>
+      <span>Photography: <a href="https://commons.wikimedia.org/wiki/File:Artefacts_at_Bugungu_Heritage_and_Information_Centre_in_Bulisa_District.jpg" target="_blank" rel="noopener">Micheal Kaluba</a> and <a href="https://commons.wikimedia.org/wiki/File:Oware_in_Buliisa_district_in_mid_western_Uganda.jpg" target="_blank" rel="noopener">Kikonko / Kiiza Wilson</a>, via Wikimedia Commons · CC BY-SA 4.0</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.querySelector('nav');
+    menuButton.addEventListener('click', () => {
+      const open = navigation.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('menu-open', open);
+    });
+    navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navigation.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    }));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      }), { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    } else {
+      document.querySelectorAll('.reveal').forEach(element => element.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
