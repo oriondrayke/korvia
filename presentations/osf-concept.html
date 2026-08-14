@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Independent website concept prepared for Outreach Scout Foundation in Malawi.">
+  <title>Outreach Scout Foundation — Independent Website Concept</title>
+  <style>
+    :root {
+      --ink: #172923;
+      --forest: #174c3b;
+      --leaf: #2d7355;
+      --clay: #d75b3e;
+      --sun: #f2c95c;
+      --lake: #a9d8d5;
+      --paper: #f8f2e6;
+      --white: #fffdf8;
+      --line: rgba(23, 41, 35, .19);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    .concept-note {
+      position: relative;
+      z-index: 10;
+      padding: 9px 20px;
+      color: var(--paper);
+      background: var(--ink);
+      text-align: center;
+      font-size: .76rem;
+      letter-spacing: .04em;
+    }
+    .concept-note strong { color: var(--sun); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 8;
+      border-bottom: 1px solid var(--line);
+      background: rgba(248, 242, 230, .94);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .brand-mark {
+      width: 45px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      font-weight: 900;
+      letter-spacing: -.08em;
+      position: relative;
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      top: 2px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--clay);
+      border: 2px solid var(--paper);
+    }
+    .brand-copy strong { display: block; font-size: .87rem; letter-spacing: .02em; }
+    .brand-copy span { display: block; font-size: .66rem; letter-spacing: .11em; text-transform: uppercase; opacity: .68; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { text-decoration: none; font-size: .82rem; font-weight: 750; }
+    .nav-links a:not(.nav-cta):hover { color: var(--clay); }
+    .nav-cta {
+      padding: 11px 17px;
+      color: var(--white);
+      background: var(--forest);
+      border-radius: 999px;
+    }
+
+    .hero { min-height: 740px; padding: 0; display: grid; align-items: stretch; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; min-height: 660px; }
+    .hero-copy { padding: 92px 7vw 78px max(20px, calc((100vw - 1180px) / 2)); }
+    .hero h1 {
+      max-width: 680px;
+      margin: 0;
+      font: 400 clamp(4.2rem, 8vw, 8.8rem)/.78 var(--serif);
+      letter-spacing: -.075em;
+    }
+    .hero h1 em { color: var(--clay); font-weight: 400; }
+    .hero-intro {
+      max-width: 590px;
+      margin: 35px 0 0;
+      padding-left: 24px;
+      border-left: 3px solid var(--sun);
+      font-size: clamp(1.03rem, 1.4vw, 1.22rem);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 850;
+    }
+    .button.primary { color: var(--white); background: var(--ink); }
+    .button.primary::after { content: "↗"; font-size: 1.1rem; }
+    .button:hover { transform: translateY(-2px); }
+    .hero-art {
+      position: relative;
+      min-height: 660px;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--forest);
+      isolation: isolate;
+    }
+    .rings { position: absolute; inset: 0; }
+    .ring {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: var(--size);
+      aspect-ratio: 1;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .ring:nth-child(1) { --size: 125px; background: var(--clay); border: 0; }
+    .ring:nth-child(2) { --size: 240px; }
+    .ring:nth-child(3) { --size: 365px; }
+    .ring:nth-child(4) { --size: 500px; }
+    .ring:nth-child(5) { --size: 650px; }
+    .ring:nth-child(6) { --size: 800px; }
+    .ring-core {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 48%;
+      width: 118px;
+      height: 118px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font: 700 1.12rem/1.05 var(--serif);
+    }
+    .orbit-label {
+      position: absolute;
+      z-index: 3;
+      padding: 9px 13px;
+      color: var(--ink);
+      background: var(--sun);
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .orbit-label.health { left: 14%; top: 25%; }
+    .orbit-label.climate { right: 8%; top: 36%; background: var(--lake); }
+    .orbit-label.rights { left: 17%; bottom: 19%; color: var(--white); background: var(--clay); }
+    .location-stamp {
+      position: absolute;
+      z-index: 3;
+      right: 34px;
+      bottom: 30px;
+      width: 160px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.5);
+      font-size: .72rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .location-stamp strong { display: block; margin-top: 4px; font-size: 1rem; letter-spacing: 0; text-transform: none; }
+
+    .evidence-strip { color: var(--white); background: var(--ink); }
+    .evidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .evidence-item { min-height: 150px; padding: 30px; border-right: 1px solid rgba(255,255,255,.16); }
+    .evidence-item:last-child { border-right: 0; }
+    .evidence-item span { color: var(--sun); font-size: .65rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .evidence-item strong { display: block; margin: 8px 0 5px; font: 400 1.55rem/1.1 var(--serif); }
+    .evidence-item small { opacity: .7; }
+
+    section { padding: 108px 0; }
+    .section-heading { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; margin-bottom: 58px; }
+    .section-heading h2 { margin: 0; font: 400 clamp(2.7rem, 5vw, 5.2rem)/.94 var(--serif); letter-spacing: -.045em; }
+    .section-heading p { max-width: 560px; margin: 8px 0 0; font-size: 1.07rem; }
+
+    .programmes { background: var(--white); }
+    .programme-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
+    .programme-card { min-height: 410px; padding: 35px; display: flex; flex-direction: column; border-right: 1px solid var(--line); }
+    .programme-card:last-child { border-right: 0; }
+    .programme-index { display: flex; align-items: center; justify-content: space-between; color: var(--clay); font-size: .7rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .programme-icon { width: 62px; height: 62px; margin: 54px 0 28px; position: relative; }
+    .programme-icon::before, .programme-icon::after { content: ""; position: absolute; border: 2px solid var(--ink); border-radius: 50%; }
+    .programme-icon::before { inset: 0; }
+    .programme-icon::after { inset: 14px; background: var(--sun); border: 0; }
+    .programme-card:nth-child(2) .programme-icon::after { background: var(--lake); transform: translate(22px, -10px); }
+    .programme-card:nth-child(3) .programme-icon::after { background: var(--clay); transform: translate(-15px, 18px); }
+    .programme-card h3 { margin: 0 0 15px; font: 400 2rem/1 var(--serif); }
+    .programme-card p { margin: 0; color: rgba(23,41,35,.72); }
+    .programme-card a { margin-top: auto; padding-top: 30px; font-weight: 850; text-decoration: none; }
+
+    .spotlight { padding: 0; color: var(--paper); background: var(--forest); }
+    .spotlight-grid { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 680px; }
+    .spotlight-copy { padding: 105px 8vw 90px max(20px, calc((100vw - 1180px) / 2)); }
+    .spotlight h2 { max-width: 630px; margin: 0; font: 400 clamp(3.1rem, 6vw, 6.7rem)/.88 var(--serif); letter-spacing: -.055em; }
+    .spotlight h2 em { color: var(--sun); font-weight: 400; }
+    .spotlight-copy > p { max-width: 610px; margin: 28px 0 35px; font-size: 1.06rem; opacity: .82; }
+    .field-note { display: grid; grid-template-columns: 80px 1fr; gap: 18px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.25); }
+    .field-note strong { color: var(--sun); font: 400 2.2rem/1 var(--serif); }
+    .field-note span { font-size: .82rem; opacity: .76; }
+    .spotlight-visual { position: relative; display: grid; place-items: center; overflow: hidden; background: var(--sun); color: var(--ink); }
+    .care-map { width: min(72%, 420px); aspect-ratio: 1; position: relative; }
+    .care-map::before, .care-map::after { content: ""; position: absolute; border-radius: 50%; }
+    .care-map::before { inset: 2%; border: 2px solid var(--ink); box-shadow: 0 0 0 34px rgba(23,41,35,.08), 0 0 0 68px rgba(23,41,35,.08), 0 0 0 102px rgba(23,41,35,.08); }
+    .care-map::after { width: 86px; height: 86px; left: 50%; top: 50%; background: var(--clay); transform: translate(-50%, -50%); }
+    .care-map-label { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; text-align: center; font: 700 1.35rem/1.04 var(--serif); }
+    .care-caption { position: absolute; left: 34px; bottom: 30px; max-width: 280px; font-size: .76rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+
+    .model { background: var(--paper); }
+    .model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: steps; }
+    .model-step { min-height: 285px; padding: 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); counter-increment: steps; }
+    .model-step:first-child { border-left: 1px solid var(--line); }
+    .model-step::before { content: "0" counter(steps); color: var(--clay); font-size: .68rem; font-weight: 900; letter-spacing: .14em; }
+    .model-step h3 { margin: 72px 0 14px; font: 400 1.7rem/1 var(--serif); }
+    .model-step p { margin: 0; font-size: .9rem; opacity: .7; }
+
+    .policy { color: var(--white); background: var(--clay); overflow: hidden; }
+    .policy-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 85px; }
+    .policy-stat { position: relative; min-height: 450px; display: grid; place-items: center; }
+    .policy-stat::before { content: ""; position: absolute; width: 360px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; box-shadow: 0 0 0 45px rgba(255,255,255,.08), 0 0 0 90px rgba(255,255,255,.08); }
+    .big-stat { position: relative; text-align: center; }
+    .big-stat strong { display: block; font: 400 9rem/.8 var(--serif); letter-spacing: -.08em; }
+    .big-stat span { display: block; margin-top: 18px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .policy-copy h2 { margin: 0 0 24px; font: 400 clamp(2.9rem, 5vw, 5.4rem)/.92 var(--serif); letter-spacing: -.045em; }
+    .policy-copy p { max-width: 590px; margin: 0 0 26px; font-size: 1.07rem; opacity: .84; }
+    .policy-copy small { display: block; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.3); opacity: .7; }
+
+    .evidence-board { background: var(--white); }
+    .timeline { margin-top: 20px; border-top: 1px solid var(--line); }
+    .timeline-row { display: grid; grid-template-columns: 130px 1fr 190px; gap: 30px; align-items: start; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .timeline-row time { color: var(--clay); font-weight: 900; }
+    .timeline-row strong { font: 400 1.35rem/1.15 var(--serif); }
+    .timeline-row span { font-size: .78rem; opacity: .65; text-align: right; }
+
+    .contact { position: relative; overflow: hidden; color: var(--white); background: var(--ink); }
+    .contact::after { content: ""; position: absolute; right: -140px; top: -160px; width: 540px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; box-shadow: 0 0 0 60px rgba(255,255,255,.04), 0 0 0 120px rgba(255,255,255,.04); }
+    .contact-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.25fr .75fr; gap: 80px; align-items: end; }
+    .contact h2 { max-width: 790px; margin: 0; font: 400 clamp(3.3rem, 7vw, 7.6rem)/.86 var(--serif); letter-spacing: -.06em; }
+    .contact h2 em { color: var(--sun); font-weight: 400; }
+    .contact-card { padding: 28px; border: 1px solid rgba(255,255,255,.26); background: rgba(255,255,255,.05); }
+    .contact-card span { display: block; color: var(--sun); font-size: .67rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .contact-card a { display: block; margin: 11px 0 26px; font: 400 1.3rem/1.1 var(--serif); overflow-wrap: anywhere; }
+    .contact-card p { margin: 0; font-size: .82rem; opacity: .66; }
+
+    footer { padding: 30px 0; color: rgba(255,255,255,.7); background: var(--ink); border-top: 1px solid rgba(255,255,255,.14); }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; font-size: .72rem; }
+    .footer-grid p { margin: 0; max-width: 690px; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-grid, .spotlight-grid, .policy-grid, .contact-grid, .section-heading { grid-template-columns: 1fr; }
+      .hero-copy { padding: 72px 24px 62px; }
+      .hero-art { min-height: 520px; }
+      .evidence-grid, .programme-grid { grid-template-columns: 1fr; }
+      .evidence-item, .programme-card { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+      .programme-card { min-height: 330px; border-color: var(--line); }
+      .programme-icon { margin-top: 35px; }
+      .spotlight-copy { padding: 85px 24px 70px; }
+      .spotlight-visual { min-height: 550px; }
+      .model-grid { grid-template-columns: 1fr 1fr; }
+      .model-step:nth-child(3) { border-left: 1px solid var(--line); }
+      .policy-grid { gap: 30px; }
+      .policy-stat { min-height: 400px; }
+      .contact-grid { align-items: start; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 1180px); }
+      .brand-copy span { display: none; }
+      .nav { min-height: 68px; }
+      .nav-cta { padding: 9px 13px; font-size: .75rem !important; }
+      .hero { min-height: 0; }
+      .hero-copy { padding-top: 60px; }
+      .hero h1 { font-size: clamp(3.8rem, 20vw, 6.3rem); }
+      .hero-intro { margin-top: 28px; }
+      .hero-art { min-height: 470px; }
+      .ring:nth-child(5), .ring:nth-child(6) { display: none; }
+      section { padding: 78px 0; }
+      .section-heading { gap: 25px; margin-bottom: 42px; }
+      .model-grid { grid-template-columns: 1fr; }
+      .model-step, .model-step:nth-child(3) { min-height: 230px; border-left: 1px solid var(--line); }
+      .model-step h3 { margin-top: 42px; }
+      .policy-stat { min-height: 340px; }
+      .policy-stat::before { width: 245px; }
+      .big-stat strong { font-size: 7rem; }
+      .timeline-row { grid-template-columns: 74px 1fr; gap: 18px; }
+      .timeline-row span { grid-column: 2; text-align: left; }
+      .contact-grid { gap: 45px; }
+      .footer-grid { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .button:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="concept-note"><strong>Independent website concept</strong> · Prepared from public information for discussion with Outreach Scout Foundation</div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="OSF concept home">
+        <span class="brand-mark">OSF</span>
+        <span class="brand-copy"><strong>Outreach Scout Foundation</strong><span>Lilongwe · Malawi</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Our work</a>
+        <a href="#approach">Approach</a>
+        <a href="#evidence">Evidence</a>
+        <a class="nav-cta" href="#contact">Work with us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Community-led change</p>
+          <h1>Care travels <em>farther.</em></h1>
+          <p class="hero-intro">Connecting people, services and policy so that health, dignity and resilience reach communities—not just conference rooms.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">Explore our work</a>
+            <a class="button" href="#evidence">See the evidence</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Abstract expanding circles representing outreach">
+          <div class="rings" aria-hidden="true">
+            <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+            <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+          </div>
+          <div class="ring-core">Care<br>starts here</div>
+          <span class="orbit-label health">Health</span>
+          <span class="orbit-label climate">Climate</span>
+          <span class="orbit-label rights">Rights</span>
+          <div class="location-stamp">From community to system<strong>Lilongwe, Malawi</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="evidence-strip">
+      <div class="wrap evidence-grid">
+        <div class="evidence-item"><span>Accountability</span><strong>Current NGORA listing</strong><small>Listed as a local NGO in Lilongwe</small></div>
+        <div class="evidence-item"><span>Collaboration · 2025</span><strong>Men's-health dialogue</strong><small>24 organisations represented in Lilongwe</small></div>
+        <div class="evidence-item"><span>Community care · 2023/24</span><strong>APCA-supported partner</strong><small>One of five supported Malawi providers</small></div>
+      </div>
+    </div>
+
+    <section class="programmes" id="work">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">One mission · three systems</p><h2>Where outreach becomes action.</h2></div>
+          <p>OSF's public work sits where community realities meet wider systems. This proposed structure gives each programme a clear home while keeping the bigger picture visible.</p>
+        </div>
+        <div class="programme-grid reveal">
+          <article class="programme-card">
+            <div class="programme-index"><span>01</span><span>Health</span></div>
+            <div class="programme-icon" aria-hidden="true"></div>
+            <h3>Community health & care</h3>
+            <p>Building awareness, community capacity and stronger pathways around men's health, palliative care and public health.</p>
+            <a href="#care">Explore the health focus →</a>
+          </article>
+          <article class="programme-card">
+            <div class="programme-index"><span>02</span><span>Resilience</span></div>
+            <div class="programme-icon" aria-hidden="true"></div>
+            <h3>Climate & livelihoods</h3>
+            <p>Connecting clean cooking, environmental protection, practical skills and women's economic participation.</p>
+            <a href="#approach">See the community model →</a>
+          </article>
+          <article class="programme-card">
+            <div class="programme-index"><span>03</span><span>Voice</span></div>
+            <div class="programme-icon" aria-hidden="true"></div>
+            <h3>Rights & social protection</h3>
+            <p>Bringing local experience into advocacy for fairer services, accountable policy and social protection.</p>
+            <a href="#contact">Start a partnership →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="spotlight" id="care">
+      <div class="spotlight-grid">
+        <div class="spotlight-copy reveal">
+          <p class="eyebrow">Community care spotlight</p>
+          <h2>Dignity should live <em>close to home.</em></h2>
+          <p>Community palliative care can help families understand serious illness, connect with support and reduce avoidable suffering. OSF's publicly documented orientation work in rural Lilongwe points to a model built around local leaders and health workers.</p>
+          <div class="field-note">
+            <strong>05</strong>
+            <span>Malawi palliative-care providers, including OSF, were supported through the APCA small-grants programme during the 2023–2024 reporting period.</span>
+          </div>
+        </div>
+        <div class="spotlight-visual">
+          <div class="care-map" aria-hidden="true"><div class="care-map-label">Care<br>within reach</div></div>
+          <p class="care-caption">A proposed programme page could map activities, resources, partners and verified referral pathways.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="model" id="approach">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">The last-mile model</p><h2>Change moves in circles.</h2></div>
+          <p>A useful website should make the method as clear as the mission: start with community knowledge, build practical capacity, connect people to systems, then carry evidence into policy.</p>
+        </div>
+        <div class="model-grid reveal">
+          <article class="model-step"><h3>Listen locally</h3><p>Begin with lived experience, barriers and priorities identified by communities.</p></article>
+          <article class="model-step"><h3>Equip people</h3><p>Turn knowledge into practical skills for leaders, volunteers, families and advocates.</p></article>
+          <article class="model-step"><h3>Connect care</h3><p>Strengthen the routes between people, public services, civil society and partners.</p></article>
+          <article class="model-step"><h3>Influence systems</h3><p>Use field evidence and coalition voices to inform policy and long-term investment.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy">
+      <div class="wrap policy-grid">
+        <div class="policy-stat reveal"><div class="big-stat"><strong>24</strong><span>organisations represented</span></div></div>
+        <div class="policy-copy reveal">
+          <p class="eyebrow">Men's health · March 2025</p>
+          <h2>From a missing conversation to a shared agenda.</h2>
+          <p>OSF partnered in a Lilongwe stakeholder meeting designed to begin a wider debate on men's health—covering evidence gaps, prostate cancer, service access, policy and future action.</p>
+          <small>Concept copy based on the published stakeholder-meeting report. Final programme wording and all outcomes would require OSF approval.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="evidence-board" id="evidence">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Public evidence</p><h2>A record partners can follow.</h2></div>
+          <p>A dedicated evidence centre could gather programme notes, reports, policy contributions and partner updates that are currently scattered across other organisations' websites.</p>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline-row"><time>2026</time><strong>Named in Malawi's current clean-cooking sector landscape</strong><span>World Bank sector note</span></div>
+          <div class="timeline-row"><time>2025</time><strong>Co-convened a national stakeholder discussion on men's health</strong><span>ASRT · GAMH · Zodiak</span></div>
+          <div class="timeline-row"><time>2024</time><strong>Documented community orientation on palliative care in rural Lilongwe</strong><span>Public programme reporting</span></div>
+          <div class="timeline-row"><time>Current</time><strong>Listed as a local NGO in Lilongwe</strong><span>Malawi NGORA directory</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <p class="eyebrow">Partnership begins with a conversation</p>
+          <h2>Help care travel <em>farther.</em></h2>
+        </div>
+        <div class="contact-card reveal">
+          <span>Public organisation contact</span>
+          <a href="mailto:lukhele.osf@gmail.com">lukhele.osf@gmail.com</a>
+          <span>Location</span>
+          <p>Lilongwe, Malawi</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <p>This is an independent, non-official website concept prepared from public information. It is not operated by or endorsed by Outreach Scout Foundation. Programme details, branding, contacts and any health guidance require OSF's review before implementation.</p>
+      <p>Concept · 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
