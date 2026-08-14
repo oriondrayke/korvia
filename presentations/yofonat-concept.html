@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="An independent website concept for Youth Forum for National Transformation in Malawi.">
+  <title>YOFONAT Malawi · Independent website concept</title>
+  <style>
+    :root{
+      --ink:#111713;
+      --paper:#f3efe4;
+      --white:#fffdf7;
+      --acid:#d6ff45;
+      --green:#08785d;
+      --red:#ef493d;
+      --blue:#3975ff;
+      --gold:#f3bd45;
+      --muted:#626a64;
+      --line:rgba(17,23,19,.18);
+      --display:"Arial Black","Helvetica Neue",Arial,sans-serif;
+      --body:Inter,"Segoe UI",Arial,sans-serif;
+      --serif:Georgia,"Times New Roman",serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit}
+    button{font:inherit}
+    .skip{position:absolute;left:-9999px;top:8px;background:#fff;color:#000;padding:10px 14px;z-index:1000}
+    .skip:focus{left:8px}
+
+    .concept-note{min-height:38px;padding:8px clamp(16px,4vw,60px);background:var(--ink);color:#fff;display:flex;justify-content:center;gap:12px;align-items:center;text-align:center;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+    .concept-note strong{color:var(--acid)}
+    .concept-note span{color:rgba(255,255,255,.66)}
+
+    header{height:82px;padding:0 clamp(20px,5vw,78px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(243,239,228,.94);backdrop-filter:blur(15px);position:sticky;top:0;z-index:80}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand-mark{width:49px;height:49px;background:var(--ink);color:var(--acid);display:grid;place-items:center;font:900 .88rem/1 var(--display);letter-spacing:-.08em;transform:rotate(-3deg);box-shadow:4px 4px 0 var(--red)}
+    .brand-copy{font:800 .86rem/1.02 var(--body);max-width:245px;text-transform:uppercase;letter-spacing:-.025em}
+    nav{display:flex;align-items:center;gap:clamp(18px,2.5vw,34px)}
+    nav a{text-decoration:none;font-size:.73rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    nav a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+    .nav-cta{background:var(--ink);color:#fff;padding:11px 16px;border-radius:99px}
+    .menu-button{display:none;border:0;background:transparent;padding:8px;font-size:.72rem;text-transform:uppercase;font-weight:900}
+
+    .hero{min-height:calc(100svh - 120px);display:grid;grid-template-columns:minmax(0,1.18fr) minmax(380px,.82fr);border-bottom:1px solid var(--ink);overflow:hidden}
+    .hero-copy{padding:clamp(70px,8vw,132px) clamp(22px,6.5vw,110px);display:flex;flex-direction:column;justify-content:center;position:relative}
+    .hero-copy:before{content:"";position:absolute;width:170px;height:170px;border:1px solid var(--ink);border-radius:50%;right:3vw;top:3vw;opacity:.12}
+    .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px;font-size:.7rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:42px;height:9px;background:var(--red);transform:skew(-17deg)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font:900 clamp(4.15rem,8.2vw,9.2rem)/.82 var(--display);letter-spacing:-.083em;text-transform:uppercase;margin-bottom:30px;max-width:950px}
+    h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--ink)}
+    h1 .accent{display:inline-block;color:var(--green);transform:rotate(-1.5deg)}
+    .hero-intro{font-size:clamp(1rem,1.35vw,1.2rem);max-width:670px;color:#424a44;margin-bottom:35px}
+    .actions{display:flex;gap:11px;flex-wrap:wrap}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 20px;border:1px solid var(--ink);border-radius:99px;text-decoration:none;font-size:.73rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase;transition:transform .2s,box-shadow .2s}
+    .button:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+    .button-primary{background:var(--acid)}
+    .button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+
+    .hero-board{background:var(--green);color:#fff;position:relative;padding:clamp(28px,4vw,64px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero-board:before{content:"";position:absolute;inset:-35%;background:repeating-conic-gradient(from 12deg,rgba(255,255,255,.055) 0 8deg,transparent 8deg 21deg);animation:turn 50s linear infinite}
+    .board-orbit{position:absolute;width:min(48vw,670px);aspect-ratio:1;border:1px solid rgba(255,255,255,.28);border-radius:50%}
+    .board-orbit:before,.board-orbit:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.16);border-radius:50%}
+    .board-orbit:before{inset:13%}.board-orbit:after{inset:31%}
+    .malawi-card{width:min(100%,470px);min-height:590px;background:var(--acid);color:var(--ink);position:relative;z-index:3;padding:31px;box-shadow:18px 18px 0 rgba(17,23,19,.9);transform:rotate(1.5deg);display:flex;flex-direction:column;overflow:hidden}
+    .malawi-card:before{content:"YOUTH";position:absolute;right:-17px;top:68px;writing-mode:vertical-rl;font:900 6rem/.8 var(--display);color:rgba(17,23,19,.08);letter-spacing:-.08em}
+    .card-top{display:flex;justify-content:space-between;gap:20px;align-items:start;font-size:.62rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .sun-symbol{width:56px;height:56px;border-radius:50%;background:var(--red);box-shadow:0 0 0 8px var(--ink)}
+    .map-wrap{flex:1;display:grid;place-items:center;position:relative;min-height:315px}
+    .map-wrap svg{width:76%;max-height:330px;filter:drop-shadow(9px 10px 0 rgba(17,23,19,.13))}
+    .map-wrap path{fill:var(--green);stroke:var(--ink);stroke-width:3}
+    .map-pin{position:absolute;left:44%;top:38%;width:18px;height:18px;border-radius:50%;background:var(--red);border:4px solid var(--white);box-shadow:0 0 0 2px var(--ink)}
+    .card-bottom{border-top:2px solid var(--ink);padding-top:19px;display:flex;justify-content:space-between;align-items:end;gap:18px}
+    .card-bottom strong{font:900 clamp(2rem,3.4vw,3.25rem)/.85 var(--display);letter-spacing:-.07em;text-transform:uppercase;max-width:310px}
+    .card-bottom span{font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em;text-align:right}
+    .float-tag{position:absolute;z-index:5;background:var(--white);color:var(--ink);border:1px solid var(--ink);padding:11px 15px;font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;box-shadow:5px 5px 0 var(--ink)}
+    .float-tag.one{left:6%;top:12%;transform:rotate(-5deg)}
+    .float-tag.two{right:4%;bottom:12%;background:var(--red);color:#fff;transform:rotate(4deg)}
+    @keyframes turn{to{transform:rotate(360deg)}}
+
+    .ticker{background:var(--ink);color:#fff;overflow:hidden;border-bottom:1px solid var(--ink)}
+    .ticker-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+    .ticker span{padding:16px 24px;font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+    .ticker span:after{content:"●";margin-left:48px;color:var(--acid)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    .section{max-width:1380px;margin:0 auto;padding:clamp(86px,10vw,155px) clamp(22px,5vw,72px)}
+    .section-label{font-size:.67rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:18px}
+    .section-title{font:900 clamp(3rem,6.3vw,7rem)/.88 var(--display);letter-spacing:-.07em;text-transform:uppercase;margin-bottom:27px}
+    .lead{font-size:clamp(1.05rem,1.7vw,1.35rem);color:var(--muted);max-width:730px}
+
+    .manifesto{display:grid;grid-template-columns:.88fr 1.12fr;gap:clamp(45px,9vw,140px);align-items:start}
+    .manifesto .section-title{position:sticky;top:125px}
+    .manifesto-copy>p:first-child{font:400 clamp(1.6rem,2.8vw,2.8rem)/1.28 var(--serif);letter-spacing:-.025em;color:#2d342f}
+    .manifesto-copy>p:first-child:first-letter{float:left;font:900 6.3rem/.72 var(--display);color:var(--red);margin:15px 10px 0 0}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:50px}
+    .fact{padding:24px 18px 0 0;border-right:1px solid var(--line);margin-right:18px}
+    .fact:last-child{border-right:0}
+    .fact strong{font:900 clamp(2rem,4vw,4rem)/1 var(--display);display:block;letter-spacing:-.06em;color:var(--green);margin-bottom:9px}
+    .fact span{font-size:.65rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+    .fact small{display:block;font-size:.66rem;color:#7a817c;margin-top:7px}
+
+    .work{background:var(--white);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+    .work-inner{max-width:1380px;margin:auto;padding:clamp(86px,10vw,150px) clamp(22px,5vw,72px)}
+    .work-head{display:grid;grid-template-columns:1fr .7fr;gap:50px;align-items:end;margin-bottom:55px}
+    .work-head .lead{justify-self:end}
+    .programme-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:repeat(2,minmax(330px,1fr));gap:13px}
+    .programme{border:1px solid var(--ink);padding:30px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:330px;transition:transform .2s}
+    .programme:hover{transform:translateY(-4px)}
+    .programme:first-child{grid-row:1/3;background:var(--green);color:#fff}
+    .programme:nth-child(2){background:var(--red);color:#fff}
+    .programme:nth-child(3){background:var(--acid)}
+    .programme:nth-child(4){grid-column:2/4;background:var(--blue);color:#fff}
+    .programme-number{font-size:.62rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;position:relative;z-index:2}
+    .programme-icon{width:120px;height:120px;margin:auto;position:relative;z-index:1}
+    .programme:first-child .programme-icon{width:260px;height:260px}
+    .leaf{position:absolute;width:52%;height:72%;background:var(--acid);border:2px solid var(--ink);border-radius:100% 0 100% 0;left:12%;top:9%;transform:rotate(-20deg)}
+    .leaf:after{content:"";position:absolute;width:2px;height:80%;background:var(--ink);left:50%;top:18%;transform:rotate(24deg)}
+    .leaf.two{left:48%;top:30%;transform:rotate(28deg);background:var(--gold)}
+    .voice-rings{position:absolute;inset:8%;border:4px solid currentColor;border-radius:50%}
+    .voice-rings:before,.voice-rings:after{content:"";position:absolute;border:3px solid currentColor;border-radius:50%}
+    .voice-rings:before{inset:17%}.voice-rings:after{inset:35%;background:currentColor}
+    .cross{position:absolute;inset:8%;background:currentColor;clip-path:polygon(40% 0,60% 0,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0 60%,0 40%,40% 40%)}
+    .equal{position:absolute;inset:12%;border:4px solid currentColor;border-radius:50%}
+    .equal:before,.equal:after{content:"";position:absolute;left:22%;right:22%;height:8px;background:currentColor}
+    .equal:before{top:37%}.equal:after{bottom:37%}
+    .programme-copy{position:relative;z-index:2;margin-top:auto}
+    .programme h3{font:900 clamp(1.55rem,2.5vw,2.7rem)/.94 var(--display);letter-spacing:-.055em;text-transform:uppercase;margin-bottom:12px}
+    .programme p{font-size:.8rem;max-width:530px;margin-bottom:0;opacity:.78}
+    .programme:first-child h3{font-size:clamp(2.4rem,4.5vw,5rem)}
+    .programme:first-child:after{content:"GROW";position:absolute;bottom:-25px;right:-10px;font:900 8rem/.8 var(--display);color:rgba(255,255,255,.055);letter-spacing:-.1em}
+
+    .field-notes{background:var(--paper)}
+    .field-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:55px}
+    .field-head .section-title{max-width:800px;margin-bottom:0}
+    .note-list{border-top:2px solid var(--ink)}
+    .note{display:grid;grid-template-columns:100px 1fr 1fr auto;gap:28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line);text-decoration:none}
+    .note time{font-size:.66rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+    .note h3{font:900 clamp(1.25rem,2.2vw,2.15rem)/1 var(--display);letter-spacing:-.045em;text-transform:uppercase;margin:0}
+    .note p{font-size:.78rem;color:var(--muted);margin:0;max-width:510px}
+    .note-arrow{width:44px;height:44px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:1.2rem;transition:background .2s,color .2s}
+    .note:hover .note-arrow{background:var(--acid);color:var(--ink)}
+
+    .evidence{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+    .evidence:before{content:"";position:absolute;width:620px;height:620px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-160px;top:-200px;box-shadow:0 0 0 75px rgba(255,255,255,.025),0 0 0 150px rgba(255,255,255,.018)}
+    .evidence-inner{max-width:1380px;margin:auto;padding:clamp(95px,11vw,165px) clamp(22px,5vw,72px);display:grid;grid-template-columns:1fr .9fr;gap:clamp(55px,9vw,135px);position:relative}
+    .evidence .section-label{color:var(--acid)}
+    .evidence .section-title{color:#fff}
+    .evidence-copy p{color:rgba(255,255,255,.64);max-width:650px}
+    .evidence-card{background:var(--acid);color:var(--ink);padding:clamp(32px,4vw,60px);transform:rotate(1.3deg);box-shadow:14px 14px 0 var(--red);align-self:center}
+    .evidence-card span{font-size:.64rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+    .evidence-card blockquote{font:italic 400 clamp(2rem,3.3vw,3.8rem)/1.02 var(--serif);letter-spacing:-.04em;margin:40px 0}
+    .evidence-card p{font-size:.72rem;font-weight:700;margin:0;color:#39403b}
+
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(50px,8vw,120px);align-items:center}
+    .contact .section-title{max-width:830px}
+    .contact-copy>p{max-width:600px;color:var(--muted)}
+    .contact-card{border:1px solid var(--ink);background:var(--white);padding:8px 30px;box-shadow:10px 10px 0 var(--gold)}
+    .contact-row{display:flex;justify-content:space-between;gap:20px;padding:23px 0;border-bottom:1px solid var(--line);text-decoration:none}
+    .contact-row:last-child{border-bottom:0}
+    .contact-row small{display:block;font-size:.6rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+    .contact-row strong{font-size:clamp(.92rem,1.6vw,1.18rem)}
+    .contact-row span{font-size:1.25rem}
+
+    footer{background:var(--green);color:#fff;padding:58px clamp(22px,5vw,78px) 26px}
+    .footer-main{max-width:1380px;margin:auto;display:flex;justify-content:space-between;align-items:flex-start;gap:50px}
+    footer .brand-mark{background:var(--acid);color:var(--ink);box-shadow:4px 4px 0 var(--red)}
+    footer .brand-copy{color:#fff}
+    .source-note{max-width:730px;text-align:right;font-size:.64rem;line-height:1.65;color:rgba(255,255,255,.7)}
+    .source-note a{color:#fff}
+    .footer-bottom{max-width:1380px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:25px;font-size:.61rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.55)}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:1020px){
+      .hero{grid-template-columns:1fr}.hero-copy{min-height:680px}.hero-board{min-height:720px}.malawi-card{min-height:550px}
+      .manifesto,.evidence-inner,.contact{grid-template-columns:1fr}.manifesto .section-title{position:static}
+      .work-head{grid-template-columns:1fr}.work-head .lead{justify-self:start}
+      .programme-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.programme:first-child{grid-row:auto;grid-column:1/3}.programme:nth-child(4){grid-column:1/3}
+      .note{grid-template-columns:80px 1fr auto}.note p{grid-column:2/3}.note-arrow{grid-row:1/3;grid-column:3}
+    }
+    @media(max-width:750px){
+      .concept-note{font-size:.55rem}.concept-note span{display:none}
+      header{height:70px}.brand-mark{width:43px;height:43px}.brand-copy{max-width:190px;font-size:.71rem}
+      .menu-button{display:block}nav{position:fixed;inset:108px 0 0;background:var(--paper);display:none;flex-direction:column;justify-content:center;gap:30px}nav.open{display:flex}nav a{font-size:1rem}
+      .hero-copy{padding-top:64px;min-height:620px}h1{font-size:clamp(3.75rem,18vw,6.4rem)}.hero-board{min-height:650px;padding:28px}.malawi-card{min-height:500px}.float-tag{font-size:.53rem}
+      .facts{grid-template-columns:1fr}.fact{border-right:0;border-bottom:1px solid var(--line);padding:20px 0;margin:0}.fact:last-child{border-bottom:0}
+      .programme-grid{grid-template-columns:1fr}.programme:first-child,.programme:nth-child(4){grid-column:auto}.programme:first-child .programme-icon{width:190px;height:190px}.programme{min-height:330px}
+      .field-head{display:block}.field-head .section-label{margin-bottom:18px}.note{grid-template-columns:1fr auto;gap:12px}.note time{grid-column:1}.note h3{grid-column:1}.note p{grid-column:1}.note-arrow{grid-row:1/4;grid-column:2;align-self:center}
+      .evidence-card{box-shadow:8px 8px 0 var(--red)}.contact-card{padding:7px 20px;box-shadow:7px 7px 0 var(--gold)}
+      .footer-main,.footer-bottom{flex-direction:column}.source-note{text-align:left}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="concept-note"><strong>Independent concept</strong><span>Prepared from public information · Not the official YOFONAT website · Content requires organisational approval</span></div>
+
+  <header>
+    <a class="brand" href="#top" aria-label="YOFONAT concept home">
+      <span class="brand-mark" aria-hidden="true">YF</span>
+      <span class="brand-copy">Youth Forum for National Transformation</span>
+    </a>
+    <button class="menu-button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#work">Our work</a>
+      <a href="#updates">Updates</a>
+      <a href="#evidence">Evidence</a>
+      <a class="nav-cta" href="#connect">Connect</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="eyebrow">Youth-led · Lilongwe, Malawi</div>
+        <h1>Power belongs in <span class="stroke">young</span> <span class="accent">hands.</span></h1>
+        <p class="hero-intro">A platform for young people and women to shape public life, build healthier communities and lead Malawi's response to a changing climate.</p>
+        <div class="actions">
+          <a class="button button-primary" href="#work">Explore the work <svg viewBox="0 0 24 24"><path d="M5 12h13M14 7l5 5-5 5"/></svg></a>
+          <a class="button" href="#connect">Partner with youth</a>
+        </div>
+      </div>
+      <div class="hero-board" aria-label="Illustrated Malawi youth action poster">
+        <div class="board-orbit" aria-hidden="true"></div>
+        <div class="float-tag one">Green skills</div>
+        <div class="float-tag two">Youth voice</div>
+        <div class="malawi-card">
+          <div class="card-top"><span>YOFONAT · Malawi</span><span class="sun-symbol" aria-hidden="true"></span></div>
+          <div class="map-wrap" aria-hidden="true">
+            <svg viewBox="0 0 190 420" role="img" aria-label="Stylised outline of Malawi">
+              <path d="M83 8c14 25 25 45 22 68-2 16 9 33 19 50 14 23 35 41 35 68 0 26-22 39-24 61-2 20 14 36 19 55 6 23-4 45-19 62-14 16-25 36-34 40-10 5-19-6-18-17 2-20 20-39 12-56-8-18-32-28-38-48-6-21 9-42 13-62 5-27-5-51-11-76-7-30-7-58 6-86z"/>
+            </svg>
+            <span class="map-pin" title="Lilongwe"></span>
+          </div>
+          <div class="card-bottom"><strong>Lead the transformation</strong><span>From community<br>to country</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track">
+      <span>Youth participation</span><span>Climate justice</span><span>Gender equality</span><span>Healthy futures</span><span>Green livelihoods</span>
+      <span>Youth participation</span><span>Climate justice</span><span>Gender equality</span><span>Healthy futures</span><span>Green livelihoods</span>
+    </div></div>
+
+    <section class="section manifesto reveal" id="about">
+      <div>
+        <div class="section-label">01 · Why YOFONAT</div>
+        <h2 class="section-title">Young people are not tomorrow. They are now.</h2>
+      </div>
+      <div class="manifesto-copy">
+        <p>YOFONAT creates routes for young people to participate in the decisions, systems and solutions that shape their lives—especially those too often excluded from public leadership.</p>
+        <p>The organisation's public work connects civic participation with gender equality, sexual and reproductive health, mental wellbeing, climate resilience and practical green livelihoods.</p>
+        <div class="facts">
+          <div class="fact"><strong>2020</strong><span>Established</span><small>UNCCD public profile</small></div>
+          <div class="fact"><strong>300</strong><span>Young people reached</span><small>Across five Lilongwe communities, publicly reported in 2023</small></div>
+          <div class="fact"><strong>K35m</strong><span>Youth governance project</span><small>Launched with Global Platform Malawi in 2025</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="work-inner reveal">
+        <div class="work-head">
+          <div>
+            <div class="section-label">02 · What we work on</div>
+            <h2 class="section-title">One generation. Many fronts.</h2>
+          </div>
+          <p class="lead">A programme architecture that makes YOFONAT's range understandable without losing the connections between youth, health, justice and climate.</p>
+        </div>
+        <div class="programme-grid">
+          <article class="programme">
+            <div class="programme-number"><span>01</span><span>Climate + livelihoods</span></div>
+            <div class="programme-icon" aria-hidden="true"><span class="leaf"></span><span class="leaf two"></span></div>
+            <div class="programme-copy">
+              <h3>Waste GOLD</h3>
+              <p>Equipping young people in Lumbadzi with agroecology, organic-fertiliser production and practical green skills for climate-resilient livelihoods, with support from Malawi Environmental Endowment Trust.</p>
+            </div>
+          </article>
+          <article class="programme">
+            <div class="programme-number"><span>02</span><span>Governance</span></div>
+            <div class="programme-icon" aria-hidden="true"><span class="voice-rings"></span></div>
+            <div class="programme-copy">
+              <h3>Youth voice</h3>
+              <p>Building leadership, strengthening civic participation and opening meaningful routes into community and national decision-making.</p>
+            </div>
+          </article>
+          <article class="programme">
+            <div class="programme-number"><span>03</span><span>Health</span></div>
+            <div class="programme-icon" aria-hidden="true"><span class="cross"></span></div>
+            <div class="programme-copy">
+              <h3>Healthy futures</h3>
+              <p>Supporting youth-centred SRHR education, mental-health awareness and informed, healthy choices in communities and schools.</p>
+            </div>
+          </article>
+          <article class="programme">
+            <div class="programme-number"><span>04</span><span>Rights + inclusion</span></div>
+            <div class="programme-icon" aria-hidden="true"><span class="equal"></span></div>
+            <div class="programme-copy">
+              <h3>Gender equality</h3>
+              <p>Advocating for equal opportunity and safer, more inclusive spaces for girls, women, young people and people with disabilities.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section field-notes reveal" id="updates">
+      <div class="field-head">
+        <div>
+          <div class="section-label">03 · Field notes</div>
+          <h2 class="section-title">Action you can follow.</h2>
+        </div>
+        <span class="eyebrow">A clearer public record</span>
+      </div>
+      <div class="note-list">
+        <a class="note" href="#sources">
+          <time datetime="2026">2026</time>
+          <h3>Green skills in Lumbadzi</h3>
+          <p>Waste GOLD cooperative members train in climate-smart agriculture and organic-fertiliser production.</p>
+          <span class="note-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="note" href="#sources">
+          <time datetime="2025-06">Jun 2025</time>
+          <h3>Youth-responsive governance</h3>
+          <p>A K35 million project supports young aspiring leaders with knowledge and technical capacity.</p>
+          <span class="note-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="note" href="#sources">
+          <time datetime="2024-10">Oct 2024</time>
+          <h3>Youth for Climate Justice</h3>
+          <p>Young leaders in disaster-affected Phalombe and Nsanje build capacity for climate action.</p>
+          <span class="note-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="evidence" id="evidence">
+      <div class="evidence-inner reveal">
+        <div class="evidence-copy">
+          <div class="section-label">04 · Evidence and learning</div>
+          <h2 class="section-title">From tokenism to participation.</h2>
+          <p>A 2026 academic case study examined YOFONAT's community-level governance work. It found the organisation combines digital advocacy, coalition-building and direct engagement to help young people enter formal governance spaces, while still facing funding and institutional barriers.</p>
+          <p>A dedicated evidence centre could bring research, project reports, public positions and learning resources together for communities, partners and funders.</p>
+        </div>
+        <div class="evidence-card">
+          <span>Research spotlight · 2026</span>
+          <blockquote>What changes when young people move from being invited to being influential?</blockquote>
+          <p>Concept copy based on the public abstract of a YOFONAT case study. Final wording and publication permissions would be confirmed with the organisation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact reveal" id="connect">
+      <div class="contact-copy">
+        <div class="section-label">05 · Connect</div>
+        <h2 class="section-title">Build with young people, not around them.</h2>
+        <p>A clear partnership route for institutions, funders, researchers, youth organisations and communities interested in youth-led change in Malawi.</p>
+      </div>
+      <div class="contact-card">
+        <a class="contact-row" href="mailto:yofonat@gmail.com"><span><small>Email</small><strong>yofonat@gmail.com</strong></span><span>↗</span></a>
+        <a class="contact-row" href="tel:0998796464"><span><small>Telephone</small><strong>0998 796 464</strong></span><span>↗</span></a>
+        <div class="contact-row"><span><small>Postal address</small><strong>P.O. Box 20633, Lilongwe, Malawi</strong></span><span>MW</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="sources">
+    <div class="footer-main">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">YF</span>
+        <span class="brand-copy">Youth Forum for National Transformation</span>
+      </a>
+      <div class="source-note">Independent, unofficial concept informed by public material from <a href="https://www.unccd.int/cso/youth-forum-national-transformation">UNCCD</a>, <a href="https://www.manaonline.gov.mw/index.php?Itemid=206&amp;id=10709%3Aproject-to-support-youthful-contestants-in-september-16-general-elections&amp;option=com_k2&amp;view=item">Malawi News Agency</a>, <a href="https://manaonline.gov.mw/index.php?Itemid=221&amp;id=6269%3Ayouth-are-activists-of-climate-change-justice-yofonat&amp;option=com_k2&amp;view=item">Youth for Climate Justice reporting</a>, Malawi Environmental Endowment Trust and a 2026 academic case study. All content, figures and visual identity require YOFONAT approval before production use.</div>
+    </div>
+    <div class="footer-bottom"><span>Independent concept · No affiliation implied</span><span>Designed for mobile access and low-bandwidth delivery</span></div>
+  </footer>
+
+  <script>
+    const menuButton=document.querySelector('.menu-button');
+    const nav=document.querySelector('nav');
+    menuButton.addEventListener('click',()=>{
+      const open=nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded',String(open));
+      menuButton.textContent=open?'Close':'Menu';
+      document.body.classList.toggle('menu-open',open);
+    });
+    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+      nav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded','false');
+      menuButton.textContent='Menu';
+      document.body.classList.remove('menu-open');
+    }));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
+    }),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
