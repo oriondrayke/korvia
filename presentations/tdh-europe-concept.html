@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="An independent interface concept for discovering Terre des hommes Europe knowledge and learning resources.">
+  <title>Tdh Europe Knowledge Gateway — independent concept</title>
+  <style>
+    :root {
+      --ink: #132b2c;
+      --ink-soft: #506566;
+      --paper: #f7f4ec;
+      --white: #fff;
+      --orange: #ec6b35;
+      --orange-dark: #bc421c;
+      --aqua: #8ed8d0;
+      --teal: #0b6968;
+      --yellow: #f4cf59;
+      --line: rgba(19, 43, 44, .14);
+      --shadow: 0 22px 70px rgba(19, 43, 44, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    button, input, select { font: inherit; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -80px;
+      z-index: 50;
+      padding: 12px 16px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: 8px;
+    }
+
+    .skip-link:focus { top: 16px; }
+
+    .concept-banner {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 20px;
+      color: var(--white);
+      background: var(--ink);
+      font-size: 12px;
+      letter-spacing: .02em;
+      text-align: center;
+    }
+
+    .concept-banner span { color: rgba(255,255,255,.72); }
+
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--teal);
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    header::before {
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      top: 80px;
+      background: var(--aqua);
+      opacity: .2;
+    }
+
+    header::after {
+      width: 380px;
+      height: 380px;
+      left: -250px;
+      bottom: -260px;
+      border: 70px solid var(--orange);
+      opacity: .65;
+    }
+
+    nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--ink);
+      background: var(--orange);
+      border-radius: 50% 50% 50% 8px;
+      transform: rotate(-8deg);
+      font-size: 11px;
+      letter-spacing: .06em;
+    }
+
+    .brand-mark span { transform: rotate(8deg); }
+
+    .brand small { display: block; color: rgba(255,255,255,.7); font-weight: 500; }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; }
+    .nav-links a { color: rgba(255,255,255,.88); text-decoration: none; }
+    .nav-links a:hover, .nav-links a:focus { color: var(--white); }
+
+    .language {
+      padding: 9px 12px;
+      color: var(--white);
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 999px;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: end;
+      gap: 54px;
+      min-height: 610px;
+      padding: 92px 0 84px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 20px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .eyebrow::before { content: ""; width: 30px; height: 3px; background: var(--yellow); }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 7.3vw, 92px);
+      font-weight: 500;
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    h1 em { color: var(--aqua); font-style: normal; }
+
+    .hero-copy {
+      max-width: 660px;
+      margin-bottom: 32px;
+      color: rgba(255,255,255,.82);
+      font-size: 18px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 19px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .button-primary { color: var(--ink); background: var(--yellow); }
+    .button-secondary { color: var(--white); border-color: rgba(255,255,255,.4); }
+
+    .hero-note {
+      position: relative;
+      padding: 30px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-note::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: -9px;
+      left: 28px;
+      background: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .hero-note strong { display: block; margin-bottom: 10px; font-size: 22px; line-height: 1.2; }
+    .hero-note p { margin-bottom: 0; color: var(--ink-soft); font-size: 14px; }
+
+    section { padding: 98px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 46px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 66px);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -.04em;
+    }
+
+    .section-head > p { max-width: 590px; margin: 0; color: var(--ink-soft); font-size: 17px; }
+
+    .path-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+    .path-card {
+      min-height: 255px;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .path-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(19,43,44,.09); }
+
+    .path-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 44px;
+      color: var(--white);
+      background: var(--teal);
+      border-radius: 14px;
+      font-weight: 800;
+    }
+
+    .path-card:nth-child(2) .path-icon { color: var(--ink); background: var(--aqua); }
+    .path-card:nth-child(3) .path-icon { color: var(--ink); background: var(--yellow); }
+    .path-card:nth-child(4) .path-icon { background: var(--orange); }
+    .path-card h3 { margin-bottom: 10px; font-size: 20px; }
+    .path-card p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+    .discovery { background: #e3efec; }
+
+    .search-panel {
+      padding: 32px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .search-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+
+    .search-row input {
+      width: 100%;
+      min-height: 58px;
+      padding: 0 19px;
+      color: var(--ink);
+      background: #f8faf8;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .search-row button {
+      min-width: 122px;
+      color: var(--white);
+      background: var(--orange-dark);
+      border: 0;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0 28px; }
+
+    .filter {
+      padding: 9px 13px;
+      color: var(--ink-soft);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .filter.active { color: var(--white); background: var(--teal); border-color: var(--teal); }
+
+    .results { display: grid; gap: 10px; }
+
+    .result {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      padding: 19px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .result[hidden] { display: none; }
+    .result h3 { margin-bottom: 6px; font-size: 18px; }
+    .result p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+    .result-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+    .tag { padding: 5px 8px; color: var(--teal); background: rgba(142,216,208,.25); border-radius: 5px; font-size: 11px; font-weight: 750; }
+    .source { color: var(--orange-dark); font-weight: 800; white-space: nowrap; }
+    .empty { display: none; padding: 26px 0 4px; color: var(--ink-soft); }
+
+    .ecosystem-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 34px; }
+
+    .platforms { display: grid; gap: 12px; }
+
+    .platform {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .platform span {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      color: var(--white);
+      background: var(--teal);
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .platform h3 { margin-bottom: 3px; }
+    .platform p { margin: 0; color: var(--ink-soft); font-size: 13px; }
+
+    .evidence {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 26px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: var(--radius);
+    }
+
+    .metric { padding: 20px; border: 1px solid rgba(255,255,255,.15); border-radius: 14px; }
+    .metric strong { display: block; color: var(--yellow); font-family: Georgia, serif; font-size: 38px; line-height: 1; }
+    .metric span { display: block; margin-top: 8px; color: rgba(255,255,255,.7); font-size: 12px; }
+    .evidence-note { grid-column: 1 / -1; margin: 8px 0 0; color: rgba(255,255,255,.62); font-size: 11px; }
+
+    .principles { color: var(--white); background: var(--orange-dark); }
+    .principles .kicker { color: var(--yellow); }
+
+    .principle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 46px; }
+
+    .principle {
+      padding: 27px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+    }
+
+    .principle b { display: block; margin-bottom: 16px; color: var(--yellow); font-size: 12px; letter-spacing: .12em; }
+    .principle h3 { font-size: 21px; }
+    .principle p { margin: 0; color: rgba(255,255,255,.72); font-size: 14px; }
+
+    .closing { padding: 90px 0; text-align: center; }
+    .closing h2 { max-width: 800px; margin: 0 auto 20px; }
+    .closing p { max-width: 670px; margin: 0 auto 28px; color: var(--ink-soft); }
+
+    footer { padding: 28px 0; color: rgba(255,255,255,.68); background: var(--ink); font-size: 12px; }
+    footer .shell { display: flex; justify-content: space-between; gap: 22px; }
+    footer strong { color: var(--white); }
+
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+    @media (max-width: 850px) {
+      .nav-links a:not(.language) { display: none; }
+      .hero, .section-head, .ecosystem-grid { grid-template-columns: 1fr; }
+      .hero { gap: 38px; padding-top: 66px; }
+      .path-grid, .principle-grid { grid-template-columns: 1fr 1fr; }
+      .section-head { align-items: start; }
+    }
+
+    @media (max-width: 570px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .concept-banner { flex-direction: column; gap: 2px; }
+      .brand small { display: none; }
+      h1 { font-size: 48px; }
+      section { padding: 72px 0; }
+      .path-grid, .principle-grid, .evidence { grid-template-columns: 1fr; }
+      .search-panel { padding: 20px; }
+      .search-row { grid-template-columns: 1fr; }
+      .search-row button { min-height: 50px; }
+      .result { grid-template-columns: 1fr; gap: 8px; }
+      .evidence-note { grid-column: auto; }
+      footer .shell { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="concept-banner" role="note">
+    <strong>Unofficial concept</strong>
+    <span>Prepared independently by Korvia Studio. Not affiliated with, endorsed by, or part of Terre des hommes.</span>
+  </div>
+
+  <header>
+    <nav class="shell" aria-label="Concept navigation">
+      <div class="brand" aria-label="Tdh Europe Knowledge Gateway concept">
+        <div class="brand-mark" aria-hidden="true"><span>TDH</span></div>
+        <div>Knowledge Gateway <small>Europe region · concept</small></div>
+      </div>
+      <div class="nav-links">
+        <a href="#paths">Find your path</a>
+        <a href="#discover">Explore resources</a>
+        <a href="#ecosystem">Our ecosystem</a>
+        <a class="language" href="#discover" aria-label="Choose language">EN · Language</a>
+      </div>
+    </nav>
+
+    <div class="hero shell">
+      <div>
+        <p class="eyebrow">Terre des hommes Europe · digital concept</p>
+        <h1>Knowledge should travel as far as the people who <em>need it.</em></h1>
+        <p class="hero-copy">One clear route into practical learning, trusted evidence and regional expertise—across child protection, migration and access to justice.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#discover">Search the knowledge gateway</a>
+          <a class="button button-secondary" href="#paths">Choose your path</a>
+        </div>
+      </div>
+      <aside class="hero-note" aria-label="Concept rationale">
+        <strong>One ecosystem. A simpler first step.</strong>
+        <p>This demonstration brings the Tdh Europe website, ChildHub, LocalLink and the Safeguarding Resource and Support Hub into a more discoverable visitor journey. It does not replace the platforms—the interface helps people reach the right one.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="paths">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Start with the person</p>
+            <h2>What brings you here?</h2>
+          </div>
+          <p>People should not need to understand an organisation’s internal platform structure before they can find help. Audience-first routes turn a large resource ecosystem into a confident next step.</p>
+        </div>
+        <div class="path-grid">
+          <article class="path-card"><div class="path-icon" aria-hidden="true">01</div><h3>Protect children</h3><p>Find safeguarding standards, practical tools and regional child-protection knowledge.</p></article>
+          <article class="path-card"><div class="path-icon" aria-hidden="true">02</div><h3>Strengthen an NGO</h3><p>Access localisation guidance, grants, partnership resources and organisational learning.</p></article>
+          <article class="path-card"><div class="path-icon" aria-hidden="true">03</div><h3>Learn and practise</h3><p>Browse courses, webinars and practitioner-led learning in the language you use.</p></article>
+          <article class="path-card"><div class="path-icon" aria-hidden="true">04</div><h3>Research evidence</h3><p>Reach reports, policy analysis, case studies and the wider digital library.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="discovery" id="discover">
+      <div class="shell">
+        <div class="section-head">
+          <div><p class="kicker">Cross-platform discovery</p><h2>Search once. Find the right home.</h2></div>
+          <p>A lightweight discovery layer can improve findability without forcing every platform into one content-management system. Try the filters or type “justice”, “safeguarding”, “localisation” or “course”.</p>
+        </div>
+        <div class="search-panel" role="search">
+          <div class="search-row">
+            <label for="resource-search" class="visually-hidden">Search resources</label>
+            <input id="resource-search" type="search" placeholder="What are you looking for?" autocomplete="off">
+            <button id="search-button" type="button">Search</button>
+          </div>
+          <div class="filters" aria-label="Filter example resources">
+            <button class="filter active" type="button" data-filter="all" aria-pressed="true">All resources</button>
+            <button class="filter" type="button" data-filter="learning" aria-pressed="false">Courses & webinars</button>
+            <button class="filter" type="button" data-filter="practice" aria-pressed="false">Practice tools</button>
+            <button class="filter" type="button" data-filter="evidence" aria-pressed="false">Research & policy</button>
+          </div>
+          <div class="results" id="results" aria-live="polite">
+            <article class="result" data-type="learning" data-search="child safeguarding essentials course learning academy">
+              <div><h3>Child safeguarding essentials</h3><p>A sample learning route for practitioners building safer programmes and organisations.</p><div class="result-meta"><span class="tag">Course</span><span class="tag">English + translations</span><span class="tag">Self-paced</span></div></div><div class="source">ChildHub Academy →</div>
+            </article>
+            <article class="result" data-type="practice" data-search="localisation partnerships ngo toolkit practice local link grants">
+              <div><h3>Building equitable local partnerships</h3><p>A sample toolkit route for local organisations, partners and grant-making teams.</p><div class="result-meta"><span class="tag">Toolkit</span><span class="tag">Partnerships</span><span class="tag">Download</span></div></div><div class="source">LocalLink →</div>
+            </article>
+            <article class="result" data-type="evidence" data-search="children justice europe policy research evidence access">
+              <div><h3>Access to justice for children in Europe</h3><p>A sample evidence route connecting regional analysis, programme knowledge and policy resources.</p><div class="result-meta"><span class="tag">Research</span><span class="tag">Europe</span><span class="tag">PDF</span></div></div><div class="source">Tdh Europe →</div>
+            </article>
+            <article class="result" data-type="practice" data-search="safeguarding resource support hub organisation practice tool risk">
+              <div><h3>Safeguarding risk assessment</h3><p>A sample practical route for organisations strengthening their safeguarding systems.</p><div class="result-meta"><span class="tag">Template</span><span class="tag">Safeguarding</span><span class="tag">10 languages</span></div></div><div class="source">RSH →</div>
+            </article>
+          </div>
+          <p class="empty" id="empty">No concept results match that search. Try a broader topic or choose “All resources”.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem">
+      <div class="shell ecosystem-grid">
+        <div>
+          <p class="kicker">Connected, not flattened</p>
+          <h2>A front door for a mature ecosystem.</h2>
+          <p style="color:var(--ink-soft);max-width:650px;margin:20px 0 32px;">The strongest solution respects each platform’s purpose while making the relationships easier to understand. Clear source labels preserve trust and help visitors know where their journey continues.</p>
+          <div class="platforms">
+            <article class="platform"><span>EU</span><div><h3>Tdh Europe</h3><p>Regional programmes, news, evidence and organisational context.</p></div></article>
+            <article class="platform"><span>CH</span><div><h3>ChildHub</h3><p>Child-protection knowledge, community, webinars and professional learning.</p></div></article>
+            <article class="platform"><span>LL</span><div><h3>LocalLink</h3><p>Localisation, partnership, grants and organisational capacity.</p></div></article>
+            <article class="platform"><span>RSH</span><div><h3>Safeguarding Resource and Support Hub</h3><p>Practical safeguarding resources and learning across multiple languages.</p></div></article>
+          </div>
+        </div>
+        <aside class="evidence" aria-label="Published platform reach">
+          <div class="metric"><strong>850k+</strong><span>annual ChildHub visitors</span></div>
+          <div class="metric"><strong>31k+</strong><span>registered ChildHub users</span></div>
+          <div class="metric"><strong>14</strong><span>languages represented in ChildHub resources</span></div>
+          <div class="metric"><strong>42.5k+</strong><span>reported LocalLink visitors</span></div>
+          <p class="evidence-note">Public figures are presented as published by Terre des hommes Europe and should be revalidated by the organisation before production use.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="principles">
+      <div class="shell">
+        <div class="section-head">
+          <div><p class="kicker">Built for long-term care</p><h2>Clarity is an operational feature.</h2></div>
+          <p style="color:rgba(255,255,255,.76)">A sustainable website is more than a polished screen. The publishing workflow, accessibility, multilingual structure and maintenance burden shape whether the experience stays useful.</p>
+        </div>
+        <div class="principle-grid">
+          <article class="principle"><b>01 · ACCESS</b><h3>Inclusive by default</h3><p>Keyboard-friendly interactions, visible focus states, responsive layouts and content patterns designed toward WCAG 2.2 AA.</p></article>
+          <article class="principle"><b>02 · LANGUAGE</b><h3>Multilingual without dead ends</h3><p>Language availability is visible at result level, with intentional fallbacks rather than silently missing pages.</p></article>
+          <article class="principle"><b>03 · MAINTENANCE</b><h3>Small changes stay small</h3><p>Reusable content components, documented release checks and clear ownership reduce the cost of routine publishing.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="shell">
+        <p class="kicker">Independent demonstration</p>
+        <h2>A focused concept, ready for a real conversation.</h2>
+        <p>This page demonstrates a design and information-architecture direction only. A production approach would begin with the complete tender dossier, platform access, stakeholder requirements and a verified technical audit.</p>
+        <a class="button" style="background:var(--ink);color:var(--white)" href="#discover">Return to the prototype</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div><strong>Tdh Europe Knowledge Gateway</strong> · independent, non-production concept</div>
+      <div>Concept by Edward Mathew Mkingule · independent full-stack developer / Korvia Studio</div>
+    </div>
+  </footer>
+
+  <script>
+    const input = document.querySelector('#resource-search');
+    const searchButton = document.querySelector('#search-button');
+    const filters = [...document.querySelectorAll('.filter')];
+    const results = [...document.querySelectorAll('.result')];
+    const empty = document.querySelector('#empty');
+    let activeFilter = 'all';
+
+    function updateResults() {
+      const query = input.value.trim().toLowerCase();
+      let visible = 0;
+      results.forEach((result) => {
+        const matchesType = activeFilter === 'all' || result.dataset.type === activeFilter;
+        const matchesQuery = !query || result.dataset.search.includes(query) || result.textContent.toLowerCase().includes(query);
+        result.hidden = !(matchesType && matchesQuery);
+        if (!result.hidden) visible += 1;
+      });
+      empty.style.display = visible ? 'none' : 'block';
+    }
+
+    filters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        activeFilter = filter.dataset.filter;
+        filters.forEach((item) => {
+          const selected = item === filter;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
+        updateResults();
+      });
+    });
+
+    input.addEventListener('input', updateResults);
+    searchButton.addEventListener('click', updateResults);
+  </script>
+</body>
+</html>
